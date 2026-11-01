@@ -6,6 +6,7 @@
   "scripts": {
     "test": "node --test",
     "red-team": "node scripts/red-team.mjs",
+    "evidence:benchmark": "node scripts/evidence-benchmark.mjs",
     "verify:rpc": "node scripts/verify-near-rpc.mjs",
     "build": "node scripts/build-static.mjs",
     "start": "node server.mjs"
