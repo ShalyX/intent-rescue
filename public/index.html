@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="light" />
+  <title>Intent Rescue — NEAR Intents incident console</title>
+  <link rel="stylesheet" href="/public/styles.css" />
+</head>
+<body>
+  <main class="shell">
+    <nav class="topbar" aria-label="Product">
+      <a class="brand" href="/" aria-label="Intent Rescue home">
+        <span class="brand-mark" aria-hidden="true">IR</span>
+        <span>Intent Rescue</span>
+      </a>
+      <div class="topbar-meta">
+        <span class="network-dot" aria-hidden="true"></span>
+        <span>NEAR Intents · evidence-first incident response</span>
+      </div>
+    </nav>
+
+    <section class="case-hero" aria-labelledby="page-title">
+      <div class="hero-copy">
+        <p class="eyebrow">Transaction incident console</p>
+        <h1 id="page-title">Trace the transfer.<br><span>Find the <br class="mobile-break">break.</span></h1>
+        <p class="lede">Reconstruct a NEAR Intents swap from evidence, locate the first unresolved leg, and leave with a safe next action—not a guess.</p>
+      </div>
+      <aside class="case-strip" aria-label="Current case">
+        <div class="case-strip-head">
+          <span class="case-label">Current case</span>
+          <span id="case-id" class="case-id">No case loaded</span>
+        </div>
+        <div class="case-route">
+          <strong id="route-source">—</strong>
+          <span class="route-arrow" aria-hidden="true">→</span>
+          <strong id="route-destination">—</strong>
+        </div>
+        <dl class="case-facts">
+          <div><dt>Reported</dt><dd id="reported-status">—</dd></div>
+          <div><dt>Evidence</dt><dd id="case-basis">Awaiting input</dd></div>
+          <div><dt>Captured</dt><dd id="captured-at">—</dd></div>
+        </dl>
+        <a id="source-link" class="source-link disabled" href="#" target="_blank" rel="noreferrer">Open source evidence ↗</a>
+      </aside>
+    </section>
+
+    <section class="control-bar" aria-label="Demo controls">
+      <div class="fixture-buttons">
+        <span class="control-label">Load evidence:</span>
+        <button data-fixture="f1-failed.json" class="fixture fixture-active">Failed hero</button>
+        <button data-fixture="f2-refunded.json" class="fixture">Refunded</button>
+        <button data-fixture="f3-success.json" class="fixture">Complete</button>
+      </div>
+      <details class="evidence-input">
+        <summary>Paste evidence JSON</summary>
+        <div class="input-drawer">
+          <textarea id="evidence" spellcheck="false" aria-label="Evidence JSON"></textarea>
+          <div class="input-actions">
+            <button id="trace" class="button-primary">Trace incident</button>
+            <span id="input-status" class="muted" role="status"></span>
+          </div>
+        </div>
+      </details>
+    </section>
+
+    <section id="empty-state" class="empty-state">
+      <p class="eyebrow">Ready to trace</p>
+      <p>Load a frozen case or paste an evidence envelope. The lifecycle will resolve only as far as the evidence allows.</p>
+    </section>
+
+    <section id="result" class="result hidden" aria-live="polite">
+      <section class="trace-section" aria-labelledby="trace-title">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">01 · Lifecycle reconstruction</p>
+            <h2 id="trace-title">Where did the transfer stop?</h2>
+          </div>
+          <div class="diagnosis-summary">
+            <span id="classification" class="status-pill"></span>
+            <span id="confidence" class="confidence"></span>
+          </div>
+        </div>
+        <div id="lifecycle" class="lifecycle" aria-label="Transfer lifecycle"></div>
+      </section>
+
+      <section class="decision-layout" aria-labelledby="decision-title">
+        <article class="decision-panel">
+          <div class="section-kicker">
+            <span class="break-symbol" aria-hidden="true">!</span>
+            <p class="eyebrow">02 · Recovery decision</p>
+          </div>
+          <h2 id="decision-title"><span id="unresolved">—</span></h2>
+          <p id="safe-action" class="action-copy"></p>
+          <div class="predicate-block">
+            <span class="predicate-label">Why this advice fired</span>
+            <div id="predicates" class="predicates"></div>
+          </div>
+          <p class="safety-note">Intent Rescue reports what the evidence supports. Missing evidence is not proof of loss, protocol fault, or a guaranteed refund.</p>
+        </article>
+
+        <aside class="legend-panel" aria-label="Evidence legend">
+          <p class="eyebrow">Evidence language</p>
+          <ul class="legend-list">
+            <li><span class="legend-mark verified"></span><div><strong>Observed</strong><small>Identifier or transaction evidence is present.</small></div></li>
+            <li><span class="legend-mark inferred"></span><div><strong>Inferred</strong><small>Supported by related evidence, not directly observed.</small></div></li>
+            <li><span class="legend-mark unknown"></span><div><strong>Unknown</strong><small>No evidence observed. No conclusion invented.</small></div></li>
+          </ul>
+        </aside>
+      </section>
+
+      <section class="evidence-section" aria-labelledby="evidence-title">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">03 · Support-ready case file</p>
+            <h2 id="evidence-title">Evidence you can hand off.</h2>
+          </div>
+          <button id="export" class="button-primary">Export evidence bundle</button>
+        </div>
+        <div id="evidence-list" class="evidence-list"></div>
+        <details class="raw-evidence">
+          <summary>Raw incident bundle</summary>
+          <pre id="preview"></pre>
+        </details>
+      </section>
+    </section>
+  </main>
+  <script type="module" src="/public/app.js"></script>
+</body>
+</html>

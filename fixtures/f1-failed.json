@@ -1,0 +1,16 @@
+{
+  "id": "F1",
+  "source_url": "https://explorer.near-intents.org/transactions/Lh8noxsXRWxJLg6hsxYRVuYD5iiWSNz9Bc",
+  "captured_at": "2026-11-01T00:01:28Z",
+  "reported_status": "FAILED",
+  "source_asset": "LTC",
+  "destination_asset": "ETH",
+  "deposit_verified": true,
+  "intent_verified": true,
+  "origin_tx_hashes": ["1e59a2a06ee0985eec6ca76a5264697f44581017a9f8383598a7538daed2f6df"],
+  "intent_hashes": ["HW6fpeeFmdj3QxgAaBo2M3WN3rk78dJ38PSPKA8G7hgp"],
+  "near_deposit_tx_hashes": ["9bQSpWs3WNeXLF61CVHjYVZYhi5A6cUnw4aVoou1w5WF"],
+  "near_swap_tx_hashes": ["HFnNzz8w5UQ6Mfga3oeKza4MiziDjASHk57fLxW3RMxT"],
+  "destination_tx_hashes": [],
+  "refund_tx_hashes": []
+}

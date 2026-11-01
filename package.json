@@ -1,0 +1,12 @@
+{
+  "name": "intent-rescue",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test",
+    "red-team": "node scripts/red-team.mjs",
+    "verify:rpc": "node scripts/verify-near-rpc.mjs",
+    "start": "node server.mjs"
+  }
+}

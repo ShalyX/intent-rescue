@@ -1,0 +1,19 @@
+{
+  "id": "F2",
+  "source_url": "https://explorer.near-intents.org/transactions/0x2f3003AC7A8C8E54eb04abbA1Fd7cA5e4e1a5a32",
+  "captured_at": "2026-11-01T00:32:12Z",
+  "reported_status": "REFUNDED",
+  "source_asset": "USDC",
+  "destination_asset": "xDAI",
+  "deposit_verified": true,
+  "intent_verified": true,
+  "refund_verified": true,
+  "origin_tx_hashes": ["0xc67360901f4fb7b0440f231672354ee6fe8f9ca2f3593a87ff6b5f3fbb28cd43"],
+  "intent_hashes": ["CgnViLjZqbfxTsp4prNWt9bpPBFLs3ET24QKGoK49rDw"],
+  "near_deposit_tx_hashes": ["58KRGAJgrifdyCLNoxsuB4dfBU4jBDEGaan6kmskhGkr"],
+  "near_swap_tx_hashes": ["3ow6FDKxJMbuRPZKfEku7quk55DzJ9C5TbiiD43vKKD9"],
+  "destination_tx_hashes": [],
+  "refund_tx_hashes": ["0x8a6cbe7715108be0078123944ec7c7995e3ffb526b8ca48618171ba369b70b5e"],
+  "refund_evidence": ["NEAR Intents Explorer: Transaction refunded. Reason: Deadline passed"],
+  "refund_reason": "Deadline passed"
+}

@@ -1,0 +1,10 @@
+node_modules/
+qa/
+fixtures/rpc/*
+!fixtures/rpc/recent-tx-proof.json
+.DS_Store
+Thumbs.db
+*.log
+.env
+.env.*
+!.env.example

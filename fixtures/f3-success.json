@@ -1,0 +1,19 @@
+{
+  "id": "F3",
+  "source_url": "https://explorer.near-intents.org/transactions/c90a6a3eaa0b2bbdf79d56f734d6fc68c854c9e479377d0ef051b86b65c9b9d3",
+  "captured_at": "2026-11-01T00:32:12Z",
+  "reported_status": "SUCCESS",
+  "source_asset": "ZEC",
+  "destination_asset": "ETH",
+  "deposit_verified": true,
+  "intent_verified": true,
+  "destination_verified": true,
+  "deposit_evidence": ["NEAR Intents Explorer: Deposit Completed — Token deposit has been confirmed"],
+  "origin_tx_hashes": [],
+  "intent_hashes": ["EYaRWjj5FP7ZMziZpqoHkgWFL182EcZ6sRBVcGtgAnjZ"],
+  "near_deposit_tx_hashes": [],
+  "near_swap_tx_hashes": ["Eh8v4CJDhF7m7Er8EsvWDrs9Sw9xpacofrA2oe5qSYBA"],
+  "destination_tx_hashes": [],
+  "destination_evidence": ["NEAR Intents Explorer: Withdrawn — Funds were successfully withdrawn"],
+  "refund_tx_hashes": []
+}
