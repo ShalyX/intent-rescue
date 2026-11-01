@@ -1,4 +1,5 @@
 node_modules/
+dist/
 qa/
 fixtures/rpc/*
 !fixtures/rpc/recent-tx-proof.json
