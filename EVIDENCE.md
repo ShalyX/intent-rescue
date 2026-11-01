@@ -81,6 +81,17 @@ The repository contains deterministic fixtures, classifier rules, lifecycle reco
 
 A reviewer can reproduce the core claim without credentials, a funded wallet, or executing a new financial transaction.
 
+### Preserved proof artifacts
+
+The repository also preserves the observed command outputs used for this evidence pass:
+
+- `evidence/test-output.txt` — 17/17 automated test result
+- `evidence/red-team-output.txt` — adversarial safety scenarios
+- `evidence/benchmark-output.txt` — 30,000-repeat determinism benchmark
+- `evidence/mainnet-rpc-proof.json` — captured public NEAR mainnet `tx` proof with `FINAL` execution status and receipt outcomes
+
+These files are supporting evidence, not substitutes for the live product workflow.
+
 ## 7. What we do NOT claim
 
 Intent Rescue does not claim to:

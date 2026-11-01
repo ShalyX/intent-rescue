@@ -1,0 +1,24 @@
+{
+  "endpoint": "https://near.drpc.org",
+  "started_at": "2026-11-01T00:07:46.161Z",
+  "verified_at": "2026-11-01T00:07:48.454Z",
+  "block_height": 222492155,
+  "block_hash": "C433j1weDnkCr9oQq9gZCqjYLJfFBH41Xk9X6xrea3ua",
+  "tx_hash": "GxgdwWUF3oSm9LBdEcdXQcJ3hE4jRX1tz4tNp7W2sMHJ",
+  "signer_id": "abound.near",
+  "receiver_id": "8565876610733185693.abound.near",
+  "final_execution_status": "FINAL",
+  "status": {
+    "Failure": {
+      "ActionError": {
+        "index": 0,
+        "kind": {
+          "AccountAlreadyExists": {
+            "account_id": "8565876610733185693.abound.near"
+          }
+        }
+      }
+    }
+  },
+  "receipt_outcomes": 2
+}
