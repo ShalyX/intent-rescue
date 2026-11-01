@@ -1,5 +1,8 @@
 # Intent Rescue
 
+**Live demo:** https://intent-rescue.vercel.app
+**Public repo:** https://github.com/ShalyX/intent-rescue
+
 **Evidence-first incident response for NEAR Intents.**
 
 Intent Rescue reconstructs a swap from source-attributed evidence, identifies the first unresolved lifecycle leg, explains what the evidence does and does not prove, recommends a conservative next action, and exports a support-ready incident bundle.
