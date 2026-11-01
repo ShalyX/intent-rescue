@@ -25,6 +25,25 @@ The project ships with three captured public NEAR Intents cases:
 
 The source Explorer URL is retained in each fixture so a judge can inspect the original public evidence.
 
+## Judge quickstart
+
+Use the deployed build; no account or credentials are required:
+
+1. Open https://intent-rescue.vercel.app/?demo=F1 — see FAILED_UNRESOLVED, with **Destination delivery** as the first unresolved leg and a conservative recovery action.
+2. Open https://intent-rescue.vercel.app/?demo=F2 — see REFUND_VERIFIED from concrete refund evidence.
+3. Open https://intent-rescue.vercel.app/?demo=F3 — see COMPLETE from concrete destination evidence.
+4. Run 
+pm test and 
+pm run red-team to reproduce classifier and adversarial checks.
+
+## NEAR technology used
+
+- **NEAR Intents** is the core product surface: Intent Rescue reconstructs the source deposit, 1Click intake, intent/solver execution, destination delivery, and refund path from source-attributed evidence.
+- **NEAR mainnet RPC** is used as an independent chain-verification primitive. During technical de-risking, a fresh mainnet transaction was verified through a public RPC at final execution status; historical hero evidence remains snapshot-backed because free public providers are not guaranteed archival.
+- Partner JWT APIs and solver-relay access are optional enrichments, not requirements for the judge path.
+
+**Submission track:** Open Innovation.
+
 ## Run locally
 
 Requirements: Node.js 18+.
