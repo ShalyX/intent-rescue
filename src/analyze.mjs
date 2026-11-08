@@ -8,7 +8,7 @@ export function analyzeEvidence(evidence) {
   return { ...diagnosis, lifecycle };
 }
 
-export function exportBundle(evidence) {
+export function exportBundle(evidence, options = {}) {
   const analysis = analyzeEvidence(evidence);
-  return makeEvidenceBundle(evidence, analysis);
+  return makeEvidenceBundle(evidence, analysis, options);
 }

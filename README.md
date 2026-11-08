@@ -5,7 +5,7 @@
 
 **Evidence-first incident response for NEAR Intents.**
 
-[Evidence pack](./EVIDENCE.md) · 10 public cases · 17/17 tests · 9/9 red-team scenarios · 30,000 deterministic repeat classifications
+[Evidence pack](./EVIDENCE.md) · 10 public cases · 23/23 local tests (8 Nov) · 9/9 red-team scenarios · 30,000 deterministic repeat classifications
 
 Intent Rescue reconstructs a swap from source-attributed evidence, identifies the first unresolved lifecycle leg, explains what the evidence does and does not prove, recommends a conservative next action, and exports a support-ready incident bundle.
 
@@ -27,6 +27,10 @@ The project ships with three captured public NEAR Intents cases:
 
 The source Explorer URL is retained in each fixture so a judge can inspect the original public evidence.
 
+**Identifier intake boundary:** Paste a known Explorer URL, source/NEAR transaction hash, or intent hash to match one of the **three captured public cases**. Other identifiers cannot be automatically diagnosed without partner historical API access; the desk shows a clear no-capture message and offers a manual source-attributed JSON fallback. User-supplied evidence is labeled **provisional/unverified**; the app does not independently authenticate caller-provided claims. This is not universal live swap tracking.
+
+**Support handoff:** Export a real JSON case bundle with step-by-step evidence, unresolved fields, NEAR transaction links, source assurance and an escalation request. [Product coverage and remaining P0 gaps](./PRODUCT-COVERAGE.md).
+
 ## Judge quickstart
 
 Use the deployed build; no account or credentials are required:
@@ -34,7 +38,9 @@ Use the deployed build; no account or credentials are required:
 1. Open https://intent-rescue.vercel.app/?demo=F1 — see FAILED_UNRESOLVED, with **Destination delivery** as the first unresolved leg and a conservative recovery action.
 2. Open https://intent-rescue.vercel.app/?demo=F2 — see REFUND_VERIFIED from concrete refund evidence.
 3. Open https://intent-rescue.vercel.app/?demo=F3 — see COMPLETE from concrete destination evidence.
-4. Run 
+4. Paste the F1 Explorer URL in the identifier field; unknown hashes never produce invented diagnoses.
+5. Export the actual JSON incident bundle and inspect assurance, evidence gaps, source links and escalation request.
+6. Run npm test and npm run red-team to reproduce the checks.
 pm test and 
 pm run red-team to reproduce classifier and adversarial checks.
 
@@ -73,6 +79,7 @@ Intent Rescue does **not** custody funds, trigger refunds, or claim a protocol r
 ## Architecture
 
 - `src/classifier.mjs` — deterministic incident classification and safe-action rules.
+- `src/intake.mjs` — captured-identifier resolution and manual JSON evidence validation (no invented live lookups).
 - `src/lifecycle.mjs` — five-stage reconstruction with provenance labels.
 - `src/evidence-bundle.mjs` — portable support-ready incident export.
 - `fixtures/` — frozen public evidence cases.

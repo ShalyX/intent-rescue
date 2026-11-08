@@ -1,6 +1,8 @@
 node_modules/
 dist/
 qa/
+.playwright-cli/
+output/playwright/
 fixtures/rpc/*
 !fixtures/rpc/recent-tx-proof.json
 .DS_Store

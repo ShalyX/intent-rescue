@@ -102,3 +102,23 @@ Intent Rescue does not claim to:
 - replace NEAR support or custody assets.
 
 The product claim is narrower: **given source-attributed evidence, reconstruct the lifecycle, identify the first unresolved leg, expose provenance, recommend an evidence-bounded next action, and export a support-ready case bundle.**
+
+## 8. November 8 — newest Operator Product Integrity re-audit
+
+Current local revision is **not yet certified as the production deployment**. New proof covers captured-identifier intake and support handoff; prior November 1 figures above are historical, not the latest local test totals.
+
+| Claim ID | Critical claim | Status | Reproducible proof | Limitation / judge-facing location |
+|---|---|---|---|---|
+| C1 | Real F1/F2/F3 captured outcomes reconstruct correctly | VERIFIED locally | `npm test`; `?demo=F1/F2/F3`; `fixtures/` | Source-attributed snapshots, not live changing status |
+| C2 | Known Explorer URL/hash can load a captured case | VERIFIED locally | `src/intake.mjs` tests + `qa/operator-integrity-check.js` run | Three captured cases only; unknown inputs do not automatically resolve |
+| C3 | Unknown ID cannot be misreported as verified | VERIFIED locally | Resolver test and Playwright unknown-ID regression | No partner API / archival universal search |
+| C4 | Arbitrary manual JSON is not authenticated | VERIFIED UI safeguard | Playwright provisional warning and exported `source.assurance` | Human must verify original chain/explorer evidence |
+| C5 | Support JSON contains missing evidence and escalation request | VERIFIED locally | Playwright actual downloaded JSON, `src/evidence-bundle.mjs` | No custody/refund action |
+| C6 | Automated regression coverage | MEASURED locally | **23/23 Node tests** on Nov 8, `npm test` | Local Windows Node 24 revision; must rerun on published commit |
+| C7 | Desktop + mobile forensic desk displays | OBSERVED locally | `qa/operator-F1-desktop.png`, `qa/operator-F1-mobile.png` at 1440×1000 and 390×844 | Browser captures not yet proof of public deployment |
+| C8 | Newly published Vercel version matches this code | UNPROVEN | Needs post-push HTTP/browser public test | Required before submission |
+| C9 | Current demo video matches November 8 UI and export | STALE | November 1 screenshot sequence exists | Re-record required; see DEMO.md |
+| C10 | All original locked P0 capabilities generalized | BLOCKED | PRODUCT-COVERAGE.md ledger | Identifier auto-lookup/chain-specific destination links incomplete |
+| C11 | External impact/adoption validated by NEAR users | UNPROVEN | No independent feedback artifact yet | Do not invent endorsements |
+
+Evidence rules: preserve input source, date, freshness, environment and limitations. Do not present provisional analysis as independently verified, or the previous UI/demo as current production.

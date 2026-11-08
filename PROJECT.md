@@ -1,0 +1,33 @@
+# PROJECT — Intent Rescue / newest Hackathon Operator checkpoint
+
+Status as of 2026-11-08 UTC: **BUILD_LOOP, Product Integrity BLOCKED for full-product declaration**. This project was previously mislabeled "product done" after a three-case slice; that conclusion is superseded. The locked thesis remains unchanged.
+
+## Verified in this resumed session
+- Recovered the original lock and implemented a 7-P0 coverage ledger.
+- Discovered and preserved earlier uncommitted design Pass 3 work; rebuilt the visible desk to match its forensic investigation layout.
+- Added credential-independent known-identifier resolver, honest unknown-ID response, manual evidence trust label, and source-attributed escalation bundle.
+- Node 23/23 tests and static build pass.
+- Real Playwright: F2 Explorer URL resolves; unknown ID erases stale diagnosis; user-supplied JSON is marked provisional; actual JSON download works; desktop and 390px mobile screenshots inspected, no mobile overflow.
+- Related installed launch-hygiene skill read and fallback audit documented.
+
+## Still open — do not silently pass
+1. P0-01 generic identifier resolution and P0-07 arbitrary source/destination deep links (partner API unavailable); see PRODUCT-COVERAGE.md.
+2. Name lock and brand kit (BRAND.md).
+3. Public deployment freshness, artifact and source link inspection.
+4. Product Hygiene final pass (HYGIENE.md).
+5. Updated demo recording and QA (DEMO.md).
+6. Proof ledger final audit, four-lens Judge Simulation and submission audit.
+7. Authorized X post and official portal confirmation/receipt.
+
+## Risks and policy
+Original P0 is not cut. The input explicitly labels captured-only scope, with manual JSON fallback. Do not call arbitrary transaction tracing live. The old video is stale. Keep prior user development sessions/other project processes intact.
+
+## Sources / assets
+Canonical project root: `C:\Users\USER\Documents\intent-rescue`.
+Public remote: https://github.com/ShalyX/intent-rescue.
+Previously deployed: https://intent-rescue.vercel.app/ (fresh commit still requires verification).
+Local Playwright captures: `qa/operator-F1-desktop.png`, `qa/operator-F1-mobile.png`.
+Local regression: `qa/operator-integrity-check.js`.
+
+## Next action
+Publish only tested source/assets/docs, confirm Vercel serves new version and screenshot, then prioritize remaining P0 proof/limits, demo, and submission. Do not turn a successful technical spike into FULL_PRODUCT_VERIFIED.
