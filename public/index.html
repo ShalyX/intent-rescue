@@ -30,8 +30,8 @@
       <form id="identifier-form" class="identifier-form">
         <label for="identifier">Explorer URL or transaction / intent hash</label>
         <input id="identifier" name="identifier" autocomplete="off" spellcheck="false" placeholder="Paste a swap identifier" />
-        <button type="submit" class="button-primary">Find captured case</button>
-        <small>Looks up the three captured cases locally. Unknown IDs are never diagnosed without evidence.</small>
+        <button type="submit" class="button-primary">Investigate swap</button>
+        <small>Checks captured cases, then reads a public Explorer page when available. Never independently proves chain state; unknowns stay unknown.</small>
       </form>
       <nav class="fixture-buttons" aria-label="Captured public incidents">
         <button type="button" data-fixture="f1-failed.json" class="fixture" aria-pressed="false"><span class="fixture-id">F1</span><span class="fixture-copy"><strong>LTC → ETH</strong><small>Failed / unresolved</small></span><span class="selection-mark" aria-hidden="true">→</span></button>
@@ -51,7 +51,7 @@
         <a id="source-link" class="source-link disabled" href="#" target="_blank" rel="noopener noreferrer" aria-disabled="true" tabindex="-1">Open source evidence ↗</a>
       </div>
       <p id="input-status" class="input-status" role="status" aria-live="polite">Loading captured case F1</p>
-      <p class="rail-footnote">Captured data is a snapshot, not current chain or refund status.</p>
+      <p class="rail-footnote">Public Explorer evidence is a page snapshot, not independent chain or refund verification.</p>
     </aside>
 
     <section id="investigation" class="investigation" aria-labelledby="trace-title" tabindex="-1">

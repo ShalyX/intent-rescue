@@ -8,27 +8,44 @@ const inputStatus = document.querySelector('#input-status');
 const fixtureButtons = [...document.querySelectorAll('[data-fixture]')];
 let currentEvidence = null;
 let evidenceAssurance = 'CAPTURED_PUBLIC_SNAPSHOT';
+const isSourceSnapshot = () => evidenceAssurance === 'CAPTURED_PUBLIC_SNAPSHOT' || evidenceAssurance === 'PUBLIC_EXPLORER_SNAPSHOT';
 const demoFiles = ['f1-failed.json','f2-refunded.json','f3-success.json'];
 
 document.querySelector('#identifier-form').addEventListener('submit', async event => {
   event.preventDefault();
   const input = document.querySelector('#identifier').value.trim();
   try {
-    inputStatus.textContent = 'Searching locally captured public evidence…';
+    inputStatus.textContent = 'Checking captured public evidence…';
     const captures = await Promise.all(demoFiles.map(async f => {
       const response = await fetch('/fixtures/' + f);
       if (!response.ok) throw new Error('Captured-case source unavailable');
       return response.json();
     }));
     const match = findCapturedCase(input, captures);
-    if (match.kind !== 'captured') {
+    if (match.kind === 'captured') {
+      evidenceInput.value = JSON.stringify(match.evidence, null, 2);
+      evidenceAssurance = 'CAPTURED_PUBLIC_SNAPSHOT';
+      selectFixture(fixtureButtons.find(b => b.dataset.fixture === demoFiles[captures.indexOf(match.evidence)]) ?? null);
+      traceCurrent();
+      return;
+    }
+    if (match.kind !== 'uncaptured') {
       clearView();
       inputStatus.textContent = match.reason;
       return;
     }
-    evidenceInput.value = JSON.stringify(match.evidence, null, 2);
-    evidenceAssurance = 'CAPTURED_PUBLIC_SNAPSHOT';
-    selectFixture(fixtureButtons.find(b => b.dataset.fixture === demoFiles[captures.indexOf(match.evidence)]) ?? null);
+    clearView();
+    inputStatus.textContent = 'Reading public Explorer page, without partner credentials…';
+    const response = await fetch('/api/incident?reference=' + encodeURIComponent(input), {cache: 'no-store'});
+    const payload = await response.json();
+    if (!response.ok || payload.kind !== 'public_explorer_snapshot' || !payload.evidence) {
+      clearView();
+      inputStatus.textContent = (payload.error || 'Public Explorer lookup unavailable.') + ' You can paste a source-attributed evidence JSON instead.';
+      return;
+    }
+    evidenceInput.value = JSON.stringify(payload.evidence, null, 2);
+    evidenceAssurance = 'PUBLIC_EXPLORER_SNAPSHOT';
+    selectFixture(null);
     traceCurrent();
   } catch (err) { clearView(); inputStatus.textContent = 'Identifier lookup unavailable: ' + err.message; }
 });
@@ -77,7 +94,7 @@ function traceCurrent() {
     renderAnalysis(analysis);
     [result, document.querySelector('#protocol-body'), document.querySelector('#case-file')].forEach(el => el.classList.remove('hidden'));
     emptyState.classList.add('hidden');
-    inputStatus.textContent = evidenceAssurance === 'CAPTURED_PUBLIC_SNAPSHOT' ? `Case ${evidence.id || 'captured'} traced · Historical public snapshot` : 'Provisional analysis · User-supplied evidence is not independently verified';
+    inputStatus.textContent = evidenceAssurance === 'PUBLIC_EXPLORER_SNAPSHOT' ? 'Public Explorer page snapshot · Not independently verified on-chain' : evidenceAssurance === 'CAPTURED_PUBLIC_SNAPSHOT' ? `Case ${evidence.id || 'captured'} traced · Historical public snapshot` : 'Provisional analysis · User-supplied evidence is not independently verified';
   } catch (error) {
     currentEvidence = null;
     selectFixture(null);
@@ -107,9 +124,9 @@ function renderCase(evidence) {
   document.querySelector('#route-source').textContent = evidence.source_asset || '—';
   document.querySelector('#route-destination').textContent = evidence.destination_asset || '—';
   document.querySelector('#reported-status').textContent = statusLabel(evidence.reported_status || 'UNKNOWN');
-  document.querySelector('#case-basis').textContent = currentEvidence ? (evidenceAssurance === 'CAPTURED_PUBLIC_SNAPSHOT' ? 'Public snapshot / not live' : 'User-supplied / unverified') : 'Awaiting valid input';
+  document.querySelector('#case-basis').textContent = currentEvidence ? (isSourceSnapshot() ? 'Public Explorer snapshot / not on-chain verified' : 'User-supplied / unverified') : 'Awaiting valid input';
   document.querySelector('#captured-at').textContent = formatTimestamp(evidence.captured_at);
-  document.querySelector('#canvas-provenance').textContent = `${evidenceAssurance === 'CAPTURED_PUBLIC_SNAPSHOT' ? 'Public evidence snapshot' : 'Unverified user input'} · ${formatTimestamp(evidence.captured_at)}`;
+  document.querySelector('#canvas-provenance').textContent = `${evidenceAssurance === 'PUBLIC_EXPLORER_SNAPSHOT' ? 'Explorer page snapshot · not chain verified' : evidenceAssurance === 'CAPTURED_PUBLIC_SNAPSHOT' ? 'Historical public evidence snapshot' : 'Unverified user input'} · ${formatTimestamp(evidence.captured_at)}`;
   document.querySelector('#file-source').textContent = evidence.source_url || 'No source URL supplied';
   document.querySelector('#file-captured').textContent = evidence.captured_at ? `Captured ${formatTimestamp(evidence.captured_at)}` : 'No capture time supplied';
   const link = document.querySelector('#source-link');
@@ -131,7 +148,7 @@ function renderAnalysis(analysis) {
   document.querySelector('#unresolved').textContent = analysis.first_unresolved_step
     ? statusLabel(analysis.first_unresolved_step)
     : analysis.classification === 'COMPLETE' ? 'Transfer complete' : 'No unresolved recovery step';
-  document.querySelector('#safe-action').textContent = evidenceAssurance === 'CAPTURED_PUBLIC_SNAPSHOT' ? analysis.safe_action : 'Unverified evidence. Confirm original transactions and any refund/destination record before taking action. Do not retry on the basis of this report alone.';
+  document.querySelector('#safe-action').textContent = isSourceSnapshot() ? analysis.safe_action : 'Unverified evidence. Confirm original transactions and any refund/destination record before taking action. Do not retry on the basis of this report alone.';
   document.querySelector('#predicates').replaceChildren(...analysis.evidence_predicates.map(predicate => {
     const item = document.createElement('code'); item.textContent = predicate; return item;
   }));
