@@ -37,7 +37,7 @@ Status key: **PASS** = exit proof inspected; **PASS*** = historical artifact pro
 | 13 | BUILD_VERTICAL_SLICE | **PASS WITH REVALIDATION LIMIT** | All seven original P0s remain acceptance-verified in PRODUCT-COVERAGE.md. The rename changed brand strings and export filename only; latest static build is READY. Fresh deployed-browser regression is still required. |
 | 14 | PRODUCT_REVIEW | **PASS ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â HQ PRODUCT-INTEGRITY RE-AUDIT** | PRODUCT-COVERAGE.md traces all seven original P0s to implementation and evidence. No P0 was silently removed; no product thesis drift. P0-01 manual fallback is bounded and provisional, not universal private-history lookup. |
 | 15 | BRAND_KIT | **PASS — LIGHTWEIGHT KIT COMPLETE** | BRAND.md now defines OSIALI positioning, descriptor, tagline, voice, wordmark/mark, typography, palette, motif, imagery, favicon/avatar and usage rules. |
-| 16 | ART_DIRECTION | **PARTIAL** | Product-specific forensic incident-desk direction exists in DESIGN-PASS3.md/UI-POLISH.md. v0.5.0 Design Quality Gate B requires three materially different visual territories for a substantial redesign; no three-direction comparison/rejection record was found. |
+| 16 | ART_DIRECTION | **PASS — 2026-11-09** | DESIGN.md compares Witness Desk, Evidence Ledger and Signal Room; Witness Desk selected with product rationale, composition, signature motif, risks, anti-patterns and explicit rejection rationale. |
 | 17 | REFERENCE_BOARD | **PARTIAL** | DESIGN.md names Stripe/Sentry/Cloudflare and describes broad takeaways, but there is no complete purpose-decomposed reference board with source captures/URLs and specific takeaways per reference. |
 | 18 | VISUAL_ASSET_STRATEGY | **PARTIAL** | Authentic F1/F2/F3 captures, local fonts and fallbacks exist. The asset inventory is not fully mapped by section, purpose, owner, priority, status, responsive variant and performance budget. OG preview currently carries the unapproved Docketrail label. |
 | 19 | MOTION_STORYBOARD | **PASS ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â INTENTIONAL MINIMAL MOTION** | No meaningful transfer animation is intended. DESIGN.md defines only feedback transitions (~140 ms) and reduced-motion fallback; UI-POLISH reports reduced-motion verification. No motion-heavy product story is being claimed. |
@@ -68,7 +68,7 @@ The current phase is **ART_DIRECTION**. NAME_LOCK through BRAND_KIT have been re
 
 ## Correct sequential route from here
 
-1. BRAND_KIT is complete. Run ART_DIRECTION, then REFERENCE_BOARD and VISUAL_ASSET_STRATEGY in order.
+1. ART_DIRECTION is complete. Build the source-captured REFERENCE_BOARD, then VISUAL_ASSET_STRATEGY and MOTION_STORYBOARD in order.
 2. Revalidate DEMO_ARCHITECTURE and EVIDENCE_PLAN against the approved identity; preserve existing work.
 3. Resolve the track assignment against the official current track descriptions.
 4. Complete the missing Art Direction / Reference Board / Asset Strategy evidence and formal Design Quality score; then confirm Design Lock and Visual QA.

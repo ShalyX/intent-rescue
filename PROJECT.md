@@ -56,3 +56,11 @@ Resolve the product-name gate. Do not publish the Docketrail-labelled video or u
 - **PRODUCT_REVIEW:** PASS. The brand rename does not alter the target user, product promise, five-leg workflow, P0 inventory, safety boundaries or follow-through. No product drift.
 - **BRAND_KIT:** lightweight identity system is now defined in BRAND.md. Current Operator phase moves to ART_DIRECTION.
 - **Outstanding:** OG preview image and old Docketrail recordings remain legacy assets. Live rendered UI still needs browser verification; formal trademark/domain/handle clearance is not complete.
+
+
+## 2026-11-09 — ART_DIRECTION completed
+
+- Compared three materially distinct territories in DESIGN.md: Witness Desk, Evidence Ledger and Signal Room.
+- Selected **Witness Desk** because it makes the evidenced route, first unresolved leg, safe action and support handoff legible without implying live telemetry or automatic recovery.
+- Phase 16 ART_DIRECTION: PASS. The prior forensic desk remains the chosen composition language, now explicitly tied to OSIALI's witness concept.
+- Current Operator phase: REFERENCE_BOARD. Next work is source-captured reference synthesis by purpose; no major frontend rebuild is authorized before Design Lock.

@@ -1,11 +1,11 @@
 {
   "schema_version": 4,
-  "revision": 12,
+  "revision": 13,
   "recovered_from_legacy": true,
   "previous_local_state": "ABSENT",
   "legacy_checkpoint_revision": "UNKNOWN",
   "project_root": "C:\\Users\\USER\\Documents\\intent-rescue",
-  "phase": "ART_DIRECTION",
+  "phase": "REFERENCE_BOARD",
   "active_specialist": "Art Director",
   "human_input_required": false,
   "pending_gate": null,
@@ -36,7 +36,7 @@
   "dependency_attack_complete": true,
   "technical_risks_cleared": true,
   "happy_path_complete": true,
-  "art_direction_complete": false,
+  "art_direction_complete": true,
   "references_synthesized": false,
   "visual_asset_strategy_complete": false,
   "motion_storyboard_complete": true,
@@ -75,7 +75,8 @@
     "nov9_evidence_plan": "Evidence plan revalidated after OSIALI name lock. Original seven P0 claims and proof boundaries unchanged.",
     "nov9_osiali_deployment": "Vercel deployment dpl_3ET9uAV4wFW9tthvSCBDaK9YEnkT for commit b613f5c8c4cbb47da60a7dcbc6a9b6b6c0e64128 is READY; aliases intent-rescue.vercel.app, intent-rescue-shalyxs-projects.vercel.app and intent-rescue-git-main-shalyxs-projects.vercel.app attached. Build log: osiali@0.0.1 build; Static build ready; Deployment completed. Visual browser QA pending.",
     "nov9_product_revalidation": "After OSIALI lock: Dependency Attack PASS (no new external dependency); Technical De-risk PASS with explicit historical F1 RPC limits; Vertical Slice PASS with fresh deployed-browser regression pending; Product Review PASS (no thesis/P0 drift).",
-    "nov9_brand_kit": "Lightweight brand kit complete in BRAND.md: positioning, descriptor, tagline, voice, wordmark/mark, typography, palette, motif, imagery, favicon/avatar and usage rules. Current phase ART_DIRECTION."
+    "nov9_brand_kit": "Lightweight brand kit complete in BRAND.md: positioning, descriptor, tagline, voice, wordmark/mark, typography, palette, motif, imagery, favicon/avatar and usage rules. Current phase ART_DIRECTION.",
+    "nov9_art_direction": "Phase 16 PASS. Three distinct visual territories compared; Witness Desk selected. Product-specific visual thesis and composition targets in DESIGN.md."
   },
   "blockers": [
     "Track decision: original PRODUCT_LOCK says Unstoppable DeFi primary / Open Innovation secondary; current recommendation Open Innovation; no explicit switch recorded",
@@ -86,8 +87,8 @@
     "Legacy Docketrail OG preview and old demo recordings must be replaced; browser-level visual QA of the new OSIALI production deployment is still pending.",
     "Formal trademark, domain and social-handle clearance for OSIALI remains outstanding; do not claim legal availability."
   ],
-  "next_action": "Run ART_DIRECTION: define the OSIALI-specific visual thesis and compare materially different directions against the approved forensic incident-desk experience; then proceed to REFERENCE_BOARD.",
-  "updated_at": "2026-11-09T20:40:14.720Z",
+  "next_action": "Complete REFERENCE_BOARD: gather current, authentic references for editorial hierarchy, incident timeline, evidence visualization, restrained operational controls and responsive route composition; explain exactly what to borrow conceptually.",
+  "updated_at": "2026-11-09T20:42:41.364Z",
   "name_status": "LOCKED_USER_APPROVED",
   "proposed_name": "OSIALI",
   "proposed_name_user_approved": true,
@@ -175,12 +176,12 @@
     {
       "n": 16,
       "phase": "ART_DIRECTION",
-      "status": "PARTIAL"
+      "status": "PASS — three materially distinct territories documented; Witness Desk selected with product rationale, composition, signature motif, risks and anti-patterns in DESIGN.md."
     },
     {
       "n": 17,
       "phase": "REFERENCE_BOARD",
-      "status": "PARTIAL"
+      "status": "OPEN — build a purpose-decomposed reference board with current source captures/URLs and concrete takeaways."
     },
     {
       "n": 18,
