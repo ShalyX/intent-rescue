@@ -220,3 +220,15 @@ Other regional-language directions already screened and rejected: **Itan** (exis
 ### Next naming method
 
 Stop cycling through obvious English nouns that are already occupied in adjacent markets. Develop a small set of original, ownable brand concepts from the exact product promise — an evidence-bounded account of a cross-chain transaction, with a clear boundary between observed fact and unknown — then screen those concepts before showing them. Preserve the locked product and all seven P0 requirements.
+
+
+### Akaebe — meaning and collision follow-up (exploratory only)
+
+The language-root note was checked against additional sources:
+
+- The Igbo Village Square dictionary lists **aka ebe** as “witness” and gives the expressions `ịgba aka ebe` (“to witness” / “to testify”): https://www.igbovillagesquare.com/p/igbo-dictionary-a.html
+- Nkọwa okwu records `akeebe` with the variant `akaebe`, defining it as “the act of bearing witness, vouching or standing as surety”: https://nkowaokwu.com/word?word=bear%20witness
+- The academic study *Bible Translation and Language Elaboration: The Igbo Experience* identifies **akaebe** as an Igbo word for “witness”: https://epub.uni-bayreuth.de/id/eprint/4298/1/Bible%20Translation%20and%20Language%20Elaboration%20%E2%80%93%20The%20Igbo%20Experience.pdf
+- A Nigerian legal-translation paper describes `akaebe` / `ihe akaebe` as broadly meaning proof or testimony, while cautioning that legal evidence categories may not map one-to-one: https://iosrjournals.org/iosr-jhss/papers/Vol.31-Issue3/Ser-2/A3103020109.pdf
+
+The sources support the semantic direction, but they do **not** establish a preferred brand pronunciation. A fluent Igbo speaker must validate pronunciation, nuance, and whether using the noun alone as a product name sounds natural. Public search did not surface an exact software/fintech/Web3 product under AKAEBE; this is not trademark, domain, or handle clearance. Keep it exploratory, not shortlisted, until pronunciation and brand-fit are validated.
