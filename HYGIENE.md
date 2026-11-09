@@ -31,3 +31,8 @@ Verdict: **NOT YET A PASSED FINAL PRODUCT HYGIENE GATE**. Re-run after publishin
 - Naming exploration completed; **Docketrail** selected in BRAND.md after rejecting searched collisions. Product thesis remains unchanged; existing URL/repo slug stays intact. Current HTML title, wordmark/footer, social title and README use Docketrail. Social image still needs fresh capture after deployment.
 - Conditional explorer links are format-gated, use an allowlisted destination and open with `noopener noreferrer`. Three tests cover supported source/NEAR refs, Base/Ethereum synthetic paths, and invalid/ambiguous cases. No chain guessing from token ticker.
 - Final Product Hygiene skill still not discovered in connected host; fallback_used=true remains, and final release check is pending. Do not certify skill run or final hygiene pass yet.
+
+## 2026-11-09 deployed identity and navigation QA
+- Vercel confirms commit 6b1abb5 READY in production; live Playwright title/header Docketrail, F1 failed, F2 refunded and F3 complete render.
+- On live F1: exactly one explicit Litecoin source link, two NEAR links, zero fabricated missing destination links. Mobile viewport 390px, document width 390px (no page overflow). New OG 1200×630 asset examined from same public revision; publication/cache refresh still pending.
+- Product Hygiene **fallback** continues (original user-made skill unavailable). No claim of installed skill execution or complete hygiene pass until final release re-audit.

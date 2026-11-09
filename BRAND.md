@@ -28,3 +28,9 @@ Status: **NAME_LOCK revision 1 — 2026-11-09**. Name selection is presentation-
 
 ## Implementation / lock consistency
 Brand is **LOCKED as a naming decision**; release verification is separate. Update UI title, wordmark, social meta, README, demo script, and pitch consistently; check published version before marking BRAND_KIT and DEMO_QA passed.
+
+## Released asset QA (2026-11-09)
+- Vercel production for commit `6b1abb5` reported READY; browser title, header, footer, case F1/F2/F3 and source links exercised publicly.
+- Production desktop 1440×1000 and mobile 390×844 inspected; no page-level horizontal overflow. Wordmark renders as Docketrail.
+- `public/og-preview.png` refreshed as a 1200×630 capture-based social card from the new production UI. Do not claim social crawlers have refreshed their cache until a public post preview is observed.
+- Repo and deployment slugs remain `intent-rescue` for stability, not as competing consumer-facing product names.

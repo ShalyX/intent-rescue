@@ -38,3 +38,9 @@ Publish only tested source/assets/docs, confirm Vercel serves new version and sc
 - NAME_LOCK decision: **Docketrail**; user-facing HTML, social title, README and BRAND.md updated while keeping existing URL/repository slug for continuity. Collision research is practical only, not trademark clearance.
 - **Still open:** original P0-01 broad identifier search behind partner JWT; final P0-07 on arbitrary unknown-chain evidence; current production freshness, social image, brand-release verification, Demo Production/QA, original Product Hygiene skill, Proof Engine closing, four-lens Judge Simulation and official submission.
 - No new claims of arbitrary live transaction resolution, automatic refunds, or independently authenticated user-supplied data.
+
+## 2026-11-09 production verification and design evidence
+- Vercel deployment `dpl_8q6VwNZmjJ38JiKWPofjHsvZ9njJ` reports READY for exact Git commit `6b1abb5`, assigned to `https://intent-rescue.vercel.app`.
+- Live Playwright: Docketrail title/wordmark verified, F1=FAILED_UNRESOLVED, F2=REFUND_VERIFIED, F3=COMPLETE; F1 1 Litecoin + 2 NEAR external links; no absent destination link; 390px viewport without horizontal overflow.
+- Static desktop and mobile screenshots inspected; 1200×630 social image refreshed from actual production screenshot.
+- Operator still remains in BUILD_LOOP due incomplete original P0-01 broad identifier resolution and P0-07 arbitrary unknown-chain references; name/brand and design gates can pass independently but **not FULL_PRODUCT_VERIFIED**.

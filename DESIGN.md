@@ -1,5 +1,5 @@
-# DESIGN — Intent Rescue / newest Operator re-audit
-Status: Direction drawn from previously user-approved Pass 3 design brief; **local static QA observed November 8, production QA pending**. Current identity remains Intent Rescue until NAME_LOCK.
+# DESIGN — Docketrail / newest Operator
+Status: **DESIGN_LOCK revision 1 (2026-11-09)**. Original approved Pass 3 forensic incident-desk direction retained. Actual production commit 6b1abb5 inspected at desktop 1440×1000 and mobile 390×844; new name/route/safe-action rendered correctly, F1/F2/F3 outcomes checked and mobile horizontal overflow measured false.
 
 ## Product / experience map
 User: person/integrator facing ambiguous NEAR Intents swap status. First 30 seconds: load captured case or known identifier → inspect branched route → see evidence break and safe action. Primary surface: incident desk, with captured-case left rail, central evidence route, attached recovery rail, and support ledger/export. Account/wallet/auth N/A: read-only diagnostic tool. Loading, no-capture, manual provisional, error, refund and complete states exist.
