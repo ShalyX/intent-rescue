@@ -8,11 +8,7 @@ User: person/integrator facing ambiguous NEAR Intents swap status. First 30 seco
 Forensic operations instrument, never generic crypto/AI dashboard. Compact top command bar, left case queue, dominant dark investigation canvas, narrower light protocol rail. Route evidence, not a hero image, is the primary visual asset. Nodes 1–3 depict source/intake/solver, branching to alternative destination/refund terminal outcomes. The first unresolved leg is an actual break in the line and a red annotation; observed data is not invented.
 
 ## Reference synthesis
-- Stripe-like chronological operational legibility, not visual cloning.
-- Sentry-like localization of what failed / where evidence ends.
-- Cloudflare-like restraint and compact systematic controls.
-- Internal approved `DESIGN-PASS3.md` remains an internal working reference; earlier rejected redesigns are anti-references.
-No arbitrary generated imagery, floating widgets, gradient effects or fake chain motion.
+See the source-captured 2026-11-09 REFERENCE_BOARD below: NEAR Intents Explorer, Sentry Issue Details, Honeycomb Trace Explorer and incident.io Timeline. Each reference has a specific contribution and explicit anti-copy rules.
 
 ## Visual assets
 MUST: authentic desktop and mobile captures of real F1/F2/F3 states. Present evidence: `qa/operator-F1-desktop.png` (1440×1000), `qa/operator-F1-mobile.png` (390×844) captured Nov 8 from localhost 4174. Social: current screenshot `public/og-preview.png` pending production verification. Fonts: local IBM Plex Sans/Mono with OFL license files in `public/fonts/`.
@@ -96,3 +92,49 @@ B is rejected as the primary direction because it weakens the route fork and the
 - **REFERENCE_BOARD:** next. Source-captured references must be decomposed by composition, hierarchy, typography, density, route visualization, interaction and motion; no wholesale cloning.
 - **VISUAL_ASSET_STRATEGY:** still open. OG preview replacement and desktop/mobile/F1/F2/F3 asset inventory must be specified.
 - **DESIGN_LOCK:** still open. Do not authorize substantial design engineering until reference synthesis, asset strategy and static composition are complete.
+
+
+## 2026-11-09 — REFERENCE_BOARD / Phase 17
+
+References were selected by purpose and inspected as product UI, not as templates to copy.
+
+### 1. NEAR Intents Explorer — transaction lifecycle and route summary
+- **Source:** https://explorer.near-intents.org/ and the transaction-details screenshot documented at https://support.zodl.com/article/11-checking-swap-status
+- **Capture:** https://d33v4339jhl8k0.cloudfront.net/docs/assets/6961731bd18eeb0ec6f3e679/images/69836b25c16be90554eee2a6/file-nmX1uHIy9c.png
+- **Observed value:** a clear vertical progression (Created → Deposit Completed → Processing), followed by paired From / To asset panels.
+- **Borrow:** explicit stage ordering and a compact source/destination summary tied to the same transaction.
+- **Do not copy:** the success-oriented progress treatment or any implication that every stage is known. OSIALI must make missing evidence and uncertainty visible.
+
+### 2. Sentry Issue Details — triage hierarchy and progressive disclosure
+- **Source:** https://docs.sentry.io/product/issues/issue-details/ and https://sentry.io/changelog/new-issue-details-ui-now-available/
+- **Capture:** https://cslswue7zohm4cat.public.blob.vercel-storage.com/us_okE0-diagram.png
+- **Observed value:** high-level issue identity and actions, event context, main evidence detail, tags/breadcrumbs and a separate sidebar/activity area. Sentry explicitly describes strong information hierarchy and progressive disclosure as design principles.
+- **Borrow:** group workflow actions separately from evidence; keep a stable case header; let secondary provenance/details expand without obscuring the primary failure boundary.
+- **Do not copy:** event frequency graphs, stack-trace presentation, Sentry-specific AI/root-cause panels or its exact layout.
+
+### 3. Honeycomb Trace Explorer — nested route inspection
+- **Source:** https://docs.honeycomb.io/investigate/analyze/explore-traces/
+- **Captures:** https://docs.honeycomb.io/images/explore-traces/error-highlighting.png and https://docs.honeycomb.io/images/explore-traces/slow-api-trace.png
+- **Observed value:** nested spans make parent/child relationships legible; selecting a span reveals a focused attribute pane; error states are visibly highlighted in context.
+- **Borrow:** clear hierarchy between route stages and their evidence; selecting a stage should expose its identifiers, source and observed facts without losing the overall route.
+- **Do not copy:** duration-scaled bars or timing claims unless OSIALI has real, comparable timestamps/durations. The five Intents legs are workflow stages, not necessarily timed spans.
+
+### 4. incident.io — curated incident chronology
+- **Source:** https://incident.io/changelog/tell-the-full-story-with-your-incident-timeline
+- **Captures:** https://cdn.sanity.io/images/oqy5aexb/production/432a7ab751895c5a9091e2569aef6f9714853a18-1652x922.png and https://cdn.sanity.io/images/oqy5aexb/production/1483f216bb35569018332e7cd17b7a5c41daa85f-2954x2090.png
+- **Observed value:** the main timeline surfaces key incident moments while a separate activity log retains the full noisy history. The changelog explains the design goal as reducing noise and making important events easier to identify.
+- **Borrow:** keep the primary case story concise and evidence-bearing; preserve access to the full underlying activity/evidence when needed.
+- **Do not copy:** manual narrative editing or timestamp adjustment. OSIALI's timeline must remain source-attributed and must not let users rewrite observed chain events as facts.
+
+### Synthesis for OSIALI
+- **Center:** Honeycomb's inspectable hierarchy, adapted to the fixed five-leg transaction lifecycle.
+- **Case framing:** Sentry's separation of case identity, actions, evidence details and secondary context.
+- **Chronology:** incident.io's low-noise event story, but with immutable source provenance and visible unknown gaps.
+- **Domain semantics:** NEAR Intents Explorer's source/destination asset pairing and recognizable stage names.
+- **Final composition remains:** Witness Desk — intake/case rail, dominant route canvas, attached safe-action/evidence rail.
+
+### Reference-board verdict
+**REFERENCE_BOARD: PASS.** Four relevant source products and their UI captures were decomposed by purpose, with explicit borrow/reject decisions. No product is being cloned. The board supports the selected Witness Desk direction.
+
+### Next
+VISUAL_ASSET_STRATEGY must inventory the OSIALI wordmark/mark, replacement OG preview, authentic F1/F2/F3 captures, responsive screenshots and final demo video. The legacy Docketrail OG preview and old demo recordings are not approved assets.

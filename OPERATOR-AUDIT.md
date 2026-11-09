@@ -38,7 +38,7 @@ Status key: **PASS** = exit proof inspected; **PASS*** = historical artifact pro
 | 14 | PRODUCT_REVIEW | **PASS ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â HQ PRODUCT-INTEGRITY RE-AUDIT** | PRODUCT-COVERAGE.md traces all seven original P0s to implementation and evidence. No P0 was silently removed; no product thesis drift. P0-01 manual fallback is bounded and provisional, not universal private-history lookup. |
 | 15 | BRAND_KIT | **PASS — LIGHTWEIGHT KIT COMPLETE** | BRAND.md now defines OSIALI positioning, descriptor, tagline, voice, wordmark/mark, typography, palette, motif, imagery, favicon/avatar and usage rules. |
 | 16 | ART_DIRECTION | **PASS — 2026-11-09** | DESIGN.md compares Witness Desk, Evidence Ledger and Signal Room; Witness Desk selected with product rationale, composition, signature motif, risks, anti-patterns and explicit rejection rationale. |
-| 17 | REFERENCE_BOARD | **PARTIAL** | DESIGN.md names Stripe/Sentry/Cloudflare and describes broad takeaways, but there is no complete purpose-decomposed reference board with source captures/URLs and specific takeaways per reference. |
+| 17 | REFERENCE_BOARD | **PASS — 2026-11-09** | DESIGN.md includes four source-captured references (NEAR Intents Explorer, Sentry, Honeycomb, incident.io), each decomposed by purpose with borrow/reject decisions and OSIALI synthesis. |
 | 18 | VISUAL_ASSET_STRATEGY | **PARTIAL** | Authentic F1/F2/F3 captures, local fonts and fallbacks exist. The asset inventory is not fully mapped by section, purpose, owner, priority, status, responsive variant and performance budget. OG preview currently carries the unapproved Docketrail label. |
 | 19 | MOTION_STORYBOARD | **PASS ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â INTENTIONAL MINIMAL MOTION** | No meaningful transfer animation is intended. DESIGN.md defines only feedback transitions (~140 ms) and reduced-motion fallback; UI-POLISH reports reduced-motion verification. No motion-heavy product story is being claimed. |
 | 20 | DESIGN_LOCK | **PARTIAL / PROVISIONAL** | DESIGN.md revision 1 and a composition target exist, but phases 16ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Å“18 are incomplete and the visible identity is unapproved. Do not treat this as a final brand/design lock. |
@@ -68,7 +68,7 @@ The current phase is **ART_DIRECTION**. NAME_LOCK through BRAND_KIT have been re
 
 ## Correct sequential route from here
 
-1. ART_DIRECTION is complete. Build the source-captured REFERENCE_BOARD, then VISUAL_ASSET_STRATEGY and MOTION_STORYBOARD in order.
+1. REFERENCE_BOARD is complete. Inventory the required assets, then complete MOTION_STORYBOARD and DESIGN_LOCK in order.
 2. Revalidate DEMO_ARCHITECTURE and EVIDENCE_PLAN against the approved identity; preserve existing work.
 3. Resolve the track assignment against the official current track descriptions.
 4. Complete the missing Art Direction / Reference Board / Asset Strategy evidence and formal Design Quality score; then confirm Design Lock and Visual QA.

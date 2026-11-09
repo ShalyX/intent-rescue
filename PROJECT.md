@@ -64,3 +64,10 @@ Resolve the product-name gate. Do not publish the Docketrail-labelled video or u
 - Selected **Witness Desk** because it makes the evidenced route, first unresolved leg, safe action and support handoff legible without implying live telemetry or automatic recovery.
 - Phase 16 ART_DIRECTION: PASS. The prior forensic desk remains the chosen composition language, now explicitly tied to OSIALI's witness concept.
 - Current Operator phase: REFERENCE_BOARD. Next work is source-captured reference synthesis by purpose; no major frontend rebuild is authorized before Design Lock.
+
+
+## 2026-11-09 — REFERENCE_BOARD completed
+
+- Phase 17 PASS. Four source products were inspected and decomposed by purpose: NEAR Intents Explorer, Sentry Issue Details, Honeycomb Trace Explorer and incident.io Timeline.
+- The board preserves the Witness Desk direction and specifies exactly what to borrow and what not to copy. No clone or product-scope change.
+- Current Operator phase: VISUAL_ASSET_STRATEGY. Next: inventory and prioritize the real brand/product assets, including the replacement OSIALI OG preview and fresh F1/F2/F3 captures.
