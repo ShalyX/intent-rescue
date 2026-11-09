@@ -151,3 +151,12 @@ Evidence rules: preserve input source, date, freshness, environment and limitati
 - **C15 VERIFIED in production:** a searched correlation ID with matching source-attributed JSON was accepted only as provisional/unverified; a payload containing a different correlation ID was rejected; corrected matching evidence was accepted; support JSON download succeeded; F2 refund and F3 completion contrasts rendered; 390px mobile viewport had no horizontal overflow. Reproducible script: scripts/operator-integrity-check.js.
 - **C16 F1 historical RPC status: BLOCKED / NOT CLAIMED:** evidence/mainnet-rpc-proof.json is a different current transaction, not either F1 transaction. It proves the public RPC tx_status response path only. F1 is an Explorer-reported public snapshot and is not independently archival-RPC verified.
 - **C17 brand identity: BLOCKED:** Docketrail is present in deployed HTML/OG/video but was never user-approved. OSIALI product thesis remains locked; final customer-facing name remains open. Do not publish the provisional brand.
+
+
+## 2026-11-09 — OSIALI release build evidence
+- Commit: b613f5c8c4cbb47da60a7dcbc6a9b6b6c0e64128.
+- Vercel deployment: dpl_3ET9uAV4wFW9tthvSCBDaK9YEnkT, state READY, production target.
+- Aliases: intent-rescue.vercel.app, intent-rescue-shalyxs-projects.vercel.app, intent-rescue-git-main-shalyxs-projects.vercel.app.
+- Build log: osiali@0.0.1 build; Static build ready; Deployment completed.
+- Scope: name/metadata/README/export-filename alignment only; no lifecycle/classifier behavior change.
+- Limitation: READY build and alias are not browser-render QA. OG preview and old recordings remain legacy Docketrail assets.

@@ -28,4 +28,4 @@ This is a provisional judge simulation, not a final judge-ready verdict. The cur
 
 
 ## Naming correction
-OSIALI was explicitly approved by the user on 2026-11-09. Docketrail remains an unapproved legacy UI/OG/video label and must not be used in the public pitch or submission. The original product thesis remains Idea 1 / Intent Rescue.
+OSIALI was explicitly approved by the user on 2026-11-09. Docketrail remains an unapproved legacy OG/video label and must not be used in the public pitch or submission. The new OSIALI HTML title/header source is deployed in a READY Vercel build; browser verification remains pending. The original product thesis remains Idea 1 / Intent Rescue.

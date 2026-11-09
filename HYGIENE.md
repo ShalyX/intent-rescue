@@ -9,7 +9,7 @@ fallback_used: true
 Do **not** call this an execution of the original Product Hygiene skill.
 
 ## Observed work and checks
-- Product identity: the UI/title/OG currently display Docketrail, which is unapproved. OSIALI is the user-approved brand (2026-11-09); the current deployment still carries the legacy Docketrail label and requires alignment.
+- Product identity: OSIALI title/header source is deployed in a READY Vercel build (commit b613f5c); browser-render QA remains pending. The OG preview and old video still carry legacy Docketrail.
 - Shell: approved forensic header, three-column investigation, case file/footer. Desktop and 390px mobile captures inspected 2026-11-08.
 - Real interaction: F1/F2/F3, known Explorer URL, unknown ID behavior, manual-provisional warning, JSON export exercised in Playwright and passed.
 - Provenance: captured snapshots visibly distinguished from user input. No live lookup is implied. Support escalation included.
@@ -64,7 +64,7 @@ Verdict: **NOT YET A PASSED FINAL PRODUCT HYGIENE GATE**. Re-run after publishin
 - Demo: current recording visually inspected and fully decoded: 46.44s / 1440Ã—900 / 25 fps H.264. Actual JSON download captured. No narration; chapter overlays carry explanation.
 
 ## Result
-Fallback checklist was executed and initially assessed PASS WITH NOTES for the then-current supported workflow. **Final PRODUCT_HYGIENE gate is OPEN/BLOCKED**, not passed: the deployed Docketrail identity is unapproved and inconsistent with the canonical working name; full screen-reader/contrast and historical secret scans remain incomplete. Re-run after the naming decision and identity deployment.
+Fallback checklist was executed and initially assessed PASS WITH NOTES for the then-current supported workflow. **Final PRODUCT_HYGIENE gate is OPEN/BLOCKED**, not passed: the legacy Docketrail OG image and old video are inconsistent with the approved OSIALI identity; full screen-reader/contrast and historical secret scans remain incomplete. Re-run after the naming decision and identity deployment.
 
 
 ## Naming-gate correction — 2026-11-09

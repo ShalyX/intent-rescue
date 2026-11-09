@@ -225,3 +225,13 @@ Forbidden classifier language unless directly proven:
 
 ### Exit verdict
 **TECHNICAL_DERISK: PASS WITH EXPLICIT BOUNDARIES.** The judge path works without partner credentials or a new financial transaction; the public page reader and deterministic diagnosis/export are executed. Historical F1 archival-RPC verification is blocked and not claimed. No unresolved existential dependency remains inside the approved product contract.
+
+
+## 2026-11-09 — name-change dependency and release revalidation
+
+- OSIALI is a brand-only rename. No new API, external service, credential, wallet, chain integration, paid dependency or runtime assumption was added.
+- The source metadata now identifies the package as osiali@0.0.1. Vercel production deployment dpl_3ET9uAV4wFW9tthvSCBDaK9YEnkT built commit b613f5c8c4cbb47da60a7dcbc6a9b6b6c0e64128 and reached READY. Build output: osiali@0.0.1 build, Static build ready: /vercel/path0/dist, Deployment completed. The existing intent-rescue.vercel.app alias is attached.
+- **DEPENDENCY_ATTACK revalidation: PASS** for the rename/release path. Git-triggered Vercel build and existing alias work; no new existential dependency.
+- **TECHNICAL_DERISK revalidation: PASS WITH EXPLICIT BOUNDARIES.** Prior runtime evidence remains the basis: 35/35 tests, 9/9 red-team, 10/10 Explorer-reported corpus categories, matching manual evidence accepted only as provisional, mismatched evidence rejected, real JSON export. The new static production build passed.
+- Historical F1 archival-RPC verification remains BLOCKED / NOT CLAIMED. The current RPC proof is a separate transaction and must not be described as F1 verification.
+- The deployment READY status is not a substitute for browser-level rendered UI regression, accessibility/visual QA, or replacement of the old Docketrail OG preview and recordings.

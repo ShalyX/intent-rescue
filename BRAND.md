@@ -271,3 +271,70 @@ A fresh exact-name public-web search for OSIALI across software, product, fintec
 - Product scope: unchanged
 - Formal legal clearance: outstanding
 - Downstream identity alignment: required; the previous Docketrail-labelled deployment, OG preview and recordings remain legacy assets until replaced and verified.
+
+
+## BRAND KIT — OSIALI (2026-11-09)
+
+### Brand foundation
+- **Name:** OSIALI
+- **Pronunciation:** “oh-see-AH-lih” (approved English demo cue; the source Igbo word is tonal).
+- **Category:** NEAR Intents incident investigation.
+- **Descriptor:** Evidence-first incident investigation for NEAR Intents.
+- **Positioning:** OSIALI turns fragmented NEAR Intents swap evidence into a clear, source-attributed incident record — showing what happened, where the trail stops, and the safest next step.
+- **Primary tagline:** **Know what happened.**
+- **Operating principle:** Evidence before action.
+
+### Brand story
+The name draws on Igbo *osialị*, associated with bearing witness and vouching. OSIALI behaves like a careful witness to a transaction's lifecycle: it reports what the evidence establishes, identifies what remains unobserved, and refuses to fill gaps with invented certainty. It is not a judge, oracle, wallet, or recovery service.
+
+### Personality and voice
+**Personality:** composed, exacting, impartial, candid, quietly protective, accessible.
+
+**Voice rules**
+- Lead with the observed fact, then the inference, then the unknown.
+- Use explicit evidence labels: OBSERVED, INFERRED, UNKNOWN, USER-SUPPLIED / UNVERIFIED.
+- Prefer precise action language: “verify,” “wait,” “do not retry,” “escalate with these identifiers.”
+- Never imply custody, guaranteed refunds, universal indexing, or proven root cause without evidence.
+- Avoid hype, panic, blame, faux-legal certainty, and generic AI language.
+
+### Wordmark and mark direction
+- **Wordmark:** uppercase OSIALI; restrained typographic treatment with a little breathing room between letters. No forced ligatures or decorative letter substitutions.
+- **Type basis:** IBM Plex Sans Medium/Semibold for the wordmark and interface; IBM Plex Mono for hashes, IDs, evidence keys and machine-readable values.
+- **Mark:** a compact, open route-line ending at a single witness point. It should evoke an evidenced path and a precise observation boundary, not an eye, shield, magnifier, robot, coin, or generic blockchain chain.
+- Preserve legibility at 16–24 px. The mark must work in monochrome before any accent treatment.
+
+### Palette and functional roles
+Retain the existing tested forensic-desk palette; do not introduce a second decorative palette during the rename.
+
+| Token | Value | Role |
+|---|---|---|
+| Paper | #f2f3ef | Main light workspace |
+| Surface | #fafbf8 | Cards and input surfaces |
+| Ink | #22282c | Primary text and controls |
+| Muted | #626b70 | Secondary text |
+| Line | #d7dcd8 | Dividers and structure |
+| Investigation canvas | #1b2227 | Dark evidence workspace |
+| Chalk | #f0f2ed | Text on dark canvas |
+| Steel | #a6b2b9 | Neutral route / secondary data |
+| Warning | #f0a49a / #933c32 | Unresolved or unsafe state only |
+| Resolved | #accab8 | Verified completion / refund state only |
+
+Colour communicates evidence state, not decoration. Never rely on colour alone; retain text labels and icon/shape cues.
+
+### Product motif, imagery and icons
+- The branched lifecycle trace is the primary visual asset: source → 1Click → intent/solver → destination OR refund.
+- The last evidenced step gets a small, unmistakable witness marker. The unresolved step is a real break in the line, not a glowing effect.
+- Use authentic F1/F2/F3 evidence and real product captures. No generic stock crypto imagery, AI-generated network art, coin piles, fake transaction motion, or decorative dashboards.
+- Icons should be restrained, functional and consistent with the existing line-based system.
+
+### Favicon and social avatar
+Use the route-line/witness-point mark alone at small sizes, with a high-contrast monochrome fallback. Social avatar may pair the mark with the OSIALI wordmark only when legible. The current OG image still contains the legacy Docketrail identity and must be replaced before public sharing.
+
+### Usage rules
+- Use **OSIALI** consistently in UI, page title, metadata, README, demo, pitch and submission.
+- On first descriptive reference use “OSIALI — evidence-first NEAR Intents incident investigation.”
+- “Intent Rescue” may appear only when explaining the original selected concept or historical PRODUCT_LOCK record.
+- “Docketrail” is never an approved brand; retain it only when documenting old captures or legacy assets.
+- Do not add “AI-powered,” “recovery,” “refund guarantee,” or “real-time” to the descriptor unless the actual product and evidence support the claim.
+
+**Brand Kit status:** complete at the lightweight identity-system level. Art Direction, Reference Board, Visual Asset Strategy, Design Lock and actual asset replacement remain separate later Operator phases.

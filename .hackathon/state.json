@@ -1,12 +1,12 @@
 {
   "schema_version": 4,
-  "revision": 11,
+  "revision": 12,
   "recovered_from_legacy": true,
   "previous_local_state": "ABSENT",
   "legacy_checkpoint_revision": "UNKNOWN",
   "project_root": "C:\\Users\\USER\\Documents\\intent-rescue",
-  "phase": "DEPENDENCY_ATTACK",
-  "active_specialist": "Engineering + Research",
+  "phase": "ART_DIRECTION",
+  "active_specialist": "Art Director",
   "human_input_required": false,
   "pending_gate": null,
   "product_locked": true,
@@ -30,7 +30,7 @@
   "full_product_verified": true,
   "name_locked": true,
   "name_lock_revision": 1,
-  "brand_kit_complete": false,
+  "brand_kit_complete": true,
   "demo_architecture_complete": true,
   "evidence_plan_complete": true,
   "dependency_attack_complete": true,
@@ -72,7 +72,10 @@
     "nov9_operator_v050_audit": "Audited all 35 states against installed hackathon-operator v0.5.0. Historical artifacts restored: IDEAS, VALIDATION, EVIDENCE_PLAN, TECHNICAL_DERISK, PROJECT-HISTORY. Research kill-search refreshed; proof registry reconciled; live production manual match/mismatch fallback test and QA script pass. Earliest unmet gate NAME_LOCK. Track mismatch, visual gates, hygiene, demo and submission remain open.",
     "nov9_fresh_name_shortlist": "Earlier AI-sloppy shortlist and scores withdrawn. User explicitly selected OSIALI on 2026-11-09; AKAEBe not selected.",
     "nov9_demo_architecture": "Existing demo architecture revalidated for OSIALI. 75–85 second shot/voiceover plan added; actual recording and DEMO_QA remain open.",
-    "nov9_evidence_plan": "Evidence plan revalidated after OSIALI name lock. Original seven P0 claims and proof boundaries unchanged."
+    "nov9_evidence_plan": "Evidence plan revalidated after OSIALI name lock. Original seven P0 claims and proof boundaries unchanged.",
+    "nov9_osiali_deployment": "Vercel deployment dpl_3ET9uAV4wFW9tthvSCBDaK9YEnkT for commit b613f5c8c4cbb47da60a7dcbc6a9b6b6c0e64128 is READY; aliases intent-rescue.vercel.app, intent-rescue-shalyxs-projects.vercel.app and intent-rescue-git-main-shalyxs-projects.vercel.app attached. Build log: osiali@0.0.1 build; Static build ready; Deployment completed. Visual browser QA pending.",
+    "nov9_product_revalidation": "After OSIALI lock: Dependency Attack PASS (no new external dependency); Technical De-risk PASS with explicit historical F1 RPC limits; Vertical Slice PASS with fresh deployed-browser regression pending; Product Review PASS (no thesis/P0 drift).",
+    "nov9_brand_kit": "Lightweight brand kit complete in BRAND.md: positioning, descriptor, tagline, voice, wordmark/mark, typography, palette, motif, imagery, favicon/avatar and usage rules. Current phase ART_DIRECTION."
   },
   "blockers": [
     "Track decision: original PRODUCT_LOCK says Unstoppable DeFi primary / Open Innovation secondary; current recommendation Open Innovation; no explicit switch recorded",
@@ -80,11 +83,11 @@
     "Final demo not ready: 46.44s versus 60ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã…â€œ90s target, no final script/voiceover/caption package, provisional Docketrail identity",
     "Pitch and judge simulation must be rerun on final name/track/demo",
     "Final submission audit, public X post, official form and receipt not completed",
-    "Current deployment/OG preview/old demo still carry Docketrail; align and verify OSIALI identity before final demo or submission.",
+    "Legacy Docketrail OG preview and old demo recordings must be replaced; browser-level visual QA of the new OSIALI production deployment is still pending.",
     "Formal trademark, domain and social-handle clearance for OSIALI remains outstanding; do not claim legal availability."
   ],
-  "next_action": "Revalidate external dependencies and the OSIALI release path; then continue through TECHNICAL_DERISK, BUILD_VERTICAL_SLICE and PRODUCT_REVIEW in order before BRAND_KIT.",
-  "updated_at": "2026-11-09T20:34:26.010Z",
+  "next_action": "Run ART_DIRECTION: define the OSIALI-specific visual thesis and compare materially different directions against the approved forensic incident-desk experience; then proceed to REFERENCE_BOARD.",
+  "updated_at": "2026-11-09T20:40:14.720Z",
   "name_status": "LOCKED_USER_APPROVED",
   "proposed_name": "OSIALI",
   "proposed_name_user_approved": true,
@@ -147,27 +150,27 @@
     {
       "n": 11,
       "phase": "DEPENDENCY_ATTACK",
-      "status": "OPEN — revalidate external dependencies and OSIALI identity deployment path."
+      "status": "PASS — revalidated 2026-11-09; no new runtime dependency introduced by OSIALI brand change; Vercel Git build READY and existing alias attached."
     },
     {
       "n": 12,
       "phase": "TECHNICAL_DERISK",
-      "status": "PASS_WITH_BOUNDARIES"
+      "status": "PASS WITH EXPLICIT BOUNDARIES — original runtime proof remains valid; 35/35 tests, 9/9 red-team, public Explorer parser and manual fallback evidence preserved; latest static build READY; F1 archival RPC not claimed."
     },
     {
       "n": 13,
       "phase": "BUILD_VERTICAL_SLICE",
-      "status": "PASS_ARTIFACT_REVALIDATE_AFTER_NAME_LOCK"
+      "status": "PASS WITH REVALIDATION LIMIT — all seven original P0s remain acceptance-verified; name-only release changes preserve product logic; latest static build READY; fresh browser regression on deployed OSIALI build remains required."
     },
     {
       "n": 14,
       "phase": "PRODUCT_REVIEW",
-      "status": "PASS"
+      "status": "PASS — product promise, target, workflow, P0s and safety boundaries unchanged; no product drift."
     },
     {
       "n": 15,
       "phase": "BRAND_KIT",
-      "status": "OPEN"
+      "status": "PASS — lightweight OSIALI brand kit complete in BRAND.md; visual Art Direction and asset phases remain separate."
     },
     {
       "n": 16,

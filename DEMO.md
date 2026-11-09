@@ -44,7 +44,7 @@ The 46.44-second recording and current production UI carry the Docketrail label.
 
 The user has approved **OSIALI** as the customer-facing product name. The approved English voiceover cue is **“oh-see-AH-lih”**. Use it consistently; do not improvise alternate pronunciations during recording. The underlying Igbo form *osialị* is tonal, so this cue is a practical English-language demo guide, not a complete phonetic transcription of Igbo.
 
-The earlier Docketrail recordings remain historical backup evidence only. They are not final media because they show an unapproved legacy label. The currently deployed UI and OG preview also need OSIALI alignment and fresh verification before final recording.
+The earlier Docketrail recordings remain historical backup evidence only. They are not final media because they show an unapproved legacy label. The OSIALI title/header source is now in a READY Vercel production deployment. Browser-render verification is still pending; the OG preview and older recordings remain Docketrail legacy assets and must be replaced before final recording.
 
 ### Revised judge-facing movie — 75–85 seconds
 
@@ -66,3 +66,7 @@ The earlier Docketrail recordings remain historical backup evidence only. They a
 ### Phase 9 status
 
 Architecture and story beats are revalidated against the approved name and original locked product. The recording itself is **NOT PRODUCED**; final UI/OG alignment, recording, and DEMO_QA remain downstream work.
+
+
+### Deployment checkpoint — 2026-11-09
+The OSIALI source release commit b613f5c8c4cbb47da60a7dcbc6a9b6b6c0e64128 is READY on Vercel and the existing intent-rescue.vercel.app alias is attached. This is build/alias evidence only; do not mark the rendered page visually verified until the deployed browser path is inspected. The current OG image and old MP4s still need replacement.

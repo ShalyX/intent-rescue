@@ -45,3 +45,14 @@ Resolve the product-name gate. Do not publish the Docketrail-labelled video or u
 - **EVIDENCE_PLAN:** Revalidated. The brand rename adds no new product or technical claim; the original seven P0 claims and their proof standards remain unchanged.
 - **Current Operator phase:** DEPENDENCY_ATTACK. Revalidate release dependencies and ensure the approved identity can be deployed and verified without disturbing the locked product workflow.
 - **Submission:** NOT READY. Final brand deployment, OG asset, current 60–90 second demo, demo QA and remaining operator phases are still open.
+
+
+## 2026-11-09 — OSIALI technical revalidation and brand-kit checkpoint
+
+- **DEPLOYMENT:** Vercel production deployment for commit b613f5c8c4cbb47da60a7dcbc6a9b6b6c0e64128 is READY. Existing alias intent-rescue.vercel.app is attached. Build logs show osiali@0.0.1 build, Static build ready: /vercel/path0/dist, and Deployment completed. This proves the release build and alias, not visual/browser QA.
+- **DEPENDENCY_ATTACK:** PASS for the approved name change. No new runtime service, credential, wallet, chain adapter or paid dependency was introduced. Existing public Explorer / manual evidence fallback boundaries remain unchanged.
+- **TECHNICAL_DERISK:** PASS WITH EXPLICIT BOUNDARIES. Existing 35/35 test, 9/9 red-team, classifier, export and runtime proof remain the evidence base; the latest static production build is READY. Historical F1 archival-RPC proof remains explicitly unclaimed.
+- **BUILD_VERTICAL_SLICE:** PASS WITH REVALIDATION LIMIT. PRODUCT-COVERAGE.md still records all seven original P0s as verified. The brand-only edits do not alter lifecycle/classifier logic; the new build passed. A fresh browser regression on the deployed OSIALI build remains required before final QA.
+- **PRODUCT_REVIEW:** PASS. The brand rename does not alter the target user, product promise, five-leg workflow, P0 inventory, safety boundaries or follow-through. No product drift.
+- **BRAND_KIT:** lightweight identity system is now defined in BRAND.md. Current Operator phase moves to ART_DIRECTION.
+- **Outstanding:** OG preview image and old Docketrail recordings remain legacy assets. Live rendered UI still needs browser verification; formal trademark/domain/handle clearance is not complete.

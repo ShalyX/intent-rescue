@@ -1,7 +1,7 @@
 # NEAR Hackathon submission pack — OSIALI
 
 ## Status
-**NOT SUBMISSION READY — OSIALI is user-approved, but final brand alignment and demo QA remain open.** The current production build/OG preview and existing video still carry the unapproved legacy Docketrail label. Do not submit those legacy assets.
+**NOT SUBMISSION READY — OSIALI is user-approved, but final brand alignment and demo QA remain open.** The new OSIALI HTML title/header source is deployed in a READY Vercel build on commit b613f5c. Browser-render verification is pending; the OG preview and existing video still carry the legacy Docketrail label. Do not submit those legacy assets.
 
 ## Existing assets (provisional)
 - Demo file: qa/docketrail-judge-final.mp4 (contains unapproved Docketrail label; do not publish yet)

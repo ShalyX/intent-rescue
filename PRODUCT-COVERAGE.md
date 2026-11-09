@@ -19,3 +19,7 @@ P0_verified: [P0-01,P0-02,P0-03,P0-04,P0-05,P0-06,P0-07].
 P0_missing_or_blocked: [] within approved supported-input contract.
 out_of_scope: universal automatic private-history lookup; partner JWT ingestion; automatic refunds.
 verdict: PASS for locked P0 acceptance; no universal live-tracing claim.
+
+
+## 2026-11-09 — brand-only release note
+The customer-facing brand is OSIALI. The support export filename prefix was changed from the historical Docketrail prefix to osiali- in the name-alignment commit. This does not change the JSON schema or any P0 behavior. The previous live-browser export proof remains valid for the evidence-bundle contents; a fresh deployed-browser check of the new filename is still required.
