@@ -4,7 +4,7 @@ The official 2026 rubric weights are **UNKNOWN**. These are planning judgments, 
 
 | Criterion (prior NEAR rubric) | Visible proof | Credibility | Open deduction |
 |---|---|---|---|
-| Technical implementation | Node classifier, lifecycle, export, 23/23 tests, captured NEAR RPC proof | Good within frozen evidence | No arbitrary live 1Click lookup; version currently not redeployed |
+| Technical implementation | Node classifier, lifecycle, export, 26/26 tests, captured NEAR RPC proof | Good within frozen evidence | No arbitrary live 1Click lookup; version currently not redeployed |
 | Design | Actual 1440px and 390px rendered investigation desk, authentic branched route | Good locally | Needs live production recapture and full visual accessibility QA |
 | Impact | Real failed public NEAR Intents incidents, safe action + escalation bundle | Credible problem | External user/operator feedback still missing |
 | Originality | Evidence boundaries and decision predicates vs generic transaction explorer | Differentiated | Must state difference in 30-second demo |

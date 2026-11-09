@@ -4,6 +4,7 @@
   "captured_at": "2026-11-01T00:01:28Z",
   "reported_status": "FAILED",
   "source_asset": "LTC",
+  "source_chain": "litecoin",
   "destination_asset": "ETH",
   "deposit_verified": true,
   "intent_verified": true,

@@ -27,3 +27,7 @@ Do **not** call this an execution of the original Product Hygiene skill.
 - P2 tracked third-party source scan and accessibility/performance audit beyond basic checks.
 
 Verdict: **NOT YET A PASSED FINAL PRODUCT HYGIENE GATE**. Re-run after publishing current revision, updating demo, and resolving naming; no secret-free/public-ready guarantee yet.
+## 2026-11-09 incremental hygiene notes
+- Naming exploration completed; **Docketrail** selected in BRAND.md after rejecting searched collisions. Product thesis remains unchanged; existing URL/repo slug stays intact. Current HTML title, wordmark/footer, social title and README use Docketrail. Social image still needs fresh capture after deployment.
+- Conditional explorer links are format-gated, use an allowlisted destination and open with `noopener noreferrer`. Three tests cover supported source/NEAR refs, Base/Ethereum synthetic paths, and invalid/ambiguous cases. No chain guessing from token ticker.
+- Final Product Hygiene skill still not discovered in connected host; fallback_used=true remains, and final release check is pending. Do not certify skill run or final hygiene pass yet.

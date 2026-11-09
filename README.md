@@ -1,17 +1,17 @@
-# Intent Rescue
+# Docketrail
 
 **Live demo:** https://intent-rescue.vercel.app
 **Public repo:** https://github.com/ShalyX/intent-rescue
 
 **Evidence-first incident response for NEAR Intents.**
 
-[Evidence pack](./EVIDENCE.md) · 10 public cases · 23/23 local tests (8 Nov) · 9/9 red-team scenarios · 30,000 deterministic repeat classifications
+[Evidence pack](./EVIDENCE.md) · 10 public cases · 26/26 local tests (9 Nov) · 9/9 red-team scenarios · 30,000 deterministic repeat classifications
 
-Intent Rescue reconstructs a swap from source-attributed evidence, identifies the first unresolved lifecycle leg, explains what the evidence does and does not prove, recommends a conservative next action, and exports a support-ready incident bundle.
+Docketrail reconstructs a swap from source-attributed evidence, identifies the first unresolved lifecycle leg, explains what the evidence does and does not prove, recommends a conservative next action, and exports a support-ready incident bundle.
 
 ## Why it exists
 
-A cross-chain swap can expose a single terminal label such as `FAILED` while the useful evidence is scattered across the source chain, NEAR Intents execution, destination delivery, and refund path. Intent Rescue turns that evidence into one trace:
+A cross-chain swap can expose a single terminal label such as `FAILED` while the useful evidence is scattered across the source chain, NEAR Intents execution, destination delivery, and refund path. Docketrail turns that evidence into one trace:
 
 `Source deposit → 1Click intake → Intent / solver → Destination delivery or Refund`
 
@@ -46,7 +46,7 @@ pm run red-team to reproduce classifier and adversarial checks.
 
 ## NEAR technology used
 
-- **NEAR Intents** is the core product surface: Intent Rescue reconstructs the source deposit, 1Click intake, intent/solver execution, destination delivery, and refund path from source-attributed evidence.
+- **NEAR Intents** is the core product surface: Docketrail reconstructs the source deposit, 1Click intake, intent/solver execution, destination delivery, and refund path from source-attributed evidence.
 - **NEAR mainnet RPC** is used as an independent chain-verification primitive. During technical de-risking, a fresh mainnet transaction was verified through a public RPC at final execution status; historical hero evidence remains snapshot-backed because free public providers are not guaranteed archival.
 - Partner JWT APIs and solver-relay access are optional enrichments, not requirements for the judge path.
 
@@ -72,9 +72,13 @@ http://127.0.0.1:4173/?demo=F2
 http://127.0.0.1:4173/?demo=F3
 ```
 
+## Verified explorer links
+
+The case export and on-screen evidence ledger include source-chain, NEAR, destination and refund explorer references **only when both the chain and transaction hash are explicit and supported**. Unknown chains, absent transaction hashes and missing refund/destination evidence intentionally produce no link. The official NEAR Intents Explorer case is preserved. This is navigation to external records, not independent verification of their current status.
+
 ## Safety contract
 
-Intent Rescue does **not** custody funds, trigger refunds, or claim a protocol root cause without evidence. Terminal success/refund classifications require concrete transaction evidence or a direct captured observation; caller-supplied `*_verified` flags alone are not enough.
+Docketrail does **not** custody funds, trigger refunds, or claim a protocol root cause without evidence. Terminal success/refund classifications require concrete transaction evidence or a direct captured observation; caller-supplied `*_verified` flags alone are not enough.
 
 ## Architecture
 

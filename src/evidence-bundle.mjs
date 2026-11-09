@@ -1,9 +1,9 @@
-const txUrl = h => /^[1-9A-HJ-NP-Za-km-z]{42,50}$/.test(h) ? 'https://nearblocks.io/txns/' + encodeURIComponent(h) : null;
+import { explorerReferences } from './explorer-links.mjs';
 export function makeEvidenceBundle(evidence, analysis, options = {}) {
   const assurance = options.assurance === 'CAPTURED_PUBLIC_SNAPSHOT' ? 'CAPTURED_PUBLIC_SNAPSHOT' : 'USER_SUPPLIED_UNVERIFIED';
   const unknown = analysis.lifecycle.filter(s => s.status !== 'VERIFIED').map(s => ({ step:s.label, state:s.status, basis:s.basis }));
   const source = typeof evidence.source_url === 'string' && /^https:\/\//i.test(evidence.source_url) ? evidence.source_url : null;
-  const nearLinks = [...(evidence.near_deposit_tx_hashes || []), ...(evidence.near_swap_tx_hashes || [])].map(txUrl).filter(Boolean);
+  const links = explorerReferences(evidence);
   const caution = assurance === 'USER_SUPPLIED_UNVERIFIED'
     ? 'This diagnosis is provisional: supplied evidence is not independently authenticated. Confirm transactions with the original explorer or support.'
     : 'Historical source-attributed capture; not a real-time status check. Confirm latest status before acting.';
@@ -22,7 +22,7 @@ export function makeEvidenceBundle(evidence, analysis, options = {}) {
       near_deposit_tx_hashes:evidence.near_deposit_tx_hashes || [], near_swap_tx_hashes:evidence.near_swap_tx_hashes || [],
       destination_tx_hashes:evidence.destination_tx_hashes || [], refund_tx_hashes:evidence.refund_tx_hashes || []
     },
-    source_links: { near_intents_explorer:source, near_transactions:nearLinks },
+    source_links: links,
     unresolved_evidence: unknown,
     escalation: { subject:'NEAR Intents incident — '+(evidence.id || 'unidentified'), summary, request:'Please verify destination delivery and any refund against the transaction identifiers provided, and advise on next steps. Do not assume funds were lost or returned from missing evidence alone.', caution },
     limitations: ['Missing evidence is not proof of loss or protocol fault.','Historical third-party data can be snapshot-backed and must be checked for freshness.',caution]

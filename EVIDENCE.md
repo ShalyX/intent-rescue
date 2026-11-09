@@ -122,3 +122,7 @@ Current local revision is **not yet certified as the production deployment**. Ne
 | C11 | External impact/adoption validated by NEAR users | UNPROVEN | No independent feedback artifact yet | Do not invent endorsements |
 
 Evidence rules: preserve input source, date, freshness, environment and limitations. Do not present provisional analysis as independently verified, or the previous UI/demo as current production.
+## 9. November 9 — conditional chain reference upgrade
+- **C12 (VERIFIED locally; public deployment pending):** the F1 evidence bundle exposes its explicit Litecoin-origin transaction and two NEAR transaction records as external verification links; synthetic Base/Ethereum/refund examples validate chain-specific routing; malformed hashes, token-only ambiguous chains and absent destination/refund IDs never receive fabricated links.
+- Proof: `test/explorer-links.test.mjs` (3 new acceptance cases); 26/26 Node tests passing on 2026-11-09; static build succeeded. `src/explorer-links.mjs` is a format-safe link builder, **not live-chain verification or proof the external URL serves historical data**.
+- C8 public-version verification remains open until the new build is deployed and independently inspected. C9 current-video gate remains open. C10 P0-01 general lookup remains BLOCKED by partner historical API access; no automatic real-time recovery claim.

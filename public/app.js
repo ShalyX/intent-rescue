@@ -201,12 +201,19 @@ function renderEvidence(bundle) {
     ['Destination evidence', [...bundle.identifiers.destination_tx_hashes, ...bundle.observations.destination]],
     ['Refund evidence', [...bundle.identifiers.refund_tx_hashes, ...bundle.observations.refund]]
   ];
+  const linkGroups = [bundle.source_links.origin_transactions, [], bundle.source_links.near_deposit_transactions, bundle.source_links.near_swap_transactions, bundle.source_links.destination_transactions, bundle.source_links.refund_transactions];
   const traceJunctions = [1, 3, 1, 3, 4, 5];
   document.querySelector('#evidence-list').replaceChildren(...entries.map(([label, values], index) => {
     const basis = values.length ? 'OBSERVED' : 'UNKNOWN';
     const row = document.createElement('div'); row.id = `evidence-${index}`; row.className = `evidence-row evidence-${basis.toLowerCase()}`;
     const value = values.length ? values.join('\n') : 'Not observed in this evidence set';
     row.innerHTML = `<span class="file-junction" aria-label="Evidence E0${index + 1}, lifecycle step ${traceJunctions[index]}">E0${index + 1}</span><div class="evidence-key"><span>${escapeHtml(label)}</span><em>${statusLabel(basis)}</em></div><code>${escapeHtml(value)}</code>`;
+    for (const [n, url] of (linkGroups[index] || []).entries()) {
+      const a = document.createElement('a');
+      a.className = 'evidence-external'; a.href = url; a.target = '_blank'; a.rel = 'noopener noreferrer';
+      a.textContent = (linkGroups[index].length > 1 ? `Verify chain record ${n + 1}` : 'Verify on chain explorer') + ' ↗';
+      row.querySelector('code').append(document.createTextNode('\n'), a);
+    }
     return row;
   }));
 }

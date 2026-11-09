@@ -31,3 +31,10 @@ Local regression: `qa/operator-integrity-check.js`.
 
 ## Next action
 Publish only tested source/assets/docs, confirm Vercel serves new version and screenshot, then prioritize remaining P0 proof/limits, demo, and submission. Do not turn a successful technical spike into FULL_PRODUCT_VERIFIED.
+## 2026-11-09 latest Operator execution
+- Reconciled newest Product Integrity Protocol and existing Nov 8 checkpoint; preserved original seven P0 requirements. No thesis change and no implicit approval of a cut.
+- Improved explicit-chain explorer references (F1 Litecoin + NEAR; optional chain-specific links for user-provided explicit chain/tx). Unobserved destination/refund records intentionally stay unlinked.
+- New `test/explorer-links.test.mjs`: three safety/regression cases. **26/26 Node tests passed**, static build passed locally.
+- NAME_LOCK decision: **Docketrail**; user-facing HTML, social title, README and BRAND.md updated while keeping existing URL/repository slug for continuity. Collision research is practical only, not trademark clearance.
+- **Still open:** original P0-01 broad identifier search behind partner JWT; final P0-07 on arbitrary unknown-chain evidence; current production freshness, social image, brand-release verification, Demo Production/QA, original Product Hygiene skill, Proof Engine closing, four-lens Judge Simulation and official submission.
+- No new claims of arbitrary live transaction resolution, automatic refunds, or independently authenticated user-supplied data.

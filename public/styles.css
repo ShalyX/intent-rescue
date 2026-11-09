@@ -72,3 +72,5 @@
 .identifier-form small{display:block;color:var(--muted);font-size:11px;line-height:1.5}
 .canvas-provenance{font:10px/1.5 var(--mono);color:var(--steel);max-width:240px;overflow-wrap:anywhere}
 @media(max-width:760px){.identifier-form{padding:0 16px 16px;margin-bottom:16px}.identifier-form input{height:44px}.identifier-form button{width:auto;align-self:flex-start}.canvas-provenance{max-width:100%}}
+
+.evidence-external{display:inline-block;margin-top:7px;color:#375d4e;text-decoration:underline;text-underline-offset:3px;font:600 11px var(--sans,Arial,sans-serif);white-space:normal}.evidence-external:hover{color:#1c4335}.evidence-external:focus-visible{outline:2px solid #375d4e;outline-offset:2px}
