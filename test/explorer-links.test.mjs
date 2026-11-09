@@ -34,3 +34,13 @@ test('no invented links for ambiguous assets, unknown chains, malformed hashes o
   assert.deepEqual(l.origin_transactions,[]);
   assert.equal(l.near_intents_explorer,null);
 });
+
+test('F2 frozen refund evidence produces Base source and refund links without inventing delivery',()=>{
+  const e=JSON.parse(fs.readFileSync(new URL('../fixtures/f2-refunded.json',import.meta.url),'utf8'));
+  const bundle=exportBundle(e,{assurance:'CAPTURED_PUBLIC_SNAPSHOT'});
+  assert.equal(bundle.source_links.origin_transactions.length,1);
+  assert.equal(bundle.source_links.refund_transactions.length,1);
+  assert.ok(bundle.source_links.origin_transactions[0].startsWith('https://basescan.org/tx/'));
+  assert.ok(bundle.source_links.refund_transactions[0].startsWith('https://basescan.org/tx/'));
+  assert.deepEqual(bundle.source_links.destination_transactions,[]);
+});
