@@ -1,8 +1,8 @@
-# PROJECT — Intent Rescue / newest Hackathon Operator checkpoint
+# PROJECT â€” Intent Rescue / newest Hackathon Operator checkpoint
 
 ## 2026-11-09 Product Integrity and release checkpoint
 - Original approved product: Idea 1 / **Intent Rescue**, lock revision 1 (2026-10-25). No product thesis drift.
-- **Naming correction:** the separate brand/name gate was OPEN in the 2026-11-08 Operator record. Docketrail was an assistant-proposed candidate, not user-approved. A fresh 40-name/four-territory research pass and five-name scored shortlist is recorded in BRAND.md; recommendation is LegSignal, but no name is approved or locked. Intent Rescue remains the canonical working title pending explicit user selection.
+- **Naming correction:** the separate brand/name gate was OPEN in the 2026-11-08 Operator record. Docketrail was an assistant-proposed candidate, not user-approved. The first fresh shortlist (LegSignal, SwapDossier, RouteSift, IntentBeacon, SwapBrief) was rejected by the user as AI-sloppy; its scores are withdrawn. BRAND.md records the reset and binding naming quality constraints. Intent Rescue remains the canonical working title; no name is approved or locked.
 - The deployed UI, social preview and final recording currently display Docketrail; these are provisional artifacts and must not be used as final public submission assets until the name is approved and assets aligned.
 - P0 acceptance: all 7/7 original P0 capabilities verified within the approved supported-input contract; see PRODUCT-COVERAGE.md. Public NEAR Intents Explorer URL/record lookup and matching source-attributed JSON fallback. Manual evidence is explicitly unverified/provisional. No private history or universal cross-chain indexing is claimed.
 - P0-07: chain-specific links verified for F1 Litecoin source + NEAR transactions and F2 Base source + Base refund. Unknown destination/refund records remain unlinked.
@@ -18,8 +18,8 @@
 - Non-blocking note: no LICENSE file; licensing choice remains owner decision.
 
 ## Current gates
-- Product lock: PASS — original Intent Rescue concept and all seven P0s.
-- Name lock: OPEN — requires explicit user decision.
+- Product lock: PASS â€” original Intent Rescue concept and all seven P0s.
+- Name lock: OPEN â€” requires explicit user decision.
 - Final brand kit/demo: BLOCKED on name approval and consistent release.
 - Submission: NOT READY; no public post or official receipt.
 

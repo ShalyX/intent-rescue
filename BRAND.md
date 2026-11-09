@@ -1,4 +1,4 @@
-# BRAND — fresh naming research / NAME_LOCK OPEN
+# BRAND â€” fresh naming research / NAME_LOCK OPEN
 
 **Operator:** Hackathon Operator v0.5.0
 **Date:** 2026-11-09
@@ -6,7 +6,7 @@
 
 ## Product and naming brief
 
-**Approved product:** Idea 1 — Intent Rescue, PRODUCT_LOCK revision 1 (2026-10-25). This name is the approved concept/working title, not a final brand lock.
+**Approved product:** Idea 1 â€” Intent Rescue, PRODUCT_LOCK revision 1 (2026-10-25). This name is the approved concept/working title, not a final brand lock.
 
 **Category:** Evidence-first incident response for NEAR Intents and cross-chain swaps.
 
@@ -74,19 +74,19 @@ This is a practical public-web screen for prominent exact-name/company/product c
 
 | Candidate / pattern | Finding | Decision |
 |---|---|---|
-| TraceBrief | Existing crypto fund-flow reporting product; directly overlaps blockchain tracing and evidence reports | REJECT — strong category collision |
-| SwapScope | Existing atomic-swap market intelligence product | REJECT — close crypto/atomic-swap adjacency |
-| CaseSignal | Existing source-backed case evidence product and a separate immigration case tracker | REJECT — exact-name and product-semantic collision |
-| RouteWitness | Existing Devpost hackathon project with the exact name | REJECT — exact name already used in hackathon context |
-| PathWitness | Existing iOS dashcam app | REJECT — exact app-name collision |
-| FirstLeg | Existing startup angel/investor community | REJECT — exact company/community name |
-| Legmark | Existing legal-sector marketing/software company | REJECT — exact company name |
-| IntentLens | Existing content-analysis software brand | REJECT — exact brand |
-| IntentSignal | Existing B2B outbound/lead-generation brand | REJECT — exact brand |
-| Intentra | Multiple existing technology products/companies | REJECT — crowded exact-name space |
-| Tracebound | Existing ESG regulatory platform and separate iOS-forensics brand | REJECT — exact brand collisions |
-| BreakTrace | Existing golf green-reading product | REJECT — exact product name |
-| RelayCase | Existing automation-consultant portfolio template and technical component term | REJECT — exact name already in use |
+| TraceBrief | Existing crypto fund-flow reporting product; directly overlaps blockchain tracing and evidence reports | REJECT â€” strong category collision |
+| SwapScope | Existing atomic-swap market intelligence product | REJECT â€” close crypto/atomic-swap adjacency |
+| CaseSignal | Existing source-backed case evidence product and a separate immigration case tracker | REJECT â€” exact-name and product-semantic collision |
+| RouteWitness | Existing Devpost hackathon project with the exact name | REJECT â€” exact name already used in hackathon context |
+| PathWitness | Existing iOS dashcam app | REJECT â€” exact app-name collision |
+| FirstLeg | Existing startup angel/investor community | REJECT â€” exact company/community name |
+| Legmark | Existing legal-sector marketing/software company | REJECT â€” exact company name |
+| IntentLens | Existing content-analysis software brand | REJECT â€” exact brand |
+| IntentSignal | Existing B2B outbound/lead-generation brand | REJECT â€” exact brand |
+| Intentra | Multiple existing technology products/companies | REJECT â€” crowded exact-name space |
+| Tracebound | Existing ESG regulatory platform and separate iOS-forensics brand | REJECT â€” exact brand collisions |
+| BreakTrace | Existing golf green-reading product | REJECT â€” exact product name |
+| RelayCase | Existing automation-consultant portfolio template and technical component term | REJECT â€” exact name already in use |
 | IntentBeacon | No prominent exact-match product surfaced in this search pass | RETAIN for shortlist; no availability claim |
 | LegSignal | No prominent exact-match product surfaced in this search pass | RETAIN for shortlist; no availability claim |
 | RouteSift | No prominent exact-match product surfaced in this search pass | RETAIN for shortlist; no availability claim |
@@ -95,7 +95,7 @@ This is a practical public-web screen for prominent exact-name/company/product c
 
 The remaining pool was screened for generic wording, weak product relationship, confusing pronunciation, overclaiming, or insufficient distinction. Search-engine absence is not proof that a name, domain, social handle or trademark is available. No registrar, social-handle or trademark database clearance has been performed.
 
-## Shortlist — scored 1 to 5 per criterion
+## Shortlist â€” scored 1 to 5 per criterion
 
 Criteria: memorability, pronunciation, distinctiveness, semantic fit, extensibility, visual potential, and usefulness in the demo/pitch. These are internal comparative judgments, not market research statistics.
 
@@ -109,11 +109,11 @@ Criteria: memorability, pronunciation, distinctiveness, semantic fit, extensibil
 
 ### Finalist rationale
 
-**1. LegSignal — recommended**
+**1. LegSignal â€” recommended**
 - Means the product identifies the precise transfer/lifecycle leg where evidence stops or a failure appears.
 - Compact, easy to say, easy to remember; strong visual device: a multi-leg route with one clearly marked break.
 - Does not promise recovery, custody, automatic monitoring or successful completion.
-- Potential weakness: “leg” is technical language; the descriptor must make the product clear to non-technical users.
+- Potential weakness: â€œlegâ€ is technical language; the descriptor must make the product clear to non-technical users.
 
 **2. SwapDossier**
 - Communicates the strongest tangible output: a structured, evidence-backed incident record for a failed swap.
@@ -128,7 +128,7 @@ Criteria: memorability, pronunciation, distinctiveness, semantic fit, extensibil
 **4. IntentBeacon**
 - Connects to the NEAR Intents ecosystem and suggests guidance when a transaction becomes uncertain.
 - Strong visual potential.
-- Potential weakness: “beacon” can imply live monitoring/alerts, which the current product does not provide; less extensible outside intent-based transactions.
+- Potential weakness: â€œbeaconâ€ can imply live monitoring/alerts, which the current product does not provide; less extensible outside intent-based transactions.
 
 **5. SwapBrief**
 - Short, plain and easy to pronounce; suggests a concise incident explanation and handoff.
@@ -136,7 +136,7 @@ Criteria: memorability, pronunciation, distinctiveness, semantic fit, extensibil
 
 ## Recommendation and human decision gate
 
-**Brand specialist recommendation: LegSignal.** Suggested descriptor: “Evidence-first incident response for cross-chain swaps.” Suggested line: “Find the break. Keep the proof.”
+**Brand specialist recommendation: LegSignal.** Suggested descriptor: â€œEvidence-first incident response for cross-chain swaps.â€ Suggested line: â€œFind the break. Keep the proof.â€
 
 Alternative strongest finalist: SwapDossier, if clarity of the exported support record matters more than breadth of the interactive product.
 
@@ -152,3 +152,26 @@ After explicit selection only:
 ## Existing provisional visual direction (not yet a brand kit)
 
 Forensic, precise, conservative; branched transfer route with first unresolved break and evidence-ID junctions; IBM Plex Sans UI and IBM Plex Mono identifiers; paper/ink/investigation-canvas palette with restrained warning/resolved semantics; authentic product captures only. This direction remains provisional until the name and subsequent design gates are resolved.
+
+## 2026-11-09 — user rejection and naming reset
+
+The user rejected the previous five-name shortlist (LegSignal, SwapDossier, RouteSift, IntentBeacon, SwapBrief) as poor-quality, AI-sloppy names. These candidates are **REJECTED**, not active finalists. The previous numerical scores are withdrawn and must not be reused as evidence of quality.
+
+The failure was methodological: names were formed by literal feature/industry word combinations, then given false precision through a scoring table. That does not meet the user's established bar for product/company-quality naming.
+
+### Binding taste and quality constraints
+- Premium, minimal, expressive, intentional, memorable, and visually buildable.
+- Strong product/company identity, not a hackathon placeholder.
+- Avoid obvious feature-description compounds and generic AI-generated word stitching.
+- Prior user-approved naming examples include **Passage** and **BlastLab**; rejected example **FlatPass**. These are style evidence, not names to reuse.
+- Prefer a small number of genuinely strong concepts with a coherent story over filling a quota with mediocre options.
+- Do not use numerical scoring to disguise subjective or weak work.
+- Every proposed candidate needs a real semantic reason, an appropriate pronunciation, a credible brand story, and a collision screen relevant to software, fintech, blockchain, and incident investigation.
+
+### Current state
+- NAME_LOCK remains OPEN.
+- The five-name shortlist above is withdrawn.
+- Docketrail remains unapproved and must not be used as the brand.
+- Intent Rescue remains the canonical working title.
+- No new name has been selected or approved.
+- Next Brand specialist pass must start from brand territory and product identity, not from concatenating feature words. Present only after the candidates survive collision screening. No forced five-name quota.
