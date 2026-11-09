@@ -33,12 +33,24 @@ export function parsePublicExplorer(html,sourceUrl,capturedAt=new Date().toISOSt
   const intentHashes=refs(visible,u=>u.hostname==='pikespeak.ai' && u.pathname.startsWith('/intents/'));
   const nearHashes=refs(visible,u=>u.hostname==='nearblocks.io' && u.pathname.startsWith('/txns/'));
   const h3=key => segment(visible,headings,key);
-  const originBlock=h3('Deposit Transaction')||h3('Deposit Transactions');
+  const depositLabel=/Deposit(?:\s|<!--[\s\S]*?-->)*transaction(?:\s|<!--[\s\S]*?-->)*:/i.exec(visible);
+  const originBlock=h3('Deposit Transaction')||h3('Deposit Transactions')||(depositLabel?visible.slice(depositLabel.index,depositLabel.index+950):'');
   const refundBlock=h3('Refund Transaction')||h3('Refund Transactions');
   const nearDepositBlock=h3('Near Deposit Transaction')||h3('Near Deposit Transactions');
   const nearSwapBlock=h3('Near Swap Transaction')||h3('Near Swap Transactions');
+  const destinationBlock=h3('Destination Transaction')||h3('Withdrawal Transaction')||'';
   const nearOnly=s=>refs(s,u=>u.hostname==='nearblocks.io'&&u.pathname.startsWith('/txns/'));
-  const genericHashes=s=>refs(s,u=>/^(?:blockchair.com|mempool.space|litecoinspace.org|etherscan.io|basescan.org|tronscan.org|solscan.io)$/i.test(u.hostname));
+  const hosts = {'etherscan.io':'ethereum','basescan.org':'base','arbiscan.io':'arbitrum',
+    'optimistic.etherscan.io':'optimism','polygonscan.com':'polygon','gnosisscan.io':'gnosis',
+    'mempool.space':'bitcoin','litecoinspace.org':'litecoin','solscan.io':'solana'};
+  const records = s => [...s.matchAll(/href="(https?:[^"]+)"/g)].map(x=>{
+    try { const u=new URL(x[1].replace(/&amp;/g,'&')); const pathParts=u.pathname.split('/').filter(Boolean);
+      const chain=hosts[u.hostname] || (u.hostname==='blockchair.com' && pathParts[1]==='transaction' && ['litecoin','bitcoin'].includes(pathParts[0])?pathParts[0]:null);
+      return {chain,hash:pathParts.at(-1)}; }
+    catch {return null;}
+  }).filter(x=>x&&x.chain&&x.hash);
+  const oneChain = items=>{ const unique=[...new Set(items.map(x=>x.chain))]; return unique.length===1?unique[0]:null; };
+  const genericHashes=s=>unique(records(s).map(x=>x.hash));
   const block=(label,next)=>{const m=visible.match(new RegExp('<h2[^>]*>'+label+'<\/h2>','i')); if(!m)return '';const i=m.index+m[0].length;const j=next?visible.indexOf(next,i):-1;return visible.slice(i,j>i?j:i+2400);};
   const from=block('From','>To</h2>'), to=block('To','Transaction Hashes');
   const asset=s=>s.match(/<img[^>]*\balt="([A-Za-z0-9._-]{2,18})"/i)?.[1]||null;
@@ -49,11 +61,14 @@ export function parsePublicExplorer(html,sourceUrl,capturedAt=new Date().toISOSt
     reported_status:state,
     source_asset:asset(from),
     destination_asset:asset(to),
+    source_chain:oneChain(records(originBlock)),
+    destination_chain:oneChain(records(destinationBlock)),
+    refund_chain:oneChain(records(refundBlock)),
     origin_tx_hashes:genericHashes(originBlock),
     intent_hashes:intentHashes,
     near_deposit_tx_hashes:nearOnly(nearDepositBlock),
     near_swap_tx_hashes:nearOnly(nearSwapBlock),
-    destination_tx_hashes:[],
+    destination_tx_hashes:genericHashes(destinationBlock),
     refund_tx_hashes:genericHashes(refundBlock),
     deposit_evidence:visible.includes('Token deposit has been confirmed.')?['Public Explorer page: Deposit Completed — token deposit has been confirmed']:[],
     destination_evidence:isSuccess?['Public Explorer page: Withdrawn — funds were successfully withdrawn (reported, not independently verified)']:[],

@@ -10,6 +10,7 @@ let currentEvidence = null;
 let evidenceAssurance = 'CAPTURED_PUBLIC_SNAPSHOT';
 const isSourceSnapshot = () => evidenceAssurance === 'CAPTURED_PUBLIC_SNAPSHOT' || evidenceAssurance === 'PUBLIC_EXPLORER_SNAPSHOT';
 const demoFiles = ['f1-failed.json','f2-refunded.json','f3-success.json'];
+let pendingIdentifier = null;
 
 document.querySelector('#identifier-form').addEventListener('submit', async event => {
   event.preventDefault();
@@ -23,6 +24,7 @@ document.querySelector('#identifier-form').addEventListener('submit', async even
     }));
     const match = findCapturedCase(input, captures);
     if (match.kind === 'captured') {
+      pendingIdentifier = null;
       evidenceInput.value = JSON.stringify(match.evidence, null, 2);
       evidenceAssurance = 'CAPTURED_PUBLIC_SNAPSHOT';
       selectFixture(fixtureButtons.find(b => b.dataset.fixture === demoFiles[captures.indexOf(match.evidence)]) ?? null);
@@ -35,14 +37,17 @@ document.querySelector('#identifier-form').addEventListener('submit', async even
       return;
     }
     clearView();
+    pendingIdentifier = input;
     inputStatus.textContent = 'Reading public Explorer page, without partner credentials…';
     const response = await fetch('/api/incident?reference=' + encodeURIComponent(input), {cache: 'no-store'});
     const payload = await response.json();
     if (!response.ok || payload.kind !== 'public_explorer_snapshot' || !payload.evidence) {
       clearView();
-      inputStatus.textContent = (payload.error || 'Public Explorer lookup unavailable.') + ' You can paste a source-attributed evidence JSON instead.';
+      inputStatus.textContent = (payload.error || 'Public Explorer lookup unavailable.') + ' Paste matching official status/evidence JSON below to continue provisionally.';
+      document.querySelector('.evidence-input').open = true;
       return;
     }
+    pendingIdentifier = null;
     evidenceInput.value = JSON.stringify(payload.evidence, null, 2);
     evidenceAssurance = 'PUBLIC_EXPLORER_SNAPSHOT';
     selectFixture(null);
@@ -80,6 +85,7 @@ async function loadFixture(name, activeButton) {
     const response = await fetch(`/fixtures/${name}`);
     if (!response.ok) throw new Error(`Could not load ${name}`);
     const data = await response.json();
+    pendingIdentifier = null;
     evidenceInput.value = JSON.stringify(data, null, 2);
     evidenceAssurance = 'CAPTURED_PUBLIC_SNAPSHOT';
     selectFixture(activeButton);
@@ -88,6 +94,9 @@ async function loadFixture(name, activeButton) {
 function traceCurrent() {
   try {
     const evidence = parseEvidenceEnvelope(evidenceInput.value);
+    if (pendingIdentifier && evidenceAssurance === 'USER_SUPPLIED_UNVERIFIED'
+        && findCapturedCase(pendingIdentifier, [evidence]).kind !== 'captured')
+      throw new Error('Supplied evidence does not contain the searched identifier. Match the deposit address, transaction hash, correlation ID, or source URL first.');
     const analysis = analyzeEvidence(evidence);
     currentEvidence = evidence;
     renderCase(evidence);
@@ -115,7 +124,8 @@ function exportCurrentBundle() {
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
   a.href = url;
-  a.download = `intent-rescue-${currentEvidence.id || 'incident'}.json`;
+  const safeId = String(currentEvidence.id || 'incident').replace(/[^a-z0-9_-]/gi, '').slice(0, 45) || 'incident';
+  a.download = `docketrail-${safeId}.json`;
   a.click();
   URL.revokeObjectURL(url);
 }
@@ -131,7 +141,8 @@ function renderCase(evidence) {
   document.querySelector('#file-captured').textContent = evidence.captured_at ? `Captured ${formatTimestamp(evidence.captured_at)}` : 'No capture time supplied';
   const link = document.querySelector('#source-link');
   let safeSource = false;
-  try { safeSource = new URL(evidence.source_url).protocol === 'https:'; } catch {}
+  try { const url = new URL(evidence.source_url); safeSource = url.protocol === 'https:' && url.hostname === 'explorer.near-intents.org'
+    && /^\/transactions\/[A-Za-z0-9_-]{16,150}\/?$/.test(url.pathname); } catch {}
   link.setAttribute('aria-disabled', String(!safeSource));
   link.tabIndex = safeSource ? 0 : -1;
   link.href = safeSource ? evidence.source_url : '#';

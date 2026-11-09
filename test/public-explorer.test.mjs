@@ -43,3 +43,11 @@ test('API does not proxy non-Explorer domains or accept writes',async()=>{
  await handler({method:'POST',query:{reference:URL}},response);
  assert.equal(response.code,405);
 });
+
+test('explicit public source-chain transaction link preserves chain for F1-type evidence',()=>{
+  const body=page('<h3>Failed</h3>Transaction failed. The transaction has failed to complete and deposit was not refunded'+
+  '<p>Deposit <!-- -->transaction<!-- -->: <a href="https://blockchair.com/litecoin/transaction/1e59a2a06ee0985eec6ca76a5264697f44581017a9f8383598a7538daed2f6df">hash</a></p>');
+  const e=parsePublicExplorer(body,URL);
+  assert.equal(e.source_chain,'litecoin');
+  assert.equal(e.origin_tx_hashes[0],'1e59a2a06ee0985eec6ca76a5264697f44581017a9f8383598a7538daed2f6df');
+});
