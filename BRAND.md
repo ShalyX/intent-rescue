@@ -175,3 +175,48 @@ The failure was methodological: names were formed by literal feature/industry wo
 - Intent Rescue remains the canonical working title.
 - No new name has been selected or approved.
 - Next Brand specialist pass must start from brand territory and product identity, not from concatenating feature words. Present only after the candidates survive collision screening. No forced five-name quota.
+
+## 2026-11-09 — second naming research pass (collision-first)
+
+This pass deliberately tested names from distinct semantic territories rather than generating another list of feature-word combinations. It did **not** produce a name lock or a user-facing shortlist. Candidates were not promoted merely because an exact search returned few results.
+
+### Collision kills / do not recycle
+
+The following attractive-looking directions were eliminated after public-web screening because of exact, near-exact, or materially adjacent active products, brands, or marks:
+
+- **Portage** — active product in cross-chain swaps / transfer status and refund tracking; too close to the approved product category.
+- **Brink** — active intent-oriented Web3 protocol; direct ecosystem and semantic collision.
+- **Daymark** — active crypto safety / verification product; direct trust-and-support adjacency.
+- **Hindsight** — blockchain explorer / transaction investigation product; direct product-category collision.
+- **Ravel** — crypto research and on-chain investigation brand; direct Web3 adjacency.
+- **Juncture** — current pharma compliance SaaS, multiple software businesses, and a near-name cross-chain DeFi platform called Junction; not ownable enough.
+- **Waybill** — active logistics and fintech software use; too close to transfer documentation.
+- **Waymark** — existing software and payments uses; not distinctive enough.
+- **Sillage** — existing AI signal SaaS; exact software-brand collision.
+- **Sooth** — active on-chain prediction-market protocol and registered software mark.
+- **Proem** — active AI research platform and registered financial-services mark.
+- **Spine** — active DeFi lending protocol and multiple software marks.
+- **Proffer** — several active software, finance, and business brands.
+- **Fieldnote** — multiple active SaaS products and a registered software-services mark.
+- **Punctum / Stillpoint / Postlude** — existing software or SaaS uses; not clean enough to recommend.
+- **Skein / Cairn / Vestige / Coda / Recourse / Footnote / Factum / Quoin / Gnomon / Clotho / Portolan / Periplus / Astrolabe / Sextant / Pelorus / Bearing / Seam / Weft / Rill / Transect / Sonde / Lucerna / Pharos / Fanal / Wayward / Backstory / Last Known / As Found** — each surfaced a relevant exact-name, Web3/fintech, software, or product-semantic collision; none should be recycled as a finalist.
+
+These are practical collision-screen decisions, not legal conclusions. Search-engine results do not establish domain, social-handle, or trademark availability.
+
+### Exploratory language-root direction (not shortlisted)
+
+**Akaebe** — an Igbo term used for “witness.” The product can be framed as a witness to the evidenced transaction lifecycle: it reports what was observed, what is inferred, and what remains unknown. No direct software/fintech/Web3 product collision surfaced in this pass. However, the four-syllable pronunciation and the need for native-speaker validation make it exploratory only. Do not promote it without validating pronunciation, nuance, and cultural fit.
+
+Other regional-language directions already screened and rejected: **Itan** (existing data-storytelling software and other brand uses), **Akuko** (existing no-code data-storytelling platform), **Shaida** (existing Web3/agent project), and **Eri** (existing financial/core-banking and software uses).
+
+### Decision
+
+- No candidate from this pass is recommended or approved.
+- No numerical scores are assigned.
+- NAME_LOCK remains OPEN; Intent Rescue remains the canonical working title.
+- Docketrail remains unapproved and must not appear as the final brand.
+- Do not advance to BRAND_KIT / Phase 9 until a candidate earns a clean enough collision screen and the user explicitly approves it.
+
+### Next naming method
+
+Stop cycling through obvious English nouns that are already occupied in adjacent markets. Develop a small set of original, ownable brand concepts from the exact product promise — an evidence-bounded account of a cross-chain transaction, with a clear boundary between observed fact and unknown — then screen those concepts before showing them. Preserve the locked product and all seven P0 requirements.
