@@ -78,3 +78,10 @@ Resolve the product-name gate. Do not publish the Docketrail-labelled video or u
 - Phase 18 PASS. DESIGN.md inventories the wordmark/mark, favicon, OG preview, F1/F2/F3 desktop captures, F1 mobile capture, final demo, export proof, route diagram and local fonts, with purpose/source/priority/owner/status/format/budget.
 - Phase 19 PASS. Motion is limited to real selection, disclosure, status and export feedback; no fake transfer or live-telemetry animation.
 - Current Operator phase: DESIGN_LOCK. Lock the static first-fold, core investigation canvas and magic-moment composition before any substantial design engineering.
+
+
+## 2026-11-09 — DESIGN_LOCK completed
+
+- Phase 20 DESIGN_LOCK revision 2: PASS. DESIGN.md freezes the exact desktop/mobile composition, component hierarchy, first-fold priority, interaction contract, evidence boundary, typography/palette, accessibility and acceptance viewports.
+- Design Engineering is authorized to implement the locked OSIALI identity and required assets without changing the P0 workflow.
+- Current Operator phase: DESIGN_ENGINEERING. Visual QA, current-brand screenshots, OG preview replacement and final demo remain open.

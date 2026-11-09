@@ -1,12 +1,12 @@
 {
   "schema_version": 4,
-  "revision": 15,
+  "revision": 16,
   "recovered_from_legacy": true,
   "previous_local_state": "ABSENT",
   "legacy_checkpoint_revision": "UNKNOWN",
   "project_root": "C:\\Users\\USER\\Documents\\intent-rescue",
-  "phase": "DESIGN_LOCK",
-  "active_specialist": "HQ + Art Director",
+  "phase": "DESIGN_ENGINEERING",
+  "active_specialist": "Design Engineering",
   "human_input_required": false,
   "pending_gate": null,
   "product_locked": true,
@@ -40,8 +40,8 @@
   "references_synthesized": true,
   "visual_asset_strategy_complete": true,
   "motion_storyboard_complete": true,
-  "design_locked": false,
-  "design_lock_revision": 1,
+  "design_locked": true,
+  "design_lock_revision": 2,
   "visual_qa_static_complete": false,
   "visual_qa_motion_complete": false,
   "evidence_status": "VERIFIED_WITH_EXPLICIT_BLOCKED_LIMITS",
@@ -79,7 +79,8 @@
     "nov9_art_direction": "Phase 16 PASS. Three distinct visual territories compared; Witness Desk selected. Product-specific visual thesis and composition targets in DESIGN.md.",
     "nov9_reference_board": "Phase 17 PASS. NEAR Intents Explorer, Sentry Issue Details, Honeycomb Trace Explorer and incident.io Timeline captured and decomposed by purpose; Witness Desk synthesis preserved.",
     "nov9_asset_strategy": "Phase 18 PASS. Asset inventory and acceptance rules recorded in DESIGN.md; actual OG/brand assets and fresh captures still need production.",
-    "nov9_motion_storyboard": "Phase 19 PASS. Minimal motion contract recorded; only meaningful user-triggered state feedback."
+    "nov9_motion_storyboard": "Phase 19 PASS. Minimal motion contract recorded; only meaningful user-triggered state feedback.",
+    "nov9_design_lock": "Phase 20 PASS, revision 2. Static composition and responsive interaction contract locked in DESIGN.md; current phase DESIGN_ENGINEERING."
   },
   "blockers": [
     "Track decision: original PRODUCT_LOCK says Unstoppable DeFi primary / Open Innovation secondary; current recommendation Open Innovation; no explicit switch recorded",
@@ -90,8 +91,8 @@
     "Legacy Docketrail OG preview and old demo recordings must be replaced; browser-level visual QA of the new OSIALI production deployment is still pending.",
     "Formal trademark, domain and social-handle clearance for OSIALI remains outstanding; do not claim legal availability."
   ],
-  "next_action": "Complete DESIGN_LOCK: specify exact first-fold, core investigation and magic-moment compositions, component hierarchy, dimensions, responsive behavior, accessibility and acceptance screenshots. Do not begin substantial UI redesign before the lock.",
-  "updated_at": "2026-11-09T20:46:18.111Z",
+  "next_action": "Implement only the locked OSIALI identity/assets and any necessary visual corrections; preserve the existing incident intake, five-leg route, safe action, evidence and export workflow. Push one coherent implementation update, then capture actual desktop/mobile states for VISUAL_QA.",
+  "updated_at": "2026-11-09T20:47:52.670Z",
   "name_status": "LOCKED_USER_APPROVED",
   "proposed_name": "OSIALI",
   "proposed_name_user_approved": true,
@@ -199,12 +200,12 @@
     {
       "n": 20,
       "phase": "DESIGN_LOCK",
-      "status": "OPEN — freeze implementable static compositions for first fold, core app and magic moment; include hierarchy, layout, interaction, responsive and accessibility requirements."
+      "status": "PASS — DESIGN_LOCK revision 2 in DESIGN.md freezes desktop/mobile composition, hierarchy, interactions, evidence boundary, typography/palette, accessibility and acceptance viewports; Design Engineering may proceed."
     },
     {
       "n": 21,
       "phase": "DESIGN_ENGINEERING",
-      "status": "PASS_PROVISIONAL"
+      "status": "OPEN — implement the locked OSIALI identity/assets and verify actual current-brand product surfaces; preserve all P0 behavior."
     },
     {
       "n": 22,

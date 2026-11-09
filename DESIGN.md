@@ -1,5 +1,5 @@
 # DESIGN — OSIALI / newest Operator
-Status: **ART_DIRECTION PASS (2026-11-09); DESIGN_LOCK remains OPEN.** The older revision-1 label is historical and is not accepted as the current v0.5.0 Design Lock because the reference board, asset strategy and formal visual QA gates are still incomplete. Original approved Pass 3 forensic incident-desk direction retained. Actual production commit 6b1abb5 inspected at desktop 1440×1000 and mobile 390×844; new name/route/safe-action rendered correctly, F1/F2/F3 outcomes checked and mobile horizontal overflow measured false.
+Status: **DESIGN_LOCK revision 2 PASS (2026-11-09); DESIGN_ENGINEERING is next.** Visual QA and asset production remain separate open gates. Original approved Pass 3 forensic incident-desk direction retained. Actual production commit 6b1abb5 inspected at desktop 1440×1000 and mobile 390×844; new name/route/safe-action rendered correctly, F1/F2/F3 outcomes checked and mobile horizontal overflow measured false.
 
 ## Product / experience map
 User: person/integrator facing ambiguous NEAR Intents swap status. First 30 seconds: load captured case or known identifier → inspect branched route → see evidence break and safe action. Primary surface: incident desk, with captured-case left rail, central evidence route, attached recovery rail, and support ledger/export. Account/wallet/auth N/A: read-only diagnostic tool. Loading, no-capture, manual provisional, error, refund and complete states exist.
@@ -147,7 +147,7 @@ VISUAL_ASSET_STRATEGY must inventory the OSIALI wordmark/mark, replacement OG pr
 | Asset | Purpose / judge-facing surface | Source and format | Priority / owner | Current status | Variants / budget |
 |---|---|---|---|---|---|
 | OSIALI wordmark + witness-point mark | App header, README, OG, video end-card | Custom vector/SVG built from the locked wordmark direction; no generated logo | MUST / Design Engineering | Wordmark text is present; dedicated mark not yet built | SVG, monochrome; mark legible at 16–24 px; target <10 KB |
-| Favicon / app icon | Browser tab, bookmark, social avatar | Same route-line/witness-point SVG mark | MUST / Design Engineering | Not present in tracked asset inventory | 32×32 and 48×48 favicon; 512×512 avatar; SVG <10 KB |
+| Favicon / app icon | Browser tab, bookmark, social avatar | Same route-line/witness-point SVG mark | MUST / Design Engineering | Inline route glyph exists in public/index.html; refine and validate at small sizes | 32×32 and 48×48 favicon; 512×512 avatar; SVG <10 KB |
 | OSIALI OG preview | X/social link preview and repo share | Real OSIALI product screenshot + vector wordmark/layout; no stock or generated background | MUST / Design Engineering | public/og-preview.png is a legacy Docketrail image; replace | 1200×630 PNG/WebP; target <300 KB; verify publicly after deployment |
 | F1 desktop hero capture | Shows failed/unresolved magic moment | Fresh capture of deployed OSIALI F1 path | MUST / Visual QA | Existing qa/operator-F1-desktop.png is pre-rename and stale | 1440×1000 PNG/WebP; target <300 KB |
 | F2 refunded capture | Proves refund classification contrast | Fresh capture of deployed OSIALI F2 path | MUST / Visual QA | Not confirmed current-brand | 1440×1000; same scale/crop as F1 |
@@ -195,3 +195,66 @@ The product's story is evidence state, not movement. No decorative or fake netwo
 - Motion performance budget: CSS-only transitions; no animation library or runtime dependency.
 
 **MOTION_STORYBOARD: PASS.** All meaningful motion is tied to a real user-triggered state change; otherwise the interface remains still.
+
+
+## 2026-11-09 — DESIGN_LOCK / Phase 20
+
+### Locked product surface
+OSIALI is a focused incident desk, not a generic crypto dashboard or a marketing-first SaaS site. The primary surface is the working investigation experience. No wallet connection, account creation, OAuth, or onboarding flow is required for the locked P0 journey.
+
+### Desktop composition — 1440 × 1000 target
+- **Top command bar:** 72 px high, 28 px horizontal inset. OSIALI wordmark + route glyph at left; concise “NEAR Intents / evidence-first incident response” descriptor; Case file anchor at right.
+- **Workspace:** 3-column grid with 200 px intake rail, flexible central investigation canvas, 280 px recovery rail; 24 px top and 28 px horizontal page inset.
+- **Left intake rail:** “Incident intake” heading; identifier form and primary Investigate swap action; three captured-case selectors; expandable source-attributed JSON fallback; capture record and source link; concise snapshot limitation.
+- **Center investigation canvas:** dominant graphite surface. Header contains case ID, source → destination, classification, confidence and evidence provenance. The five-leg route occupies the main visual field. Destination and refund are explicit alternative terminals. The first unresolved leg is a real break, with a warning annotation and evidence state; no decorative route motion.
+- **Right recovery rail:** classification, first unresolved step, safe next action, exact action predicates, evidence-language legend and safety note. This is attached to the route, not a floating card stack.
+- **Evidence handoff:** below the workspace, aligned to the investigation area. Includes export action, source provenance, evidence rows and expandable raw JSON/escalation summary.
+- **Footer:** OSIALI, NEAR Hackathon context and truthful “captured cases, not real-time recovery” boundary.
+
+### First-fold hierarchy
+1. Case identity and current classification.
+2. Five-leg route and first unresolved boundary.
+3. Safe action and why it is safe.
+4. Evidence basis and provenance.
+5. Full evidence ledger and export follow-through.
+
+The judge should understand the failure boundary without opening the raw JSON. The detailed evidence remains one action away.
+
+### Core app and interaction contract
+- Captured-case buttons load F1/F2/F3; selected state is visible and keyboard-operable.
+- Identifier form accepts supported Explorer URL/hash input; it must show honest lookup/fallback status and must not imply universal private-history access.
+- Manual evidence JSON is explicitly provisional/unverified; mismatch or conflict remains visible.
+- Selecting a route stage exposes its actual identifiers and source facts; absent proof stays UNKNOWN.
+- Recovery rail states the first unresolved step and exact conservative action. Do not retry blindly when the locked predicates require escalation.
+- Export downloads the actual OSIALI-prefixed JSON bundle; the evidence schema and provenance are unchanged by the brand rename.
+
+### Mobile composition — 390 × 844 target
+At widths ≤760 px, stack the workflow in this order:
+1. 60 px top bar with OSIALI mark and Case file anchor.
+2. Intake section; captured cases remain a horizontally scrollable selector row.
+3. Case header and classification.
+4. Vertical lifecycle sequence; the break and destination/refund alternatives remain explicit.
+5. Recovery protocol and predicates.
+6. Evidence ledger and export.
+No desktop three-column shrinking. No horizontal page overflow. Preserve labels, safe action, source provenance and export access.
+
+### Type, color and surface lock
+- IBM Plex Sans 400/500/600 for interface and OSIALI wordmark; IBM Plex Mono 400 for hashes, IDs, evidence keys and provenance.
+- Existing paper/ink/graphite palette remains locked: paper #f2f3ef, surface #fafbf8, ink #22282c, muted #626b70, line #d7dcd8, canvas #1b2227, chalk #f0f2ed, steel #a6b2b9, warning #f0a49a/#933c32, resolved #accab8.
+- Warning/resolved colors are semantic only and are always paired with text labels and line treatment.
+- No new decorative gradients, glass surfaces, stock photography, fake live charts, glowing nodes or coin/chain iconography.
+
+### Accessibility and responsive acceptance
+- Keep the skip link, semantic headings, form labels, aria-live status, keyboard-accessible details, visible focus rings and descriptive link text.
+- Color never carries evidence meaning alone.
+- Reduced-motion preference disables nonessential transitions.
+- Buttons and primary actions remain comfortably tappable on mobile; no hover-only content.
+- Test desktop at 1440×1000 and mobile at 390×844; inspect intermediate 760 px breakpoint and verify no horizontal overflow.
+
+### Design lock proof and limitations
+- The static composition is grounded in the current implemented DOM/CSS structure, not an invented mockup: 72 px top bar, 200 px / fluid / 280 px desktop workspace, five-stage route, attached recovery rail, evidence ledger, and explicit ≤760 px mobile stack.
+- Existing F1 desktop/mobile captures are pre-rename and may be used only to understand the established composition, not as final branded proof.
+- The latest OSIALI HTML title/header source is deployed in a READY Vercel build; browser-level rendered verification is still pending.
+- Actual OG preview, dedicated mark, fresh F1/F2/F3 screenshots and final demo remain production tasks in later phases.
+
+**DESIGN_LOCK: PASS — revision 2.** The composition, hierarchy, interactions, responsive behavior, visual tokens and acceptance viewports are implementable without further aesthetic invention. This authorizes Design Engineering to execute the locked identity/assets while preserving the P0 journey; it does not pass Visual QA.
