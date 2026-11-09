@@ -89,3 +89,23 @@ Historical correction: Docketrail was never user-approved. OSIALI was explicitly
 
 ### Current disposition
 No P0 hygiene defect was found. P2 residuals are explicit: no dedicated Gitleaks/TruffleHog scan, no NVDA/VoiceOver run, and no LICENSE file. Product identity and social assets are current; the legacy Docketrail videos are excluded from the submission path. Hygiene gate remains pending final source-string cleanup and a post-deployment smoke check.
+
+
+## 2026-11-09 — Product Hygiene final disposition
+
+### Final source and release verification
+- Removed the last current-code Docketrail references: API User-Agent now identifies OSIALI; local server startup log now identifies OSIALI.
+- Corrected stale README release status, export filename evidence (osiali-F1.json), and submission/demo docs. The old local Docketrail recordings are ignored by Git under qa/ and explicitly excluded from SUBMISSION.md; no video or Docketrail-named asset is tracked in the public repo.
+- Commit 4049b2c31084bf4566c1df240a3e155abf399b8f is deployed to Vercel production as dpl_J3TVstXj9Cy8jNEZohbo3FhTk3TE (READY); aliases include intent-rescue.vercel.app.
+- Post-deploy smoke from the Windows host: /, styles.css, app.js, OSIALI mark, SVG/PNG favicon, avatar, OG preview and F1 fixture all HTTP 200; HTML title is OSIALI and contains no Docketrail string; F1 API lookup returns HTTP 200 with kind=public_explorer_snapshot.
+- Latest-main detached worktree re-run after hygiene source changes: 35/35 tests PASS, 9/9 red-team PASS, static build PASS, npm dependency tree empty.
+
+### Gate result
+**PRODUCT_HYGIENE: PASS WITH ACCEPTED P2 LIMITATIONS.** No unresolved P0 or judge-visible P1 hygiene issue remains. The exact original user-created Product Hygiene skill was not available; the Operator fallback and related reconstructed public-project-launch-hygiene checklist were executed. Do not claim the original skill ran.
+
+Accepted P2 limitations:
+1. No dedicated Gitleaks/TruffleHog scanner installed. Targeted source and Git-history scans found no high-confidence credential/private-key patterns; this is not a universal secret-free guarantee.
+2. NVDA is not installed and VoiceOver is unavailable on Windows. Visual QA has zero axe violations and passed keyboard, focus, reduced-motion and manual contrast checks; a dedicated screen-reader run remains outstanding.
+3. No LICENSE file is present. The owner must choose a license before inviting contributions or implying open-source reuse.
+
+Legacy Docketrail video files remain local, ignored QA artifacts and are not part of the public repository or submission pack. A fresh OSIALI recording is required in DEMO_PRODUCTION.

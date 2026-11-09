@@ -1,11 +1,12 @@
 # PROJECT — OSIALI / original approved concept: Intent Rescue
 
 ## CURRENT CHECKPOINT — 2026-11-09
-- **Authoritative phase:** PRODUCT_HYGIENE (Operator v0.5.0); DESIGN_ENGINEERING and VISUAL_QA are passed. The newest GitHub main checkpoint is e1ca7b6d9a178c0cd0f34decb00d216b84bb7714, and the production deployment is READY with the canonical intent-rescue.vercel.app alias.
+- **Authoritative phase:** DEMO_PRODUCTION (Operator v0.5.0); DESIGN_ENGINEERING, VISUAL_QA and PRODUCT_HYGIENE are passed. GitHub main is 4049b2c31084bf4566c1df240a3e155abf399b8f; Vercel deployment dpl_J3TVstXj9Cy8jNEZohbo3FhTk3TE is READY with the canonical intent-rescue.vercel.app alias.
 - **Brand:** OSIALI is explicitly user-approved and deployed across the app, wordmark, favicon, avatar and OG preview. Docketrail is an unapproved legacy label only in ignored local recordings and historical notes; those videos are excluded from submission.
 - **Product integrity:** all seven original P0s remain verified; 35/35 tests and 9/9 red-team scenarios pass on the latest main source; static build passes; no external npm dependencies.
 - **Hygiene findings:** current tracked source/history scans found no high-confidence secret patterns or sensitive filename candidates. No dedicated gitleaks/trufflehog scanner is installed; NVDA is unavailable on the Windows host. Visual QA already recorded zero axe violations, keyboard/focus/reduced-motion checks, and manual contrast measurements. These limitations are documented as residual P2 notes, not claims of a full screen-reader/security-vendor audit.
-- **Next:** finish this fallback hygiene gate with explicit residual notes, then DEMO_PRODUCTION. A fresh 60–90s OSIALI demo with voiceover/captions is still required. Track selection (Unstoppable DeFi vs Open Innovation) remains unresolved and must be reconciled before pitch/submission.
+- **Hygiene:** fallback gate PASS WITH ACCEPTED P2 notes. Latest source tests 35/35, red-team 9/9, build pass, targeted current/history secret scans clean, public asset/API smoke pass. No dedicated Gitleaks/TruffleHog, NVDA/VoiceOver or LICENSE decision; all disclosed, not claimed complete.
+- **Next:** produce a fresh 60–90s OSIALI demo with voiceover/captions from the current production UI. Track selection (Unstoppable DeFi vs Open Innovation) remains unresolved and must be reconciled before pitch/submission.
 
 Historical checkpoints follow. Earlier notes that say the product name or production identity is unresolved are superseded by the current checkpoint above.
 

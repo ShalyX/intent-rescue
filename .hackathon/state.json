@@ -1,12 +1,12 @@
 {
   "schema_version": 4,
-  "revision": 19,
+  "revision": 20,
   "recovered_from_legacy": true,
   "previous_local_state": "ABSENT",
   "legacy_checkpoint_revision": "UNKNOWN",
   "project_root": "C:\\Users\\USER\\Documents\\intent-rescue",
-  "phase": "PRODUCT_HYGIENE",
-  "active_specialist": "Product Hygiene",
+  "phase": "DEMO_PRODUCTION",
+  "active_specialist": "Demo Director",
   "human_input_required": false,
   "pending_gate": null,
   "product_locked": true,
@@ -50,7 +50,7 @@
   "red_team_passed": true,
   "product_hygiene_skill_found": false,
   "product_hygiene_fallback_used": true,
-  "product_hygiene_passed": false,
+  "product_hygiene_passed": true,
   "demo_production_complete": false,
   "demo_qa_passed": false,
   "judge_simulation_complete": false,
@@ -84,7 +84,8 @@
     "nov9_design_engineering": "Phase 21 PASS. OSIALI mark, SVG/PNG favicons, avatar and OG preview deployed and verified; public OG validation 93/100; live F1/F2/F3 and mobile smoke passed.",
     "nov9_osiali_release": "Production commit 0736576ed155d5e6420bcf0d63219d70817032b6; deployment dpl_ddjoz4LbCZ4ischFANc1SMaZaVtk READY; alias intent-rescue.vercel.app attached; browser asset checks pass.",
     "nov9_visual_qa": "Phase 22 PASS, 20/24, no hard veto. Fixed active fixture caption contrast 4.31:1 → 5.79:1; axe 0 violations desktop/mobile; responsive widths 390–1440 no overflow; keyboard, focus, reduced motion, F1/F2/F3 and export verified.",
-    "nov9_current_hygiene_audit": "Latest main e1ca7b6d9a178c0cd0f34decb00d216b84bb7714 audited in detached Windows worktree. 35/35 tests, 9/9 red-team, build pass; empty npm dependency tree; tracked source and history high-confidence secret scans clean; 72 tracked files; no sensitive filenames, media or >5MB assets. Gitleaks/Trufflehog unavailable; NVDA unavailable; Visual QA 20/24 with zero axe violations. Legacy Docketrail recordings ignored under qa/ and excluded from SUBMISSION.md. Source-string cleanup and post-deploy smoke in progress. Hygiene not yet passed."
+    "nov9_current_hygiene_audit": "Latest main 4049b2c31084bf4566c1df240a3e155abf399b8f audited in detached Windows worktree. 35/35 tests, 9/9 red-team, build pass; empty npm dependency tree; tracked source and history high-confidence secret scans clean; 72 tracked files; no sensitive filenames, media or >5MB assets. Gitleaks/Trufflehog unavailable; NVDA unavailable; Visual QA 20/24 with zero axe violations. Legacy Docketrail recordings ignored under qa/ and excluded from SUBMISSION.md. Hygiene source cleanup committed and post-deploy smoke passed.",
+    "nov9_product_hygiene": "Phase 26 PASS WITH ACCEPTED P2 NOTES. Legacy Docketrail local videos ignored under qa/ and explicitly excluded from SUBMISSION.md. Old User-Agent and server-log brand strings removed; README, export evidence, demo/submission status and current checkpoint docs corrected. Post-deploy production smoke passed."
   },
   "blockers": [
     "Track decision: original PRODUCT_LOCK says Unstoppable DeFi primary / Open Innovation secondary; current recommendation Open Innovation; no explicit switch recorded",
@@ -92,12 +93,12 @@
     "Final submission audit, public X post, official form and receipt not completed",
     "Formal trademark, domain and social-handle clearance for OSIALI remains outstanding; do not claim legal availability.",
     "Formal trademark, domain and social-handle clearance remains outstanding; do not claim legal availability.",
-    "Current OSIALI 60–90s demo is not yet produced; legacy Docketrail recordings are ignored local QA files and explicitly excluded from submission.",
     "Track decision remains open: original product lock says Unstoppable DeFi primary / Open Innovation secondary; current recommendation is Open Innovation.",
-    "Residual P2: dedicated Gitleaks/TruffleHog scan unavailable, NVDA/VoiceOver screen-reader pass unavailable, and LICENSE choice remains open."
+    "Current OSIALI 60–90s demo is not yet produced; legacy Docketrail recordings are ignored local QA files and explicitly excluded from submission.",
+    "Track decision remains open: original product lock says Unstoppable DeFi primary / Open Innovation secondary; current recommendation is Open Innovation."
   ],
-  "next_action": "Finish hygiene source-string cleanup, verify the new production deployment and smoke-test current OSIALI UI/assets. Then close PRODUCT_HYGIENE with the documented P2 limitations and move to DEMO_PRODUCTION.",
-  "updated_at": "2026-11-09T22:30:31.338Z",
+  "next_action": "Produce the final 60–90-second OSIALI demo from the current production UI. Follow DEMO.md: F1 public Explorer URL lookup and snapshot warning, five-leg route and first unresolved step, safe next action, actual JSON export, F2 refund and F3 completion contrast, OSIALI end-card. Add the approved voiceover and readable captions; then run DEMO_QA.",
+  "updated_at": "2026-11-09T22:35:14.791Z",
   "name_status": "LOCKED_USER_APPROVED",
   "proposed_name": "OSIALI",
   "proposed_name_user_approved": true,
@@ -235,12 +236,12 @@
     {
       "n": 26,
       "phase": "PRODUCT_HYGIENE",
-      "status": "OPEN — CURRENT PHASE. Run full current-release hygiene: dependency/security/secrets, screen-reader/contrast, browser and asset integrity, demo-brand hygiene, docs and claim boundaries. Legacy Docketrail recording remains blocked."
+      "status": "PASS WITH ACCEPTED P2 LIMITATIONS — fallback audit completed on latest production commit 4049b2c. 35/35 tests, 9/9 red-team, build pass, empty npm dependency tree; high-confidence current-source and Git-history scans clean; current production assets/API smoke 200; no P0/P1 hygiene issue. P2 disclosed: no Gitleaks/TruffleHog, no NVDA/VoiceOver, no LICENSE decision."
     },
     {
       "n": 27,
       "phase": "DEMO_PRODUCTION",
-      "status": "PARTIAL"
+      "status": "IN PROGRESS — current phase. Produce a fresh 60–90s OSIALI demo from current production with voiceover/captions, real identifier lookup, actual JSON export and F2/F3 contrast. Legacy Docketrail recordings are not submission media."
     },
     {
       "n": 28,
@@ -303,5 +304,10 @@
   "og_preview_validation_score": 93,
   "visual_qa_complete": true,
   "visual_qa_score": 20,
-  "visual_qa_no_hard_veto": true
+  "visual_qa_no_hard_veto": true,
+  "product_hygiene_residuals": [
+    "No dedicated Gitleaks/TruffleHog binary installed; targeted regex and Git history diff scans found no high-confidence credential/private-key matches.",
+    "NVDA not installed and VoiceOver unavailable on Windows; Visual QA axe, keyboard, focus, reduced-motion and manual contrast checks passed.",
+    "No LICENSE file; owner license choice remains open. Do not imply an open-source license."
+  ]
 }
