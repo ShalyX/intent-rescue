@@ -25,3 +25,11 @@
 
 ## Exact next action
 Resolve the product-name gate. Do not publish the Docketrail-labelled video or use Docketrail in the official submission until explicitly approved.
+
+
+## 2026-11-09 — second naming research checkpoint
+- The collision-first second naming pass is recorded in `BRAND.md` and committed as `0807af81c2181c4e1c2de01032cdb43cc4ada1fc`.
+- The pass screened additional route, evidence, archival, navigation, and language-root concepts. Several attractive terms had active exact or adjacent software, fintech, or Web3 uses; the rejection log is in BRAND.md.
+- No candidate met the bar for a user-facing shortlist. **Akaebe** (Igbo term used for “witness”) is an exploratory language-root direction only; pronunciation and cultural fit remain unvalidated. It is not shortlisted or approved.
+- NAME_LOCK remains OPEN. Intent Rescue remains the canonical working title; Docketrail remains unapproved. Product lock and all seven P0 requirements are unchanged.
+- No human naming gate is pending yet; continue Brand specialist research until genuinely strong, screened candidates exist.
