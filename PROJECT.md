@@ -71,3 +71,10 @@ Resolve the product-name gate. Do not publish the Docketrail-labelled video or u
 - Phase 17 PASS. Four source products were inspected and decomposed by purpose: NEAR Intents Explorer, Sentry Issue Details, Honeycomb Trace Explorer and incident.io Timeline.
 - The board preserves the Witness Desk direction and specifies exactly what to borrow and what not to copy. No clone or product-scope change.
 - Current Operator phase: VISUAL_ASSET_STRATEGY. Next: inventory and prioritize the real brand/product assets, including the replacement OSIALI OG preview and fresh F1/F2/F3 captures.
+
+
+## 2026-11-09 — VISUAL_ASSET_STRATEGY and MOTION_STORYBOARD completed
+
+- Phase 18 PASS. DESIGN.md inventories the wordmark/mark, favicon, OG preview, F1/F2/F3 desktop captures, F1 mobile capture, final demo, export proof, route diagram and local fonts, with purpose/source/priority/owner/status/format/budget.
+- Phase 19 PASS. Motion is limited to real selection, disclosure, status and export feedback; no fake transfer or live-telemetry animation.
+- Current Operator phase: DESIGN_LOCK. Lock the static first-fold, core investigation canvas and magic-moment composition before any substantial design engineering.

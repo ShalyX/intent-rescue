@@ -138,3 +138,60 @@ References were selected by purpose and inspected as product UI, not as template
 
 ### Next
 VISUAL_ASSET_STRATEGY must inventory the OSIALI wordmark/mark, replacement OG preview, authentic F1/F2/F3 captures, responsive screenshots and final demo video. The legacy Docketrail OG preview and old demo recordings are not approved assets.
+
+
+## 2026-11-09 — VISUAL_ASSET_STRATEGY / Phase 18
+
+### Asset inventory
+
+| Asset | Purpose / judge-facing surface | Source and format | Priority / owner | Current status | Variants / budget |
+|---|---|---|---|---|---|
+| OSIALI wordmark + witness-point mark | App header, README, OG, video end-card | Custom vector/SVG built from the locked wordmark direction; no generated logo | MUST / Design Engineering | Wordmark text is present; dedicated mark not yet built | SVG, monochrome; mark legible at 16–24 px; target <10 KB |
+| Favicon / app icon | Browser tab, bookmark, social avatar | Same route-line/witness-point SVG mark | MUST / Design Engineering | Not present in tracked asset inventory | 32×32 and 48×48 favicon; 512×512 avatar; SVG <10 KB |
+| OSIALI OG preview | X/social link preview and repo share | Real OSIALI product screenshot + vector wordmark/layout; no stock or generated background | MUST / Design Engineering | public/og-preview.png is a legacy Docketrail image; replace | 1200×630 PNG/WebP; target <300 KB; verify publicly after deployment |
+| F1 desktop hero capture | Shows failed/unresolved magic moment | Fresh capture of deployed OSIALI F1 path | MUST / Visual QA | Existing qa/operator-F1-desktop.png is pre-rename and stale | 1440×1000 PNG/WebP; target <300 KB |
+| F2 refunded capture | Proves refund classification contrast | Fresh capture of deployed OSIALI F2 path | MUST / Visual QA | Not confirmed current-brand | 1440×1000; same scale/crop as F1 |
+| F3 complete capture | Proves healthy completion contrast | Fresh capture of deployed OSIALI F3 path | MUST / Visual QA | Not confirmed current-brand | 1440×1000; same scale/crop as F1 |
+| F1 mobile capture | Proves responsive primary workflow | Fresh deployed OSIALI F1 mobile capture | MUST / Visual QA | Existing qa/operator-F1-mobile.png is pre-rename and stale | 390×844; route converts to vertical sequence; target <250 KB |
+| Final judge demo | Shows intake → evidence route → safe action → real export → F2/F3 contrast | Actual deployed UI screen recording, H.264 MP4 with voiceover and readable captions | MUST / Demo Director | Planned; old Docketrail recordings are backup only | 1440×900, 60–90 seconds, 25/30 fps; target <25 MB; audio clear, captions on-screen |
+| Evidence export proof | Makes support handoff tangible | Actual JSON file produced by current app; optional cropped screenshot of opened JSON | SHOULD / Proof + Demo Director | Prior export proof exists; new OSIALI filename requires fresh check | JSON preserved unmodified; screenshot 1440 px wide if used |
+| Route diagram | Explains five-leg journey and missing boundary | Real UI SVG/CSS diagram driven by case evidence | MUST / Design Engineering | Existing UI route is implemented; preserve behavior | Inline SVG/CSS, no external image request; text fallback |
+| Fonts | Maintains brand and identifier hierarchy | Existing locally hosted IBM Plex Sans 400/500/600 and IBM Plex Mono 400 | MUST / Design Engineering | Present under public/fonts/ | WOFF2; no remote font dependency |
+
+### Surface-by-surface visual mode
+- **App first fold:** product-led/interface-first. Real F1 route is the primary asset; no abstract hero illustration.
+- **Core investigation canvas:** diagram-led using the actual route and evidence states. The selected leg reveals real source facts in a side pane.
+- **Recovery/action rail:** interface-first; exact next action and its predicates are the visual focus.
+- **Refund/complete contrasts:** product-led captures with identical framing so judges can compare outcomes.
+- **Social preview:** product capture + typographic wordmark; no unrelated hero art.
+- **Demo:** motion-led only through real user interaction and state changes; no fake transfer animation.
+- **Mobile:** product-led vertical route sequence, not a resized desktop screenshot.
+
+### Asset acceptance rules
+- Every screenshot must be captured from the deployed OSIALI build after browser regression; local screenshots are not final production evidence.
+- Keep source snapshot/provisional warnings visible where relevant. Never crop away the provenance or assurance boundary to make the screen look cleaner.
+- F1/F2/F3 use the same zoom, viewport and visual hierarchy.
+- Do not publish the old Docketrail OG preview or old Docketrail demo.
+- No external stock images, random gradients, generated blockchain network art, fake metrics, fake live indicators or invented transactions.
+- The OG image must be fetched from a public social-preview validator after deployment; local metadata alone is not proof.
+- Performance targets above are budgets, not measured results. Record actual file sizes when assets are produced.
+
+**VISUAL_ASSET_STRATEGY: PASS.** Every major visual asset has a purpose, source, priority, owner, status, responsive variant and performance target. Actual asset production and visual QA remain open.
+
+## 2026-11-09 — MOTION_STORYBOARD / Phase 19
+
+The product's story is evidence state, not movement. No decorative or fake network animation is approved.
+
+| Motion | Trigger / state change | Meaning | Timing | Fallback |
+|---|---|---|---|---|
+| Route focus | User selects a lifecycle leg | Moves attention to the selected evidence and its provenance | 120–160 ms opacity/outline transition | Immediate state change under prefers-reduced-motion |
+| Evidence disclosure | User expands a leg or evidence section | Reveals supporting identifiers/details without losing route context | 120–160 ms height/opacity; avoid layout jump | Static expanded content, keyboard accessible |
+| Status change | A newly loaded case changes the route state | Communicates actual observed status, not live activity | No simulated travel; direct state render | Text status + route marker |
+| Export feedback | User activates JSON export | Confirms the real file handoff | Brief, non-blocking confirmation | Browser download remains the proof |
+
+- No pulsing nodes, progress bars that imply unobserved processing, auto-scanning, flying tokens, animated bridges, or looping network backgrounds.
+- Reduced-motion mode removes nonessential transitions.
+- Mobile uses the same semantic states and no hover-only meaning.
+- Motion performance budget: CSS-only transitions; no animation library or runtime dependency.
+
+**MOTION_STORYBOARD: PASS.** All meaningful motion is tied to a real user-triggered state change; otherwise the interface remains still.

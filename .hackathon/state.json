@@ -1,12 +1,12 @@
 {
   "schema_version": 4,
-  "revision": 14,
+  "revision": 15,
   "recovered_from_legacy": true,
   "previous_local_state": "ABSENT",
   "legacy_checkpoint_revision": "UNKNOWN",
   "project_root": "C:\\Users\\USER\\Documents\\intent-rescue",
-  "phase": "VISUAL_ASSET_STRATEGY",
-  "active_specialist": "Art Director",
+  "phase": "DESIGN_LOCK",
+  "active_specialist": "HQ + Art Director",
   "human_input_required": false,
   "pending_gate": null,
   "product_locked": true,
@@ -38,7 +38,7 @@
   "happy_path_complete": true,
   "art_direction_complete": true,
   "references_synthesized": true,
-  "visual_asset_strategy_complete": false,
+  "visual_asset_strategy_complete": true,
   "motion_storyboard_complete": true,
   "design_locked": false,
   "design_lock_revision": 1,
@@ -77,7 +77,9 @@
     "nov9_product_revalidation": "After OSIALI lock: Dependency Attack PASS (no new external dependency); Technical De-risk PASS with explicit historical F1 RPC limits; Vertical Slice PASS with fresh deployed-browser regression pending; Product Review PASS (no thesis/P0 drift).",
     "nov9_brand_kit": "Lightweight brand kit complete in BRAND.md: positioning, descriptor, tagline, voice, wordmark/mark, typography, palette, motif, imagery, favicon/avatar and usage rules. Current phase ART_DIRECTION.",
     "nov9_art_direction": "Phase 16 PASS. Three distinct visual territories compared; Witness Desk selected. Product-specific visual thesis and composition targets in DESIGN.md.",
-    "nov9_reference_board": "Phase 17 PASS. NEAR Intents Explorer, Sentry Issue Details, Honeycomb Trace Explorer and incident.io Timeline captured and decomposed by purpose; Witness Desk synthesis preserved."
+    "nov9_reference_board": "Phase 17 PASS. NEAR Intents Explorer, Sentry Issue Details, Honeycomb Trace Explorer and incident.io Timeline captured and decomposed by purpose; Witness Desk synthesis preserved.",
+    "nov9_asset_strategy": "Phase 18 PASS. Asset inventory and acceptance rules recorded in DESIGN.md; actual OG/brand assets and fresh captures still need production.",
+    "nov9_motion_storyboard": "Phase 19 PASS. Minimal motion contract recorded; only meaningful user-triggered state feedback."
   },
   "blockers": [
     "Track decision: original PRODUCT_LOCK says Unstoppable DeFi primary / Open Innovation secondary; current recommendation Open Innovation; no explicit switch recorded",
@@ -88,8 +90,8 @@
     "Legacy Docketrail OG preview and old demo recordings must be replaced; browser-level visual QA of the new OSIALI production deployment is still pending.",
     "Formal trademark, domain and social-handle clearance for OSIALI remains outstanding; do not claim legal availability."
   ],
-  "next_action": "Complete VISUAL_ASSET_STRATEGY: specify the OSIALI wordmark/mark, OG preview, authentic F1/F2/F3 screenshots, responsive captures and final demo video with purpose, source, priority, owner, status, formats and performance budgets.",
-  "updated_at": "2026-11-09T20:44:24.847Z",
+  "next_action": "Complete DESIGN_LOCK: specify exact first-fold, core investigation and magic-moment compositions, component hierarchy, dimensions, responsive behavior, accessibility and acceptance screenshots. Do not begin substantial UI redesign before the lock.",
+  "updated_at": "2026-11-09T20:46:18.111Z",
   "name_status": "LOCKED_USER_APPROVED",
   "proposed_name": "OSIALI",
   "proposed_name_user_approved": true,
@@ -187,17 +189,17 @@
     {
       "n": 18,
       "phase": "VISUAL_ASSET_STRATEGY",
-      "status": "OPEN — inventory required judge-facing assets, source, purpose, priority, owner, status, responsive variants and performance budget."
+      "status": "PASS — DESIGN.md inventories wordmark/mark, favicon, OG preview, F1/F2/F3 desktop, F1 mobile, demo, export proof, route diagram and fonts with purpose/source/priority/owner/status/format/responsive/performance targets."
     },
     {
       "n": 19,
       "phase": "MOTION_STORYBOARD",
-      "status": "PASS_NO_SIGNIFICANT_MOTION"
+      "status": "PASS — motion is limited to real user-triggered focus/disclosure/status/export feedback; no fake transfer/live telemetry; reduced-motion and mobile fallbacks defined."
     },
     {
       "n": 20,
       "phase": "DESIGN_LOCK",
-      "status": "PARTIAL_PROVISIONAL"
+      "status": "OPEN — freeze implementable static compositions for first fold, core app and magic moment; include hierarchy, layout, interaction, responsive and accessibility requirements."
     },
     {
       "n": 21,
