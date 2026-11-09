@@ -116,7 +116,7 @@ Current local revision is **not yet certified as the production deployment**. Ne
 | C5 | Support JSON contains missing evidence and escalation request | VERIFIED locally | Playwright actual downloaded JSON, `src/evidence-bundle.mjs` | No custody/refund action |
 | C6 | Automated regression coverage | MEASURED locally | **23/23 Node tests** on Nov 8, `npm test` | Local Windows Node 24 revision; must rerun on published commit |
 | C7 | Desktop + mobile forensic desk displays | OBSERVED locally | `qa/operator-F1-desktop.png`, `qa/operator-F1-mobile.png` at 1440Ã—1000 and 390Ã—844 | Browser captures not yet proof of public deployment |
-| C8 | Current production alias matches the audited repository revision | VERIFIED | Vercel production deployment dpl_CxeQQAnsZcXve62MMskuq6ZCT9Xz is READY on commit f667036e932ee638ef1aba57da4d234e00d47ee5; alias intent-rescue.vercel.app assigned; live Playwright manual-fallback regression passed | Branding is still provisional; deployment correctness does not approve Docketrail |
+| C8 | Current production alias matches the audited repository revision | VERIFIED | Vercel deployment dpl_ddjoz4LbCZ4ischFANc1SMaZaVtk is READY on commit 0736576ed155d5e6420bcf0d63219d70817032b6; alias intent-rescue.vercel.app assigned; browser confirms current brand assets and P0 states | Old Docketrail demo remains legacy; live release identity is OSIALI |
 | C9 | Current demo video matches November 8 UI and export | STALE | November 1 screenshot sequence exists | Re-record required; see DEMO.md |
 | C10 | Universal automatic private-history lookup for arbitrary deposit/source-chain/correlation identifiers | BLOCKED / OUT OF P0 SCOPE | Partner historical API access is unavailable; the approved P0 fallback is source-attributed manual evidence JSON, not universal auto-indexing | Never claim universal auto-tracing; supported P0 manual fallback is separately verified |
 | C11 | External impact/adoption validated by NEAR users | UNPROVEN | No independent feedback artifact yet | Do not invent endorsements |
@@ -136,7 +136,7 @@ Evidence rules: preserve input source, date, freshness, environment and limitati
 
 ## 2026-11-09 Proof Engine close
 - C01a approved product thesis: VERIFIED by the original PRODUCT.md revision 1 and current product-coverage audit.
-- C01b customer-facing brand identity: OSIALI explicitly approved by the user on 2026-11-09; current production deployment and OG preview still require OSIALI alignment and verification.
+- C01b customer-facing brand identity: OSIALI explicitly approved by the user on 2026-11-09; current UI, witness mark, favicon, avatar and OG preview are deployed and verified. Legacy Docketrail demo recording remains unapproved.
 - C02 supported multi-identifier intake: VERIFIED within the documented manual-fallback contract. Unit tests cover deposit address, correlation ID, source/destination identifiers and status-payload normalization. A live production browser run verified matching correlation-ID evidence is accepted only as provisional/unverified and mismatched evidence is rejected. Do not claim automatic private-history lookup for every identifier.
 - C03 public Explorer lookup: VERIFIED for 10/10 corpus outcomes as Explorer-reported categories, plus live FAILED/REFUNDED/SUCCESS endpoint cases. Not independent chain-finality verification.
 - C04 five-leg route + conservative diagnosis: VERIFIED by F1/F2/F3 integrated browser + 9/9 red-team.
@@ -159,4 +159,14 @@ Evidence rules: preserve input source, date, freshness, environment and limitati
 - Aliases: intent-rescue.vercel.app, intent-rescue-shalyxs-projects.vercel.app, intent-rescue-git-main-shalyxs-projects.vercel.app.
 - Build log: osiali@0.0.1 build; Static build ready; Deployment completed.
 - Scope: name/metadata/README/export-filename alignment only; no lifecycle/classifier behavior change.
-- Limitation: READY build and alias are not browser-render QA. OG preview and old recordings remain legacy Docketrail assets.
+- Limitation: this proves brand asset delivery and a live browser smoke, not the full six-dimension Visual QA or final demo. Older recordings remain legacy Docketrail assets.
+
+
+## 2026-11-09 — OSIALI brand asset release
+
+- Commit: `0736576ed155d5e6420bcf0d63219d70817032b6`.
+- Vercel deployment: `dpl_ddjoz4LbCZ4ischFANc1SMaZaVtk`, READY; alias `intent-rescue.vercel.app`.
+- Browser fetched the mark, SVG favicon, 32×32 PNG favicon, 512×512 avatar and 1200×630 OG preview successfully (HTTP 200; correct image MIME types/dimensions).
+- Rendered HTML title is `OSIALI — Incident Desk`; canonical URL and `og:site_name=OSIALI` are present; no Docketrail string remains in rendered HTML.
+- F1/F2/F3 continue to render as Failed unresolved / Refund verified / Complete; mobile 390px has no horizontal overflow; zero page errors.
+- OpenGraph.to score: 93/100. It detected the image URL, 1200×630 dimensions, alt text, canonical URL, site name and Twitter large-image card. Remaining notices are informational only (locale, X handle, structured data, web manifest).

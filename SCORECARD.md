@@ -7,7 +7,7 @@ Official 2026 scoring weights: UNKNOWN. Internal estimates, not official scores.
 | Product judge | 8/10 | Public Explorer record â†’ five-leg route â†’ first unresolved boundary â†’ conservative action â†’ support export; failed/refunded/complete contrasts | Private history requires user-supplied evidence; state this in first 30 seconds. |
 | Technical judge | 8/10 | 35/35 tests, 9/9 red-team, fixed-host public HTML reader, strict identifier matching, chain-specific links, local reproducibility | HTML snapshots are not signed chain-finality proof. |
 | Sponsor judge | 7/10 | NEAR Intents is the actual incident surface; NEAR Explorer records and NEAR tx refs integral to route reconstruction | No authenticated partner API; explain credential-independent public evidence path. |
-| 30-second judge | 8/10 | Interrupted five-leg rail, unresolved boundary, failed/refund/success contrast, OSIALI product identity; user-approved 2026-11-09; deployment and final demo alignment remain open | No narration; chapter overlays carry story. |
+| 30-second judge | 8/10 | Interrupted five-leg rail, unresolved boundary, failed/refund/success contrast, OSIALI user-approved and deployed across UI/mark/favicon/avatar/OG; Visual QA and fresh demo remain open | No narration; chapter overlays carry story. |
 
 ## Criterion estimate (weights UNKNOWN)
 - Technical implementation 8/10: endpoint, tests, red-team, local reproduction. Deduction: public HTML/manual data not independently authenticated chain history.
@@ -24,8 +24,8 @@ what_confused_me: Public Explorer snapshot vs on-chain verified state.
 what_i_would_remember_tomorrow: The broken rail at the first unresolved leg and â€œEvidence, not guesswork.â€
 
 ## Recommendation
-This is a provisional judge simulation, not a final judge-ready verdict. The current deployed name is unapproved, the final demo gate is open, and track assignment conflicts with the original product lock. Resolve those gates, then rerun the four lenses against the final artifact. Do not publish the current Docketrail-labelled recording.
+This is a provisional judge simulation, not a final judge-ready verdict. The OSIALI identity is now approved and aligned in production; the final Visual QA/demo gates remain open, and track assignment conflicts with the original product lock. Rerun the four lenses against the final artifact. Do not publish the legacy Docketrail-labelled recording.
 
 
 ## Naming correction
-OSIALI was explicitly approved by the user on 2026-11-09. Docketrail remains an unapproved legacy OG/video label and must not be used in the public pitch or submission. The new OSIALI HTML title/header source is deployed in a READY Vercel build; browser verification remains pending. The original product thesis remains Idea 1 / Intent Rescue.
+OSIALI was explicitly approved by the user on 2026-11-09. The current UI, mark, favicon, avatar and OG preview are deployed and browser-verified. Docketrail remains only in old demo recordings and must not be used in the public pitch or submission. The original product thesis remains Idea 1 / Intent Rescue.

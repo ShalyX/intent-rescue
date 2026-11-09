@@ -1,5 +1,5 @@
 # DESIGN — OSIALI / newest Operator
-Status: **DESIGN_LOCK revision 2 PASS (2026-11-09); DESIGN_ENGINEERING is next.** Visual QA and asset production remain separate open gates. Original approved Pass 3 forensic incident-desk direction retained. Actual production commit 6b1abb5 inspected at desktop 1440×1000 and mobile 390×844; new name/route/safe-action rendered correctly, F1/F2/F3 outcomes checked and mobile horizontal overflow measured false.
+Status: **DESIGN_LOCK revision 2 PASS; DESIGN_ENGINEERING PASS (2026-11-09); VISUAL_QA is next.** The OSIALI witness mark, SVG/PNG favicons, 512×512 avatar and 1200×630 screenshot-based OG preview are deployed. Latest production commit 0736576ed155d5e6420bcf0d63219d70817032b6 is READY. Live browser checks confirm the identity assets, F1/F2/F3 states and 390px mobile no-overflow; full Visual QA remains open.
 
 ## Product / experience map
 User: person/integrator facing ambiguous NEAR Intents swap status. First 30 seconds: load captured case or known identifier → inspect branched route → see evidence break and safe action. Primary surface: incident desk, with captured-case left rail, central evidence route, attached recovery rail, and support ledger/export. Account/wallet/auth N/A: read-only diagnostic tool. Loading, no-capture, manual provisional, error, refund and complete states exist.
@@ -11,7 +11,7 @@ Forensic operations instrument, never generic crypto/AI dashboard. Compact top c
 See the source-captured 2026-11-09 REFERENCE_BOARD below: NEAR Intents Explorer, Sentry Issue Details, Honeycomb Trace Explorer and incident.io Timeline. Each reference has a specific contribution and explicit anti-copy rules.
 
 ## Visual assets
-MUST: authentic desktop and mobile captures of real F1/F2/F3 states. Present evidence: `qa/operator-F1-desktop.png` (1440×1000), `qa/operator-F1-mobile.png` (390×844) captured Nov 8 from localhost 4174. Social: current screenshot `public/og-preview.png` pending production verification. Fonts: local IBM Plex Sans/Mono with OFL license files in `public/fonts/`.
+MUST: authentic desktop and mobile captures of real F1/F2/F3 states. The new `public/og-preview.png` is based on a real production F1 screenshot. Standalone current-brand F1/F2/F3 desktop and F1 mobile captures are the next Visual QA evidence set; the older `qa/operator-F1-*` captures remain historical only. Fonts: local IBM Plex Sans/Mono with OFL license files in `public/fonts/`.
 MUST fallback: text-based lifecycle leg and exact labels if route illustration/animation fails.
 
 ## Motion
@@ -146,9 +146,9 @@ VISUAL_ASSET_STRATEGY must inventory the OSIALI wordmark/mark, replacement OG pr
 
 | Asset | Purpose / judge-facing surface | Source and format | Priority / owner | Current status | Variants / budget |
 |---|---|---|---|---|---|
-| OSIALI wordmark + witness-point mark | App header, README, OG, video end-card | Custom vector/SVG built from the locked wordmark direction; no generated logo | MUST / Design Engineering | Wordmark text is present; dedicated mark not yet built | SVG, monochrome; mark legible at 16–24 px; target <10 KB |
-| Favicon / app icon | Browser tab, bookmark, social avatar | Same route-line/witness-point SVG mark | MUST / Design Engineering | Inline route glyph exists in public/index.html; refine and validate at small sizes | 32×32 and 48×48 favicon; 512×512 avatar; SVG <10 KB |
-| OSIALI OG preview | X/social link preview and repo share | Real OSIALI product screenshot + vector wordmark/layout; no stock or generated background | MUST / Design Engineering | public/og-preview.png is a legacy Docketrail image; replace | 1200×630 PNG/WebP; target <300 KB; verify publicly after deployment |
+| OSIALI wordmark + witness-point mark | App header, README, OG, video end-card | Custom vector/SVG built from the locked wordmark direction; no generated logo | MUST / Design Engineering | Built and deployed: `public/osiali-mark.svg`; rendered in production header | SVG, monochrome; 28×24 source viewBox; target <10 KB |
+| Favicon / app icon | Browser tab, bookmark, social avatar | Same route-line/witness-point mark | MUST / Design Engineering | Built and deployed: `public/favicon.svg`, `public/favicon-32.png` and `public/osiali-avatar.png` (512×512) | 32×32 PNG + SVG favicon; 512×512 PNG avatar |
+| OSIALI OG preview | X/social link preview and repo share | Real OSIALI production screenshot + vector wordmark/layout; no stock or generated background | MUST / Design Engineering | Replaced and deployed: `public/og-preview.png`, 1200×630 PNG, 62,201 bytes; public validator 93/100 | 1200×630 PNG; target <300 KB; public validator and live fetch passed |
 | F1 desktop hero capture | Shows failed/unresolved magic moment | Fresh capture of deployed OSIALI F1 path | MUST / Visual QA | Existing qa/operator-F1-desktop.png is pre-rename and stale | 1440×1000 PNG/WebP; target <300 KB |
 | F2 refunded capture | Proves refund classification contrast | Fresh capture of deployed OSIALI F2 path | MUST / Visual QA | Not confirmed current-brand | 1440×1000; same scale/crop as F1 |
 | F3 complete capture | Proves healthy completion contrast | Fresh capture of deployed OSIALI F3 path | MUST / Visual QA | Not confirmed current-brand | 1440×1000; same scale/crop as F1 |
@@ -171,7 +171,7 @@ VISUAL_ASSET_STRATEGY must inventory the OSIALI wordmark/mark, replacement OG pr
 - Every screenshot must be captured from the deployed OSIALI build after browser regression; local screenshots are not final production evidence.
 - Keep source snapshot/provisional warnings visible where relevant. Never crop away the provenance or assurance boundary to make the screen look cleaner.
 - F1/F2/F3 use the same zoom, viewport and visual hierarchy.
-- Do not publish the old Docketrail OG preview or old Docketrail demo.
+- Do not publish the old Docketrail demo recording; the current OG preview is OSIALI.
 - No external stock images, random gradients, generated blockchain network art, fake metrics, fake live indicators or invented transactions.
 - The OG image must be fetched from a public social-preview validator after deployment; local metadata alone is not proof.
 - Performance targets above are budgets, not measured results. Record actual file sizes when assets are produced.
@@ -258,3 +258,24 @@ No desktop three-column shrinking. No horizontal page overflow. Preserve labels,
 - Actual OG preview, dedicated mark, fresh F1/F2/F3 screenshots and final demo remain production tasks in later phases.
 
 **DESIGN_LOCK: PASS — revision 2.** The composition, hierarchy, interactions, responsive behavior, visual tokens and acceptance viewports are implementable without further aesthetic invention. This authorizes Design Engineering to execute the locked identity/assets while preserving the P0 journey; it does not pass Visual QA.
+
+
+## 2026-11-09 — DESIGN_ENGINEERING / Phase 21
+
+### Implemented
+- Custom branched route / witness-point mark: `public/osiali-mark.svg`; deployed in the app header.
+- Dedicated SVG favicon: `public/favicon.svg`.
+- PNG favicon: `public/favicon-32.png` (32×32), added for crawler/browser compatibility.
+- Social/app avatar: `public/osiali-avatar.png` (512×512).
+- Replaced the legacy Docketrail OG image with `public/og-preview.png` (1200×630, 62,201 bytes). It uses a real F1 screenshot captured from the deployed OSIALI UI and a typographic OSIALI / “Know what happened.” footer.
+- Added `og:site_name`, canonical URL, OG dimensions/alt text, Twitter title/description/image and `summary_large_image` metadata.
+- No new runtime dependency; existing product UI, classifier, route, evidence and export behavior are unchanged.
+
+### Production verification
+- Git commit: `0736576ed155d5e6420bcf0d63219d70817032b6`.
+- Vercel deployment: `dpl_ddjoz4LbCZ4ischFANc1SMaZaVtk`, READY; canonical alias `intent-rescue.vercel.app` attached.
+- Browser: HTTP 200; OSIALI title; no Docketrail in rendered HTML; mark/SVG favicon/PNG favicon/avatar/OG all return 200 with correct image MIME types and dimensions.
+- Product regression: F1 = Failed unresolved; F2 = Refund verified; F3 = Complete. Safe-action copy remains correct. Mobile 390px has no horizontal overflow; no page errors.
+- Public OG validator: 93/100, 1200×630 image recognized, OSIALI title/description/site name/canonical and Twitter large-image card read correctly. Remaining notices are informational only (locale, X handle, structured data, manifest); no handle was invented.
+
+**DESIGN_ENGINEERING: PASS.** Current phase moves to VISUAL_QA. Do not mark the overall product judge-ready; the old Docketrail demo recording and the remaining Visual QA gates are still open.

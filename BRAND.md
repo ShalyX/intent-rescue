@@ -2,7 +2,7 @@
 
 **Operator:** Hackathon Operator v0.5.0
 **Date:** 2026-11-09
-**Decision state:** SHORTLIST PRESENTED; NO NAME APPROVED OR LOCKED.
+**Decision state:** USER-APPROVED — OSIALI (2026-11-09). NAME_LOCK passed; formal legal clearance remains outstanding.
 
 ## Product and naming brief
 
@@ -338,3 +338,17 @@ Use the route-line/witness-point mark alone at small sizes, with a high-contrast
 - Do not add “AI-powered,” “recovery,” “refund guarantee,” or “real-time” to the descriptor unless the actual product and evidence support the claim.
 
 **Brand Kit status:** complete at the lightweight identity-system level. Art Direction, Reference Board, Visual Asset Strategy, Design Lock and actual asset replacement remain separate later Operator phases.
+
+
+## Production identity assets — 2026-11-09
+
+- **Wordmark:** OSIALI uppercase text in the application header.
+- **Witness-point mark:** `public/osiali-mark.svg`, deployed in the header; custom branched route ending at one observation point.
+- **Favicon:** `public/favicon.svg` plus `public/favicon-32.png` (32×32 PNG).
+- **App/social avatar:** `public/osiali-avatar.png` (512×512 PNG).
+- **Open Graph preview:** `public/og-preview.png` (1200×630 PNG, 62,201 bytes). Built from an actual F1 screenshot captured from the deployed OSIALI incident desk, with the approved wordmark/tagline footer; no generated or stock imagery.
+- **Social metadata:** canonical URL, `og:site_name`, OG image dimensions/alt text, Twitter title/description/image and large-image card are set.
+- **Production proof:** commit `0736576ed155d5e6420bcf0d63219d70817032b6`, Vercel deployment `dpl_ddjoz4LbCZ4ischFANc1SMaZaVtk`, READY; `intent-rescue.vercel.app` alias attached.
+- **Public OG validation:** OpenGraph.to returned 93/100, detected the 1200×630 image and OSIALI metadata, and reported no blocking issues. Remaining notices are optional locale, X handle, structured data and web manifest; no X handle was invented.
+- **Legacy:** older Docketrail demo recordings remain unapproved and must not be submitted. The current UI, favicon, avatar and OG preview use OSIALI.
+

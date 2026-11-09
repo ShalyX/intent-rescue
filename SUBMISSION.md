@@ -1,19 +1,19 @@
 # NEAR Hackathon submission pack — OSIALI
 
 ## Status
-**NOT SUBMISSION READY — OSIALI is user-approved, but final brand alignment and demo QA remain open.** The new OSIALI HTML title/header source is deployed in a READY Vercel build on commit b613f5c. Browser-render verification is pending; the OG preview and existing video still carry the legacy Docketrail label. Do not submit those legacy assets.
+**NOT SUBMISSION READY — OSIALI identity is aligned and deployed; Visual QA, fresh demo and submission gates remain open.** The mark, favicon, avatar and 1200×630 OG preview are live and browser-verified on commit 0736576. The existing video still carries the legacy Docketrail label and must not be submitted.
 
 ## Existing assets (provisional)
-- Demo file: qa/docketrail-judge-final.mp4 (contains unapproved Docketrail label; do not publish yet)
+- Legacy demo file: qa/docketrail-judge-final.mp4 (contains unapproved Docketrail label; do not publish)
 - Public repo: https://github.com/ShalyX/intent-rescue
-- Live demo: https://intent-rescue.vercel.app/ (currently displays the legacy Docketrail label pending OSIALI deployment and verification)
+- Live app: https://intent-rescue.vercel.app/ (current UI and OG preview display OSIALI; existing demo MP4 remains a legacy Docketrail recording)
 
 ## Track decision
 Original PRODUCT.md revision 1 records primary Unstoppable DeFi and secondary Open Innovation. Current recommendation is Open Innovation, but the final track selection remains open until explicitly reconciled.
 
-## Once the name is approved
-- [ ] Align app title, wordmark, social metadata, README, demo and submission title.
-- [ ] Deploy and verify the approved identity.
+## Remaining before submission
+- [x] Align app title, wordmark, social metadata, favicon, avatar and OG preview.
+- [x] Deploy and verify the approved identity.
 - [ ] Record/QA the final demo using that identity.
 - [ ] Publish X demo post tagging @NEARProtocol and including #NEARHackathon.
 - [ ] Submit repository, public X post URL and demo URL through the official form: https://nearhackathon.com/

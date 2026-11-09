@@ -12,9 +12,9 @@
 - Re-ran current tests: **35/35**; red-team: **9/9**; static build: **PASS**; benchmark: **30,000 deterministic classifications**.
 - Live production Playwright test: matching user-supplied correlation-ID evidence was accepted as **provisional/unverified**; a payload with a different correlation ID was rejected. This verifies the manual fallback boundary, not private API history.
 - Recovered original IDEAS.md, VALIDATION.md, EVIDENCE_PLAN.md, TECHNICAL_DERISK.md, and the October 26 project checkpoint from the Library because they were missing from the current project directory. The current state file says recovered_from_legacy=true, previous_local_state=ABSENT, and legacy_checkpoint_revision=UNKNOWN; the old phase ledger had not been preserved locally.
-- The current phase NAME_APPROVAL was not a valid v0.5.0 state. Canonical current phase is **NAME_LOCK**. Current Vercel production is READY on commit f667036 and the alias intent-rescue.vercel.app is assigned.
+- Current phase is **VISUAL_QA** after DESIGN_ENGINEERING passed. Vercel production is READY on commit 0736576ed155d5e6420bcf0d63219d70817032b6; alias intent-rescue.vercel.app is assigned.
 - State flags are not accepted as proof. Several were prematurely true and are corrected below.
-- The current deployed UI and demo display Docketrail, which was never user-approved. It is a provisional implementation label only.
+- The current UI, mark, favicon, avatar and OG preview use approved OSIALI. Older demo recordings still display Docketrail and are not approved submission media.
 
 ## 35-state phase-by-phase audit
 
@@ -42,7 +42,7 @@ Status key: **PASS** = exit proof inspected; **PASS*** = historical artifact pro
 | 18 | VISUAL_ASSET_STRATEGY | **PASS — 2026-11-09** | DESIGN.md inventories wordmark/mark, favicon, OG preview, F1/F2/F3 desktop, F1 mobile, demo, export proof, route diagram and fonts with purpose/source/priority/owner/status/format/responsive/performance targets. |
 | 19 | MOTION_STORYBOARD | **PASS — 2026-11-09** | DESIGN.md defines only user-triggered focus/disclosure/status/export feedback, no fake transfer/live telemetry, and reduced-motion/mobile fallbacks. |
 | 20 | DESIGN_LOCK | **PASS — REVISION 2** | DESIGN.md freezes the 1440×1000 desktop and 390×844 mobile composition, hierarchy, interaction contract, evidence boundaries, type/palette, accessibility and acceptance viewports. Visual QA remains separate. |
-| 21 | DESIGN_ENGINEERING | **OPEN — CURRENT PHASE** | Implement the locked OSIALI identity assets, replace the legacy OG image, produce current-brand captures, and preserve the existing P0 incident workflow. |
+| 21 | DESIGN_ENGINEERING | **PASS — 2026-11-09** | OSIALI mark, SVG/PNG favicons, 512×512 avatar and 1200×630 production-screenshot OG preview implemented and deployed. Live browser confirms assets 200, F1/F2/F3 classifications unchanged, 390px mobile no overflow; OpenGraph.to score 93/100. |
 | 22 | VISUAL_QA | **PARTIAL** | Real F1/F2/F3 captures, responsive widths, keyboard path and reduced-motion checks exist. v0.5.0 requires six 0ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Å“4 scores (each ÃƒÂ¢Ã¢â‚¬Â°Ã‚Â¥3, total ÃƒÂ¢Ã¢â‚¬Â°Ã‚Â¥20/24), actual desktop/mobile landing + app + magic-moment captures and no hard veto. That scorecard is absent; full screen-reader/contrast audit and motion capture are not complete. |
 | 23 | BUILD_LOOP | **PASS** | All seven original P0s have integrated acceptance coverage within the supported-input contract. Current run: 35/35 tests, 9/9 red-team, 30,000 deterministic classifications, build PASS, production F1/F2/F3 and manual correlation-ID matching/mismatch rejection. Universal automatic private-history lookup is explicitly not claimed. |
 | 24 | PROOF_ENGINE | **PASS WITH EXPLICIT BOUNDARIES** | C01 is split into verified product thesis and blocked brand lock; C10 is explicitly universal auto-lookup OUT OF P0 SCOPE; C8 current production commit f667036 is verified; F1 archival RPC is explicitly not claimed. Core P0 claims have verified proof or bounded blocked status. |
@@ -64,7 +64,7 @@ Status key: **PASS** = exit proof inspected; **PASS*** = historical artifact pro
 Original PRODUCT.md revision 1 says **primary Unstoppable DeFi; secondary Open Innovation**. A later HACKATHON.md edit silently reversed the order; the current HACKATHON.md now marks the decision OPEN and records both. The official event describes Unstoppable DeFi around exchanges, perps, lending, vaults and trading agents, and Open Innovation as the open category; it also permits selecting every track that genuinely fits. Open Innovation is the stronger fit for this incident-response product, but the final selection must be explicitly reconciled before submission.
 
 ### Current phase and premature flags
-The current phase is **ART_DIRECTION**. NAME_LOCK through BRAND_KIT have been reconciled against the explicit OSIALI approval and current release evidence. The previous state overstated feature_freeze, product_hygiene_passed, demo_production_complete, judge_simulation_complete, art_direction_complete, references_synthesized, visual_asset_strategy_complete, design_locked and visual_qa_static_complete. These flags have been reset to match the phase evidence. Core P0/full-product verification and red-team results remain preserved.
+The current phase is **VISUAL_QA**. NAME_LOCK through DESIGN_ENGINEERING are reconciled against explicit OSIALI approval and current production evidence. DESIGN_ENGINEERING is passed; Visual QA, Product Hygiene, demo production, pitch, judge simulation, track reconciliation, submission audit and publication remain open. Core P0/full-product verification and red-team results remain preserved.
 
 ## Correct sequential route from here
 
@@ -79,7 +79,7 @@ The current phase is **ART_DIRECTION**. NAME_LOCK through BRAND_KIT have been re
 9. Run Submission Audit; only then mark READY_TO_SUBMIT.
 10. Publish the required public X demo post, submit the repo + post links through the official form, and mark SUBMITTED only after a visible receipt.
 
-**Current Operator verdict: NOT JUDGE_READY.** The product implementation is substantially complete; the workflow is not. Earliest unmet sequential gate is NAME_LOCK, with track classification and later quality/presentation gates still open. No product rebuild is authorized or needed from this audit alone.
+**Current Operator verdict: NOT JUDGE_READY.** The product implementation is substantially complete; the workflow is not. Earliest unmet sequential gate is VISUAL_QA, followed by Product Hygiene, demo production, track reconciliation, pitch, judge simulation and submission audit. No product-scope change is authorized or needed from this audit alone.
 
 
 ## Evidence registry reconciliation
@@ -87,4 +87,4 @@ The current phase is **ART_DIRECTION**. NAME_LOCK through BRAND_KIT have been re
 - C8 current production revision f667036 verified READY with canonical alias; C14/C15 production manual-fallback test is reproducible in scripts/operator-integrity-check.js.
 - C10 universal private-history auto-lookup is explicitly outside locked P0; matching manual evidence JSON is the supported fallback.
 - C16 historical F1 RPC verification is blocked/not claimed; the unrelated current transaction proves the RPC primitive only.
-- C17 customer-facing brand identity remains blocked. All product-critical claims are now VERIFIED/MEASURED or explicitly BLOCKED/OUT OF SCOPE; no universal-tracing claim remains open.
+- C17 customer-facing brand identity is VERIFIED for current UI and social preview. Docketrail remains only in old demo recordings. All product-critical claims remain VERIFIED/MEASURED or explicitly BLOCKED/OUT OF SCOPE; no universal-tracing claim is made.

@@ -85,3 +85,13 @@ Resolve the product-name gate. Do not publish the Docketrail-labelled video or u
 - Phase 20 DESIGN_LOCK revision 2: PASS. DESIGN.md freezes the exact desktop/mobile composition, component hierarchy, first-fold priority, interaction contract, evidence boundary, typography/palette, accessibility and acceptance viewports.
 - Design Engineering is authorized to implement the locked OSIALI identity and required assets without changing the P0 workflow.
 - Current Operator phase: DESIGN_ENGINEERING. Visual QA, current-brand screenshots, OG preview replacement and final demo remain open.
+
+
+## 2026-11-09 — DESIGN_ENGINEERING completed
+
+- Phase 21 PASS. Implemented and deployed the OSIALI witness-point mark, SVG favicon, 32×32 PNG favicon, 512×512 avatar and new 1200×630 production-screenshot OG preview.
+- Added canonical URL, og:site_name, OG dimensions/alt text and Twitter large-image metadata.
+- Production commit: `0736576ed155d5e6420bcf0d63219d70817032b6`; Vercel deployment `dpl_ddjoz4LbCZ4ischFANc1SMaZaVtk` READY with canonical alias attached.
+- Live browser regression: HTTP 200; all identity assets 200; no Docketrail in rendered HTML; F1/F2/F3 classifications remain Failed unresolved / Refund verified / Complete; 390px mobile no horizontal overflow; zero page errors.
+- Public OpenGraph.to validation: 93/100; title, description, site name, canonical URL, image URL, 1200×630 dimensions, alt text and Twitter large-image card detected. Only informational recommendations remain.
+- Current Operator phase: VISUAL_QA. The legacy Docketrail demo recording remains blocked from submission; no product scope or P0 behavior changed.

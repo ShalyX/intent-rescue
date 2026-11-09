@@ -1,12 +1,12 @@
 {
   "schema_version": 4,
-  "revision": 16,
+  "revision": 17,
   "recovered_from_legacy": true,
   "previous_local_state": "ABSENT",
   "legacy_checkpoint_revision": "UNKNOWN",
   "project_root": "C:\\Users\\USER\\Documents\\intent-rescue",
-  "phase": "DESIGN_ENGINEERING",
-  "active_specialist": "Design Engineering",
+  "phase": "VISUAL_QA",
+  "active_specialist": "Visual QA",
   "human_input_required": false,
   "pending_gate": null,
   "product_locked": true,
@@ -80,7 +80,9 @@
     "nov9_reference_board": "Phase 17 PASS. NEAR Intents Explorer, Sentry Issue Details, Honeycomb Trace Explorer and incident.io Timeline captured and decomposed by purpose; Witness Desk synthesis preserved.",
     "nov9_asset_strategy": "Phase 18 PASS. Asset inventory and acceptance rules recorded in DESIGN.md; actual OG/brand assets and fresh captures still need production.",
     "nov9_motion_storyboard": "Phase 19 PASS. Minimal motion contract recorded; only meaningful user-triggered state feedback.",
-    "nov9_design_lock": "Phase 20 PASS, revision 2. Static composition and responsive interaction contract locked in DESIGN.md; current phase DESIGN_ENGINEERING."
+    "nov9_design_lock": "Phase 20 PASS, revision 2. Static composition and responsive interaction contract locked in DESIGN.md; current phase DESIGN_ENGINEERING.",
+    "nov9_design_engineering": "Phase 21 PASS. OSIALI mark, SVG/PNG favicons, avatar and OG preview deployed and verified; public OG validation 93/100; live F1/F2/F3 and mobile smoke passed.",
+    "nov9_osiali_release": "Production commit 0736576ed155d5e6420bcf0d63219d70817032b6; deployment dpl_ddjoz4LbCZ4ischFANc1SMaZaVtk READY; alias intent-rescue.vercel.app attached; browser asset checks pass."
   },
   "blockers": [
     "Track decision: original PRODUCT_LOCK says Unstoppable DeFi primary / Open Innovation secondary; current recommendation Open Innovation; no explicit switch recorded",
@@ -88,11 +90,13 @@
     "Final demo not ready: 46.44s versus 60ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã…â€œ90s target, no final script/voiceover/caption package, provisional Docketrail identity",
     "Pitch and judge simulation must be rerun on final name/track/demo",
     "Final submission audit, public X post, official form and receipt not completed",
-    "Legacy Docketrail OG preview and old demo recordings must be replaced; browser-level visual QA of the new OSIALI production deployment is still pending.",
-    "Formal trademark, domain and social-handle clearance for OSIALI remains outstanding; do not claim legal availability."
+    "Formal trademark, domain and social-handle clearance for OSIALI remains outstanding; do not claim legal availability.",
+    "Legacy Docketrail demo recording remains unapproved; replace with a fresh 60–90s OSIALI voiceover/captioned recording.",
+    "VISUAL_QA open: six-dimension scorecard, desktop/mobile capture set, contrast/screen-reader and reduced-motion checks remain incomplete.",
+    "Formal trademark, domain and social-handle clearance remains outstanding; do not claim legal availability."
   ],
-  "next_action": "Implement only the locked OSIALI identity/assets and any necessary visual corrections; preserve the existing incident intake, five-leg route, safe action, evidence and export workflow. Push one coherent implementation update, then capture actual desktop/mobile states for VISUAL_QA.",
-  "updated_at": "2026-11-09T20:47:52.670Z",
+  "next_action": "Run VISUAL_QA against the deployed OSIALI release: capture desktop and mobile landing/app/magic-moment states; score six visual dimensions (each ≥3, total ≥20/24); verify contrast, keyboard/screen-reader semantics, reduced motion and responsive breakpoints; record all defects before fixing them.",
+  "updated_at": "2026-11-09T21:49:17.402Z",
   "name_status": "LOCKED_USER_APPROVED",
   "proposed_name": "OSIALI",
   "proposed_name_user_approved": true,
@@ -205,12 +209,12 @@
     {
       "n": 21,
       "phase": "DESIGN_ENGINEERING",
-      "status": "OPEN — implement the locked OSIALI identity/assets and verify actual current-brand product surfaces; preserve all P0 behavior."
+      "status": "PASS — OSIALI mark, SVG/PNG favicons, 512×512 avatar and 1200×630 screenshot-based OG preview implemented and deployed; live browser asset/product regression passed; OpenGraph.to score 93/100."
     },
     {
       "n": 22,
       "phase": "VISUAL_QA",
-      "status": "PARTIAL"
+      "status": "OPEN — current phase. Capture and inspect desktop/mobile landing, app and magic-moment states; complete six-dimension 0–4 scorecard (each ≥3, total ≥20/24), contrast/screen-reader/reduced-motion/responsive checks; no hard veto."
     },
     {
       "n": 23,
@@ -289,5 +293,12 @@
   ],
   "naming_shortlist": [],
   "naming_recommendation": null,
-  "naming_research_date": "2026-11-09"
+  "naming_research_date": "2026-11-09",
+  "design_engineering_complete": true,
+  "brand_assets_complete": true,
+  "favicon_complete": true,
+  "social_preview_replaced": true,
+  "og_preview_verified": true,
+  "og_preview_validation_score": 93,
+  "visual_qa_complete": false
 }
