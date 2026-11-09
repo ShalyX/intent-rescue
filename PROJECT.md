@@ -2,16 +2,18 @@
 
 ## 2026-11-09 Product Integrity and release checkpoint
 - Original approved product: Idea 1 / **Intent Rescue**, lock revision 1 (2026-10-25). No product thesis drift.
-- **Naming correction:** the separate brand/name gate was OPEN in the 2026-11-08 Operator record. Docketrail was an assistant-proposed candidate, not user-approved. The 2026-11-09 NAME_LOCK was improperly recorded without user authorization. See BRAND.md. Intent Rescue remains the canonical working name pending an explicit rename decision.
+- **Naming correction:** the separate brand/name gate was OPEN in the 2026-11-08 Operator record. Docketrail was an assistant-proposed candidate, not user-approved. A fresh 40-name/four-territory research pass and five-name scored shortlist is recorded in BRAND.md; recommendation is LegSignal, but no name is approved or locked. Intent Rescue remains the canonical working title pending explicit user selection.
 - The deployed UI, social preview and final recording currently display Docketrail; these are provisional artifacts and must not be used as final public submission assets until the name is approved and assets aligned.
 - P0 acceptance: all 7/7 original P0 capabilities verified within the approved supported-input contract; see PRODUCT-COVERAGE.md. Public NEAR Intents Explorer URL/record lookup and matching source-attributed JSON fallback. Manual evidence is explicitly unverified/provisional. No private history or universal cross-chain indexing is claimed.
 - P0-07: chain-specific links verified for F1 Litecoin source + NEAR transactions and F2 Base source + Base refund. Unknown destination/refund records remain unlinked.
 - Quality: 35/35 Node tests; 9/9 red-team; static build passes; deterministic benchmark 30,000 classifications / 10,000 rounds; local API and home HTTP 200.
-- Production: Vercel READY on commit 7b5852f for the P0 fixes; later presentation-only branding work used Docketrail. Canonical project URL remains https://intent-rescue.vercel.app/.
+- Production: Vercel current production is READY on commit f667036e932ee638ef1aba57da4d234e00d47ee5; alias https://intent-rescue.vercel.app/ is assigned. The UI still displays unapproved Docketrail; deployment correctness does not close NAME_LOCK.
 - Mobile layout: 390px viewport, no horizontal overflow; zero broken images. Manual evidence browser tests and F2 export links inspected.
 - Demo: a 46.44-second H.264 recording exists at qa/docketrail-judge-final.mp4 and decodes, but it carries the unapproved Docketrail label. It is NOT final branded demo QA.
-- Product Hygiene fallback: PASS WITH NOTES for the supported workflow; exact original Product Hygiene skill was not found. This does not override the open name gate.
-- Judge simulation: internal estimates only; official weights UNKNOWN.
+- Product Hygiene fallback was executed, but the final PRODUCT_HYGIENE gate is OPEN/BLOCKED pending approved identity and re-run; exact original Product Hygiene skill was not found.
+- Judge simulation: four-lens draft exists but is provisional/stale; rerun after name and track decisions and final demo. Official weights UNKNOWN.
+- Track decision: OPEN. Original PRODUCT.md revision 1 says primary Unstoppable DeFi / secondary Open Innovation; current HACKATHON.md recommends Open Innovation as stronger fit but records no user-approved switch.
+- Current Operator phase: NAME_LOCK. Full 35-state audit and evidence are in OPERATOR-AUDIT.md. Feature Freeze has not been reached.
 - Human/external action: no X post or portal submission made; no receipt exists.
 - Non-blocking note: no LICENSE file; licensing choice remains owner decision.
 

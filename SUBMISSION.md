@@ -8,6 +8,9 @@
 - Public repo: https://github.com/ShalyX/intent-rescue
 - Live demo: https://intent-rescue.vercel.app/ (currently displays provisional Docketrail label)
 
+## Track decision
+Original PRODUCT.md revision 1 records primary Unstoppable DeFi and secondary Open Innovation. Current recommendation is Open Innovation, but the final track selection remains open until explicitly reconciled.
+
 ## Once the name is approved
 - [ ] Align app title, wordmark, social metadata, README, demo and submission title.
 - [ ] Deploy and verify the approved identity.

@@ -50,7 +50,7 @@ Use the deployed build; no account or credentials are required:
 - **NEAR mainnet RPC** was used separately in a technical de-risking spike to observe a real `FINAL` transaction with receipts. The deployed incident lookup reads public NEAR Intents Explorer pages; it does **not** independently verify each historical transaction on-chain.
 - Partner JWT APIs and solver-relay access are optional enrichments, not requirements for the judge path.
 
-**Submission track:** Open Innovation.
+**Track decision:** OPEN. Original PRODUCT.md revision 1 records primary Unstoppable DeFi and secondary Open Innovation. Current official track descriptions suggest Open Innovation is the stronger fit, but no explicit track change is recorded. See HACKATHON.md.
 
 ## Run locally
 

@@ -9,7 +9,7 @@ fallback_used: true
 Do **not** call this an execution of the original Product Hygiene skill.
 
 ## Observed work and checks
-- Product identity: Intent Rescue shown in UI/title/README/repo. Full new NAME_LOCK naming/collision gate still open.
+- Product identity: the UI/title/OG currently display Docketrail, which is unapproved. Intent Rescue is the canonical working title; NAME_LOCK remains open.
 - Shell: approved forensic header, three-column investigation, case file/footer. Desktop and 390px mobile captures inspected 2026-11-08.
 - Real interaction: F1/F2/F3, known Explorer URL, unknown ID behavior, manual-provisional warning, JSON export exercised in Playwright and passed.
 - Provenance: captured snapshots visibly distinguished from user input. No live lookup is implied. Support escalation included.
@@ -20,20 +20,20 @@ Do **not** call this an execution of the original Product Hygiene skill.
 - External source: F1 link resolves from the captured fixture; no claim of a fresh historical mainnet RPC result.
 
 ## P0 / P1 findings still open
-- P0 product coverage: unknown identifiers cannot auto-load historical incident data without JWT; must remain clearly constrained, not marketed as live universal tracing.
-- P1 release freshness: production Vercel deployment may still serve old UI. Confirm deployed commit, desktop/mobile and asset URLs after push.
-- P1 demo freshness: November 1 video shows the old UI; cannot present it as current November 8 build. Re-record/rehearse with URL intake and actual export.
+- Universal automatic private-history lookup is not part of locked P0; the matching source-attributed manual evidence fallback is the approved credential-independent path. Do not market universal live tracing.
+- P1 release freshness: current Vercel production is READY on commit f667036 and the intent-rescue.vercel.app alias is assigned; production manual-evidence matching/mismatch path was tested. Final identity is still provisional.
+- P1 demo freshness: a November 9 recording exists, but it is 46.44 seconds versus the original 60–90-second target, has no voiceover/script package, and carries unapproved Docketrail. It is not final submission media.
 - P1 name gate: descriptive working name has not passed newest Operator's broader naming/brand collision review.
 - P2 tracked third-party source scan and accessibility/performance audit beyond basic checks.
 
 Verdict: **NOT YET A PASSED FINAL PRODUCT HYGIENE GATE**. Re-run after publishing current revision, updating demo, and resolving naming; no secret-free/public-ready guarantee yet.
 ## 2026-11-09 incremental hygiene notes
-- Naming exploration completed; **Docketrail** selected in BRAND.md after rejecting searched collisions. Product thesis remains unchanged; existing URL/repo slug stays intact. Current HTML title, wordmark/footer, social title and README use Docketrail. Social image still needs fresh capture after deployment.
+- Naming exploration produced candidates, but **Docketrail was never user-approved**. NAME_LOCK is OPEN. The deployed HTML title, wordmark/footer, social title and preview currently show this provisional label; do not treat it as the final brand.
 - Conditional explorer links are format-gated, use an allowlisted destination and open with `noopener noreferrer`. Three tests cover supported source/NEAR refs, Base/Ethereum synthetic paths, and invalid/ambiguous cases. No chain guessing from token ticker.
 - Final Product Hygiene skill still not discovered in connected host; fallback_used=true remains, and final release check is pending. Do not certify skill run or final hygiene pass yet.
 
 ## 2026-11-09 deployed identity and navigation QA
-- Vercel confirms commit 6b1abb5 READY in production; live Playwright title/header Docketrail, F1 failed, F2 refunded and F3 complete render.
+- Vercel current production is READY on commit f667036; live Playwright title/header still show provisional Docketrail, and F1/F2/F3 render.
 - On live F1: exactly one explicit Litecoin source link, two NEAR links, zero fabricated missing destination links. Mobile viewport 390px, document width 390px (no page overflow). New OG 1200Ã—630 asset examined from same public revision; publication/cache refresh still pending.
 - Product Hygiene **fallback** continues (original user-made skill unavailable). No claim of installed skill execution or complete hygiene pass until final release re-audit.
 
@@ -50,7 +50,7 @@ Verdict: **NOT YET A PASSED FINAL PRODUCT HYGIENE GATE**. Re-run after publishin
 
 ## Findings and rechecks
 - No P0 defect open within approved supported-input contract. All seven P0 rows and proof are in PRODUCT-COVERAGE.md.
-- Identity: Docketrail title, wordmark, footer, README and social metadata consistent; live title checked. OG preview and IBM Plex font HTTP 200.
+- Identity: the deployed UI, wordmark, footer and OG preview display Docketrail, but that label is UNAPPROVED. Intent Rescue remains the canonical working title until the user approves a final name. Font and social assets load; identity consistency is not an approved-brand pass.
 - Product shell: intake, captured queue, evidence JSON drawer, five-stage canvas, recovery rail, case file and footer present.
 - Placeholder/mock residue: three clearly labeled real public incident fixtures; no fake testimonials, balances, chat, fabricated transactions or root-cause claims found in visible judge path.
 - Interactions: public Explorer lookup, matching manual evidence fallback, mismatched-ID rejection, F1/F2/F3 and JSON download tested. Unknown record clears stale view. Source link restricted to HTTPS NEAR Intents Explorer transaction paths.
@@ -58,13 +58,13 @@ Verdict: **NOT YET A PASSED FINAL PRODUCT HYGIENE GATE**. Re-run after publishin
 - Console/network: public assets and fixtures HTTP 200. Expected unknown Explorer lookups generate handled error responses; no uncaught app runtime failure observed on successful demo path.
 - Responsive: 390Ã—844 measured document width 390; no overflow; zero broken images.
 - Accessibility basics: labels, skip link, role=status, Tab and Enter keyboard path, 3px input outline width. Full screen-reader/contrast audit not performed.
-- Deployment: Vercel production READY on commit 7b5852f; public home, CSS, JS, OG preview and fixtures HTTP 200.
+- Deployment: Vercel current production is READY on commit f667036; alias intent-rescue.vercel.app assigned. Public home, CSS, JS, OG preview and fixtures have returned HTTP 200.
 - Secrets: tracked filename scan found no .env/private-key/certificate candidates. Git grep found no candidate private-key/API-token patterns. Targeted scan only, not a full historical secret scanner.
 - Repo: qa, .playwright-cli, dist, node_modules and .env* ignored. Tests, red-team, build pass. No external npm dependencies, no lockfile. LICENSE absent; owner license choice remains open.
 - Demo: current recording visually inspected and fully decoded: 46.44s / 1440Ã—900 / 25 fps H.264. Actual JSON download captured. No narration; chapter overlays carry explanation.
 
 ## Result
-Fallback Product Hygiene: PASS WITH NOTES. No P0/P1 user-visible defect found on supported workflow. Notes: original skill unavailable, no full secret-history scan, screen-reader/contrast audit not exhaustive, LICENSE absent, no narrated voiceover.
+Fallback checklist was executed and initially assessed PASS WITH NOTES for the then-current supported workflow. **Final PRODUCT_HYGIENE gate is OPEN/BLOCKED**, not passed: the deployed Docketrail identity is unapproved and inconsistent with the canonical working name; full screen-reader/contrast and historical secret scans remain incomplete. Re-run after the naming decision and identity deployment.
 
 
 ## Naming-gate correction — 2026-11-09

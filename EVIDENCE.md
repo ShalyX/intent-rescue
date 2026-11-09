@@ -1,4 +1,4 @@
-# Intent Rescue — Evidence Pack
+# Intent Rescue â€” Evidence Pack
 
 This file separates **what we observed** from **what the product infers**. It is intended for judges, reviewers, and anyone auditing the demo claims.
 
@@ -52,7 +52,7 @@ Automated tests and red-team cases explicitly reject unsafe conclusions:
 - a caller-supplied `refund_verified=true` without concrete evidence does **not** become `REFUND_VERIFIED`
 - conflicting destination + refund evidence becomes `CONFLICTED_EVIDENCE`
 - empty evidence remains low-confidence and insufficient
-- missing evidence is never translated into “funds lost” or protocol fault
+- missing evidence is never translated into â€œfunds lostâ€ or protocol fault
 
 Run:
 
@@ -85,10 +85,10 @@ A reviewer can reproduce the core claim without credentials, a funded wallet, or
 
 The repository also preserves the observed command outputs used for this evidence pass:
 
-- `evidence/test-output.txt` — 17/17 automated test result
-- `evidence/red-team-output.txt` — adversarial safety scenarios
-- `evidence/benchmark-output.txt` — 30,000-repeat determinism benchmark
-- `evidence/mainnet-rpc-proof.json` — captured public NEAR mainnet `tx` proof with `FINAL` execution status and receipt outcomes
+- `evidence/test-output.txt` â€” 17/17 automated test result
+- `evidence/red-team-output.txt` â€” adversarial safety scenarios
+- `evidence/benchmark-output.txt` â€” 30,000-repeat determinism benchmark
+- `evidence/mainnet-rpc-proof.json` â€” captured public NEAR mainnet `tx` proof with `FINAL` execution status and receipt outcomes
 
 These files are supporting evidence, not substitutes for the live product workflow.
 
@@ -103,43 +103,51 @@ Intent Rescue does not claim to:
 
 The product claim is narrower: **given source-attributed evidence, reconstruct the lifecycle, identify the first unresolved leg, expose provenance, recommend an evidence-bounded next action, and export a support-ready case bundle.**
 
-## 8. November 8 — newest Operator Product Integrity re-audit
+## 8. November 8 â€” newest Operator Product Integrity re-audit
 
 Current local revision is **not yet certified as the production deployment**. New proof covers captured-identifier intake and support handoff; prior November 1 figures above are historical, not the latest local test totals.
 
 | Claim ID | Critical claim | Status | Reproducible proof | Limitation / judge-facing location |
 |---|---|---|---|---|
 | C1 | Real F1/F2/F3 captured outcomes reconstruct correctly | VERIFIED locally | `npm test`; `?demo=F1/F2/F3`; `fixtures/` | Source-attributed snapshots, not live changing status |
-| C2 | Known Explorer URL/hash can load a captured case | VERIFIED locally | `src/intake.mjs` tests + `qa/operator-integrity-check.js` run | Three captured cases only; unknown inputs do not automatically resolve |
+| C2 | Known Explorer URL/hash can load a captured case | VERIFIED locally | `src/intake.mjs` tests + `scripts/operator-integrity-check.js` run | Three captured cases only; unknown inputs do not automatically resolve |
 | C3 | Unknown ID cannot be misreported as verified | VERIFIED locally | Resolver test and Playwright unknown-ID regression | No partner API / archival universal search |
 | C4 | Arbitrary manual JSON is not authenticated | VERIFIED UI safeguard | Playwright provisional warning and exported `source.assurance` | Human must verify original chain/explorer evidence |
 | C5 | Support JSON contains missing evidence and escalation request | VERIFIED locally | Playwright actual downloaded JSON, `src/evidence-bundle.mjs` | No custody/refund action |
 | C6 | Automated regression coverage | MEASURED locally | **23/23 Node tests** on Nov 8, `npm test` | Local Windows Node 24 revision; must rerun on published commit |
-| C7 | Desktop + mobile forensic desk displays | OBSERVED locally | `qa/operator-F1-desktop.png`, `qa/operator-F1-mobile.png` at 1440×1000 and 390×844 | Browser captures not yet proof of public deployment |
-| C8 | Newly published Vercel version matches this code | UNPROVEN | Needs post-push HTTP/browser public test | Required before submission |
+| C7 | Desktop + mobile forensic desk displays | OBSERVED locally | `qa/operator-F1-desktop.png`, `qa/operator-F1-mobile.png` at 1440Ã—1000 and 390Ã—844 | Browser captures not yet proof of public deployment |
+| C8 | Current production alias matches the audited repository revision | VERIFIED | Vercel production deployment dpl_CxeQQAnsZcXve62MMskuq6ZCT9Xz is READY on commit f667036e932ee638ef1aba57da4d234e00d47ee5; alias intent-rescue.vercel.app assigned; live Playwright manual-fallback regression passed | Branding is still provisional; deployment correctness does not approve Docketrail |
 | C9 | Current demo video matches November 8 UI and export | STALE | November 1 screenshot sequence exists | Re-record required; see DEMO.md |
-| C10 | All original locked P0 capabilities generalized | BLOCKED | PRODUCT-COVERAGE.md ledger | Identifier auto-lookup/chain-specific destination links incomplete |
+| C10 | Universal automatic private-history lookup for arbitrary deposit/source-chain/correlation identifiers | BLOCKED / OUT OF P0 SCOPE | Partner historical API access is unavailable; the approved P0 fallback is source-attributed manual evidence JSON, not universal auto-indexing | Never claim universal auto-tracing; supported P0 manual fallback is separately verified |
 | C11 | External impact/adoption validated by NEAR users | UNPROVEN | No independent feedback artifact yet | Do not invent endorsements |
 
 Evidence rules: preserve input source, date, freshness, environment and limitations. Do not present provisional analysis as independently verified, or the previous UI/demo as current production.
-## 9. November 9 — conditional chain reference upgrade
-- **C12 (VERIFIED locally; public deployment pending):** the F1 evidence bundle exposes its explicit Litecoin-origin transaction and two NEAR transaction records as external verification links; synthetic Base/Ethereum/refund examples validate chain-specific routing; malformed hashes, token-only ambiguous chains and absent destination/refund IDs never receive fabricated links.
+## 9. November 9 â€” conditional chain reference upgrade
+- **C12 (VERIFIED in current production):** the F1 evidence bundle exposes its explicit Litecoin-origin transaction and two NEAR transaction records as external verification links; synthetic Base/Ethereum/refund examples validate chain-specific routing; malformed hashes, token-only ambiguous chains and absent destination/refund IDs never receive fabricated links.
 - Proof: `test/explorer-links.test.mjs` (3 new acceptance cases); 26/26 Node tests passing on 2026-11-09; static build succeeded. `src/explorer-links.mjs` is a format-safe link builder, **not live-chain verification or proof the external URL serves historical data**.
-- C8 public-version verification remains open until the new build is deployed and independently inspected. C9 current-video gate remains open. C10 P0-01 general lookup remains BLOCKED by partner historical API access; no automatic real-time recovery claim.
+- C8 is now VERIFIED on production commit f667036; the current alias is assigned and the production manual-fallback regression passed. C9 remains STALE and is not final submission media. C10 universal automatic private-history lookup remains BLOCKED and is not a locked P0; the source-attributed manual fallback is the P0 path.
 
-## 10. November 9 — public Explorer page retrieval (commit 99d8257)
+## 10. November 9 â€” public Explorer page retrieval (commit 99d8257)
 - **C13 VERIFIED / bounded:** a read-only Vercel endpoint at `/api/incident?reference=...` reads server-rendered public NEAR Intents Explorer transaction pages without a partner JWT, extracts outcome and explicit transaction references, and **rejects ambiguous/unparseable pages**. Fixed-host URL allowlist and redirect refusal; no wallet interaction or automatic refund.
 - **10/10 OBSERVED:** the parser's outcome category matched 10 distinct public Explorer records in `evidence/real-world-corpus.json` on November 9. This is **agreement with Explorer-reported outcome**, *not* independent chain verification, accuracy on all historical cases, or a statistical generalization.
 - **30/30 MEASURED** automated Node tests passed including four new public-page/API safety scenarios and a clean static build.
-- **VERIFIED production:** Vercel READY on Git commit `99d8257`. HTTP 200 for uncaptured failed case `221c8aa1...`, refunded case `XmTZSEy...`, and completed case `6c57a1c...`. Browser loaded the uncaptured failed case as `PUBLIC_EXPLORER_SNAPSHOT`, classified FAILED_UNRESOLVED, and visibly stated `Not independently verified on-chain`. Unknown ID removed the prior result and supplied the manual JSON fallback.
-- **Known limitations:** partner-authenticated status APIs are not used; direct source-chain hash, deposit address and unrelated correlation-ID resolution are not generally supported; a public HTML page can change or lag, and reported status is not chain-finality proof. Safe fallback refuses diagnosis rather than inventing missing evidence. Proof status for **universal lookup = BLOCKED**.
+- **Historical deployment proof:** Vercel was READY on Git commit `99d8257`. The current production alias has since advanced to `f667036e932ee638ef1aba57da4d234e00d47ee5` and is READY. HTTP 200 for uncaptured failed case `221c8aa1...`, refunded case `XmTZSEy...`, and completed case `6c57a1c...`. Browser loaded the uncaptured failed case as `PUBLIC_EXPLORER_SNAPSHOT`, classified FAILED_UNRESOLVED, and visibly stated `Not independently verified on-chain`. Unknown ID removed the prior result and supplied the manual JSON fallback.
+- **Known limitations:** partner-authenticated status APIs are not used; direct source-chain hash, deposit address and unrelated correlation-ID resolution do not auto-resolve through the public page endpoint; a public HTML page can change or lag, and reported status is not chain-finality proof. The approved manual evidence JSON fallback requires a matching searched identifier and remains provisional. Safe fallback refuses diagnosis rather than inventing missing evidence. Proof status for **universal automatic lookup = BLOCKED / not P0**.
 
 ## 2026-11-09 Proof Engine close
-- C01 product identity + locked thesis: VERIFIED by PRODUCT.md / BRAND.md / live UI.
-- C02 supported multi-identifier intake: VERIFIED by 35/35 tests and live browser scenarios (deposit address, source tx hash, correlation ID, matching status envelope; mismatched envelope rejected).
+- C01a approved product thesis: VERIFIED by the original PRODUCT.md revision 1 and current product-coverage audit.
+- C01b customer-facing brand identity: BLOCKED pending user name approval. The deployed Docketrail label is provisional and unapproved; do not use it as the approved product name.
+- C02 supported multi-identifier intake: VERIFIED within the documented manual-fallback contract. Unit tests cover deposit address, correlation ID, source/destination identifiers and status-payload normalization. A live production browser run verified matching correlation-ID evidence is accepted only as provisional/unverified and mismatched evidence is rejected. Do not claim automatic private-history lookup for every identifier.
 - C03 public Explorer lookup: VERIFIED for 10/10 corpus outcomes as Explorer-reported categories, plus live FAILED/REFUNDED/SUCCESS endpoint cases. Not independent chain-finality verification.
 - C04 five-leg route + conservative diagnosis: VERIFIED by F1/F2/F3 integrated browser + 9/9 red-team.
 - C05 chain-specific links: VERIFIED by F1 Litecoin + NEAR and F2 Base origin + refund; missing destination remains unlinked.
 - C06 support handoff: VERIFIED by live browser download of public Explorer case JSON.
 - C07 local reproducibility: VERIFIED via npm start, local /api/incident HTTP 200, 35 tests, 9 red-team, static build.
 - C08 reliability benchmark: MEASURED 30,000 deterministic classifications across 10,000 rounds; machine-local microbenchmark, not user-facing latency.
+
+
+## 11. November 9 â€” production and manual-fallback proof reconciliation
+- **C14 VERIFIED in production:** current deployment dpl_CxeQQAnsZcXve62MMskuq6ZCT9Xz is READY, commit f667036e932ee638ef1aba57da4d234e00d47ee5, with alias intent-rescue.vercel.app. Vercel deployment metadata confirms commit and alias; live browser opened the alias and exercised the manual-evidence path.
+- **C15 VERIFIED in production:** a searched correlation ID with matching source-attributed JSON was accepted only as provisional/unverified; a payload containing a different correlation ID was rejected; corrected matching evidence was accepted; support JSON download succeeded; F2 refund and F3 completion contrasts rendered; 390px mobile viewport had no horizontal overflow. Reproducible script: scripts/operator-integrity-check.js.
+- **C16 F1 historical RPC status: BLOCKED / NOT CLAIMED:** evidence/mainnet-rpc-proof.json is a different current transaction, not either F1 transaction. It proves the public RPC tx_status response path only. F1 is an Explorer-reported public snapshot and is not independently archival-RPC verified.
+- **C17 brand identity: BLOCKED:** Docketrail is present in deployed HTML/OG/video but was never user-approved. Intent Rescue product thesis remains locked; final customer-facing name remains open. Do not publish the provisional brand.

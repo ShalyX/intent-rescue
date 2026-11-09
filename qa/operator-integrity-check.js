@@ -1,25 +1,81 @@
 async (page) => {
-  const base = 'http://127.0.0.1:4174';
-  await page.goto(base+'/?demo=F1');
-  await page.getByRole('textbox', {name: /Explorer URL or transaction/}).fill('https://explorer.near-intents.org/transactions/0x2f3003AC7A8C8E54eb04abbA1Fd7cA5e4e1a5a32');
-  await page.getByRole('button', {name:'Find captured case'}).click();
-  if (!(await page.locator('#case-id').innerText()).includes('F2')) throw Error('F2 identifier route failed');
-  if (!(await page.locator('#classification').innerText()).includes('Refund')) throw Error('F2 classification failed');
-  await page.getByRole('textbox', {name:/Explorer URL or transaction/}).fill('unknown-case-123');
-  await page.getByRole('button', {name:'Find captured case'}).click();
-  if (!(await page.locator('#input-status').innerText()).includes('No captured evidence')) throw Error('Unknown case message missing');
-  if (!(await page.locator('#result').evaluate(n=>n.classList.contains('hidden')))) throw Error('Stale diagnosis shown');
-  await page.locator('.evidence-input').evaluate(n => n.open=true);
-  await page.locator('#evidence').fill(JSON.stringify({reported_status:'REFUNDED',refund_evidence:['user assertion'],source_url:'https://example.org/reference',source_asset:'USDC'}));
+  const base = 'https://intent-rescue.vercel.app';
+  const status = page.locator('#input-status');
+  const evidence = page.locator('#evidence');
+  const startManual = async (identifier) => {
+    await page.locator('#identifier').fill(identifier);
+    await page.locator('#identifier-form button').click();
+    await page.waitForFunction(() =>
+      document.querySelector('#input-status')?.textContent.includes('Paste matching official'),
+      null, { timeout: 15000 }
+    );
+  };
+
+  await page.goto(base + '/?demo=F1');
+
+  // A matching user-supplied identifier is accepted only as provisional evidence.
+  const firstId = 'audit-corr-1';
+  await startManual(firstId);
+  const matchingPayload = {
+    status: 'FAILED',
+    correlationId: firstId,
+    originTxHashes: ['0x' + 'a'.repeat(64)]
+  };
+  await evidence.fill(JSON.stringify(matchingPayload));
   await page.locator('#trace').click();
-  if (!(await page.locator('#confidence').innerText()).includes('Provisional')) throw Error('Unverified manual input falsely trusted');
-  const bundle = JSON.parse(await page.locator('#preview').textContent());
-  if (bundle.source.assurance !== 'USER_SUPPLIED_UNVERIFIED') throw Error('Bundle trust label missing');
-  if (!bundle.escalation?.request || !bundle.unresolved_evidence) throw Error('Escalation incomplete');
-  const [download] = await Promise.all([page.waitForEvent('download'),page.locator('#export').click()]);
-  if (!download.suggestedFilename().endsWith('.json')) throw Error('Export missing');
-  await page.setViewportSize({width:390,height:844});
-  const overflow = await page.evaluate(()=>document.documentElement.scrollWidth>window.innerWidth);
+  await page.waitForFunction(() =>
+    document.querySelector('#input-status')?.textContent.includes('Provisional analysis')
+  );
+  if (!(await page.locator('#classification').innerText()).includes('Failed')) {
+    throw Error('Matching evidence did not produce a bounded diagnosis');
+  }
+  const firstBundle = JSON.parse(await page.locator('#preview').textContent());
+  if (firstBundle.source.assurance !== 'USER_SUPPLIED_UNVERIFIED') {
+    throw Error('Manual evidence assurance missing from bundle');
+  }
+
+  // A payload for a different identifier must be rejected.
+  const secondId = 'audit-corr-2';
+  await startManual(secondId);
+  await evidence.fill(JSON.stringify(matchingPayload));
+  await page.locator('#trace').click();
+  await page.waitForFunction(() =>
+    document.querySelector('#input-status')?.textContent.includes('does not contain the searched identifier')
+  );
+
+  // Correct the payload, then verify export from the corrected evidence.
+  await evidence.fill(JSON.stringify({ ...matchingPayload, correlationId: secondId }));
+  await page.locator('#trace').click();
+  await page.waitForFunction(() =>
+    document.querySelector('#input-status')?.textContent.includes('Provisional analysis')
+  );
+  const [download] = await Promise.all([
+    page.waitForEvent('download'),
+    page.locator('#export').click()
+  ]);
+  if (!download.suggestedFilename().endsWith('.json')) {
+    throw Error('Support evidence export missing');
+  }
+
+  // Preserve the captured-case contrast workflow and mobile fit.
+  await page.locator('.fixture-buttons button:nth-child(2)').click();
+  if (!(await page.locator('#classification').innerText()).includes('Refund')) {
+    throw Error('F2 refund contrast failed');
+  }
+  await page.locator('.fixture-buttons button:nth-child(3)').click();
+  if (!(await page.locator('#classification').innerText()).includes('Complete')) {
+    throw Error('F3 success contrast failed');
+  }
+  await page.setViewportSize({ width: 390, height: 844 });
+  const overflow = await page.evaluate(() => document.documentElement.scrollWidth > innerWidth);
   if (overflow) throw Error('Mobile horizontal overflow');
-  return {identifier:'PASS',unknown:'PASS',manual_provisional:'PASS',evidence_export:'PASS',mobile_overflow:false};
+  return {
+    matchingIdentifier: 'PASS',
+    mismatchedIdentifierRejected: 'PASS',
+    manualEvidenceAssurance: 'PASS',
+    supportExport: 'PASS',
+    F2: 'PASS',
+    F3: 'PASS',
+    mobileOverflow: false
+  };
 }

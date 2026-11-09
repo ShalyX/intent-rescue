@@ -32,7 +32,7 @@ Unknown historical identifiers cannot be automatically resolved without partner 
 - Scenes: F1 context â†’ uncaptured public Explorer URL â†’ read-only source snapshot and visible evidence boundary â†’ recovery protocol â†’ actual JSON handoff download â†’ F2 refunded / F3 complete / F1 return.
 - Chapter overlays embedded. No narration; silent UI walkthrough. Not a screenshot-only or simulated-button video.
 - Contact sheet inspected; browser download event recorded for docketrail-PUBLIC-221c8aa1a8ac.json.
-- Demo QA: PASS for decode, claim accuracy, actual interactions, chapter narrative and repeatability.
+- Recording technical checks: PASS for H.264 decode, actual UI interactions, chapter overlays and JSON export. **Operator DEMO_QA: NOT PASSED.** The 46.44-second recording is below the original 60–90-second target, has no voiceover/script or complete caption/audio plan, and carries the unapproved Docketrail label.
 - Limits: public Explorer snapshot is not independently verified on-chain; manual evidence is user-supplied/unverified; no private partner history, automatic refund, custody or universal address indexing; missing chain/hash has no fabricated link.
 
 
