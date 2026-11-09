@@ -1,295 +1,283 @@
 {
-    "schema_version":  4,
-    "revision":  8,
-    "recovered_from_legacy":  true,
-    "previous_local_state":  "ABSENT",
-    "legacy_checkpoint_revision":  "UNKNOWN",
-    "project_root":  "C:\\Users\\USER\\Documents\\intent-rescue",
-    "phase":  "NAME_LOCK",
-    "active_specialist":  "Brand / Naming",
-    "human_input_required":  true,
-    "pending_gate":  {
-                         "reason":  "User rejected the previous shortlist as AI-sloppy; withdraw names and scores and restart from real brand strategy. User preference: premium, minimal, expressive, intentional and memorable; avoid obvious feature-word compounds.",
-                         "choices":  [
-
-                                     ],
-                         "id":  "NAME_LOCK",
-                         "type":  "BRAND_SPECIALIST_REWORK",
-                         "question":  "Brand specialist must return a materially better shortlist only after semantic and collision screening."
-                     },
-    "product_locked":  true,
-    "product_lock_revision":  1,
-    "original_product_reference":  "PRODUCT.md / 2026-10-25 original lock",
-    "locked_P0_total":  7,
-    "verified_P0_ids":  [
-                            "P0-01",
-                            "P0-02",
-                            "P0-03",
-                            "P0-04",
-                            "P0-05",
-                            "P0-06",
-                            "P0-07"
-                        ],
-    "unverified_P0_ids":  [
-
-                          ],
-    "product_integrity_verdict":  "PASS",
-    "last_product_integrity_check":  "2026-11-09",
-    "spike_verified":  true,
-    "vertical_slice_complete":  true,
-    "full_product_verified":  true,
-    "name_locked":  false,
-    "name_lock_revision":  null,
-    "brand_kit_complete":  false,
-    "demo_architecture_complete":  true,
-    "evidence_plan_complete":  true,
-    "dependency_attack_complete":  true,
-    "technical_risks_cleared":  true,
-    "happy_path_complete":  true,
-    "art_direction_complete":  false,
-    "references_synthesized":  false,
-    "visual_asset_strategy_complete":  false,
-    "motion_storyboard_complete":  true,
-    "design_locked":  false,
-    "design_lock_revision":  1,
-    "visual_qa_static_complete":  false,
-    "visual_qa_motion_complete":  false,
-    "evidence_status":  "VERIFIED_WITH_EXPLICIT_BLOCKED_LIMITS",
-    "critical_claims_open":  0,
-    "proof_engine_passed":  true,
-    "red_team_passed":  true,
-    "product_hygiene_skill_found":  false,
-    "product_hygiene_fallback_used":  true,
-    "product_hygiene_passed":  false,
-    "demo_production_complete":  false,
-    "demo_qa_passed":  false,
-    "judge_simulation_complete":  false,
-    "feature_freeze":  false,
-    "freeze_at":  "2026-11-12T12:00:00Z",
-    "deadline":  "2026-11-14T23:59:00Z",
-    "submission_ready":  false,
-    "submission_status":  "NOT_SUBMITTED",
-    "submission_receipt":  null,
-    "milestones":  {
-                       "nov8_integrity":  "23 tests and local browser regression verified; deployment and current demo pending",
-                       "nov9_name_and_links":  "NAME LOCK OPEN. Docketrail was assistant-selected without user approval; revert status to pending explicit user decision. Product P0 work unaffected.",
-                       "nov9_published_brand":  "Docketrail remains a provisional deployed presentation label only; do not treat as user-approved brand. Final brand kit/demo QA blocked pending explicit naming decision.",
-                       "nov9_public_explorer_lookup":  "Commit 99d8257 Vercel READY; public Explorer HTML parser matched 10/10 source-reported outcomes; live endpoint/browser uncaptured failed, refunded, completed and unknown-ID safety; 30/30 tests, 9/9 red team; local Node API reproduced HTTP 200",
-                       "nov9_final_p0":  "All 7 original P0 verified within documented supported-input contract; 35/35 tests, 9/9 red-team; 30,000 deterministic classifications; local API HTTP 200; production F1/F2/F3 and chain-link checks; matching manual identifier evidence tested; mismatch blocked",
-                       "nov9_demo_hygiene_judges":  "Fallback hygiene PASS WITH NOTES; final production video 46.44s 1440x900 H264 25fps decoded and visually inspected; 4-lens judge simulation complete; feature freeze set",
-                       "nov9_name_audit":  "Original 2026-11-08 state confirms name_locked=false and BRAND.md says Intent Rescue remains canonical working name until deliberate rename approved. No user approval for Docketrail found.",
-                       "nov9_brand_correction":  "Docketrail UI/OG/demo label is provisional and unapproved; brand kit and final demo QA blocked pending explicit user decision.",
-                       "nov9_operator_v050_audit":  "Audited all 35 states against installed hackathon-operator v0.5.0. Historical artifacts restored: IDEAS, VALIDATION, EVIDENCE_PLAN, TECHNICAL_DERISK, PROJECT-HISTORY. Research kill-search refreshed; proof registry reconciled; live production manual match/mismatch fallback test and QA script pass. Earliest unmet gate NAME_LOCK. Track mismatch, visual gates, hygiene, demo and submission remain open.",
-                       "nov9_fresh_name_shortlist":  "Completed 40 candidates across four naming territories; screened prominent exact-match collisions; scored five finalists; recommended LegSignal. No name locked; awaiting explicit user decision."
-                   },
-    "blockers":  [
-                     "NAME_LOCK: explicit user decision required; Docketrail is unapproved",
-                     "Track decision: original PRODUCT_LOCK says Unstoppable DeFi primary / Open Innovation secondary; current recommendation Open Innovation; no explicit switch recorded",
-                     "Brand kit and v0.5.0 visual gates incomplete: three art-direction territories, complete reference board, asset matrix, formal six-score Visual QA",
-                     "Product Hygiene final gate blocked until approved identity is deployed and hygiene is rerun",
-                     "Final demo not ready: 46.44s versus 60ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã…â€œ90s target, no final script/voiceover/caption package, provisional Docketrail identity",
-                     "Pitch and judge simulation must be rerun on final name/track/demo",
-                     "Final submission audit, public X post, official form and receipt not completed"
-                 ],
-    "next_action":  "Finish NAME_LOCK. Then revalidate the existing demo architecture/evidence plan, resolve track assignment, and complete the remaining v0.5.0 gates in sequence.",
-    "updated_at":  "2026-11-09T17:51:40Z",
-    "name_status":  "RESET_AFTER_USER_REJECTED_AI_SLOPPY_SHORTLIST",
-    "proposed_name":  null,
-    "proposed_name_user_approved":  false,
-    "track_decision_status":  "OPEN",
-    "original_primary_track":  "Unstoppable DeFi",
-    "original_secondary_track":  "Open Innovation",
-    "current_track_recommendation":  "Open Innovation",
-    "freeze_scheduled":  true,
-    "phase_audit":  [
-                        {
-                            "n":  1,
-                            "phase":  "INTAKE",
-                            "status":  "PASS"
-                        },
-                        {
-                            "n":  2,
-                            "phase":  "RUBRIC_DECODE",
-                            "status":  "PASS_WITH_LIMITS"
-                        },
-                        {
-                            "n":  3,
-                            "phase":  "RESEARCH",
-                            "status":  "PASS_HISTORICAL_AND_KILL_SEARCH_REFRESH"
-                        },
-                        {
-                            "n":  4,
-                            "phase":  "IDEATION",
-                            "status":  "PASS_HISTORICAL"
-                        },
-                        {
-                            "n":  5,
-                            "phase":  "HUMAN_IDEA_GATE",
-                            "status":  "PASS"
-                        },
-                        {
-                            "n":  6,
-                            "phase":  "VALIDATION",
-                            "status":  "PASS"
-                        },
-                        {
-                            "n":  7,
-                            "phase":  "PRODUCT_LOCK",
-                            "status":  "PASS"
-                        },
-                        {
-                            "n":  8,
-                            "phase":  "NAME_LOCK",
-                            "status":  "OPEN_PRIOR_SHORTLIST_REJECTED_RESET_REQUIRED"
-                        },
-                        {
-                            "n":  9,
-                            "phase":  "DEMO_ARCHITECTURE",
-                            "status":  "PASS_ARTIFACT_REVALIDATE_AFTER_NAME_LOCK"
-                        },
-                        {
-                            "n":  10,
-                            "phase":  "EVIDENCE_PLAN",
-                            "status":  "PASS_ARTIFACT_REFRESH_STATUS"
-                        },
-                        {
-                            "n":  11,
-                            "phase":  "DEPENDENCY_ATTACK",
-                            "status":  "PASS_ARTIFACT_REVALIDATE_AFTER_NAME_LOCK"
-                        },
-                        {
-                            "n":  12,
-                            "phase":  "TECHNICAL_DERISK",
-                            "status":  "PASS_WITH_BOUNDARIES"
-                        },
-                        {
-                            "n":  13,
-                            "phase":  "BUILD_VERTICAL_SLICE",
-                            "status":  "PASS_ARTIFACT_REVALIDATE_AFTER_NAME_LOCK"
-                        },
-                        {
-                            "n":  14,
-                            "phase":  "PRODUCT_REVIEW",
-                            "status":  "PASS"
-                        },
-                        {
-                            "n":  15,
-                            "phase":  "BRAND_KIT",
-                            "status":  "OPEN"
-                        },
-                        {
-                            "n":  16,
-                            "phase":  "ART_DIRECTION",
-                            "status":  "PARTIAL"
-                        },
-                        {
-                            "n":  17,
-                            "phase":  "REFERENCE_BOARD",
-                            "status":  "PARTIAL"
-                        },
-                        {
-                            "n":  18,
-                            "phase":  "VISUAL_ASSET_STRATEGY",
-                            "status":  "PARTIAL"
-                        },
-                        {
-                            "n":  19,
-                            "phase":  "MOTION_STORYBOARD",
-                            "status":  "PASS_NO_SIGNIFICANT_MOTION"
-                        },
-                        {
-                            "n":  20,
-                            "phase":  "DESIGN_LOCK",
-                            "status":  "PARTIAL_PROVISIONAL"
-                        },
-                        {
-                            "n":  21,
-                            "phase":  "DESIGN_ENGINEERING",
-                            "status":  "PASS_PROVISIONAL"
-                        },
-                        {
-                            "n":  22,
-                            "phase":  "VISUAL_QA",
-                            "status":  "PARTIAL"
-                        },
-                        {
-                            "n":  23,
-                            "phase":  "BUILD_LOOP",
-                            "status":  "PASS"
-                        },
-                        {
-                            "n":  24,
-                            "phase":  "PROOF_ENGINE",
-                            "status":  "PASS_WITH_EXPLICIT_BOUNDARIES"
-                        },
-                        {
-                            "n":  25,
-                            "phase":  "RED_TEAM",
-                            "status":  "PASS_CORE_SAFETY"
-                        },
-                        {
-                            "n":  26,
-                            "phase":  "PRODUCT_HYGIENE",
-                            "status":  "BLOCKED_RE_RUN"
-                        },
-                        {
-                            "n":  27,
-                            "phase":  "DEMO_PRODUCTION",
-                            "status":  "PARTIAL"
-                        },
-                        {
-                            "n":  28,
-                            "phase":  "DEMO_QA",
-                            "status":  "OPEN"
-                        },
-                        {
-                            "n":  29,
-                            "phase":  "PITCH",
-                            "status":  "PARTIAL"
-                        },
-                        {
-                            "n":  30,
-                            "phase":  "JUDGE_SIMULATION",
-                            "status":  "PARTIAL_STALE"
-                        },
-                        {
-                            "n":  31,
-                            "phase":  "PRIORITIZED_FIXES",
-                            "status":  "PARTIAL_PLAN_ONLY"
-                        },
-                        {
-                            "n":  32,
-                            "phase":  "FEATURE_FREEZE",
-                            "status":  "NOT_REACHED"
-                        },
-                        {
-                            "n":  33,
-                            "phase":  "SUBMISSION_AUDIT",
-                            "status":  "OPEN"
-                        },
-                        {
-                            "n":  34,
-                            "phase":  "READY_TO_SUBMIT",
-                            "status":  "NOT_MET"
-                        },
-                        {
-                            "n":  35,
-                            "phase":  "SUBMITTED",
-                            "status":  "NOT_SUBMITTED"
-                        }
-                    ],
-    "phase_audit_version":  "hackathon-operator 0.5.0",
-    "phase_audit_updated_at":  "2026-11-09T17:00:00Z",
-    "naming_candidate_count":  0,
-    "naming_territories":  [
-                               "Route / lifecycle",
-                               "Evidence / incident case",
-                               "NEAR Intents / intent-aware",
-                               "Swap-native"
-                           ],
-    "naming_shortlist":  [
-
-                         ],
-    "naming_recommendation":  null,
-    "naming_research_date":  "2026-11-09"
+  "schema_version": 4,
+  "revision": 9,
+  "recovered_from_legacy": true,
+  "previous_local_state": "ABSENT",
+  "legacy_checkpoint_revision": "UNKNOWN",
+  "project_root": "C:\\Users\\USER\\Documents\\intent-rescue",
+  "phase": "NAME_LOCK",
+  "active_specialist": "Brand / Naming",
+  "human_input_required": false,
+  "pending_gate": null,
+  "product_locked": true,
+  "product_lock_revision": 1,
+  "original_product_reference": "PRODUCT.md / 2026-10-25 original lock",
+  "locked_P0_total": 7,
+  "verified_P0_ids": [
+    "P0-01",
+    "P0-02",
+    "P0-03",
+    "P0-04",
+    "P0-05",
+    "P0-06",
+    "P0-07"
+  ],
+  "unverified_P0_ids": [],
+  "product_integrity_verdict": "PASS",
+  "last_product_integrity_check": "2026-11-09",
+  "spike_verified": true,
+  "vertical_slice_complete": true,
+  "full_product_verified": true,
+  "name_locked": false,
+  "name_lock_revision": null,
+  "brand_kit_complete": false,
+  "demo_architecture_complete": true,
+  "evidence_plan_complete": true,
+  "dependency_attack_complete": true,
+  "technical_risks_cleared": true,
+  "happy_path_complete": true,
+  "art_direction_complete": false,
+  "references_synthesized": false,
+  "visual_asset_strategy_complete": false,
+  "motion_storyboard_complete": true,
+  "design_locked": false,
+  "design_lock_revision": 1,
+  "visual_qa_static_complete": false,
+  "visual_qa_motion_complete": false,
+  "evidence_status": "VERIFIED_WITH_EXPLICIT_BLOCKED_LIMITS",
+  "critical_claims_open": 0,
+  "proof_engine_passed": true,
+  "red_team_passed": true,
+  "product_hygiene_skill_found": false,
+  "product_hygiene_fallback_used": true,
+  "product_hygiene_passed": false,
+  "demo_production_complete": false,
+  "demo_qa_passed": false,
+  "judge_simulation_complete": false,
+  "feature_freeze": false,
+  "freeze_at": "2026-11-12T12:00:00Z",
+  "deadline": "2026-11-14T23:59:00Z",
+  "submission_ready": false,
+  "submission_status": "NOT_SUBMITTED",
+  "submission_receipt": null,
+  "milestones": {
+    "nov8_integrity": "23 tests and local browser regression verified; deployment and current demo pending",
+    "nov9_name_and_links": "NAME LOCK OPEN. Docketrail was assistant-selected without user approval; revert status to pending explicit user decision. Product P0 work unaffected.",
+    "nov9_published_brand": "Docketrail remains a provisional deployed presentation label only; do not treat as user-approved brand. Final brand kit/demo QA blocked pending explicit naming decision.",
+    "nov9_public_explorer_lookup": "Commit 99d8257 Vercel READY; public Explorer HTML parser matched 10/10 source-reported outcomes; live endpoint/browser uncaptured failed, refunded, completed and unknown-ID safety; 30/30 tests, 9/9 red team; local Node API reproduced HTTP 200",
+    "nov9_final_p0": "All 7 original P0 verified within documented supported-input contract; 35/35 tests, 9/9 red-team; 30,000 deterministic classifications; local API HTTP 200; production F1/F2/F3 and chain-link checks; matching manual identifier evidence tested; mismatch blocked",
+    "nov9_demo_hygiene_judges": "Fallback hygiene PASS WITH NOTES; final production video 46.44s 1440x900 H264 25fps decoded and visually inspected; 4-lens judge simulation complete; feature freeze set",
+    "nov9_name_audit": "Original 2026-11-08 state confirms name_locked=false and BRAND.md says Intent Rescue remains canonical working name until deliberate rename approved. No user approval for Docketrail found.",
+    "nov9_brand_correction": "Docketrail UI/OG/demo label is provisional and unapproved; brand kit and final demo QA blocked pending explicit user decision.",
+    "nov9_operator_v050_audit": "Audited all 35 states against installed hackathon-operator v0.5.0. Historical artifacts restored: IDEAS, VALIDATION, EVIDENCE_PLAN, TECHNICAL_DERISK, PROJECT-HISTORY. Research kill-search refreshed; proof registry reconciled; live production manual match/mismatch fallback test and QA script pass. Earliest unmet gate NAME_LOCK. Track mismatch, visual gates, hygiene, demo and submission remain open.",
+    "nov9_fresh_name_shortlist": "Completed 40 candidates across four naming territories; screened prominent exact-match collisions; scored five finalists; recommended LegSignal. No name locked; awaiting explicit user decision."
+  },
+  "blockers": [
+    "NAME_LOCK: explicit user decision required; Docketrail is unapproved",
+    "Track decision: original PRODUCT_LOCK says Unstoppable DeFi primary / Open Innovation secondary; current recommendation Open Innovation; no explicit switch recorded",
+    "Brand kit and v0.5.0 visual gates incomplete: three art-direction territories, complete reference board, asset matrix, formal six-score Visual QA",
+    "Product Hygiene final gate blocked until approved identity is deployed and hygiene is rerun",
+    "Final demo not ready: 46.44s versus 60ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã…â€œ90s target, no final script/voiceover/caption package, provisional Docketrail identity",
+    "Pitch and judge simulation must be rerun on final name/track/demo",
+    "Final submission audit, public X post, official form and receipt not completed"
+  ],
+  "next_action": "Finish NAME_LOCK. Then revalidate the existing demo architecture/evidence plan, resolve track assignment, and complete the remaining v0.5.0 gates in sequence.",
+  "updated_at": "2026-11-09T17:51:40Z",
+  "name_status": "RESET_AFTER_USER_REJECTED_AI_SLOPPY_SHORTLIST",
+  "proposed_name": null,
+  "proposed_name_user_approved": false,
+  "track_decision_status": "OPEN",
+  "original_primary_track": "Unstoppable DeFi",
+  "original_secondary_track": "Open Innovation",
+  "current_track_recommendation": "Open Innovation",
+  "freeze_scheduled": true,
+  "phase_audit": [
+    {
+      "n": 1,
+      "phase": "INTAKE",
+      "status": "PASS"
+    },
+    {
+      "n": 2,
+      "phase": "RUBRIC_DECODE",
+      "status": "PASS_WITH_LIMITS"
+    },
+    {
+      "n": 3,
+      "phase": "RESEARCH",
+      "status": "PASS_HISTORICAL_AND_KILL_SEARCH_REFRESH"
+    },
+    {
+      "n": 4,
+      "phase": "IDEATION",
+      "status": "PASS_HISTORICAL"
+    },
+    {
+      "n": 5,
+      "phase": "HUMAN_IDEA_GATE",
+      "status": "PASS"
+    },
+    {
+      "n": 6,
+      "phase": "VALIDATION",
+      "status": "PASS"
+    },
+    {
+      "n": 7,
+      "phase": "PRODUCT_LOCK",
+      "status": "PASS"
+    },
+    {
+      "n": 8,
+      "phase": "NAME_LOCK",
+      "status": "OPEN_PRIOR_SHORTLIST_REJECTED_RESET_REQUIRED"
+    },
+    {
+      "n": 9,
+      "phase": "DEMO_ARCHITECTURE",
+      "status": "PASS_ARTIFACT_REVALIDATE_AFTER_NAME_LOCK"
+    },
+    {
+      "n": 10,
+      "phase": "EVIDENCE_PLAN",
+      "status": "PASS_ARTIFACT_REFRESH_STATUS"
+    },
+    {
+      "n": 11,
+      "phase": "DEPENDENCY_ATTACK",
+      "status": "PASS_ARTIFACT_REVALIDATE_AFTER_NAME_LOCK"
+    },
+    {
+      "n": 12,
+      "phase": "TECHNICAL_DERISK",
+      "status": "PASS_WITH_BOUNDARIES"
+    },
+    {
+      "n": 13,
+      "phase": "BUILD_VERTICAL_SLICE",
+      "status": "PASS_ARTIFACT_REVALIDATE_AFTER_NAME_LOCK"
+    },
+    {
+      "n": 14,
+      "phase": "PRODUCT_REVIEW",
+      "status": "PASS"
+    },
+    {
+      "n": 15,
+      "phase": "BRAND_KIT",
+      "status": "OPEN"
+    },
+    {
+      "n": 16,
+      "phase": "ART_DIRECTION",
+      "status": "PARTIAL"
+    },
+    {
+      "n": 17,
+      "phase": "REFERENCE_BOARD",
+      "status": "PARTIAL"
+    },
+    {
+      "n": 18,
+      "phase": "VISUAL_ASSET_STRATEGY",
+      "status": "PARTIAL"
+    },
+    {
+      "n": 19,
+      "phase": "MOTION_STORYBOARD",
+      "status": "PASS_NO_SIGNIFICANT_MOTION"
+    },
+    {
+      "n": 20,
+      "phase": "DESIGN_LOCK",
+      "status": "PARTIAL_PROVISIONAL"
+    },
+    {
+      "n": 21,
+      "phase": "DESIGN_ENGINEERING",
+      "status": "PASS_PROVISIONAL"
+    },
+    {
+      "n": 22,
+      "phase": "VISUAL_QA",
+      "status": "PARTIAL"
+    },
+    {
+      "n": 23,
+      "phase": "BUILD_LOOP",
+      "status": "PASS"
+    },
+    {
+      "n": 24,
+      "phase": "PROOF_ENGINE",
+      "status": "PASS_WITH_EXPLICIT_BOUNDARIES"
+    },
+    {
+      "n": 25,
+      "phase": "RED_TEAM",
+      "status": "PASS_CORE_SAFETY"
+    },
+    {
+      "n": 26,
+      "phase": "PRODUCT_HYGIENE",
+      "status": "BLOCKED_RE_RUN"
+    },
+    {
+      "n": 27,
+      "phase": "DEMO_PRODUCTION",
+      "status": "PARTIAL"
+    },
+    {
+      "n": 28,
+      "phase": "DEMO_QA",
+      "status": "OPEN"
+    },
+    {
+      "n": 29,
+      "phase": "PITCH",
+      "status": "PARTIAL"
+    },
+    {
+      "n": 30,
+      "phase": "JUDGE_SIMULATION",
+      "status": "PARTIAL_STALE"
+    },
+    {
+      "n": 31,
+      "phase": "PRIORITIZED_FIXES",
+      "status": "PARTIAL_PLAN_ONLY"
+    },
+    {
+      "n": 32,
+      "phase": "FEATURE_FREEZE",
+      "status": "NOT_REACHED"
+    },
+    {
+      "n": 33,
+      "phase": "SUBMISSION_AUDIT",
+      "status": "OPEN"
+    },
+    {
+      "n": 34,
+      "phase": "READY_TO_SUBMIT",
+      "status": "NOT_MET"
+    },
+    {
+      "n": 35,
+      "phase": "SUBMITTED",
+      "status": "NOT_SUBMITTED"
+    }
+  ],
+  "phase_audit_version": "hackathon-operator 0.5.0",
+  "phase_audit_updated_at": "2026-11-09T17:00:00Z",
+  "naming_candidate_count": 0,
+  "naming_territories": [
+    "Route / lifecycle",
+    "Evidence / incident case",
+    "NEAR Intents / intent-aware",
+    "Swap-native"
+  ],
+  "naming_shortlist": [],
+  "naming_recommendation": null,
+  "naming_research_date": "2026-11-09"
 }
