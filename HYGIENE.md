@@ -1,4 +1,4 @@
-# HYGIENE — newest Operator / 2026-11-08
+# HYGIENE â€” newest Operator / 2026-11-08
 
 ## Skill route
 Canonical user-made Product Hygiene skill: **not discovered** in currently available installed plugin skills or searched Codex/agents/Claude skill directories.
@@ -34,14 +34,14 @@ Verdict: **NOT YET A PASSED FINAL PRODUCT HYGIENE GATE**. Re-run after publishin
 
 ## 2026-11-09 deployed identity and navigation QA
 - Vercel confirms commit 6b1abb5 READY in production; live Playwright title/header Docketrail, F1 failed, F2 refunded and F3 complete render.
-- On live F1: exactly one explicit Litecoin source link, two NEAR links, zero fabricated missing destination links. Mobile viewport 390px, document width 390px (no page overflow). New OG 1200×630 asset examined from same public revision; publication/cache refresh still pending.
+- On live F1: exactly one explicit Litecoin source link, two NEAR links, zero fabricated missing destination links. Mobile viewport 390px, document width 390px (no page overflow). New OG 1200Ã—630 asset examined from same public revision; publication/cache refresh still pending.
 - Product Hygiene **fallback** continues (original user-made skill unavailable). No claim of installed skill execution or complete hygiene pass until final release re-audit.
 
 ## 2026-11-09 API and UI release safety review
 - Read-only public Explorer fetch uses a fixed HTTPS origin, refuses redirects, limits input length/document size and outbound latency, refuses ambiguous terminal outcomes, and returns bounded error messages. Tests cover evil domain, POST write attempt, contradictory state and unsupported page.
 - Browser on production `99d8257`: unlisted real FAILED case displayed with public snapshot provenance; impossible ID cleared the old case and offered manual evidence JSON. F2/F3 source endpoint statuses separately verified. The expected failed lookup caused an HTTP error message in console; this is not an uncaught app exception, but should be recorded in final network QA.
 - Original Product Hygiene skill remains undiscovered. **fallback_used=true; hygiene gate pending**. Broader accessibility, console, old demo freshness and all original P0 joins must be audited before final PASS.
-# HYGIENE — 2026-11-09 final release audit
+# HYGIENE â€” 2026-11-09 final release audit
 
 ## Skill route
 - Exact original user-created Product Hygiene skill: not found in current ChatGPT plugin skills or checked Codex/agents skill directories.
@@ -56,12 +56,16 @@ Verdict: **NOT YET A PASSED FINAL PRODUCT HYGIENE GATE**. Re-run after publishin
 - Interactions: public Explorer lookup, matching manual evidence fallback, mismatched-ID rejection, F1/F2/F3 and JSON download tested. Unknown record clears stale view. Source link restricted to HTTPS NEAR Intents Explorer transaction paths.
 - Provenance: manual payload labelled user-supplied/unverified; public HTML labelled snapshot/not independently chain verified. Fake refund/deposit flags alone cannot manufacture terminal evidence.
 - Console/network: public assets and fixtures HTTP 200. Expected unknown Explorer lookups generate handled error responses; no uncaught app runtime failure observed on successful demo path.
-- Responsive: 390×844 measured document width 390; no overflow; zero broken images.
+- Responsive: 390Ã—844 measured document width 390; no overflow; zero broken images.
 - Accessibility basics: labels, skip link, role=status, Tab and Enter keyboard path, 3px input outline width. Full screen-reader/contrast audit not performed.
 - Deployment: Vercel production READY on commit 7b5852f; public home, CSS, JS, OG preview and fixtures HTTP 200.
 - Secrets: tracked filename scan found no .env/private-key/certificate candidates. Git grep found no candidate private-key/API-token patterns. Targeted scan only, not a full historical secret scanner.
 - Repo: qa, .playwright-cli, dist, node_modules and .env* ignored. Tests, red-team, build pass. No external npm dependencies, no lockfile. LICENSE absent; owner license choice remains open.
-- Demo: current recording visually inspected and fully decoded: 46.44s / 1440×900 / 25 fps H.264. Actual JSON download captured. No narration; chapter overlays carry explanation.
+- Demo: current recording visually inspected and fully decoded: 46.44s / 1440Ã—900 / 25 fps H.264. Actual JSON download captured. No narration; chapter overlays carry explanation.
 
 ## Result
 Fallback Product Hygiene: PASS WITH NOTES. No P0/P1 user-visible defect found on supported workflow. Notes: original skill unavailable, no full secret-history scan, screen-reader/contrast audit not exhaustive, LICENSE absent, no narrated voiceover.
+
+
+## Naming-gate correction — 2026-11-09
+The previous hygiene statement that Docketrail identity was consistent did not establish user approval. Original 2026-11-08 BRAND.md explicitly had NAME_LOCK OPEN and Intent Rescue as canonical working name. Docketrail was promoted by an assistant-authored commit without a user approval message. Current UI/OG/demo use that provisional label. Brand release and final demo QA are therefore BLOCKED pending explicit user name decision and alignment.

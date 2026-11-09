@@ -1,23 +1,24 @@
 {
     "schema_version":  4,
-    "revision":  5,
+    "revision":  6,
     "recovered_from_legacy":  true,
     "previous_local_state":  "ABSENT",
     "legacy_checkpoint_revision":  "UNKNOWN",
     "project_root":  "C:\\Users\\USER\\Documents\\intent-rescue",
-    "phase":  "SUBMISSION_AUDIT",
-    "active_specialist":  "HQ / Submission Auditor",
+    "phase":  "NAME_APPROVAL",
+    "active_specialist":  "Brand / Naming Auditor",
     "human_input_required":  true,
     "pending_gate":  {
-                         "id":  "NEAR-SUBMISSION-POST-AND-PORTAL",
+                         "id":  "PRODUCT-NAME-APPROVAL",
                          "choices":  [
-                                         "User publishes and submits; assistant verifies links/receipt",
-                                         "Pause before external submission"
+                                         "Keep Intent Rescue",
+                                         "Run a fresh naming shortlist",
+                                         "Review Docketrail alongside other candidates"
                                      ],
-                         "type":  "EXTERNAL_PUBLISH_AND_SUBMIT",
-                         "reason":  "Official submission requires a public X demo post and portal receipt. No connected X publishing action is available.",
-                         "question":  "Publish the prepared Docketrail demo post with the attached MP4, then submit the repository and X URL in the official NEAR Hackathon form?",
-                         "recommendation":  "Use the prepared copy and current demo MP4; verify public post, submit official form, and capture receipt."
+                         "type":  "EXPLICIT_USER_DECISION",
+                         "reason":  "The original 2026-11-08 state had NAME_LOCK OPEN. Docketrail was introduced/locked by the assistant on 2026-11-09 without explicit user approval.",
+                         "question":  "Keep Intent Rescue as the customer-facing name, or run a fresh naming shortlist?",
+                         "recommendation":  "Use Intent Rescue as the canonical working name until a deliberate rename is explicitly approved."
                      },
     "product_locked":  true,
     "product_lock_revision":  1,
@@ -40,9 +41,9 @@
     "spike_verified":  true,
     "vertical_slice_complete":  true,
     "full_product_verified":  true,
-    "name_locked":  true,
-    "name_lock_revision":  1,
-    "brand_kit_complete":  true,
+    "name_locked":  false,
+    "name_lock_revision":  null,
+    "brand_kit_complete":  false,
     "demo_architecture_complete":  true,
     "evidence_plan_complete":  true,
     "dependency_attack_complete":  true,
@@ -64,7 +65,7 @@
     "product_hygiene_fallback_used":  true,
     "product_hygiene_passed":  true,
     "demo_production_complete":  true,
-    "demo_qa_passed":  true,
+    "demo_qa_passed":  false,
     "judge_simulation_complete":  true,
     "feature_freeze":  true,
     "freeze_at":  "2026-11-12T12:00:00Z",
@@ -74,17 +75,23 @@
     "submission_receipt":  null,
     "milestones":  {
                        "nov8_integrity":  "23 tests and local browser regression verified; deployment and current demo pending",
-                       "nov9_name_and_links":  "NAME_LOCK documented as Docketrail; 26 Node tests pass; conditional source/NEAR explorer references implemented locally; public deployment pending",
-                       "nov9_published_brand":  "Vercel production 7f48fe5 READY; desktop/mobile screenshots inspected, OG 1200x630 deployed; F1/F2/F3 and 390px no-overflow verified",
+                       "nov9_name_and_links":  "NAME LOCK OPEN. Docketrail was assistant-selected without user approval; revert status to pending explicit user decision. Product P0 work unaffected.",
+                       "nov9_published_brand":  "Docketrail remains a provisional deployed presentation label only; do not treat as user-approved brand. Final brand kit/demo QA blocked pending explicit naming decision.",
                        "nov9_public_explorer_lookup":  "Commit 99d8257 Vercel READY; public Explorer HTML parser matched 10/10 source-reported outcomes; live endpoint/browser uncaptured failed, refunded, completed and unknown-ID safety; 30/30 tests, 9/9 red team; local Node API reproduced HTTP 200",
                        "nov9_final_p0":  "All 7 original P0 verified within documented supported-input contract; 35/35 tests, 9/9 red-team; 30,000 deterministic classifications; local API HTTP 200; production F1/F2/F3 and chain-link checks; matching manual identifier evidence tested; mismatch blocked",
-                       "nov9_demo_hygiene_judges":  "Fallback hygiene PASS WITH NOTES; final production video 46.44s 1440x900 H264 25fps decoded and visually inspected; 4-lens judge simulation complete; feature freeze set"
+                       "nov9_demo_hygiene_judges":  "Fallback hygiene PASS WITH NOTES; final production video 46.44s 1440x900 H264 25fps decoded and visually inspected; 4-lens judge simulation complete; feature freeze set",
+                       "nov9_name_audit":  "Original 2026-11-08 state confirms name_locked=false and BRAND.md says Intent Rescue remains canonical working name until deliberate rename approved. No user approval for Docketrail found.",
+                       "nov9_brand_correction":  "Docketrail UI/OG/demo label is provisional and unapproved; brand kit and final demo QA blocked pending explicit user decision."
                    },
     "blockers":  [
-                     "Human must publish X demo post with @NEARProtocol, #NEARHackathon and video attachment",
-                     "Human must submit public repository and X post URL through official NEAR Hackathon form",
-                     "Submission receipt not yet observed"
+                     "Explicit user decision required on product/customer-facing name",
+                     "Re-align app title, wordmark, social metadata, README, demo and submission pack after name decision",
+                     "Re-record and verify final branded demo",
+                     "Publish X demo post and submit through official NEAR form; verify receipt"
                  ],
-    "next_action":  "Publish prepared X post with qa/docketrail-judge-final.mp4 attached, submit public repository and X URL through official portal, verify receipt",
-    "updated_at":  "2026-11-09T15:51:14Z"
+    "next_action":  "Wait for explicit product-name decision; keep Intent Rescue as canonical working name and Docketrail as unapproved provisional build label",
+    "updated_at":  "2026-11-09T16:25:40Z",
+    "name_status":  "OPEN_PENDING_USER_APPROVAL",
+    "proposed_name":  "Docketrail",
+    "proposed_name_user_approved":  false
 }

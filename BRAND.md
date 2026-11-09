@@ -1,36 +1,33 @@
-# BRAND — Docketrail / NEAR Intents incident response
+# BRAND — Intent Rescue / naming gate reopened
 
-Status: **NAME_LOCK revision 1 — 2026-11-09**. Name selection is presentation-layer only. Original Idea 1 / Intent Rescue product thesis, feature ledger, safety limits and original approval remain unchanged in PRODUCT.md. Existing URL/repo slug `intent-rescue` stays functional.
+Status: **NAME_LOCK OPEN**. The user explicitly selected **Idea 1 — Intent Rescue** at the 2026-10-25 human idea gate. PRODUCT_LOCK revision 1 is valid. The separate customer-facing brand/name gate was still open in the 2026-11-08 Operator record.
 
-## Naming decision
-- Category: cross-chain swap incident-response instrument for users, wallet integrators and support teams.
-- Promise: show where evidence ends and what to do safely next; do not promise refunds.
-- Terrains explored: forensic docket (Docketline, Casegrain, Docketrail), path/boundary (Tracefold, Waybreak, Routebound), provenance (Evidrail, Prooftrace), handoff (Nextleg, Handback), abstract (Veyline, Porten).
-- **Locked: Docketrail** (DOCK-et-rail). Docket = recorded case with evidence; rail = transfer route. Meaningful in one brief explanation, easy to pronounce, visually suits the evidence-route motif; distinct from a generic feature name.
-- Use descriptor: **Evidence-first incident response for NEAR Intents.**
-- Working title **Intent Rescue** remains an accurate functional explanation, but not the customer-facing brand.
-- Rejected: Tracefold (active agent-safety software and UK company); Evidrail (existing developer project); Veyline (uncomfortably close to Veylin); Porten (active inference platform); Intent Rescue as primary brand (too descriptive), generic Flow/Hub/Labs/AI patterns.
-- Collision research checked 2026-11-09 via indexed web searches of `Docketrail`, `Tracefold`, `Evidrail`, `Veylin`, `Porten` and alternatives. No exact indexed software/product collision surfaced for Docketrail in that limited screen; this is NOT trademark, domain, social-handle or legal clearance. Formal clearance UNKNOWN.
-- Source examples: https://github.com/TraceFold/tracefold ; https://dimi.dev.br/en/blog/evidrail-specify-before-you-accelerate ; https://app.veylin.co.uk/ ; https://porten.ai/
+## Decision provenance
+- Approved product concept: **Intent Rescue** (user-selected Idea 1; 2026-10-25).
+- Canonical working name before a deliberate rename: **Intent Rescue**, as stated in the 2026-11-08 BRAND.md.
+- **Docketrail is NOT user-approved and is NOT locked.** It appeared in a broad candidate list on 2026-11-08. On 2026-11-09, the assistant unilaterally selected it and wrote NAME_LOCK revision 1. No explicit user approval for that rename was found in conversation history.
+- Treat the Docketrail label currently present in the deployed UI, social preview and recorded demo as an unapproved provisional implementation artifact. Do not use it in public posts, official submission fields, or claim it is the approved brand.
+- Do not silently turn any future suggestion into a lock. A name is locked only after explicit user selection/approval.
 
-## Positioning and identity
-- Positioning: Docketrail turns scattered transaction records into an honest incident dossier: five lifecycle legs, a visible evidence boundary, a conservative next action, and a portable support handoff.
-- Emotional promise: relief through clarity, never certainty from missing data.
-- Voice: precise, independent, non-accusatory; distinguish reported/observed/inferred/unverified.
-- Tagline optional: **Evidence, not guesswork.**
-- Wordmark: compact Docketrail typography alongside existing interrupted-path route glyph. Keep continuity with approved art direction; no unrelated new icon.
-- Typography: IBM Plex Sans for UI, IBM Plex Mono for hashes/evidence IDs.
-- Palette roles: paper #f2f3ef; ink #22282c; canvas #1b2227; observed green #accab8; unresolved warning #f0a49a; unknown slate. Meaning outranks decoration.
-- Motif: five-step branched route with an intentional gap at the first unresolved leg, echoed in favicon and evidence IDs.
-- Imagery: actual product captures and genuine source evidence only. No stock crypto coins, mascots or synthetic transactions.
-- Favicon/avatar: existing route symbol. Social preview must be re-captured with the Docketrail name after production release.
-- Usage rules: first mention `Docketrail — evidence-first NEAR Intents incident response`; subsequently `Docketrail`. Do not rename upstream chain explorers, dataset sources, or old evidence filenames. Keep old deployment URL working. Never claim automatic refunds or live universal trace.
+## Product category and promise
+NEAR Intents incident-response instrument for swap users, wallet/dApp integrators and support operators. Reconstruct the evidence boundary, identify the first missing/failed lifecycle leg, recommend a safe evidence-bounded action, and export a support-ready incident record. No promise of refunds or custody.
 
-## Implementation / lock consistency
-Brand is **LOCKED as a naming decision**; release verification is separate. Update UI title, wordmark, social meta, README, demo script, and pitch consistently; check published version before marking BRAND_KIT and DEMO_QA passed.
+## Visual direction (implementation, not name approval)
+- Descriptor: Evidence-first incident response for NEAR Intents.
+- Voice: forensic, precise, conservative; describe observed evidence, never promise recovery.
+- Motif: branched transfer route, first unresolved break, evidence ID junctions.
+- Wordmark: compact text plus interrupted route/terminal geometry, not a generic robot or coin.
+- Typography: IBM Plex Sans for UI, IBM Plex Mono for identifiers.
+- Palette roles: paper #f2f3ef; ink #22282c; investigation canvas #1b2227; unknown steel; semantic warning red #f0a49a; observed/resolved green #accab8.
+- Imagery: actual captured product states, no stock crypto artwork.
+- Never replace real traces with fake activity or use bright neon/AI gradients.
 
-## Released asset QA (2026-11-09)
-- Vercel production for commit `6b1abb5` reported READY; browser title, header, footer, case F1/F2/F3 and source links exercised publicly.
-- Production desktop 1440×1000 and mobile 390×844 inspected; no page-level horizontal overflow. Wordmark renders as Docketrail.
-- `public/og-preview.png` refreshed as a 1200×630 capture-based social card from the new production UI. Do not claim social crawlers have refreshed their cache until a public post preview is observed.
-- Repo and deployment slugs remain `intent-rescue` for stability, not as competing consumer-facing product names.
+## Naming gate
+1. Keep Intent Rescue as the canonical working name while the brand decision is open.
+2. If the user wants a new name, present a short, researched shortlist with collision caveats.
+3. Obtain explicit user selection.
+4. Only then update app title, wordmark, social metadata, README, demo, submission pack and production deployment together.
+5. Do not claim trademark, domain, handle or legal clearance without dedicated checks.
+
+## Current release consequence
+The P0 product work is separate and remains intact. However, BRAND_KIT, final branded DEMO_QA and SUBMISSION_READY must remain false until the user resolves the naming gate and the public assets are aligned.

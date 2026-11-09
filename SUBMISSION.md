@@ -1,21 +1,20 @@
-# NEAR Hackathon submission pack — Docketrail
+# NEAR Hackathon submission pack — Intent Rescue
 
-## Required public X post
-- Include the MP4: qa/docketrail-judge-final.mp4
+## Status
+**NOT SUBMISSION READY — public-facing name approval is still open.** The Docketrail label currently present in the deployed UI and demo was selected by the assistant without explicit user approval. Do not publish that branded asset or enter Docketrail as the official project title.
+
+## Existing assets (provisional)
+- Demo file: qa/docketrail-judge-final.mp4 (contains unapproved Docketrail label; do not publish yet)
 - Public repo: https://github.com/ShalyX/intent-rescue
-- Live demo: https://intent-rescue.vercel.app/
-- Tag @NEARProtocol and include #NEARHackathon.
-- State built at NEAR HACKATHON.
-- Do not claim universal live tracing, automatic refunds, or independent on-chain verification of public page snapshots.
+- Live demo: https://intent-rescue.vercel.app/ (currently displays provisional Docketrail label)
 
-## Official portal checklist
-- [ ] Project title: Docketrail
-- [ ] Public repository: https://github.com/ShalyX/intent-rescue
-- [ ] Public X demo post URL
-- [ ] Live demo URL: https://intent-rescue.vercel.app/
-- [ ] Confirm video/screenshots attached to public X post
-- [ ] Submit through official form: https://nearhackathon.com/
-- [ ] Verify receipt / confirmation
+## Once the name is approved
+- [ ] Align app title, wordmark, social metadata, README, demo and submission title.
+- [ ] Deploy and verify the approved identity.
+- [ ] Record/QA the final demo using that identity.
+- [ ] Publish X demo post tagging @NEARProtocol and including #NEARHackathon.
+- [ ] Submit repository, public X post URL and demo URL through the official form: https://nearhackathon.com/
+- [ ] Verify receipt / confirmation.
 - [ ] Keep payout NEAR account address private; enter only in official form if required.
 
 Status: NOT SUBMITTED. No public post URL or official receipt recorded.
