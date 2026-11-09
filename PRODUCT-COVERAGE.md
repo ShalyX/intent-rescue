@@ -9,12 +9,12 @@ Original approval: user selected Idea 1 / Intent Rescue, PRODUCT_LOCK revision 1
 | P0-03 | Deterministic first unresolved leg and conflict classification | src/classifier.mjs, src/analyze.mjs | 35/35 tests; 9/9 red-team; false success/refund, empty and contradictory evidence rejected | VERIFIED | No root cause inferred from absence. |
 | P0-04 | OBSERVED / INFERRED / UNKNOWN and assurance | UI provenance, src/evidence-bundle.mjs | Production browser showed public snapshot vs user-supplied/unverified; mismatch rejected; export assurance | VERIFIED | Public HTML is not signed or independent chain finality. |
 | P0-05 | Conservative next action, including do-not-retry | classifier + recovery rail | F1 failed-unresolved, F2 refund, F3 complete; red-team conflicts | VERIFIED | Recheck live status before irreversible action. |
-| P0-06 | Export identifiers, links, lifecycle, missing proof and escalation | src/evidence-bundle.mjs, download UI | Live production browser downloaded docketrail-incident.json; export tests; assurance preserved | VERIFIED | Support dossier, not signed attestation. |
+| P0-06 | Export identifiers, links, lifecycle, missing proof and escalation | src/evidence-bundle.mjs, download UI | Live production browser downloaded osiali-F1.json (4,414 bytes); export tests; assurance preserved | VERIFIED | Support dossier, not signed attestation. |
 | P0-07 | Source, destination, NEAR and refund links when chain and hash known | src/explorer-links.mjs, src/public-explorer.mjs, fixtures | 35/35 tests; live F1 Litecoin + NEAR; F2 Base origin + Base refund; no invented destination | VERIFIED — evidence-conditional links | Unknown chain or missing hash intentionally has no generated link. |
 
 ## PRODUCT INTEGRITY
 approved_product: Intent Rescue, Idea 1 / lock rev 1.
-name_lock: PASS — OSIALI user-approved 2026-11-09. Docketrail legacy assets still require replacement.
+name_lock: PASS — OSIALI user-approved 2026-11-09 and deployed across current product surfaces. Legacy Docketrail video files are ignored local QA artifacts, excluded from the submission pack.
 P0_verified: [P0-01,P0-02,P0-03,P0-04,P0-05,P0-06,P0-07].
 P0_missing_or_blocked: [] within approved supported-input contract.
 out_of_scope: universal automatic private-history lookup; partner JWT ingestion; automatic refunds.
@@ -22,4 +22,4 @@ verdict: PASS for locked P0 acceptance; no universal live-tracing claim.
 
 
 ## 2026-11-09 — brand-only release note
-The customer-facing brand is OSIALI. The support export filename prefix was changed from the historical Docketrail prefix to osiali- in the name-alignment commit. This does not change the JSON schema or any P0 behavior. The previous live-browser export proof remains valid for the evidence-bundle contents; a fresh deployed-browser check of the new filename is still required.
+The customer-facing brand is OSIALI. The support export filename prefix was changed from the historical Docketrail prefix to osiali- in the name-alignment commit. This does not change the JSON schema or any P0 behavior. Visual QA reverified the current OSIALI export as osiali-F1.json (4,414 bytes) on the current production release.

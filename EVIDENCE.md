@@ -116,7 +116,7 @@ Current local revision is **not yet certified as the production deployment**. Ne
 | C5 | Support JSON contains missing evidence and escalation request | VERIFIED locally | Playwright actual downloaded JSON, `src/evidence-bundle.mjs` | No custody/refund action |
 | C6 | Automated regression coverage | MEASURED locally | **23/23 Node tests** on Nov 8, `npm test` | Local Windows Node 24 revision; must rerun on published commit |
 | C7 | Desktop + mobile forensic desk displays | OBSERVED locally | `qa/operator-F1-desktop.png`, `qa/operator-F1-mobile.png` at 1440Ã—1000 and 390Ã—844 | Browser captures not yet proof of public deployment |
-| C8 | Current production alias matches the audited repository revision | VERIFIED | Vercel deployment dpl_ddjoz4LbCZ4ischFANc1SMaZaVtk is READY on commit 0736576ed155d5e6420bcf0d63219d70817032b6; alias intent-rescue.vercel.app assigned; browser confirms current brand assets and P0 states | Old Docketrail demo remains legacy; live release identity is OSIALI |
+| C8 | Current production alias matches the audited repository revision | VERIFIED | Vercel deployment dpl_41JmpxiBM7ThUqLhvxFEMdgWEcNT is READY on commit e1ca7b6d9a178c0cd0f34decb00d216b84bb7714; canonical alias intent-rescue.vercel.app assigned; Visual QA confirms current OSIALI identity and P0 states | Legacy Docketrail demo is ignored local media and excluded from submission |
 | C9 | Current demo video matches November 8 UI and export | STALE | November 1 screenshot sequence exists | Re-record required; see DEMO.md |
 | C10 | Universal automatic private-history lookup for arbitrary deposit/source-chain/correlation identifiers | BLOCKED / OUT OF P0 SCOPE | Partner historical API access is unavailable; the approved P0 fallback is source-attributed manual evidence JSON, not universal auto-indexing | Never claim universal auto-tracing; supported P0 manual fallback is separately verified |
 | C11 | External impact/adoption validated by NEAR users | UNPROVEN | No independent feedback artifact yet | Do not invent endorsements |
@@ -183,3 +183,11 @@ Evidence rules: preserve input source, date, freshness, environment and limitati
 - F1/F2/F3 classifications verified; actual `osiali-F1.json` export downloaded and parsed (4,414 bytes).
 - Automated suite 35/35; build PASS; browser no errors or failed requests.
 - Scorecard: 20/24, all six dimensions ≥3, no hard veto. Full NVDA/VoiceOver remains outstanding.
+
+
+## 2026-11-09 — current production checkpoint
+- GitHub main: e1ca7b6d9a178c0cd0f34decb00d216b84bb7714.
+- Vercel deployment: dpl_41JmpxiBM7ThUqLhvxFEMdgWEcNT, production READY; aliases include intent-rescue.vercel.app.
+- Visual QA: 20/24, zero axe violations desktop/mobile; responsive, keyboard/focus, reduced-motion, F1/F2/F3 and export verified.
+- Current-main reproducibility: 35/35 tests, 9/9 red-team, static build pass.
+- Brand C17 is VERIFIED for current public product surfaces; legacy local recordings are excluded from submission.

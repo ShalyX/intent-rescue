@@ -1,6 +1,6 @@
 {
   "schema_version": 4,
-  "revision": 18,
+  "revision": 19,
   "recovered_from_legacy": true,
   "previous_local_state": "ABSENT",
   "legacy_checkpoint_revision": "UNKNOWN",
@@ -42,8 +42,8 @@
   "motion_storyboard_complete": true,
   "design_locked": true,
   "design_lock_revision": 2,
-  "visual_qa_static_complete": false,
-  "visual_qa_motion_complete": false,
+  "visual_qa_static_complete": true,
+  "visual_qa_motion_complete": true,
   "evidence_status": "VERIFIED_WITH_EXPLICIT_BLOCKED_LIMITS",
   "critical_claims_open": 0,
   "proof_engine_passed": true,
@@ -83,22 +83,21 @@
     "nov9_design_lock": "Phase 20 PASS, revision 2. Static composition and responsive interaction contract locked in DESIGN.md; current phase DESIGN_ENGINEERING.",
     "nov9_design_engineering": "Phase 21 PASS. OSIALI mark, SVG/PNG favicons, avatar and OG preview deployed and verified; public OG validation 93/100; live F1/F2/F3 and mobile smoke passed.",
     "nov9_osiali_release": "Production commit 0736576ed155d5e6420bcf0d63219d70817032b6; deployment dpl_ddjoz4LbCZ4ischFANc1SMaZaVtk READY; alias intent-rescue.vercel.app attached; browser asset checks pass.",
-    "nov9_visual_qa": "Phase 22 PASS, 20/24, no hard veto. Fixed active fixture caption contrast 4.31:1 → 5.79:1; axe 0 violations desktop/mobile; responsive widths 390–1440 no overflow; keyboard, focus, reduced motion, F1/F2/F3 and export verified."
+    "nov9_visual_qa": "Phase 22 PASS, 20/24, no hard veto. Fixed active fixture caption contrast 4.31:1 → 5.79:1; axe 0 violations desktop/mobile; responsive widths 390–1440 no overflow; keyboard, focus, reduced motion, F1/F2/F3 and export verified.",
+    "nov9_current_hygiene_audit": "Latest main e1ca7b6d9a178c0cd0f34decb00d216b84bb7714 audited in detached Windows worktree. 35/35 tests, 9/9 red-team, build pass; empty npm dependency tree; tracked source and history high-confidence secret scans clean; 72 tracked files; no sensitive filenames, media or >5MB assets. Gitleaks/Trufflehog unavailable; NVDA unavailable; Visual QA 20/24 with zero axe violations. Legacy Docketrail recordings ignored under qa/ and excluded from SUBMISSION.md. Source-string cleanup and post-deploy smoke in progress. Hygiene not yet passed."
   },
   "blockers": [
     "Track decision: original PRODUCT_LOCK says Unstoppable DeFi primary / Open Innovation secondary; current recommendation Open Innovation; no explicit switch recorded",
-    "Product Hygiene final gate blocked until approved identity is deployed and hygiene is rerun",
-    "Final demo not ready: 46.44s versus 60ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã…â€œ90s target, no final script/voiceover/caption package, provisional Docketrail identity",
     "Pitch and judge simulation must be rerun on final name/track/demo",
     "Final submission audit, public X post, official form and receipt not completed",
     "Formal trademark, domain and social-handle clearance for OSIALI remains outstanding; do not claim legal availability.",
-    "Legacy Docketrail demo recording remains unapproved; replace with a fresh 60–90s OSIALI voiceover/captioned recording.",
     "Formal trademark, domain and social-handle clearance remains outstanding; do not claim legal availability.",
-    "PRODUCT_HYGIENE open: full assistive-technology review and historical secret scan remain incomplete.",
-    "Legacy Docketrail demo recording remains unapproved; replace with a fresh OSIALI 60–90s voiceover/captioned demo."
+    "Current OSIALI 60–90s demo is not yet produced; legacy Docketrail recordings are ignored local QA files and explicitly excluded from submission.",
+    "Track decision remains open: original product lock says Unstoppable DeFi primary / Open Innovation secondary; current recommendation is Open Innovation.",
+    "Residual P2: dedicated Gitleaks/TruffleHog scan unavailable, NVDA/VoiceOver screen-reader pass unavailable, and LICENSE choice remains open."
   ],
-  "next_action": "Run PRODUCT_HYGIENE against the current OSIALI production release: full dependency/security/secrets scan, screen-reader and contrast review, browser/asset integrity, demo-brand consistency, docs and claim-boundary audit. Do not pass while the old Docketrail demo remains in the submission path.",
-  "updated_at": "2026-11-09T22:02:28.304Z",
+  "next_action": "Finish hygiene source-string cleanup, verify the new production deployment and smoke-test current OSIALI UI/assets. Then close PRODUCT_HYGIENE with the documented P2 limitations and move to DEMO_PRODUCTION.",
+  "updated_at": "2026-11-09T22:30:31.338Z",
   "name_status": "LOCKED_USER_APPROVED",
   "proposed_name": "OSIALI",
   "proposed_name_user_approved": true,

@@ -39,4 +39,4 @@ function send(file,res) {
     res.end(data);
   });
 }
-server.listen(port,'127.0.0.1',() => console.log(`Docketrail incident desk: http://127.0.0.1:${port}`));
+server.listen(port,'127.0.0.1',() => console.log(`OSIALI incident desk: http://127.0.0.1:${port}`));

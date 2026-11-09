@@ -37,7 +37,7 @@ Unknown historical identifiers cannot be automatically resolved without partner 
 
 
 ## Naming gate correction — 2026-11-09
-The 46.44-second recording and current production UI carry the Docketrail label. That label was not user-approved. The recording remains technically decoded/inspected but is NOT final submission media. Re-record after explicit name decision and consistent UI/metadata deployment.
+The 46.44-second legacy recording carries the unapproved Docketrail label. The current production UI, metadata, wordmark and OG preview use approved OSIALI. The legacy recording is technically decoded/inspected but is NOT final submission media; it is ignored under qa/ and excluded from SUBMISSION.md. Record a fresh OSIALI version in DEMO_PRODUCTION.
 
 
 ## 2026-11-09 — OSIALI name lock / demo architecture revalidation
@@ -69,4 +69,8 @@ Architecture and story beats are revalidated against the approved name and origi
 
 
 ### Deployment checkpoint — 2026-11-09
-The OSIALI source release commit b613f5c8c4cbb47da60a7dcbc6a9b6b6c0e64128 is READY on Vercel and the existing intent-rescue.vercel.app alias is attached. This is build/alias evidence only; do not mark the rendered page visually verified until the deployed browser path is inspected. The current OG image and old MP4s still need replacement.
+The OSIALI production release has since been browser-verified: title, metadata, mark, favicon, avatar and 1200×630 OG preview are current; Visual QA passed 20/24 with zero axe violations. Legacy Docketrail videos remain local ignored QA artifacts only and are excluded from submission. A fresh OSIALI 60–90-second recording remains the next phase.
+
+
+## 2026-11-09 — hygiene disposition
+Legacy Docketrail recordings are not tracked by Git, are covered by the qa/ ignore rule, and are explicitly excluded from SUBMISSION.md. They are historical backup artifacts only. The next recording must be produced from the current OSIALI production UI; do not reuse or publish the legacy files.

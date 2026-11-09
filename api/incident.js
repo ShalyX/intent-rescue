@@ -22,7 +22,7 @@ export default async function handler(req,res){
   if(!url)return res.status(400).json({error:'Provide a NEAR Intents Explorer transaction URL or supported record identifier.'});
   try {
     const response=await fetch(url,{redirect:'error',signal:AbortSignal.timeout(9000),
-      headers:{Accept:'text/html','User-Agent':'Docketrail-public-evidence-reader/1.0'}});
+      headers:{Accept:'text/html','User-Agent':'OSIALI-public-evidence-reader/1.0'}});
     if(response.status===404)return res.status(404).json({error:'No public Explorer record at that identifier. Try the manual evidence input.'});
     if(!response.ok)return res.status(502).json({error:'Public Explorer did not return a usable record. Use the manual evidence input.'});
     const size=Number(response.headers.get('content-length')||0);

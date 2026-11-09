@@ -69,3 +69,23 @@ Fallback checklist was executed and initially assessed PASS WITH NOTES for the t
 
 ## Naming-gate correction — 2026-11-09
 Historical correction: Docketrail was never user-approved. OSIALI was explicitly approved on 2026-11-09 and is now deployed across the current UI, mark, favicon, avatar and OG preview. The old Docketrail-labelled recording remains blocked from submission.
+
+
+## 2026-11-09 — Current-release Product Hygiene re-run (Operator v0.5.0)
+
+**Environment:** Windows host, repository ShalyX/intent-rescue, clean detached worktree of GitHub main at e1ca7b6d9a178c0cd0f34decb00d216b84bb7714; Node 24.14.0 / npm.  
+**Exact user-created Product Hygiene skill:** NOT FOUND in the installed ChatGPT skills catalogue or the searched Codex, Agents and Claude skill directories.  
+**Related skill:** reconstructed public-project-launch-hygiene at C:\Users\USER\.codex\skills\public-project-launch-hygiene\SKILL.md was inspected. The Hackathon Operator fallback checklist was executed. fallback_used: true; no claim that the original user-created skill ran.
+
+### Re-run evidence
+- **Identity / public surfaces:** current production deployment for commit e1ca7b6 is READY; canonical alias intent-rescue.vercel.app is attached. Phase 21 and 22 browser evidence confirms OSIALI title/wordmark/mark, SVG + PNG favicon, avatar, 1200×630 OG preview, F1/F2/F3, 390px mobile and no rendered Docketrail text. OpenGraph.to score 93/100.
+- **Functional integrity:** latest-main detached worktree: 35/35 Node tests PASS; 9/9 red-team scenarios PASS; static build PASS. npm ls --all --depth=5 reports an empty dependency tree; package.json has no runtime/dev dependencies. There is no lockfile, so an npm advisory audit is not applicable to a third-party dependency graph that does not exist.
+- **Repository / secrets:** 72 tracked files; no tracked .env, private-key, certificate, credential JSON or equivalent sensitive filename candidates. No tracked media or >5 MB blob candidates. .gitignore excludes qa/, .playwright-cli/, dist/, output/playwright/, node_modules/, and .env*. High-confidence credential/private-key regex scan found no matches in tracked non-Markdown source on origin/main; a Git history diff scan across origin/main found no commits matching private-key, GitHub token, API-key, AWS, Slack-token or bearer-token patterns. GitHub code search for high-confidence patterns also returned no matches.
+- **Important scope limit:** gitleaks and trufflehog are not installed. The above is a targeted pattern scan, not a guarantee that every possible secret format is absent.
+- **Accessibility:** current Visual QA phase already passed 20/24 with zero axe violations desktop/mobile, responsive widths 390–1440, visible keyboard focus, skip link, labelled inputs, status announcement, reduced motion and manually checked text contrast (active caption 5.79:1). NVDA is not installed on this host and VoiceOver is unavailable on Windows; a dedicated screen-reader pass remains a residual P2 limitation, not claimed as completed.
+- **Brand residue:** found old Docketrail strings in server User-Agent and local server startup log, stale README introduction, outdated export evidence, and obsolete submission/demo status text. The legacy demo files are ignored under qa/ and are excluded from the public submission pack. These source/document fixes are being applied in the current hygiene release.
+- **Licensing:** no LICENSE file is present in the tracked repository. Owner must choose a license before inviting reuse/contributions; do not imply an open-source license. Recorded as P2.
+- **Track and demo:** track decision is still open (original product lock vs current recommendation). No current OSIALI demo recording exists; the legacy Docketrail recording is not submission media. This remains for the next phase, DEMO_PRODUCTION.
+
+### Current disposition
+No P0 hygiene defect was found. P2 residuals are explicit: no dedicated Gitleaks/TruffleHog scan, no NVDA/VoiceOver run, and no LICENSE file. Product identity and social assets are current; the legacy Docketrail videos are excluded from the submission path. Hygiene gate remains pending final source-string cleanup and a post-deployment smoke check.

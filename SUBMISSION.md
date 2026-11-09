@@ -1,12 +1,12 @@
 # NEAR Hackathon submission pack — OSIALI
 
 ## Status
-**NOT SUBMISSION READY — OSIALI identity is aligned and deployed; Product Hygiene, fresh demo, track reconciliation and submission gates remain open.** The mark, favicon, avatar and 1200×630 OG preview are live and browser-verified on commit 0736576. The existing video still carries the legacy Docketrail label and must not be submitted.
+**NOT SUBMISSION READY — OSIALI identity is aligned and deployed; fresh demo, track reconciliation and submission gates remain open.** The mark, favicon, avatar and 1200×630 OG preview are live and browser-verified. Visual QA passed 20/24 with zero axe violations.
 
-## Existing assets (provisional)
-- Legacy demo file: qa/docketrail-judge-final.mp4 (contains unapproved Docketrail label; do not publish)
+## Current public assets
 - Public repo: https://github.com/ShalyX/intent-rescue
-- Live app: https://intent-rescue.vercel.app/ (current UI and OG preview display OSIALI; existing demo MP4 remains a legacy Docketrail recording)
+- Live app: https://intent-rescue.vercel.app/ (OSIALI identity and social preview verified)
+- Demo video: NOT PRODUCED for the current OSIALI release. Older Docketrail-labelled recordings remain ignored local QA artifacts under qa/ and are explicitly excluded from this submission pack. Do not publish or link them.
 
 ## Track decision
 Original PRODUCT.md revision 1 records primary Unstoppable DeFi and secondary Open Innovation. Current recommendation is Open Innovation, but the final track selection remains open until explicitly reconciled.

@@ -140,7 +140,7 @@ Criteria: memorability, pronunciation, distinctiveness, semantic fit, extensibil
 
 Alternative strongest finalist: SwapDossier, if clarity of the exported support record matters more than breadth of the interactive product.
 
-**No name lock is recorded.** Docketrail remains an unapproved assistant-created implementation label and is not in this shortlist. Intent Rescue remains the canonical working title until the user explicitly selects a final customer-facing name.
+**Historical checkpoint only:** at the time this naming recommendation was written, no name lock had been recorded. This was superseded on 2026-11-09 when the user explicitly approved OSIALI; see the final lock section below.
 
 After explicit selection only:
 1. Record the chosen name and rationale as NAME_LOCK.
@@ -328,7 +328,7 @@ Colour communicates evidence state, not decoration. Never rely on colour alone; 
 - Icons should be restrained, functional and consistent with the existing line-based system.
 
 ### Favicon and social avatar
-Use the route-line/witness-point mark alone at small sizes, with a high-contrast monochrome fallback. Social avatar may pair the mark with the OSIALI wordmark only when legible. The current OG image still contains the legacy Docketrail identity and must be replaced before public sharing.
+Use the route-line/witness-point mark alone at small sizes, with a high-contrast monochrome fallback. Social avatar may pair the mark with the OSIALI wordmark only when legible. The current production OG image uses the approved OSIALI identity and has been browser-verified; legacy Docketrail references remain only in historical notes and ignored local recordings.
 
 ### Usage rules
 - Use **OSIALI** consistently in UI, page title, metadata, README, demo, pitch and submission.

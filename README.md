@@ -1,6 +1,6 @@
 # OSIALI
 
-> OSIALI is the user-approved customer-facing brand (2026-11-09) for the original Intent Rescue product concept. The OSIALI title/header source is deployed in a READY Vercel production build; live browser verification and the legacy social preview still need attention.
+> OSIALI is the user-approved customer-facing brand for the original Intent Rescue product concept. The current production release is live at https://intent-rescue.vercel.app with the OSIALI wordmark, favicon, avatar and 1200×630 social preview verified. Visual QA passed 20/24 with zero axe violations across desktop and mobile.
 
 **Live demo:** https://intent-rescue.vercel.app
 **Public repo:** https://github.com/ShalyX/intent-rescue
