@@ -129,7 +129,7 @@ function exportCurrentBundle() {
   const a = document.createElement('a');
   a.href = url;
   const safeId = String(currentEvidence.id || 'incident').replace(/[^a-z0-9_-]/gi, '').slice(0, 45) || 'incident';
-  a.download = `docketrail-${safeId}.json`;
+  a.download = `osiali-${safeId}.json`;
   a.click();
   URL.revokeObjectURL(url);
 }

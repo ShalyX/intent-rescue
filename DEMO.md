@@ -38,3 +38,31 @@ Unknown historical identifiers cannot be automatically resolved without partner 
 
 ## Naming gate correction — 2026-11-09
 The 46.44-second recording and current production UI carry the Docketrail label. That label was not user-approved. The recording remains technically decoded/inspected but is NOT final submission media. Re-record after explicit name decision and consistent UI/metadata deployment.
+
+
+## 2026-11-09 — OSIALI name lock / demo architecture revalidation
+
+The user has approved **OSIALI** as the customer-facing product name. The approved English voiceover cue is **“oh-see-AH-lih”**. Use it consistently; do not improvise alternate pronunciations during recording. The underlying Igbo form *osialị* is tonal, so this cue is a practical English-language demo guide, not a complete phonetic transcription of Igbo.
+
+The earlier Docketrail recordings remain historical backup evidence only. They are not final media because they show an unapproved legacy label. The currently deployed UI and OG preview also need OSIALI alignment and fresh verification before final recording.
+
+### Revised judge-facing movie — 75–85 seconds
+
+**Story:** A FAILED label is not an explanation. OSIALI reconstructs the evidence, identifies where it stops, recommends a safe next step, and produces a real support handoff.
+
+| Time | Screen action | Voiceover |
+|---|---|---|
+| 00:00–00:08 | Open OSIALI on F1. Show the failed case and branched lifecycle. | “A cross-chain swap can say FAILED without telling you where the transaction actually stopped.” |
+| 00:08–00:16 | Show identifier intake; enter the known public NEAR Intents Explorer URL. | “OSIALI — pronounced oh-see-AH-lih — reconstructs the swap from source-attributed evidence.” |
+| 00:16–00:30 | Show the captured public snapshot, source deposit, 1Click intake and NEAR intent. | “Here, the source deposit and intent are observed. Destination delivery and refund are not observed.” |
+| 00:30–00:42 | Focus the first unresolved destination leg and the OBSERVED / UNKNOWN labels. | “That distinction matters. Missing proof is not proof of lost funds, and it is not a reason to retry blindly.” |
+| 00:42–00:53 | Show conservative next action and do-not-retry condition. | “OSIALI identifies the first unresolved step and gives an evidence-bounded next action.” |
+| 00:53–01:05 | Export the JSON evidence bundle; open the downloaded file and show identifiers, links, missing proof and assurance. | “Then it creates a real support handoff, with the evidence, the gaps, and the limits clearly recorded.” |
+| 01:05–01:17 | Switch to F2 refunded and F3 complete. | “The same workflow distinguishes a verified refund from a completed delivery — without guessing.” |
+| 01:17–01:23 | Return to OSIALI wordmark and evidence route. | “OSIALI. Know what happened. Evidence before action.” |
+
+**Truth constraints:** Keep the public snapshot warning visible. Do not claim private partner-history access, live arbitrary cross-chain indexing, independent archival verification of historical cases, automatic recovery, or guaranteed refunds. The downloaded JSON must be the real file produced by the current build. Keep the original 60–90-second target. The final recording must show the currently deployed approved brand and the real product path.
+
+### Phase 9 status
+
+Architecture and story beats are revalidated against the approved name and original locked product. The recording itself is **NOT PRODUCED**; final UI/OG alignment, recording, and DEMO_QA remain downstream work.

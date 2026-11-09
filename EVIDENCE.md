@@ -1,4 +1,4 @@
-# Intent Rescue â€” Evidence Pack
+# OSIALI â€” Evidence Pack
 
 This file separates **what we observed** from **what the product infers**. It is intended for judges, reviewers, and anyone auditing the demo claims.
 
@@ -26,7 +26,7 @@ The corpus is observational evidence. We do not claim independent archival-chain
 
 Three cases are frozen as reproducible product fixtures:
 
-| Fixture | Public outcome | Intent Rescue result |
+| Fixture | Public outcome | OSIALI result |
 |---|---|---|
 | F1 | Failed; deposit observed; no destination/refund observed | `FAILED_UNRESOLVED`, first unresolved leg = destination delivery |
 | F2 | Refunded | `REFUND_VERIFIED` |
@@ -36,7 +36,7 @@ Each fixture retains its original Explorer URL and capture timestamp.
 
 ## 4. Independent NEAR technical proof
 
-During technical de-risking, Intent Rescue executed a public NEAR mainnet RPC transaction-status query against a current transaction and observed:
+During technical de-risking, OSIALI executed a public NEAR mainnet RPC transaction-status query against a current transaction and observed:
 
 - final execution status: `FINAL`
 - transaction status payload returned successfully
@@ -94,7 +94,7 @@ These files are supporting evidence, not substitutes for the live product workfl
 
 ## 7. What we do NOT claim
 
-Intent Rescue does not claim to:
+OSIALI does not claim to:
 
 - automatically recover or refund funds;
 - identify a protocol root cause when the evidence only shows a missing lifecycle leg;
@@ -136,7 +136,7 @@ Evidence rules: preserve input source, date, freshness, environment and limitati
 
 ## 2026-11-09 Proof Engine close
 - C01a approved product thesis: VERIFIED by the original PRODUCT.md revision 1 and current product-coverage audit.
-- C01b customer-facing brand identity: BLOCKED pending user name approval. The deployed Docketrail label is provisional and unapproved; do not use it as the approved product name.
+- C01b customer-facing brand identity: OSIALI explicitly approved by the user on 2026-11-09; current production deployment and OG preview still require OSIALI alignment and verification.
 - C02 supported multi-identifier intake: VERIFIED within the documented manual-fallback contract. Unit tests cover deposit address, correlation ID, source/destination identifiers and status-payload normalization. A live production browser run verified matching correlation-ID evidence is accepted only as provisional/unverified and mismatched evidence is rejected. Do not claim automatic private-history lookup for every identifier.
 - C03 public Explorer lookup: VERIFIED for 10/10 corpus outcomes as Explorer-reported categories, plus live FAILED/REFUNDED/SUCCESS endpoint cases. Not independent chain-finality verification.
 - C04 five-leg route + conservative diagnosis: VERIFIED by F1/F2/F3 integrated browser + 9/9 red-team.
@@ -150,4 +150,4 @@ Evidence rules: preserve input source, date, freshness, environment and limitati
 - **C14 VERIFIED in production:** current deployment dpl_CxeQQAnsZcXve62MMskuq6ZCT9Xz is READY, commit f667036e932ee638ef1aba57da4d234e00d47ee5, with alias intent-rescue.vercel.app. Vercel deployment metadata confirms commit and alias; live browser opened the alias and exercised the manual-evidence path.
 - **C15 VERIFIED in production:** a searched correlation ID with matching source-attributed JSON was accepted only as provisional/unverified; a payload containing a different correlation ID was rejected; corrected matching evidence was accepted; support JSON download succeeded; F2 refund and F3 completion contrasts rendered; 390px mobile viewport had no horizontal overflow. Reproducible script: scripts/operator-integrity-check.js.
 - **C16 F1 historical RPC status: BLOCKED / NOT CLAIMED:** evidence/mainnet-rpc-proof.json is a different current transaction, not either F1 transaction. It proves the public RPC tx_status response path only. F1 is an Explorer-reported public snapshot and is not independently archival-RPC verified.
-- **C17 brand identity: BLOCKED:** Docketrail is present in deployed HTML/OG/video but was never user-approved. Intent Rescue product thesis remains locked; final customer-facing name remains open. Do not publish the provisional brand.
+- **C17 brand identity: BLOCKED:** Docketrail is present in deployed HTML/OG/video but was never user-approved. OSIALI product thesis remains locked; final customer-facing name remains open. Do not publish the provisional brand.

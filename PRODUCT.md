@@ -1,6 +1,6 @@
 # PRODUCT — Intent Rescue (original lock preserved)
 
-Original decision: selected **Idea 1 / Intent Rescue** at the NEAR Hackathon human idea gate; PRODUCT_LOCK revision 1, 2026-10-25. The original full approved text is retained in the earlier operator handoff. This is the project-root working copy, **not a new approval or a scope cut**.
+Original decision: selected **Idea 1 / Intent Rescue** at the NEAR Hackathon human idea gate; PRODUCT_LOCK revision 1, 2026-10-25. The original full approved text is retained in the earlier operator handoff. This is the project-root working copy, **not a new approval or a scope cut**. The customer-facing brand was explicitly locked as **OSIALI** on 2026-11-09; this is a brand rename only and does not alter this original product thesis.
 
 ## Target user
 A swap user, NEAR Intents wallet/dApp integrator, or support operator investigating a delayed, failed, incomplete, or unrefunded 1Click swap.

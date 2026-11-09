@@ -232,3 +232,42 @@ The language-root note was checked against additional sources:
 - A Nigerian legal-translation paper describes `akaebe` / `ihe akaebe` as broadly meaning proof or testimony, while cautioning that legal evidence categories may not map one-to-one: https://iosrjournals.org/iosr-jhss/papers/Vol.31-Issue3/Ser-2/A3103020109.pdf
 
 The sources support the semantic direction, but they do **not** establish a preferred brand pronunciation. A fluent Igbo speaker must validate pronunciation, nuance, and whether using the noun alone as a product name sounds natural. Public search did not surface an exact software/fintech/Web3 product under AKAEBE; this is not trademark, domain, or handle clearance. Keep it exploratory, not shortlisted, until pronunciation and brand-fit are validated.
+
+
+## FINAL NAME LOCK — OSIALI (2026-11-09)
+
+**User decision:** OSIALI is explicitly approved as the customer-facing product name on 2026-11-09. This supersedes earlier open-state notes in this file. The original product thesis and PRODUCT_LOCK revision 1 remain unchanged.
+
+- **Brand name:** OSIALI
+- **Demo pronunciation cue (user-approved):** “oh-see-AH-lih”
+- **Lexical source:** Igbo *osialị*, associated with bearing witness / vouching. Nkọwa Okwu defines *osịālị̄* as “the act of bearing witness or vouching” and *ịgba osialị* as “bear witness or tell the way it is.” A University of Bayreuth study identifies *osialị* among Igbo words for “witness.”
+- **Brand concept:** OSIALI is a witness to the transaction's evidenced lifecycle. It distinguishes what was observed from what is inferred or unknown; it does not invent a cause, promise a refund, or claim certainty beyond the evidence.
+- **Positioning direction:** Evidence-first incident investigation for NEAR Intents.
+- **Working descriptor:** NEAR Intents incident investigation.
+- **Tagline direction (proposed, not separately user-approved):** “Know what happened.”
+- **Wordmark direction:** OSIALI in uppercase, restrained typographic wordmark. Keep the existing IBM Plex Sans / IBM Plex Mono pairing until Art Direction decides whether to refine it. Avoid eye, shield, magnifier, robot, coin, and generic chain symbols.
+- **Recognizable motif direction:** the actual branched lifecycle trace, with a precise witness marker at the last observed point and an honest break where evidence stops. This must remain tied to real case evidence, not decorative animation.
+- **Voice:** calm, exact, impartial, humane. Prefer “observed,” “not observed,” “unknown,” and “provisional” over certainty theatre.
+- **Usage:** write OSIALI in the wordmark and first reference; use OSIALI consistently in product UI, metadata, README, demo and submission. The original “Intent Rescue” wording remains in historical records describing the selected concept and original product lock; it is not the current customer-facing brand. “Docketrail” is an unapproved legacy label and must be removed from current surfaces.
+
+### Collision and legal status
+
+A fresh exact-name public-web search for OSIALI across software, product, fintech, crypto and blockchain terms did not surface an obvious exact-match competing product. It did surface nearby names worth monitoring: **Osai Technologies**, a Lagos software-development agency, and **OSHIAI**, a Japanese entertainment-technology company. These are not exact matches and no direct category collision was established in this pass. Search-engine absence is not proof of availability.
+
+**Trademark, domain and social-handle clearance are NOT complete.** No claim of legal availability or registration is made. Official searches should be completed before commercial launch or filing, including WIPO Global Brand Database and relevant national registries.
+
+### Source notes
+
+- Nkọwa Okwu, *osịālị̄*: https://nkowaokwu.com/word?word=the+act+of+bearing+witness+or+vouching
+- Nkọwa Okwu, *ịgba osialị*: https://nkowaokwu.com/word?word=i%CC%A3gba+osiali%CC%A3
+- University of Bayreuth, *Bible Translation and Language Elaboration: The Igbo Experience*: https://epub.uni-bayreuth.de/id/eprint/4298/1/Bible%20Translation%20and%20Language%20Elaboration%20%E2%80%93%20The%20Igbo%20Experience.pdf
+- WIPO trademark search guidance: https://www.wipo.int/en/web/global-brand-database/faqs_branddb
+
+### Lock status
+
+- NAME_LOCK: **USER-APPROVED — OSIALI**
+- Name lock date: 2026-11-09
+- Pronunciation cue: user-approved for demo voiceover
+- Product scope: unchanged
+- Formal legal clearance: outstanding
+- Downstream identity alignment: required; the previous Docketrail-labelled deployment, OG preview and recordings remain legacy assets until replaced and verified.

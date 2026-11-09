@@ -7,7 +7,7 @@ Official 2026 scoring weights: UNKNOWN. Internal estimates, not official scores.
 | Product judge | 8/10 | Public Explorer record â†’ five-leg route â†’ first unresolved boundary â†’ conservative action â†’ support export; failed/refunded/complete contrasts | Private history requires user-supplied evidence; state this in first 30 seconds. |
 | Technical judge | 8/10 | 35/35 tests, 9/9 red-team, fixed-host public HTML reader, strict identifier matching, chain-specific links, local reproducibility | HTML snapshots are not signed chain-finality proof. |
 | Sponsor judge | 7/10 | NEAR Intents is the actual incident surface; NEAR Explorer records and NEAR tx refs integral to route reconstruction | No authenticated partner API; explain credential-independent public evidence path. |
-| 30-second judge | 8/10 | Interrupted five-leg rail, unresolved boundary, failed/refund/success contrast, Intent Rescue product identity; customer-facing name gate remains open | No narration; chapter overlays carry story. |
+| 30-second judge | 8/10 | Interrupted five-leg rail, unresolved boundary, failed/refund/success contrast, OSIALI product identity; user-approved 2026-11-09; deployment and final demo alignment remain open | No narration; chapter overlays carry story. |
 
 ## Criterion estimate (weights UNKNOWN)
 - Technical implementation 8/10: endpoint, tests, red-team, local reproduction. Deduction: public HTML/manual data not independently authenticated chain history.
@@ -28,4 +28,4 @@ This is a provisional judge simulation, not a final judge-ready verdict. The cur
 
 
 ## Naming correction
-Docketrail was an assistant-proposed candidate and was incorrectly marked NAME_LOCK without explicit user approval. Do not use its current UI label in a public pitch or submission. The product thesis remains Intent Rescue.
+OSIALI was explicitly approved by the user on 2026-11-09. Docketrail remains an unapproved legacy UI/OG/video label and must not be used in the public pitch or submission. The original product thesis remains Idea 1 / Intent Rescue.

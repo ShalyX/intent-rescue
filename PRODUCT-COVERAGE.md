@@ -1,6 +1,6 @@
 # PRODUCT-COVERAGE — 2026-11-09 final integrated audit
 
-Original approval: user selected Idea 1 / Intent Rescue, PRODUCT_LOCK revision 1, 2026-10-25. Separate brand/name lock remains OPEN; Docketrail is an unapproved assistant-proposed label.
+Original approval: user selected Idea 1 / Intent Rescue, PRODUCT_LOCK revision 1, 2026-10-25. Customer-facing brand **OSIALI** explicitly approved by the user on 2026-11-09; Docketrail remains a legacy unapproved label in older release assets.
 
 | Locked ID | User value / workflow | Integrated implementation | Acceptance evidence | Status | Boundary |
 |---|---|---|---|---|---|
@@ -14,7 +14,7 @@ Original approval: user selected Idea 1 / Intent Rescue, PRODUCT_LOCK revision 1
 
 ## PRODUCT INTEGRITY
 approved_product: Intent Rescue, Idea 1 / lock rev 1.
-name_lock: OPEN. Docketrail not user-approved.
+name_lock: PASS — OSIALI user-approved 2026-11-09. Docketrail legacy assets still require replacement.
 P0_verified: [P0-01,P0-02,P0-03,P0-04,P0-05,P0-06,P0-07].
 P0_missing_or_blocked: [] within approved supported-input contract.
 out_of_scope: universal automatic private-history lookup; partner JWT ingestion; automatic refunds.

@@ -1,7 +1,7 @@
 # Hackathon Operator v0.5.0 ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â Intent Rescue phase audit
 
 **Audit date:** 2026-11-09
-**Project:** Intent Rescue (Idea 1; PRODUCT_LOCK revision 1)
+**Project:** OSIALI (original Idea 1 / Intent Rescue; PRODUCT_LOCK revision 1)
 **Authoritative operator:** private user plugin hackathon-operator, version **0.5.0**, release pluginrel_6aebc44b25c881918ef57530f6408b50, plugin ID plugins_6ade4b7d8e6481918f86f87a82b1c05a. The 0.1.1 duplicate is explicitly the old copy and was not used.
 **Authority:** v0.5.0 workflow/states.md, gates.md, transitions.md, references/product-integrity.md, references/design-quality-gates.md.
 
@@ -29,14 +29,14 @@ Status key: **PASS** = exit proof inspected; **PASS*** = historical artifact pro
 | 5 | HUMAN_IDEA_GATE | **PASS** | Explicit selection of Idea 1 ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â Intent Rescue, 2026-10-25 23:53:45 +01:00. |
 | 6 | VALIDATION | **PASS** | VALIDATION.md verdict **MODIFY ÃƒÂ¢Ã¢â‚¬Â Ã¢â‚¬â„¢ PASS**. ÃƒÂ¢Ã¢â€šÂ¬Ã…â€œRescueÃƒÂ¢Ã¢â€šÂ¬Ã‚Â narrowed to evidence-backed diagnosis/recovery assistance; no custody, forced refund or refund guarantee. |
 | 7 | PRODUCT_LOCK | **PASS** | PRODUCT.md revision 1 preserves target, problem, thesis, workflow, magic moment, P0/P1/P2, non-goals and forbidden reframings. |
-| 8 | NAME_LOCK | **OPEN — PRIOR SHORTLIST REJECTED; RESET REQUIRED** | The user rejected LegSignal, SwapDossier, RouteSift, IntentBeacon and SwapBrief as AI-sloppy. Their scores are withdrawn. BRAND.md records the quality failure and binding taste constraints. Intent Rescue remains the canonical working title; Docketrail is unapproved. No name locked. |
+| 8 | NAME_LOCK | **PASS — USER APPROVED** | User explicitly selected OSIALI on 2026-11-09. Preliminary exact-name public-web collision screen recorded in BRAND.md; formal trademark/domain clearance remains outstanding. Original product thesis unchanged. |
 | 9 | DEMO_ARCHITECTURE | **PASS*** | Original DEMO.md has five scenes, user action, magic moment, evidence, NEAR technology beat, failure risks, fallback, reset/repeatability and recording requirements. It was created before NAME_LOCK in the older sequence; revalidate after phase 8. |
 | 10 | EVIDENCE_PLAN | **PASS*** | Original EVIDENCE_PLAN.md restored: claims, proof standard, owner, method, deadline and initial status. Refresh current statuses from EVIDENCE.md after phase 8. |
 | 11 | DEPENDENCY_ATTACK | **PASS*** | TECHNICAL_DERISK.md risk register covers partner JWT, solver relay, Explorer scraping, public NEAR RPC and origin/destination chain adapters; non-essential dependencies were removed or given fallbacks. Reconfirm after phase 8. |
 | 12 | TECHNICAL_DERISK | **PASS WITH BOUNDARY*** | Current public Explorer HTML retrieval/parser, manual evidence fallback, classifier, local API and production endpoint are exercised. Public NEAR RPC proof records a FINAL result for an unrelated current transaction; it does **not** prove the historical F1 transactions independently. F1 remains an Explorer snapshot and is labelled as such. Do not claim independent F1 chain verification. |
 | 13 | BUILD_VERTICAL_SLICE | **PASS*** | F1 route ÃƒÂ¢Ã¢â‚¬Â Ã¢â‚¬â„¢ unresolved boundary ÃƒÂ¢Ã¢â‚¬Â Ã¢â‚¬â„¢ conservative advice ÃƒÂ¢Ã¢â‚¬Â Ã¢â‚¬â„¢ JSON export is integrated and tested; F2/F3 provide refund/complete contrast. Revalidate brand-facing surfaces after phase 8. |
 | 14 | PRODUCT_REVIEW | **PASS ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â HQ PRODUCT-INTEGRITY RE-AUDIT** | PRODUCT-COVERAGE.md traces all seven original P0s to implementation and evidence. No P0 was silently removed; no product thesis drift. P0-01 manual fallback is bounded and provisional, not universal private-history lookup. |
-| 15 | BRAND_KIT | **OPEN** | No user-approved customer-facing name; therefore no final locked brand kit. Existing Docketrail identity is provisional and cannot be treated as approved. |
+| 15 | BRAND_KIT | **OPEN** | OSIALI is user-approved; full brand kit is not yet complete. Existing Docketrail identity remains a legacy label and cannot be used in final assets. |
 | 16 | ART_DIRECTION | **PARTIAL** | Product-specific forensic incident-desk direction exists in DESIGN-PASS3.md/UI-POLISH.md. v0.5.0 Design Quality Gate B requires three materially different visual territories for a substantial redesign; no three-direction comparison/rejection record was found. |
 | 17 | REFERENCE_BOARD | **PARTIAL** | DESIGN.md names Stripe/Sentry/Cloudflare and describes broad takeaways, but there is no complete purpose-decomposed reference board with source captures/URLs and specific takeaways per reference. |
 | 18 | VISUAL_ASSET_STRATEGY | **PARTIAL** | Authentic F1/F2/F3 captures, local fonts and fallbacks exist. The asset inventory is not fully mapped by section, purpose, owner, priority, status, responsive variant and performance budget. OG preview currently carries the unapproved Docketrail label. |
@@ -68,7 +68,7 @@ The correct current phase is **NAME_LOCK**, not NAME_APPROVAL. The previous stat
 
 ## Correct sequential route from here
 
-1. Finish **NAME_LOCK** by obtaining explicit user selection from the fresh shortlist in BRAND.md; Docketrail remains unapproved.
+1. NAME_LOCK is now passed with OSIALI approved. Continue with dependency revalidation, then complete the remaining phases sequentially.
 2. Revalidate DEMO_ARCHITECTURE and EVIDENCE_PLAN against the approved identity; preserve existing work.
 3. Resolve the track assignment against the official current track descriptions.
 4. Complete the missing Art Direction / Reference Board / Asset Strategy evidence and formal Design Quality score; then confirm Design Lock and Visual QA.

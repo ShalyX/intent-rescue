@@ -1,12 +1,12 @@
-# NEAR Hackathon submission pack — Intent Rescue
+# NEAR Hackathon submission pack — OSIALI
 
 ## Status
-**NOT SUBMISSION READY — public-facing name approval is still open.** The Docketrail label currently present in the deployed UI and demo was selected by the assistant without explicit user approval. Do not publish that branded asset or enter Docketrail as the official project title.
+**NOT SUBMISSION READY — OSIALI is user-approved, but final brand alignment and demo QA remain open.** The current production build/OG preview and existing video still carry the unapproved legacy Docketrail label. Do not submit those legacy assets.
 
 ## Existing assets (provisional)
 - Demo file: qa/docketrail-judge-final.mp4 (contains unapproved Docketrail label; do not publish yet)
 - Public repo: https://github.com/ShalyX/intent-rescue
-- Live demo: https://intent-rescue.vercel.app/ (currently displays provisional Docketrail label)
+- Live demo: https://intent-rescue.vercel.app/ (currently displays the legacy Docketrail label pending OSIALI deployment and verification)
 
 ## Track decision
 Original PRODUCT.md revision 1 records primary Unstoppable DeFi and secondary Open Innovation. Current recommendation is Open Innovation, but the final track selection remains open until explicitly reconciled.

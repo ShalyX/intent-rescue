@@ -9,7 +9,7 @@ fallback_used: true
 Do **not** call this an execution of the original Product Hygiene skill.
 
 ## Observed work and checks
-- Product identity: the UI/title/OG currently display Docketrail, which is unapproved. Intent Rescue is the canonical working title; NAME_LOCK remains open.
+- Product identity: the UI/title/OG currently display Docketrail, which is unapproved. OSIALI is the user-approved brand (2026-11-09); the current deployment still carries the legacy Docketrail label and requires alignment.
 - Shell: approved forensic header, three-column investigation, case file/footer. Desktop and 390px mobile captures inspected 2026-11-08.
 - Real interaction: F1/F2/F3, known Explorer URL, unknown ID behavior, manual-provisional warning, JSON export exercised in Playwright and passed.
 - Provenance: captured snapshots visibly distinguished from user input. No live lookup is implied. Support escalation included.
@@ -28,7 +28,7 @@ Do **not** call this an execution of the original Product Hygiene skill.
 
 Verdict: **NOT YET A PASSED FINAL PRODUCT HYGIENE GATE**. Re-run after publishing current revision, updating demo, and resolving naming; no secret-free/public-ready guarantee yet.
 ## 2026-11-09 incremental hygiene notes
-- Naming exploration produced candidates, but **Docketrail was never user-approved**. NAME_LOCK is OPEN. The deployed HTML title, wordmark/footer, social title and preview currently show this provisional label; do not treat it as the final brand.
+- **OSIALI was explicitly user-approved on 2026-11-09.** Docketrail remains a legacy label in the deployed UI/OG/video and must be removed before final release. The deployed HTML title, wordmark/footer, social title and preview currently show this provisional label; do not treat it as the final brand.
 - Conditional explorer links are format-gated, use an allowlisted destination and open with `noopener noreferrer`. Three tests cover supported source/NEAR refs, Base/Ethereum synthetic paths, and invalid/ambiguous cases. No chain guessing from token ticker.
 - Final Product Hygiene skill still not discovered in connected host; fallback_used=true remains, and final release check is pending. Do not certify skill run or final hygiene pass yet.
 
@@ -50,7 +50,7 @@ Verdict: **NOT YET A PASSED FINAL PRODUCT HYGIENE GATE**. Re-run after publishin
 
 ## Findings and rechecks
 - No P0 defect open within approved supported-input contract. All seven P0 rows and proof are in PRODUCT-COVERAGE.md.
-- Identity: the deployed UI, wordmark, footer and OG preview display Docketrail, but that label is UNAPPROVED. Intent Rescue remains the canonical working title until the user approves a final name. Font and social assets load; identity consistency is not an approved-brand pass.
+- Identity: the deployed UI, wordmark, footer and OG preview display Docketrail, but that label is UNAPPROVED. OSIALI is the approved customer-facing name; final identity deployment and asset verification remain pending. Font and social assets load; identity consistency is not an approved-brand pass.
 - Product shell: intake, captured queue, evidence JSON drawer, five-stage canvas, recovery rail, case file and footer present.
 - Placeholder/mock residue: three clearly labeled real public incident fixtures; no fake testimonials, balances, chat, fabricated transactions or root-cause claims found in visible judge path.
 - Interactions: public Explorer lookup, matching manual evidence fallback, mismatched-ID rejection, F1/F2/F3 and JSON download tested. Unknown record clears stale view. Source link restricted to HTTPS NEAR Intents Explorer transaction paths.

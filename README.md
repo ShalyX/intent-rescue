@@ -1,6 +1,6 @@
-# Intent Rescue
+# OSIALI
 
-> Canonical working name from the original user-approved product lock. The deployed UI currently displays Docketrail as an unapproved provisional label; do not treat that rename as approved.
+> OSIALI is the user-approved customer-facing brand (2026-11-09) for the original OSIALI product concept. The current production build and social preview still need final identity alignment.
 
 **Live demo:** https://intent-rescue.vercel.app
 **Public repo:** https://github.com/ShalyX/intent-rescue
@@ -9,11 +9,11 @@
 
 [Evidence pack](./EVIDENCE.md) Â· 10 public cases Â· 35/35 local tests Â· 9/9 red-team scenarios Â· 30,000 deterministic repeat classifications
 
-Intent Rescue reconstructs a swap from source-attributed evidence, identifies the first unresolved lifecycle leg, explains what the evidence does and does not prove, recommends a conservative next action, and exports a support-ready incident bundle.
+OSIALI reconstructs a swap from source-attributed evidence, identifies the first unresolved lifecycle leg, explains what the evidence does and does not prove, recommends a conservative next action, and exports a support-ready incident bundle.
 
 ## Why it exists
 
-A cross-chain swap can expose a single terminal label such as `FAILED` while the useful evidence is scattered across the source chain, NEAR Intents execution, destination delivery, and refund path. Intent Rescue turns that evidence into one trace:
+A cross-chain swap can expose a single terminal label such as `FAILED` while the useful evidence is scattered across the source chain, NEAR Intents execution, destination delivery, and refund path. OSIALI turns that evidence into one trace:
 
 `Source deposit â†’ 1Click intake â†’ Intent / solver â†’ Destination delivery or Refund`
 
@@ -46,7 +46,7 @@ Use the deployed build; no account or credentials are required:
 
 ## NEAR technology used
 
-- **NEAR Intents** is the core product surface: Intent Rescue reconstructs the source deposit, 1Click intake, intent/solver execution, destination delivery, and refund path from source-attributed evidence.
+- **NEAR Intents** is the core product surface: OSIALI reconstructs the source deposit, 1Click intake, intent/solver execution, destination delivery, and refund path from source-attributed evidence.
 - **NEAR mainnet RPC** was used separately in a technical de-risking spike to observe a real `FINAL` transaction with receipts. The deployed incident lookup reads public NEAR Intents Explorer pages; it does **not** independently verify each historical transaction on-chain.
 - Partner JWT APIs and solver-relay access are optional enrichments, not requirements for the judge path.
 
@@ -78,7 +78,7 @@ The case export and on-screen evidence ledger include source-chain, NEAR, destin
 
 ## Safety contract
 
-Intent Rescue does **not** custody funds, trigger refunds, or claim a protocol root cause without evidence. Terminal success/refund classifications require concrete transaction evidence or a direct captured observation; caller-supplied `*_verified` flags alone are not enough.
+OSIALI does **not** custody funds, trigger refunds, or claim a protocol root cause without evidence. Terminal success/refund classifications require concrete transaction evidence or a direct captured observation; caller-supplied `*_verified` flags alone are not enough.
 
 ## Architecture
 

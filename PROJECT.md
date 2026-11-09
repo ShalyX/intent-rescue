@@ -1,4 +1,4 @@
-# PROJECT â€” Intent Rescue / newest Hackathon Operator checkpoint
+# PROJECT — OSIALI / original approved concept: Intent Rescue
 
 ## 2026-11-09 Product Integrity and release checkpoint
 - Original approved product: Idea 1 / **Intent Rescue**, lock revision 1 (2026-10-25). No product thesis drift.
@@ -33,3 +33,15 @@ Resolve the product-name gate. Do not publish the Docketrail-labelled video or u
 - No candidate met the bar for a user-facing shortlist. **Akaebe** (Igbo term used for “witness”) is an exploratory language-root direction only; pronunciation and cultural fit remain unvalidated. It is not shortlisted or approved.
 - NAME_LOCK remains OPEN. Intent Rescue remains the canonical working title; Docketrail remains unapproved. Product lock and all seven P0 requirements are unchanged.
 - No human naming gate is pending yet; continue Brand specialist research until genuinely strong, screened candidates exist.
+
+
+## 2026-11-09 — latest Operator checkpoint
+
+- **Customer-facing name:** OSIALI, explicitly approved by the user on 2026-11-09. Approved demo pronunciation cue: “oh-see-AH-lih”.
+- **Original product thesis:** Idea 1 / Intent Rescue, PRODUCT_LOCK revision 1. The rename changes only the brand; target user, approved workflow, scope, boundaries and all seven P0s are unchanged.
+- **Name lock:** PASS. Preliminary exact-name public-web collision screen found no obvious exact software/fintech/Web3 competitor. Nearby names Osai Technologies (Lagos software agency) and OSHIAI (Japanese entertainment tech) are noted. Trademark/domain/handle clearance is not complete.
+- **Legacy identity:** Docketrail remains an unapproved old label in the previous production build, OG image and old recordings. These are not final public assets.
+- **DEMO_ARCHITECTURE:** Revalidated with OSIALI and a 75–85 second voiceover/shot plan. Recording remains pending; see DEMO.md.
+- **EVIDENCE_PLAN:** Revalidated. The brand rename adds no new product or technical claim; the original seven P0 claims and their proof standards remain unchanged.
+- **Current Operator phase:** DEPENDENCY_ATTACK. Revalidate release dependencies and ensure the approved identity can be deployed and verified without disturbing the locked product workflow.
+- **Submission:** NOT READY. Final brand deployment, OG asset, current 60–90 second demo, demo QA and remaining operator phases are still open.

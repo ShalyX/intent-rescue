@@ -1,4 +1,4 @@
-# DESIGN — Docketrail / newest Operator
+# DESIGN — OSIALI / newest Operator
 Status: **DESIGN_LOCK revision 1 (2026-11-09)**. Original approved Pass 3 forensic incident-desk direction retained. Actual production commit 6b1abb5 inspected at desktop 1440×1000 and mobile 390×844; new name/route/safe-action rendered correctly, F1/F2/F3 outcomes checked and mobile horizontal overflow measured false.
 
 ## Product / experience map
