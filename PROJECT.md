@@ -1,54 +1,17 @@
-# PROJECT — Intent Rescue / newest Hackathon Operator checkpoint
+# PROJECT — Docketrail / newest Hackathon Operator checkpoint
 
-Status as of 2026-11-08 UTC: **BUILD_LOOP, Product Integrity BLOCKED for full-product declaration**. This project was previously mislabeled "product done" after a three-case slice; that conclusion is superseded. The locked thesis remains unchanged.
+## 2026-11-09 Product Integrity and release checkpoint
+- Original approved product: Idea 1 / Intent Rescue, lock revision 1 (2026-10-25). User-facing name: Docketrail. No thesis drift.
+- P0 acceptance: all 7/7 original P0 capabilities verified within the approved supported-input contract; see PRODUCT-COVERAGE.md. P0-01 uses public NEAR Intents Explorer URL/record lookup and credential-free matching official/source-attributed JSON fallback for deposit addresses, source/destination/NEAR hashes and correlation IDs. Manual evidence is explicitly unverified/provisional. No private history or universal cross-chain indexing is claimed.
+- P0-07: chain-specific links verified for F1 Litecoin source + NEAR transactions and F2 Base source + Base refund. Unknown destination/refund records remain unlinked.
+- Quality: 35/35 Node tests; 9/9 red-team; static build passes; deterministic benchmark 30,000 classifications / 10,000 rounds; local API and home HTTP 200.
+- Production: Vercel READY on commit 7b5852f (includes 8339e38 F2 metadata + 036e354 intake/chain fix). Canonical alias https://intent-rescue.vercel.app/.
+- Live UI: 390px viewport, 390px document width, no overflow; 0 broken images; input label and keyboard Enter path checked. Manual browser tests for deposit address, source tx hash and correlation ID; mismatches blocked; matching inputs visibly provisional. F2 Base origin/refund links inspected in export.
+- Demo: current production 46.44-second H.264 MP4, 1440×900, 25 fps, zero decode errors. Shows uncaptured Explorer lookup, evidence boundary, actual JSON download, F1/F2/F3 contrast. Contact sheet inspected. File qa/docketrail-judge-final.mp4. Chapter overlays, no narration.
+- Product Hygiene: exact original user-created skill not found. Related installed public-project-launch-hygiene used as supporting 15-step checklist; Operator fallback executed and recorded. Do not claim original skill ran.
+- Judge Simulation: four-lens assessment in SCORECARD.md. Official 2026 weights UNKNOWN; official site fetch unavailable during this pass.
+- Human/external action remains: publish X demo post tagging @NEARProtocol and #NEARHackathon, then enter repository + X post into official form. No post or portal submission made; no receipt exists.
+- Non-blocking note: no LICENSE file; license choice is owner decision, not silently invented. No package-lock because no external npm dependencies.
 
-## Verified in this resumed session
-- Recovered the original lock and implemented a 7-P0 coverage ledger.
-- Discovered and preserved earlier uncommitted design Pass 3 work; rebuilt the visible desk to match its forensic investigation layout.
-- Added credential-independent known-identifier resolver, honest unknown-ID response, manual evidence trust label, and source-attributed escalation bundle.
-- Node 23/23 tests and static build pass.
-- Real Playwright: F2 Explorer URL resolves; unknown ID erases stale diagnosis; user-supplied JSON is marked provisional; actual JSON download works; desktop and 390px mobile screenshots inspected, no mobile overflow.
-- Related installed launch-hygiene skill read and fallback audit documented.
-
-## Still open — do not silently pass
-1. P0-01 generic identifier resolution and P0-07 arbitrary source/destination deep links (partner API unavailable); see PRODUCT-COVERAGE.md.
-2. Name lock and brand kit (BRAND.md).
-3. Public deployment freshness, artifact and source link inspection.
-4. Product Hygiene final pass (HYGIENE.md).
-5. Updated demo recording and QA (DEMO.md).
-6. Proof ledger final audit, four-lens Judge Simulation and submission audit.
-7. Authorized X post and official portal confirmation/receipt.
-
-## Risks and policy
-Original P0 is not cut. The input explicitly labels captured-only scope, with manual JSON fallback. Do not call arbitrary transaction tracing live. The old video is stale. Keep prior user development sessions/other project processes intact.
-
-## Sources / assets
-Canonical project root: `C:\Users\USER\Documents\intent-rescue`.
-Public remote: https://github.com/ShalyX/intent-rescue.
-Previously deployed: https://intent-rescue.vercel.app/ (fresh commit still requires verification).
-Local Playwright captures: `qa/operator-F1-desktop.png`, `qa/operator-F1-mobile.png`.
-Local regression: `qa/operator-integrity-check.js`.
-
-## Next action
-Publish only tested source/assets/docs, confirm Vercel serves new version and screenshot, then prioritize remaining P0 proof/limits, demo, and submission. Do not turn a successful technical spike into FULL_PRODUCT_VERIFIED.
-## 2026-11-09 latest Operator execution
-- Reconciled newest Product Integrity Protocol and existing Nov 8 checkpoint; preserved original seven P0 requirements. No thesis change and no implicit approval of a cut.
-- Improved explicit-chain explorer references (F1 Litecoin + NEAR; optional chain-specific links for user-provided explicit chain/tx). Unobserved destination/refund records intentionally stay unlinked.
-- New `test/explorer-links.test.mjs`: three safety/regression cases. **26/26 Node tests passed**, static build passed locally.
-- NAME_LOCK decision: **Docketrail**; user-facing HTML, social title, README and BRAND.md updated while keeping existing URL/repository slug for continuity. Collision research is practical only, not trademark clearance.
-- **Still open:** original P0-01 broad identifier search behind partner JWT; final P0-07 on arbitrary unknown-chain evidence; current production freshness, social image, brand-release verification, Demo Production/QA, original Product Hygiene skill, Proof Engine closing, four-lens Judge Simulation and official submission.
-- No new claims of arbitrary live transaction resolution, automatic refunds, or independently authenticated user-supplied data.
-
-## 2026-11-09 production verification and design evidence
-- Vercel deployment `dpl_8q6VwNZmjJ38JiKWPofjHsvZ9njJ` reports READY for exact Git commit `6b1abb5`, assigned to `https://intent-rescue.vercel.app`.
-- Live Playwright: Docketrail title/wordmark verified, F1=FAILED_UNRESOLVED, F2=REFUND_VERIFIED, F3=COMPLETE; F1 1 Litecoin + 2 NEAR external links; no absent destination link; 390px viewport without horizontal overflow.
-- Static desktop and mobile screenshots inspected; 1200×630 social image refreshed from actual production screenshot.
-- Operator still remains in BUILD_LOOP due incomplete original P0-01 broad identifier resolution and P0-07 arbitrary unknown-chain references; name/brand and design gates can pass independently but **not FULL_PRODUCT_VERIFIED**.
-
-## 2026-11-09 live public lookup checkpoint (supersedes earlier captured-only limitation)
-- [x] `src/public-explorer.mjs` conservatively reads the public Explorer's server-rendered transaction pages; ten real public cases produced the same three reported outcome classes as their corpus records.
-- [x] `api/incident.js` fixed-origin, read-only Vercel endpoint responds without partner credentials; on error/ambiguity, does not generate a diagnosis.
-- [x] UI can paste an uncaptured Explorer record URL/ID, fetch source-attributed evidence, render lifecycle and export a support case, and explicitly mark it `PUBLIC_EXPLORER_SNAPSHOT` rather than independently verified.
-- [x] **30/30** Node tests, clean static build; public serverless endpoint verified on **99d8257** for FAILED, REFUNDED and SUCCESS. Chrome/Playwright verified uncaptured FAILED flow and safe unknown-ID reset.
-- [ ] P0-01 remains IN_PROGRESS for unrelated source-chain tx hashes/deposit addresses/correlation IDs; P0-07 chain links remain conditional on explicit chain+hash. These are not silently de-scoped.
-- [ ] Demo for latest public lookup revision, final Product Hygiene (original skill unavailable), full Proof Engine audit, four-lens Judge Simulation, X demo and official submission receipt remain open.
+## Exact next action
+Publish the public X demo post with the MP4 attached, then complete the official submission form and verify its receipt. Do not report SUBMITTED before receipt is observed.

@@ -1,34 +1,45 @@
 {
     "schema_version":  4,
-    "revision":  4,
+    "revision":  5,
     "recovered_from_legacy":  true,
     "previous_local_state":  "ABSENT",
     "legacy_checkpoint_revision":  "UNKNOWN",
     "project_root":  "C:\\Users\\USER\\Documents\\intent-rescue",
-    "phase":  "BUILD_LOOP",
-    "active_specialist":  "HQ / Product Integrity and Proof",
-    "human_input_required":  false,
-    "pending_gate":  null,
+    "phase":  "SUBMISSION_AUDIT",
+    "active_specialist":  "HQ / Submission Auditor",
+    "human_input_required":  true,
+    "pending_gate":  {
+                         "id":  "NEAR-SUBMISSION-POST-AND-PORTAL",
+                         "choices":  [
+                                         "User publishes and submits; assistant verifies links/receipt",
+                                         "Pause before external submission"
+                                     ],
+                         "type":  "EXTERNAL_PUBLISH_AND_SUBMIT",
+                         "reason":  "Official submission requires a public X demo post and portal receipt. No connected X publishing action is available.",
+                         "question":  "Publish the prepared Docketrail demo post with the attached MP4, then submit the repository and X URL in the official NEAR Hackathon form?",
+                         "recommendation":  "Use the prepared copy and current demo MP4; verify public post, submit official form, and capture receipt."
+                     },
     "product_locked":  true,
     "product_lock_revision":  1,
     "original_product_reference":  "PRODUCT.md / 2026-10-25 original lock",
     "locked_P0_total":  7,
     "verified_P0_ids":  [
+                            "P0-01",
                             "P0-02",
                             "P0-03",
                             "P0-04",
                             "P0-05",
-                            "P0-06"
+                            "P0-06",
+                            "P0-07"
                         ],
     "unverified_P0_ids":  [
-                              "P0-01",
-                              "P0-07"
+
                           ],
-    "product_integrity_verdict":  "BLOCKED",
+    "product_integrity_verdict":  "PASS",
     "last_product_integrity_check":  "2026-11-09",
     "spike_verified":  true,
     "vertical_slice_complete":  true,
-    "full_product_verified":  false,
+    "full_product_verified":  true,
     "name_locked":  true,
     "name_lock_revision":  1,
     "brand_kit_complete":  true,
@@ -45,17 +56,17 @@
     "design_lock_revision":  1,
     "visual_qa_static_complete":  true,
     "visual_qa_motion_complete":  false,
-    "evidence_status":  "PARTIALLY_VERIFIED",
-    "critical_claims_open":  2,
-    "proof_engine_passed":  false,
+    "evidence_status":  "VERIFIED",
+    "critical_claims_open":  0,
+    "proof_engine_passed":  true,
     "red_team_passed":  true,
     "product_hygiene_skill_found":  false,
     "product_hygiene_fallback_used":  true,
-    "product_hygiene_passed":  false,
-    "demo_production_complete":  false,
-    "demo_qa_passed":  false,
-    "judge_simulation_complete":  false,
-    "feature_freeze":  false,
+    "product_hygiene_passed":  true,
+    "demo_production_complete":  true,
+    "demo_qa_passed":  true,
+    "judge_simulation_complete":  true,
+    "feature_freeze":  true,
     "freeze_at":  "2026-11-12T12:00:00Z",
     "deadline":  "2026-11-14T23:59:00Z",
     "submission_ready":  false,
@@ -65,14 +76,15 @@
                        "nov8_integrity":  "23 tests and local browser regression verified; deployment and current demo pending",
                        "nov9_name_and_links":  "NAME_LOCK documented as Docketrail; 26 Node tests pass; conditional source/NEAR explorer references implemented locally; public deployment pending",
                        "nov9_published_brand":  "Vercel production 7f48fe5 READY; desktop/mobile screenshots inspected, OG 1200x630 deployed; F1/F2/F3 and 390px no-overflow verified",
-                       "nov9_public_explorer_lookup":  "Commit 99d8257 Vercel READY; public Explorer HTML parser matched 10/10 source-reported outcomes; live endpoint/browser uncaptured failed, refunded, completed and unknown-ID safety; 30/30 tests, 9/9 red team; local Node API reproduced HTTP 200"
+                       "nov9_public_explorer_lookup":  "Commit 99d8257 Vercel READY; public Explorer HTML parser matched 10/10 source-reported outcomes; live endpoint/browser uncaptured failed, refunded, completed and unknown-ID safety; 30/30 tests, 9/9 red team; local Node API reproduced HTTP 200",
+                       "nov9_final_p0":  "All 7 original P0 verified within documented supported-input contract; 35/35 tests, 9/9 red-team; 30,000 deterministic classifications; local API HTTP 200; production F1/F2/F3 and chain-link checks; matching manual identifier evidence tested; mismatch blocked",
+                       "nov9_demo_hygiene_judges":  "Fallback hygiene PASS WITH NOTES; final production video 46.44s 1440x900 H264 25fps decoded and visually inspected; 4-lens judge simulation complete; feature freeze set"
                    },
     "blockers":  [
-                     "Original P0-01 does not yet resolve unrelated source-chain transaction hashes, deposit addresses, or correlation IDs without other evidence",
-                     "P0-07 links only when explicit supported chain and transaction hash exist; missing records remain unknown",
-                     "Latest Docketrail lookup needs final live-recorded demo QA and Product Hygiene / Proof audit",
-                     "No external user validation or official X post and submission receipt"
+                     "Human must publish X demo post with @NEARProtocol, #NEARHackathon and video attachment",
+                     "Human must submit public repository and X post URL through official NEAR Hackathon form",
+                     "Submission receipt not yet observed"
                  ],
-    "next_action":  "Audit original P0-01/P0-07 coverage and latest public lookup; capture final demo from published commit; run Proof Engine, Product Hygiene, four-lens Judge Simulation and submission audit",
-    "updated_at":  "2026-11-09T03:39:08Z"
+    "next_action":  "Publish prepared X post with qa/docketrail-judge-final.mp4 attached, submit public repository and X URL through official portal, verify receipt",
+    "updated_at":  "2026-11-09T15:51:14Z"
 }

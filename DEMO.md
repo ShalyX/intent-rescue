@@ -24,3 +24,13 @@ Unknown historical identifiers cannot be automatically resolved without partner 
 ## November 9 recording evidence
 - Prior to the newest lookup release, a **real-interaction** Docketrail walkthrough was captured from live production: `qa/docketrail-judge-demo-final.mp4`, 68.92 s / 1440×900 / H.264 / 25 fps / full decode PASS. Frame sheet inspected; shows known F1 identifier entry, genuine evidence JSON download, F2 refunded and F3 complete, then F1 reset. No simulated buttons or fabricated data.
 - The endpoint/label was expanded after that capture in commit `99d8257`, so the video is useful **backup proof but NOT final-current-demo QA**. Re-record the final version showing public *uncaptured* Explorer URL/ID lookup with the explicit snapshot warning, plus actual support export and F2/F3 contrast. Include voice/captions or a concise explanatory overlay only if legible; do not misstate independent chain verification.
+# DEMO — final production / 2026-11-09
+
+- File: qa/docketrail-judge-final.mp4; source: qa/docketrail-judge-final.webm.
+- 46.44 seconds; H.264; 1440×900; 25 fps; 1,867,363 bytes; ffmpeg full decode PASS.
+- Captured from https://intent-rescue.vercel.app/.
+- Scenes: F1 context → uncaptured public Explorer URL → read-only source snapshot and visible evidence boundary → recovery protocol → actual JSON handoff download → F2 refunded / F3 complete / F1 return.
+- Chapter overlays embedded. No narration; silent UI walkthrough. Not a screenshot-only or simulated-button video.
+- Contact sheet inspected; browser download event recorded for docketrail-PUBLIC-221c8aa1a8ac.json.
+- Demo QA: PASS for decode, claim accuracy, actual interactions, chapter narrative and repeatability.
+- Limits: public Explorer snapshot is not independently verified on-chain; manual evidence is user-supplied/unverified; no private partner history, automatic refund, custody or universal address indexing; missing chain/hash has no fabricated link.

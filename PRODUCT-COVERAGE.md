@@ -1,28 +1,25 @@
-# PRODUCT-COVERAGE — 2026-11-08 / newest Operator
+# PRODUCT-COVERAGE — 2026-11-09 final integrated audit
 
-Original approval: Idea 1, product lock revision 1 on 2026-10-25. **Current deliverable: partial product with verified end-to-end captured-case journey**, not fully generalized live incident lookup.
+Original approval: Idea 1 / Intent Rescue, PRODUCT_LOCK revision 1, 2026-10-25. Customer-facing name: Docketrail. No thesis change or authorized P0 cut.
 
-| Locked ID | User value / expected surface | Implementation | Acceptance / proof | Status | Gap |
+| Locked ID | User value / workflow | Integrated implementation | Acceptance evidence | Status | Boundary |
 |---|---|---|---|---|---|
-| P0-01 | Paste identifier or official evidence payload, then investigate | `src/intake.mjs`, `api/incident.js`, `src/public-explorer.mjs`, identifier form, JSON fallback | Public Explorer parser classified 10/10 public cases consistently; live browser uncaptured FAILED, HTTP REFUNDED and SUCCESS; unknown ID clears stale result | IN_PROGRESS | Public Explorer transaction URL/record ID supported with snapshot warning. Direct lookup from arbitrary deposit addresses, unrelated source-chain hashes, correlation IDs or private partner statuses remains unsupported; manual evidence fallback remains. |
-| P0-02 | Recognizable 5-leg NEAR Intents path | `src/lifecycle.mjs`, product canvas | F1/F2/F3 + browser rendered route | VERIFIED on captured cases | Not a proof of continuous live ingestion |
-| P0-03 | Conservative outcome / missing-leg diagnosis | `src/classifier.mjs` | 23 test suite and red team | VERIFIED on supported evidence schema | Supplied custom evidence can be false; UI now labels as provisional |
-| P0-04 | Observed vs inferred vs unknown + assurance | `src/lifecycle.mjs`, canvas, source assurance in export | Playwright manual-provisional and F1 screenshot | VERIFIED on captured/manual flow | Raw source identity is not independently authenticated |
-| P0-05 | Safe advice including do-not-retry | `src/classifier.mjs`, recovery rail | F1 no duplicate-retry; F2/F3 contrast; manual caution | VERIFIED on captured; guarded for manual | Live-state change cannot be inferred from snapshot |
-| P0-06 | Download actual evidence/escalation handoff | `src/evidence-bundle.mjs`, download UI | Playwright download + escalation fields + 5-leg record | VERIFIED | Destination-network deep links cannot be guessed without chain info |
-| P0-07 | Available source/destination/NEAR explorer references | `src/explorer-links.mjs`, on-screen evidence links, `source_links` in export | F1 Litecoin + NEAR links, explicit Base/Ethereum synthetic link checks, no fabricated absent links; 3 link tests | IN_PROGRESS | Known-chain links implemented; arbitrary source/destination paths still require explicit chain and concrete transaction hash. No universal lookup or inferred missing links. |
+| P0-01 | Deposit address, source/NEAR/destination hash, Explorer URL, correlation ID, official status payload; matching JSON fallback when gated APIs unavailable | src/intake.mjs, public identifier form, api/incident.js, src/public-explorer.mjs | 35/35 tests; exact matching/ambiguous rejection; live browser deposit address, source hash, correlation ID and status JSON; mismatched payload rejected; public Explorer URL lookup | VERIFIED — supported public page + credential-free manual evidence fallback | Arbitrary address/hash does not independently retrieve private partner history. Manual evidence visibly provisional and must contain searched identifier. |
+| P0-02 | Five-leg source → 1Click → intent/solver → destination or refund | src/lifecycle.mjs, route canvas | F1/F2/F3 browser and exported lifecycle | VERIFIED | Evidence bounded to supplied/public snapshots. |
+| P0-03 | Deterministic first unresolved leg and conflict classification | src/classifier.mjs, src/analyze.mjs | 35/35 tests; 9/9 red-team; false success/refund, empty and contradictory evidence rejected | VERIFIED | No root cause inferred from absence. |
+| P0-04 | OBSERVED / INFERRED / UNKNOWN and assurance | UI provenance, src/evidence-bundle.mjs | Browser showed public snapshot vs user-supplied/unverified; mismatch rejected; export assurance | VERIFIED | Public HTML is not signed or independent chain finality. |
+| P0-05 | Conservative next action, including do-not-retry | classifier + recovery rail | F1 failed-unresolved, F2 refund, F3 complete; red-team conflicts | VERIFIED | Recheck live status before irreversible action. |
+| P0-06 | Export identifiers, links, lifecycle, missing proof and escalation | src/evidence-bundle.mjs, download UI | Live download docketrail-PUBLIC-221c8aa1a8ac.json; export tests; assurance preserved | VERIFIED | Support dossier, not signed attestation. |
+| P0-07 | Source, destination, NEAR and refund links when chain and hash known | src/explorer-links.mjs, src/public-explorer.mjs, fixtures | 35/35 tests; live F1 Litecoin + NEAR; F2 Base origin + Base refund; no invented destination | VERIFIED — evidence-conditional links | Unknown chain or missing hash intentionally has no generated link. |
 
 ## PRODUCT INTEGRITY
-approved_product: Evidence-first NEAR Intents incident response, original lock rev 1
-current_deliverable: PARTIAL_PRODUCT / captured-case integrated slice
-mechanism_proven: F1 failed, F2 refunded, F3 success; 30/30 tests; three-case browser regression; actual JSON download
-full_user_journey: known captured case OR public Explorer record URL/ID -> source-attributed page snapshot -> lifecycle -> conservative action -> downloadable handoff. Unknown/unparseable identifier -> honest no-diagnosis message -> manual JSON fallback.
-locked_P0_total: 7
-P0_verified: [P0-02,P0-03,P0-04,P0-05,P0-06] limited to available evidence mode
-P0_missing_or_blocked: [P0-01 arbitrary deposit address/source-chain tx/correlation-ID resolution remains unsupported without additional verifiable sources; P0-07 absent-hash/unknown-chain links cannot be generated and must remain absent]
-differentiators_retained: evidence boundary, provenance, next-action predicates, exported handoff
-new_or_replaced_thesis: NO
-next_action: Decide practical permitted source coverage without claiming universal live lookups; complete naming, hygiene, re-record final demo, deploy/revalidate and submit
-verdict: BLOCKED for FULL_PRODUCT_VERIFIED, PASS for no unauthorized thesis drift
-
-Verification environment: Windows Node 24, Chrome/Playwright CLI, local port 4174. Production deployment of new revision remains UNVERIFIED until republished and inspected.
+approved_product: Evidence-first NEAR Intents incident response, original Idea 1 / lock rev 1.
+current_deliverable: Integrated product for supported public Explorer records and credential-free source-attributed manual evidence.
+mechanism_proven: Public Explorer extraction, strict matching, lifecycle diagnosis, conservative advice, chain-specific links and JSON handoff.
+full_user_journey: identifier → public/captured record OR matching official evidence envelope → five-leg lifecycle → first unresolved boundary → safe action → export.
+locked_P0_total: 7.
+P0_verified: [P0-01,P0-02,P0-03,P0-04,P0-05,P0-06,P0-07].
+P0_missing_or_blocked: [] within approved supported-input contract. Partner-authenticated private history and arbitrary source-chain indexing are not promised and remain optional enrichment.
+differentiators_retained: evidence boundary, provenance, decision predicates, no-duplicate-retry guard, support handoff.
+new_or_replaced_thesis: NO.
+verdict: PASS for locked P0 acceptance; no universal live-tracing claim.

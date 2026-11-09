@@ -5,7 +5,7 @@
 
 **Evidence-first incident response for NEAR Intents.**
 
-[Evidence pack](./EVIDENCE.md) · 10 public cases · 30/30 local tests (9 Nov) · 9/9 red-team scenarios · 30,000 deterministic repeat classifications
+[Evidence pack](./EVIDENCE.md) · 10 public cases · 35/35 local tests · 9/9 red-team scenarios · 30,000 deterministic repeat classifications
 
 Docketrail reconstructs a swap from source-attributed evidence, identifies the first unresolved lifecycle leg, explains what the evidence does and does not prove, recommends a conservative next action, and exports a support-ready incident bundle.
 

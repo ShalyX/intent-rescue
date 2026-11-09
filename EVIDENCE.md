@@ -133,3 +133,13 @@ Evidence rules: preserve input source, date, freshness, environment and limitati
 - **30/30 MEASURED** automated Node tests passed including four new public-page/API safety scenarios and a clean static build.
 - **VERIFIED production:** Vercel READY on Git commit `99d8257`. HTTP 200 for uncaptured failed case `221c8aa1...`, refunded case `XmTZSEy...`, and completed case `6c57a1c...`. Browser loaded the uncaptured failed case as `PUBLIC_EXPLORER_SNAPSHOT`, classified FAILED_UNRESOLVED, and visibly stated `Not independently verified on-chain`. Unknown ID removed the prior result and supplied the manual JSON fallback.
 - **Known limitations:** partner-authenticated status APIs are not used; direct source-chain hash, deposit address and unrelated correlation-ID resolution are not generally supported; a public HTML page can change or lag, and reported status is not chain-finality proof. Safe fallback refuses diagnosis rather than inventing missing evidence. Proof status for **universal lookup = BLOCKED**.
+
+## 2026-11-09 Proof Engine close
+- C01 product identity + locked thesis: VERIFIED by PRODUCT.md / BRAND.md / live UI.
+- C02 supported multi-identifier intake: VERIFIED by 35/35 tests and live browser scenarios (deposit address, source tx hash, correlation ID, matching status envelope; mismatched envelope rejected).
+- C03 public Explorer lookup: VERIFIED for 10/10 corpus outcomes as Explorer-reported categories, plus live FAILED/REFUNDED/SUCCESS endpoint cases. Not independent chain-finality verification.
+- C04 five-leg route + conservative diagnosis: VERIFIED by F1/F2/F3 integrated browser + 9/9 red-team.
+- C05 chain-specific links: VERIFIED by F1 Litecoin + NEAR and F2 Base origin + refund; missing destination remains unlinked.
+- C06 support handoff: VERIFIED by live browser download of public Explorer case JSON.
+- C07 local reproducibility: VERIFIED via npm start, local /api/incident HTTP 200, 35 tests, 9 red-team, static build.
+- C08 reliability benchmark: MEASURED 30,000 deterministic classifications across 10,000 rounds; machine-local microbenchmark, not user-facing latency.

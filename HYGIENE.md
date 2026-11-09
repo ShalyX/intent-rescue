@@ -41,3 +41,27 @@ Verdict: **NOT YET A PASSED FINAL PRODUCT HYGIENE GATE**. Re-run after publishin
 - Read-only public Explorer fetch uses a fixed HTTPS origin, refuses redirects, limits input length/document size and outbound latency, refuses ambiguous terminal outcomes, and returns bounded error messages. Tests cover evil domain, POST write attempt, contradictory state and unsupported page.
 - Browser on production `99d8257`: unlisted real FAILED case displayed with public snapshot provenance; impossible ID cleared the old case and offered manual evidence JSON. F2/F3 source endpoint statuses separately verified. The expected failed lookup caused an HTTP error message in console; this is not an uncaught app exception, but should be recorded in final network QA.
 - Original Product Hygiene skill remains undiscovered. **fallback_used=true; hygiene gate pending**. Broader accessibility, console, old demo freshness and all original P0 joins must be audited before final PASS.
+# HYGIENE — 2026-11-09 final release audit
+
+## Skill route
+- Exact original user-created Product Hygiene skill: not found in current ChatGPT plugin skills or checked Codex/agents skill directories.
+- Related installed skill inspected and used: C:\Users\USER\.codex\skills\public-project-launch-hygiene\SKILL.md (public-project-launch-hygiene; metadata says reconstructed; original version unknown).
+- Executed its 15-step launch checklist plus Hackathon Operator Product Hygiene fallback. fallback_used: true. Original skill did not run.
+
+## Findings and rechecks
+- No P0 defect open within approved supported-input contract. All seven P0 rows and proof are in PRODUCT-COVERAGE.md.
+- Identity: Docketrail title, wordmark, footer, README and social metadata consistent; live title checked. OG preview and IBM Plex font HTTP 200.
+- Product shell: intake, captured queue, evidence JSON drawer, five-stage canvas, recovery rail, case file and footer present.
+- Placeholder/mock residue: three clearly labeled real public incident fixtures; no fake testimonials, balances, chat, fabricated transactions or root-cause claims found in visible judge path.
+- Interactions: public Explorer lookup, matching manual evidence fallback, mismatched-ID rejection, F1/F2/F3 and JSON download tested. Unknown record clears stale view. Source link restricted to HTTPS NEAR Intents Explorer transaction paths.
+- Provenance: manual payload labelled user-supplied/unverified; public HTML labelled snapshot/not independently chain verified. Fake refund/deposit flags alone cannot manufacture terminal evidence.
+- Console/network: public assets and fixtures HTTP 200. Expected unknown Explorer lookups generate handled error responses; no uncaught app runtime failure observed on successful demo path.
+- Responsive: 390×844 measured document width 390; no overflow; zero broken images.
+- Accessibility basics: labels, skip link, role=status, Tab and Enter keyboard path, 3px input outline width. Full screen-reader/contrast audit not performed.
+- Deployment: Vercel production READY on commit 7b5852f; public home, CSS, JS, OG preview and fixtures HTTP 200.
+- Secrets: tracked filename scan found no .env/private-key/certificate candidates. Git grep found no candidate private-key/API-token patterns. Targeted scan only, not a full historical secret scanner.
+- Repo: qa, .playwright-cli, dist, node_modules and .env* ignored. Tests, red-team, build pass. No external npm dependencies, no lockfile. LICENSE absent; owner license choice remains open.
+- Demo: current recording visually inspected and fully decoded: 46.44s / 1440×900 / 25 fps H.264. Actual JSON download captured. No narration; chapter overlays carry explanation.
+
+## Result
+Fallback Product Hygiene: PASS WITH NOTES. No P0/P1 user-visible defect found on supported workflow. Notes: original skill unavailable, no full secret-history scan, screen-reader/contrast audit not exhaustive, LICENSE absent, no narrated voiceover.

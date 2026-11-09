@@ -1,15 +1,27 @@
-# SCORECARD — 2026-11-09 newest Hackathon Operator
+# SCORECARD — 2026-11-09 Judge Simulation
 
-The official NEAR Hackathon 2026 rubric weights are **UNKNOWN**. These are planning judgments, not official scores.
+Official 2026 scoring weights: UNKNOWN. Internal estimates, not official scores.
 
-| Criterion (prior NEAR rubric) | Visible reproducible proof | Current assessment | Remaining deduction |
-|---|---|---|---|
-| Technical implementation | 30/30 Node tests; 10/10 public Explorer page outcomes matched their source-reported categories; live Vercel read-only endpoint for failed, refunded, completed cases; separate captured NEAR RPC proof; bundle export | Strong within explicitly source-attributed snapshot scope | No arbitrary unrelated-chain deposit-address/correlation-ID resolution; public page snapshots are not chain-finality proofs |
-| Design | Docketrail brand, original five-leg forensic canvas, visible unresolved boundary, desktop/mobile production captures | Strong for supported cases | Final post-lookup screenshot/keyboard accessibility gate pending |
-| Impact | 10 real public cases, independent reported NEAR user problem, explicit no-duplicate-retry guidance and support handoff | Clear problem/solution evidence | No independent NEAR user/support operator validation yet |
-| Originality | Evidence boundary, predicates, provenance assurance, portable incident handoff vs raw Explorer status | Differentiated | Demonstrate uncaptured public case in final video |
-| Sustainability | Read-only hosted and local reproducibility, no JWT requirement for public page snapshots | Plausible integration/support utility | No actual adoption or operating-support partner proof |
+| Lens | Estimate | Visible proof | Deduction |
+|---|---:|---|---|
+| Product judge | 8/10 | Public Explorer record → five-leg route → first unresolved boundary → conservative action → support export; failed/refunded/complete contrasts | Private history requires user-supplied evidence; state this in first 30 seconds. |
+| Technical judge | 8/10 | 35/35 tests, 9/9 red-team, fixed-host public HTML reader, strict identifier matching, chain-specific links, local reproducibility | HTML snapshots are not signed chain-finality proof. |
+| Sponsor judge | 7/10 | NEAR Intents is the actual incident surface; NEAR Explorer records and NEAR tx refs integral to route reconstruction | No authenticated partner API; explain credential-independent public evidence path. |
+| 30-second judge | 8/10 | Interrupted five-leg rail, unresolved boundary, failed/refund/success contrast, Docketrail identity | No narration; chapter overlays carry story. |
 
-**Original product P0 coverage:** 5/7 verified end-to-end on bounded evidence mode; P0-01 now supports arbitrary public Explorer record IDs/URLs, but unrelated source-chain identifiers remain incomplete. P0-07 only generates safe explicit-chain links with concrete hashes. Original thesis remains locked; no silent scope reduction.
+## Criterion estimate (weights UNKNOWN)
+- Technical implementation 8/10: endpoint, tests, red-team, local reproduction. Deduction: public HTML/manual data not independently authenticated chain history.
+- Design 8/10: custom forensic route canvas and mobile no-overflow. Deduction: screen-reader/contrast audit not exhaustive.
+- Impact 7/10: concrete incident support problem and 10 public cases. Deduction: no external support operator interview or adoption metric.
+- Originality 8/10: provenance boundary + conservative action + support handoff. Deduction: explain insight quickly.
+- Sustainability 6/10: useful to wallets/integrators/support; low-auth public intake. Deduction: no operating partner, usage or business validation.
 
-**Next highest-value action:** audit the latest public lookup through final Proof Engine/Product Hygiene; re-record a truthful new demo on the deployed lookup; four-lens Judge Simulation; submission audit/X post/official receipt. Do not certify FULL_PRODUCT_VERIFIED until original P0 acceptance criteria or human-authorized scope changes are satisfied.
+## 30-second cold read
+what_i_think_the_product_is: A NEAR Intents incident desk turning swap records into a route diagnosis and support-ready case.
+what_i_think_is_special: It shows where evidence ends instead of guessing why funds are missing or telling users to retry.
+what_i_do_not_believe_yet: That it retrieves every private/historical swap or independently proves every chain leg.
+what_confused_me: Public Explorer snapshot vs on-chain verified state.
+what_i_would_remember_tomorrow: The broken rail at the first unresolved leg and “Evidence, not guesswork.”
+
+## Recommendation
+Feature freeze. No new features. Highest-value remaining action: publish X demo with actual MP4, then official portal submission and receipt.

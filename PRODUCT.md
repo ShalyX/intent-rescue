@@ -29,5 +29,5 @@ P1 only after P0: partner-key ingestion, history, shareable read-only incident U
 ## Distinctiveness / forbidden drift
 Not a generic block explorer, swap interface, wallet, ticket-only form, AI chatbot, or fantasy refund button. The distinguishing journey is evidence boundary → safe decision → support handoff.
 
-## Integrity audit
-See PRODUCT-COVERAGE.md. No missing P0 is silently marked complete. The current runtime is a source-attributed snapshot/manual evidence instrument; broad auto-lookup is not yet proven.
+## Integrity audit — 2026-11-09
+See PRODUCT-COVERAGE.md. All 7 original P0 capabilities are acceptance-verified within the approved supported-input contract: public NEAR Intents Explorer URL/record lookup plus matching source-attributed evidence JSON fallback for deposit addresses, transaction hashes, correlation IDs and official status payloads. Manual evidence remains visibly provisional; the app does not claim private partner-history retrieval, universal source-chain indexing, signed evidence, or independent chain-finality verification. No P0 removed and no product thesis changed.
