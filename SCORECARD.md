@@ -24,7 +24,7 @@ what_confused_me: Public Explorer snapshot vs on-chain verified state.
 what_i_would_remember_tomorrow: The broken rail at the first unresolved leg and â€œEvidence, not guesswork.â€
 
 ## Recommendation
-This is a provisional judge simulation, not a final judge-ready verdict. The OSIALI identity is now approved and aligned in production; the final Visual QA/demo gates remain open, and track assignment conflicts with the original product lock. Rerun the four lenses against the final artifact. Do not publish the legacy Docketrail-labelled recording.
+This is a provisional judge simulation, not a final judge-ready verdict. The OSIALI identity is now approved and aligned in production; Visual QA passed at 20/24; Product Hygiene and fresh demo gates remain open, and track assignment conflicts with the original product lock. Rerun the four lenses against the final artifact. Do not publish the legacy Docketrail-labelled recording.
 
 
 ## Naming correction

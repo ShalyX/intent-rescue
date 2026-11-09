@@ -170,3 +170,16 @@ Evidence rules: preserve input source, date, freshness, environment and limitati
 - Rendered HTML title is `OSIALI — Incident Desk`; canonical URL and `og:site_name=OSIALI` are present; no Docketrail string remains in rendered HTML.
 - F1/F2/F3 continue to render as Failed unresolved / Refund verified / Complete; mobile 390px has no horizontal overflow; zero page errors.
 - OpenGraph.to score: 93/100. It detected the image URL, 1200×630 dimensions, alt text, canonical URL, site name and Twitter large-image card. Remaining notices are informational only (locale, X handle, structured data, web manifest).
+
+
+## 2026-11-09 — Visual QA evidence (Phase 22)
+
+- Live release: `0dff84c60995389111e34db13f2138d5603510de`.
+- Captures: desktop entry/F1/F2/F3 at 1440×1000; mobile entry/F1 at 390×844 plus full mobile flow; 761/900/1024 breakpoint captures. Files retained in persistent Vercel QA sandbox session `sbx_RGtLONSkbtxObF6HBaqeCIWn2t2I`, `qa/visual-qa/final/`.
+- Axe WCAG 2.1 AA: desktop 28 passes, mobile 27 passes, zero violations. Incomplete checks were non-text glyphs or SVG/image-backed backgrounds; relevant text contrast manually checked.
+- Corrected active fixture secondary-label contrast from 4.31:1 to 5.79:1.
+- Keyboard skip link first, 2px focus outline, associated identifier label, polite status region, and reduced-motion preference verified.
+- No horizontal overflow at 390/760/761/900/1024/1440 px.
+- F1/F2/F3 classifications verified; actual `osiali-F1.json` export downloaded and parsed (4,414 bytes).
+- Automated suite 35/35; build PASS; browser no errors or failed requests.
+- Scorecard: 20/24, all six dimensions ≥3, no hard veto. Full NVDA/VoiceOver remains outstanding.

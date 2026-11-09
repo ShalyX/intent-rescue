@@ -64,7 +64,7 @@ Verdict: **NOT YET A PASSED FINAL PRODUCT HYGIENE GATE**. Re-run after publishin
 - Demo: current recording visually inspected and fully decoded: 46.44s / 1440Ã—900 / 25 fps H.264. Actual JSON download captured. No narration; chapter overlays carry explanation.
 
 ## Result
-Fallback checklist was executed and initially assessed PASS WITH NOTES for the then-current supported workflow. **Final PRODUCT_HYGIENE gate remains OPEN**, not passed: the current OSIALI identity is aligned, but the old Docketrail demo must be replaced and full screen-reader/contrast plus historical secret scans remain incomplete. Re-run after Visual QA.
+Fallback checklist was executed and initially assessed PASS WITH NOTES for the then-current supported workflow. **Final PRODUCT_HYGIENE gate remains OPEN**, not passed: the current OSIALI identity is aligned, but the old Docketrail demo must be replaced and full NVDA/VoiceOver plus historical secret scans remain incomplete. Visual QA has now passed; complete these checks in the current hygiene phase.
 
 
 ## Naming-gate correction — 2026-11-09

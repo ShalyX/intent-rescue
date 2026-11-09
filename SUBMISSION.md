@@ -1,7 +1,7 @@
 # NEAR Hackathon submission pack — OSIALI
 
 ## Status
-**NOT SUBMISSION READY — OSIALI identity is aligned and deployed; Visual QA, fresh demo and submission gates remain open.** The mark, favicon, avatar and 1200×630 OG preview are live and browser-verified on commit 0736576. The existing video still carries the legacy Docketrail label and must not be submitted.
+**NOT SUBMISSION READY — OSIALI identity is aligned and deployed; Product Hygiene, fresh demo, track reconciliation and submission gates remain open.** The mark, favicon, avatar and 1200×630 OG preview are live and browser-verified on commit 0736576. The existing video still carries the legacy Docketrail label and must not be submitted.
 
 ## Existing assets (provisional)
 - Legacy demo file: qa/docketrail-judge-final.mp4 (contains unapproved Docketrail label; do not publish)

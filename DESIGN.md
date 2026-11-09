@@ -1,5 +1,5 @@
 # DESIGN — OSIALI / newest Operator
-Status: **DESIGN_LOCK revision 2 PASS; DESIGN_ENGINEERING PASS (2026-11-09); VISUAL_QA is next.** The OSIALI witness mark, SVG/PNG favicons, 512×512 avatar and 1200×630 screenshot-based OG preview are deployed. Latest production commit 0736576ed155d5e6420bcf0d63219d70817032b6 is READY. Live browser checks confirm the identity assets, F1/F2/F3 states and 390px mobile no-overflow; full Visual QA remains open.
+Status: **DESIGN_LOCK revision 2 PASS; DESIGN_ENGINEERING PASS; VISUAL_QA PASS (2026-11-09).** Current phase is PRODUCT_HYGIENE. OSIALI production identity is aligned; full demo and hygiene gates remain open.
 
 ## Product / experience map
 User: person/integrator facing ambiguous NEAR Intents swap status. First 30 seconds: load captured case or known identifier → inspect branched route → see evidence break and safe action. Primary surface: incident desk, with captured-case left rail, central evidence route, attached recovery rail, and support ledger/export. Account/wallet/auth N/A: read-only diagnostic tool. Loading, no-capture, manual provisional, error, refund and complete states exist.
@@ -90,7 +90,7 @@ B is rejected as the primary direction because it weakens the route fork and the
 ### Pass / remaining work
 - **ART_DIRECTION: PASS.** Three materially distinct territories compared; Witness Desk selected with explicit rationale and rejection risks.
 - **REFERENCE_BOARD:** next. Source-captured references must be decomposed by composition, hierarchy, typography, density, route visualization, interaction and motion; no wholesale cloning.
-- **VISUAL_ASSET_STRATEGY:** still open. OG preview replacement and desktop/mobile/F1/F2/F3 asset inventory must be specified.
+- **VISUAL_ASSET_STRATEGY:** PASS — inventory and acceptance rules defined; OSIALI OG preview, mark, favicon and avatar implemented and deployed; standalone F1/F2/F3 screenshots captured for Visual QA.
 - **DESIGN_LOCK:** still open. Do not authorize substantial design engineering until reference synthesis, asset strategy and static composition are complete.
 
 
@@ -137,7 +137,7 @@ References were selected by purpose and inspected as product UI, not as template
 **REFERENCE_BOARD: PASS.** Four relevant source products and their UI captures were decomposed by purpose, with explicit borrow/reject decisions. No product is being cloned. The board supports the selected Witness Desk direction.
 
 ### Next
-VISUAL_ASSET_STRATEGY must inventory the OSIALI wordmark/mark, replacement OG preview, authentic F1/F2/F3 captures, responsive screenshots and final demo video. The legacy Docketrail OG preview and old demo recordings are not approved assets.
+VISUAL_ASSET_STRATEGY is complete. The current OSIALI OG preview is deployed; older Docketrail demo recordings remain unapproved.
 
 
 ## 2026-11-09 — VISUAL_ASSET_STRATEGY / Phase 18
@@ -255,7 +255,7 @@ No desktop three-column shrinking. No horizontal page overflow. Preserve labels,
 - The static composition is grounded in the current implemented DOM/CSS structure, not an invented mockup: 72 px top bar, 200 px / fluid / 280 px desktop workspace, five-stage route, attached recovery rail, evidence ledger, and explicit ≤760 px mobile stack.
 - Existing F1 desktop/mobile captures are pre-rename and may be used only to understand the established composition, not as final branded proof.
 - The latest OSIALI HTML title/header source is deployed in a READY Vercel build; browser-level rendered verification is still pending.
-- Actual OG preview, dedicated mark, fresh F1/F2/F3 screenshots and final demo remain production tasks in later phases.
+- Actual OG preview and dedicated mark are implemented and deployed. Fresh F1/F2/F3 screenshots have been captured; the final OSIALI demo remains a later task.
 
 **DESIGN_LOCK: PASS — revision 2.** The composition, hierarchy, interactions, responsive behavior, visual tokens and acceptance viewports are implementable without further aesthetic invention. This authorizes Design Engineering to execute the locked identity/assets while preserving the P0 journey; it does not pass Visual QA.
 
@@ -279,3 +279,47 @@ No desktop three-column shrinking. No horizontal page overflow. Preserve labels,
 - Public OG validator: 93/100, 1200×630 image recognized, OSIALI title/description/site name/canonical and Twitter large-image card read correctly. Remaining notices are informational only (locale, X handle, structured data, manifest); no handle was invented.
 
 **DESIGN_ENGINEERING: PASS.** Current phase moves to VISUAL_QA. Do not mark the overall product judge-ready; the old Docketrail demo recording and the remaining Visual QA gates are still open.
+
+
+## 2026-11-09 — VISUAL_QA / Phase 22
+
+### Environment and captures
+- **Target:** live production alias `https://intent-rescue.vercel.app/`, release commit `0dff84c60995389111e34db13f2138d5603510de`.
+- **Design comparison:** Witness Desk direction and revision-2 DESIGN_LOCK; reference synthesis from NEAR Intents Explorer, Sentry Issue Details, Honeycomb Trace Explorer and incident.io timeline.
+- **Entry surface:** the root URL is intentionally the primary incident desk; no separate marketing landing page is part of the approved P0 workflow.
+- **Capture environment:** persistent Vercel sandbox session `sbx_RGtLONSkbtxObF6HBaqeCIWn2t2I`, project path `/vercel/intent-rescue/qa/visual-qa/final/`.
+- **Desktop captures:** `desktop-entry.webp`, `desktop-f1.webp`, `desktop-f2.webp`, `desktop-f3.webp` (1440×1000).
+- **Mobile captures:** `mobile-entry.webp`, `mobile-f1.webp` (390×844), `mobile-f1-full.webp` (390×3598).
+- **Breakpoint captures:** 761px, 900px and 1024px. The screenshot set is retained in the persistent QA sandbox; it is not represented as committed repository assets.
+
+### Findings and fixes
+1. **Contrast defect found and fixed:** selected fixture secondary label had 4.31:1 contrast against its active background. Changed only `.fixture-active .fixture-copy small` to `#4d585d`; resulting measured contrast is 5.79:1. No product behavior changed.
+2. **Axe WCAG 2.1 AA:** desktop 28 passes, mobile 27 passes, zero violations on both. Axe marked six contrast cases incomplete because they are non-text glyphs or SVG/image-backed backgrounds; these were manually reviewed. Route arrow `#a6b2b9` on canvas `#1b2227` is 7.43:1; “Evidence stops here” `#f0a49a` on canvas is 8.03:1; selected fixture label is 5.79:1.
+3. **Keyboard:** skip link is first focus target; brand, Case file, identifier input, Investigate, F1/F2/F3, evidence disclosure and source link are reachable in sequence. Focus indicator is visible (2px solid outline).
+4. **Semantics:** identifier input has an associated label; status is exposed with `role=status` and `aria-live=polite`; the lifecycle summary also announces updates politely.
+5. **Reduced motion:** `prefers-reduced-motion: reduce` is respected; computed nonessential transition and animation durations are absent.
+6. **Responsive:** no horizontal overflow at 390, 760, 761, 900, 1024 or 1440px. The 761–1199px two-column layout and ≤760px vertical mobile stack render without page overflow.
+7. **Core states:** F1 = Failed unresolved; F2 = Refund verified; F3 = Complete. The safe action remains conservative and source-bounded. JSON export downloads valid `osiali-F1.json` (4,414 bytes) with source, diagnosis, lifecycle, observations, identifiers, unresolved evidence, escalation and limitations.
+8. **Runtime:** HTTP 200, no console/page errors, no failed network requests. Latest commit test suite 35/35 passed and static build completed.
+
+### Six-dimension scorecard
+
+| Dimension | Score / 4 | Evidence |
+|---|---:|---|
+| Product awareness and task clarity | 4 | Case identity, five-leg route, unresolved boundary and safe action form the first-fold hierarchy |
+| Memorability / originality | 3 | Witness-point route motif is product-specific; composition avoids generic AI/SaaS ornament |
+| Visual composition / hierarchy | 3 | Dominant investigation canvas, attached intake/action rails, responsive vertical mobile route; dense but readable |
+| Brand coherence | 4 | OSIALI wordmark, witness mark, restrained palette, typography, favicon, avatar and OG preview align |
+| Interaction / motion intentionality | 3 | Keyboard-operable states and real JSON export; restrained state feedback; reduced-motion support |
+| Completeness / accessibility / responsiveness | 3 | Zero axe violations, visible focus, labelled input, polite status, manual contrast checks and no overflow; full assistive-technology session remains outstanding |
+| **Total** | **20 / 24** | **PASS threshold: every dimension ≥3 and total ≥20** |
+
+### Hard-veto check
+- No default AI/SaaS landing-page template; root is the real incident desk.
+- No missing core navigation or locked workflow state.
+- No major desktop/mobile clipping or horizontal overflow.
+- No broken critical interaction; F1/F2/F3 and actual export work.
+- No fake transfer/live-telemetry animation or fake evidence presented as real.
+- No unresolved blocking contrast violation after the fix.
+
+**VISUAL_QA: PASS — 20/24, no hard veto.** Full NVDA/VoiceOver testing is not claimed; continue that in Product Hygiene. Current phase advances to PRODUCT_HYGIENE.

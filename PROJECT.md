@@ -95,3 +95,16 @@ Resolve the product-name gate. Do not publish the Docketrail-labelled video or u
 - Live browser regression: HTTP 200; all identity assets 200; no Docketrail in rendered HTML; F1/F2/F3 classifications remain Failed unresolved / Refund verified / Complete; 390px mobile no horizontal overflow; zero page errors.
 - Public OpenGraph.to validation: 93/100; title, description, site name, canonical URL, image URL, 1200×630 dimensions, alt text and Twitter large-image card detected. Only informational recommendations remain.
 - Current Operator phase: VISUAL_QA. The legacy Docketrail demo recording remains blocked from submission; no product scope or P0 behavior changed.
+
+
+## 2026-11-09 — VISUAL_QA completed
+
+- Phase 22 PASS: six-dimension scorecard 20/24; every category ≥3; no hard veto.
+- Live production inspected at 1440×1000, 390×844, full mobile scroll, and breakpoints 761/900/1024. No horizontal overflow at 390/760/761/900/1024/1440.
+- Axe WCAG 2.1 AA: 28 desktop passes / 27 mobile passes; zero violations. Six incomplete contrast checks were non-text glyphs or SVG/image-backed backgrounds and manually reviewed.
+- Fixed the active fixture caption contrast from 4.31:1 to 5.79:1. Route arrow and “Evidence stops here” contrast measured 7.43:1 and 8.03:1.
+- Keyboard skip link first, visible 2px focus, labelled identifier, polite status announcement, and reduced-motion behavior verified.
+- F1/F2/F3 classifications and real JSON export reverified; export is valid `osiali-F1.json`, 4,414 bytes.
+- Latest production commit `0dff84c60995389111e34db13f2138d5603510de`; tests 35/35 and build pass; browser no errors or failed requests.
+- Capture files retained in persistent Vercel QA sandbox `sbx_RGtLONSkbtxObF6HBaqeCIWn2t2I`, under `qa/visual-qa/final/`.
+- Current Operator phase: PRODUCT_HYGIENE. Old Docketrail demo remains blocked; full NVDA/VoiceOver and historical secret scans remain outstanding.

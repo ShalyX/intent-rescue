@@ -1,4 +1,4 @@
-# BRAND â€” fresh naming research / NAME_LOCK OPEN
+# BRAND — OSIALI / NAME_LOCK PASS
 
 **Operator:** Hackathon Operator v0.5.0
 **Date:** 2026-11-09
@@ -6,7 +6,7 @@
 
 ## Product and naming brief
 
-**Approved product:** Idea 1 â€” Intent Rescue, PRODUCT_LOCK revision 1 (2026-10-25). This name is the approved concept/working title, not a final brand lock.
+**Original approved concept:** Idea 1 / Intent Rescue, PRODUCT_LOCK revision 1 (2026-10-25). The current customer-facing brand is **OSIALI**, explicitly approved by the user on 2026-11-09; product scope and all seven P0 requirements remain unchanged.
 
 **Category:** Evidence-first incident response for NEAR Intents and cross-chain swaps.
 

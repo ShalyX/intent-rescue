@@ -1,12 +1,12 @@
 {
   "schema_version": 4,
-  "revision": 17,
+  "revision": 18,
   "recovered_from_legacy": true,
   "previous_local_state": "ABSENT",
   "legacy_checkpoint_revision": "UNKNOWN",
   "project_root": "C:\\Users\\USER\\Documents\\intent-rescue",
-  "phase": "VISUAL_QA",
-  "active_specialist": "Visual QA",
+  "phase": "PRODUCT_HYGIENE",
+  "active_specialist": "Product Hygiene",
   "human_input_required": false,
   "pending_gate": null,
   "product_locked": true,
@@ -82,7 +82,8 @@
     "nov9_motion_storyboard": "Phase 19 PASS. Minimal motion contract recorded; only meaningful user-triggered state feedback.",
     "nov9_design_lock": "Phase 20 PASS, revision 2. Static composition and responsive interaction contract locked in DESIGN.md; current phase DESIGN_ENGINEERING.",
     "nov9_design_engineering": "Phase 21 PASS. OSIALI mark, SVG/PNG favicons, avatar and OG preview deployed and verified; public OG validation 93/100; live F1/F2/F3 and mobile smoke passed.",
-    "nov9_osiali_release": "Production commit 0736576ed155d5e6420bcf0d63219d70817032b6; deployment dpl_ddjoz4LbCZ4ischFANc1SMaZaVtk READY; alias intent-rescue.vercel.app attached; browser asset checks pass."
+    "nov9_osiali_release": "Production commit 0736576ed155d5e6420bcf0d63219d70817032b6; deployment dpl_ddjoz4LbCZ4ischFANc1SMaZaVtk READY; alias intent-rescue.vercel.app attached; browser asset checks pass.",
+    "nov9_visual_qa": "Phase 22 PASS, 20/24, no hard veto. Fixed active fixture caption contrast 4.31:1 → 5.79:1; axe 0 violations desktop/mobile; responsive widths 390–1440 no overflow; keyboard, focus, reduced motion, F1/F2/F3 and export verified."
   },
   "blockers": [
     "Track decision: original PRODUCT_LOCK says Unstoppable DeFi primary / Open Innovation secondary; current recommendation Open Innovation; no explicit switch recorded",
@@ -92,11 +93,12 @@
     "Final submission audit, public X post, official form and receipt not completed",
     "Formal trademark, domain and social-handle clearance for OSIALI remains outstanding; do not claim legal availability.",
     "Legacy Docketrail demo recording remains unapproved; replace with a fresh 60–90s OSIALI voiceover/captioned recording.",
-    "VISUAL_QA open: six-dimension scorecard, desktop/mobile capture set, contrast/screen-reader and reduced-motion checks remain incomplete.",
-    "Formal trademark, domain and social-handle clearance remains outstanding; do not claim legal availability."
+    "Formal trademark, domain and social-handle clearance remains outstanding; do not claim legal availability.",
+    "PRODUCT_HYGIENE open: full assistive-technology review and historical secret scan remain incomplete.",
+    "Legacy Docketrail demo recording remains unapproved; replace with a fresh OSIALI 60–90s voiceover/captioned demo."
   ],
-  "next_action": "Run VISUAL_QA against the deployed OSIALI release: capture desktop and mobile landing/app/magic-moment states; score six visual dimensions (each ≥3, total ≥20/24); verify contrast, keyboard/screen-reader semantics, reduced motion and responsive breakpoints; record all defects before fixing them.",
-  "updated_at": "2026-11-09T21:49:17.402Z",
+  "next_action": "Run PRODUCT_HYGIENE against the current OSIALI production release: full dependency/security/secrets scan, screen-reader and contrast review, browser/asset integrity, demo-brand consistency, docs and claim-boundary audit. Do not pass while the old Docketrail demo remains in the submission path.",
+  "updated_at": "2026-11-09T22:02:28.304Z",
   "name_status": "LOCKED_USER_APPROVED",
   "proposed_name": "OSIALI",
   "proposed_name_user_approved": true,
@@ -214,7 +216,7 @@
     {
       "n": 22,
       "phase": "VISUAL_QA",
-      "status": "OPEN — current phase. Capture and inspect desktop/mobile landing, app and magic-moment states; complete six-dimension 0–4 scorecard (each ≥3, total ≥20/24), contrast/screen-reader/reduced-motion/responsive checks; no hard veto."
+      "status": "PASS — 20/24; all six dimensions ≥3; no hard veto. Live desktop/mobile/breakpoint captures, zero axe violations, manual contrast review, keyboard/focus, reduced motion, F1/F2/F3 and real export verified; see DESIGN.md and VISUAL_QA.md."
     },
     {
       "n": 23,
@@ -234,7 +236,7 @@
     {
       "n": 26,
       "phase": "PRODUCT_HYGIENE",
-      "status": "BLOCKED_RE_RUN"
+      "status": "OPEN — CURRENT PHASE. Run full current-release hygiene: dependency/security/secrets, screen-reader/contrast, browser and asset integrity, demo-brand hygiene, docs and claim boundaries. Legacy Docketrail recording remains blocked."
     },
     {
       "n": 27,
@@ -300,5 +302,7 @@
   "social_preview_replaced": true,
   "og_preview_verified": true,
   "og_preview_validation_score": 93,
-  "visual_qa_complete": false
+  "visual_qa_complete": true,
+  "visual_qa_score": 20,
+  "visual_qa_no_hard_veto": true
 }
