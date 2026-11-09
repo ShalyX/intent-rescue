@@ -10,6 +10,16 @@ let currentEvidence = null;
 let evidenceAssurance = 'CAPTURED_PUBLIC_SNAPSHOT';
 const isSourceSnapshot = () => evidenceAssurance === 'CAPTURED_PUBLIC_SNAPSHOT' || evidenceAssurance === 'PUBLIC_EXPLORER_SNAPSHOT';
 const demoFiles = ['f1-failed.json','f2-refunded.json','f3-success.json'];
+const fixtureCache = new Map();
+async function getFixture(name) {
+  if (fixtureCache.has(name)) return fixtureCache.get(name);
+  const response = await fetch('/fixtures/' + name);
+  if (!response.ok) throw new Error('Could not load captured case ' + name);
+  const value = await response.json();
+  fixtureCache.set(name,value);
+  return value;
+}
+for (const name of demoFiles) getFixture(name).catch(() => {});
 let pendingIdentifier = null;
 
 document.querySelector('#identifier-form').addEventListener('submit', async event => {
@@ -17,11 +27,7 @@ document.querySelector('#identifier-form').addEventListener('submit', async even
   const input = document.querySelector('#identifier').value.trim();
   try {
     inputStatus.textContent = 'Checking captured public evidence…';
-    const captures = await Promise.all(demoFiles.map(async f => {
-      const response = await fetch('/fixtures/' + f);
-      if (!response.ok) throw new Error('Captured-case source unavailable');
-      return response.json();
-    }));
+    const captures = await Promise.all(demoFiles.map(getFixture));
     const match = findCapturedCase(input, captures);
     if (match.kind === 'captured') {
       pendingIdentifier = null;
@@ -82,9 +88,7 @@ async function loadFixture(name, activeButton) {
   fixtureButtons.forEach(button => { button.disabled = true; });
   inputStatus.textContent = 'Loading captured evidence…';
   try {
-    const response = await fetch(`/fixtures/${name}`);
-    if (!response.ok) throw new Error(`Could not load ${name}`);
-    const data = await response.json();
+    const data = await getFixture(name);
     pendingIdentifier = null;
     evidenceInput.value = JSON.stringify(data, null, 2);
     evidenceAssurance = 'CAPTURED_PUBLIC_SNAPSHOT';
