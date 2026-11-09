@@ -21,3 +21,6 @@ F2 and F3 via captured buttons. Show snapshot indicator. Keep backup captured pa
 
 ## Demo claim limits
 Unknown historical identifiers cannot be automatically resolved without partner access, though users can supply source-attributed JSON. Proof of actual mainnet RPC transaction-status call is separate from the captured case classifier. Never say real-time refund tracking or universal recovery.
+## November 9 recording evidence
+- Prior to the newest lookup release, a **real-interaction** Docketrail walkthrough was captured from live production: `qa/docketrail-judge-demo-final.mp4`, 68.92 s / 1440×900 / H.264 / 25 fps / full decode PASS. Frame sheet inspected; shows known F1 identifier entry, genuine evidence JSON download, F2 refunded and F3 complete, then F1 reset. No simulated buttons or fabricated data.
+- The endpoint/label was expanded after that capture in commit `99d8257`, so the video is useful **backup proof but NOT final-current-demo QA**. Re-record the final version showing public *uncaptured* Explorer URL/ID lookup with the explicit snapshot warning, plus actual support export and F2/F3 contrast. Include voice/captions or a concise explanatory overlay only if legible; do not misstate independent chain verification.

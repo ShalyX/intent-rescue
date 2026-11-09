@@ -44,3 +44,11 @@ Publish only tested source/assets/docs, confirm Vercel serves new version and sc
 - Live Playwright: Docketrail title/wordmark verified, F1=FAILED_UNRESOLVED, F2=REFUND_VERIFIED, F3=COMPLETE; F1 1 Litecoin + 2 NEAR external links; no absent destination link; 390px viewport without horizontal overflow.
 - Static desktop and mobile screenshots inspected; 1200×630 social image refreshed from actual production screenshot.
 - Operator still remains in BUILD_LOOP due incomplete original P0-01 broad identifier resolution and P0-07 arbitrary unknown-chain references; name/brand and design gates can pass independently but **not FULL_PRODUCT_VERIFIED**.
+
+## 2026-11-09 live public lookup checkpoint (supersedes earlier captured-only limitation)
+- [x] `src/public-explorer.mjs` conservatively reads the public Explorer's server-rendered transaction pages; ten real public cases produced the same three reported outcome classes as their corpus records.
+- [x] `api/incident.js` fixed-origin, read-only Vercel endpoint responds without partner credentials; on error/ambiguity, does not generate a diagnosis.
+- [x] UI can paste an uncaptured Explorer record URL/ID, fetch source-attributed evidence, render lifecycle and export a support case, and explicitly mark it `PUBLIC_EXPLORER_SNAPSHOT` rather than independently verified.
+- [x] **30/30** Node tests, clean static build; public serverless endpoint verified on **99d8257** for FAILED, REFUNDED and SUCCESS. Chrome/Playwright verified uncaptured FAILED flow and safe unknown-ID reset.
+- [ ] P0-01 remains IN_PROGRESS for unrelated source-chain tx hashes/deposit addresses/correlation IDs; P0-07 chain links remain conditional on explicit chain+hash. These are not silently de-scoped.
+- [ ] Demo for latest public lookup revision, final Product Hygiene (original skill unavailable), full Proof Engine audit, four-lens Judge Simulation, X demo and official submission receipt remain open.

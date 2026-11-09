@@ -36,3 +36,8 @@ Verdict: **NOT YET A PASSED FINAL PRODUCT HYGIENE GATE**. Re-run after publishin
 - Vercel confirms commit 6b1abb5 READY in production; live Playwright title/header Docketrail, F1 failed, F2 refunded and F3 complete render.
 - On live F1: exactly one explicit Litecoin source link, two NEAR links, zero fabricated missing destination links. Mobile viewport 390px, document width 390px (no page overflow). New OG 1200×630 asset examined from same public revision; publication/cache refresh still pending.
 - Product Hygiene **fallback** continues (original user-made skill unavailable). No claim of installed skill execution or complete hygiene pass until final release re-audit.
+
+## 2026-11-09 API and UI release safety review
+- Read-only public Explorer fetch uses a fixed HTTPS origin, refuses redirects, limits input length/document size and outbound latency, refuses ambiguous terminal outcomes, and returns bounded error messages. Tests cover evil domain, POST write attempt, contradictory state and unsupported page.
+- Browser on production `99d8257`: unlisted real FAILED case displayed with public snapshot provenance; impossible ID cleared the old case and offered manual evidence JSON. F2/F3 source endpoint statuses separately verified. The expected failed lookup caused an HTTP error message in console; this is not an uncaught app exception, but should be recorded in final network QA.
+- Original Product Hygiene skill remains undiscovered. **fallback_used=true; hygiene gate pending**. Broader accessibility, console, old demo freshness and all original P0 joins must be audited before final PASS.

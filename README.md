@@ -5,7 +5,7 @@
 
 **Evidence-first incident response for NEAR Intents.**
 
-[Evidence pack](./EVIDENCE.md) · 10 public cases · 26/26 local tests (9 Nov) · 9/9 red-team scenarios · 30,000 deterministic repeat classifications
+[Evidence pack](./EVIDENCE.md) · 10 public cases · 30/30 local tests (9 Nov) · 9/9 red-team scenarios · 30,000 deterministic repeat classifications
 
 Docketrail reconstructs a swap from source-attributed evidence, identifies the first unresolved lifecycle leg, explains what the evidence does and does not prove, recommends a conservative next action, and exports a support-ready incident bundle.
 
@@ -27,7 +27,7 @@ The project ships with three captured public NEAR Intents cases:
 
 The source Explorer URL is retained in each fixture so a judge can inspect the original public evidence.
 
-**Identifier intake boundary:** Paste a known Explorer URL, source/NEAR transaction hash, or intent hash to match one of the **three captured public cases**. Other identifiers cannot be automatically diagnosed without partner historical API access; the desk shows a clear no-capture message and offers a manual source-attributed JSON fallback. User-supplied evidence is labeled **provisional/unverified**; the app does not independently authenticate caller-provided claims. This is not universal live swap tracking.
+**Identifier intake boundary:** Paste any supported public NEAR Intents Explorer transaction URL or record ID to retrieve a **source-attributed public page snapshot**, or load one of the three captured demo cases. This read-only lookup does not use partner JWTs and is **not independently verified on-chain** or real-time refund tracking. Arbitrary deposit addresses, unrelated source-chain hashes and correlation IDs are not generally resolved. If the page cannot be safely reconstructed, the UI clears its diagnosis and offers manually supplied evidence JSON (marked provisional/unverified).
 
 **Support handoff:** Export a real JSON case bundle with step-by-step evidence, unresolved fields, NEAR transaction links, source assurance and an escalation request. [Product coverage and remaining P0 gaps](./PRODUCT-COVERAGE.md).
 
@@ -38,16 +38,14 @@ Use the deployed build; no account or credentials are required:
 1. Open https://intent-rescue.vercel.app/?demo=F1 — see FAILED_UNRESOLVED, with **Destination delivery** as the first unresolved leg and a conservative recovery action.
 2. Open https://intent-rescue.vercel.app/?demo=F2 — see REFUND_VERIFIED from concrete refund evidence.
 3. Open https://intent-rescue.vercel.app/?demo=F3 — see COMPLETE from concrete destination evidence.
-4. Paste the F1 Explorer URL in the identifier field; unknown hashes never produce invented diagnoses.
+4. Paste an uncaptured public Explorer record such as `https://explorer.near-intents.org/transactions/221c8aa1a8ac320aa58174f9ff57d0fbc36316d7dc469f630e05e1b34f9e4d80` and see a source-attributed public page snapshot; unknown IDs produce no diagnosis.
 5. Export the actual JSON incident bundle and inspect assurance, evidence gaps, source links and escalation request.
-6. Run npm test and npm run red-team to reproduce the checks.
-pm test and 
-pm run red-team to reproduce classifier and adversarial checks.
+6. Run `npm test` and `npm run red-team` to reproduce the checks.
 
 ## NEAR technology used
 
 - **NEAR Intents** is the core product surface: Docketrail reconstructs the source deposit, 1Click intake, intent/solver execution, destination delivery, and refund path from source-attributed evidence.
-- **NEAR mainnet RPC** is used as an independent chain-verification primitive. During technical de-risking, a fresh mainnet transaction was verified through a public RPC at final execution status; historical hero evidence remains snapshot-backed because free public providers are not guaranteed archival.
+- **NEAR mainnet RPC** was used separately in a technical de-risking spike to observe a real `FINAL` transaction with receipts. The deployed incident lookup reads public NEAR Intents Explorer pages; it does **not** independently verify each historical transaction on-chain.
 - Partner JWT APIs and solver-relay access are optional enrichments, not requirements for the judge path.
 
 **Submission track:** Open Innovation.
@@ -83,7 +81,8 @@ Docketrail does **not** custody funds, trigger refunds, or claim a protocol root
 ## Architecture
 
 - `src/classifier.mjs` — deterministic incident classification and safe-action rules.
-- `src/intake.mjs` — captured-identifier resolution and manual JSON evidence validation (no invented live lookups).
+- `src/intake.mjs` — captured-identifier matching, strict unsupported-ID behavior, manual JSON evidence validation.
+- `src/public-explorer.mjs` and `api/incident.js` — conservative parsing and fixed-host, read-only public Explorer snapshot lookup; no partner JWT or automatic refunds.
 - `src/lifecycle.mjs` — five-stage reconstruction with provenance labels.
 - `src/evidence-bundle.mjs` — portable support-ready incident export.
 - `fixtures/` — frozen public evidence cases.
@@ -94,7 +93,7 @@ Docketrail does **not** custody funds, trigger refunds, or claim a protocol root
 
 ## Reliability choices
 
-Partner JWT APIs and solver-relay access are optional enrichments, not demo-critical dependencies. The core path can run from a source-attributed evidence envelope. Historical incident proof is snapshot-backed because free public NEAR RPC providers are not guaranteed archival; a current mainnet `tx` RPC call was separately verified during technical de-risking.
+Partner JWT APIs and solver-relay access are optional enrichments, not demo-critical dependencies. The hosted product can read a public Explorer page snapshot or work from manually supplied source-attributed evidence. Historical incident proof is snapshot-backed because free public NEAR RPC providers are not guaranteed archival; a current mainnet `tx` RPC call was separately verified during technical de-risking.
 
 ## Hackathon
 

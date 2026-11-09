@@ -1,12 +1,12 @@
 {
     "schema_version":  4,
-    "revision":  2,
+    "revision":  4,
     "recovered_from_legacy":  true,
     "previous_local_state":  "ABSENT",
     "legacy_checkpoint_revision":  "UNKNOWN",
     "project_root":  "C:\\Users\\USER\\Documents\\intent-rescue",
     "phase":  "BUILD_LOOP",
-    "active_specialist":  "HQ / Product Integrity + Brand",
+    "active_specialist":  "HQ / Product Integrity and Proof",
     "human_input_required":  false,
     "pending_gate":  null,
     "product_locked":  true,
@@ -25,13 +25,13 @@
                               "P0-07"
                           ],
     "product_integrity_verdict":  "BLOCKED",
-    "last_product_integrity_check":  "2026-11-08",
+    "last_product_integrity_check":  "2026-11-09",
     "spike_verified":  true,
     "vertical_slice_complete":  true,
     "full_product_verified":  false,
     "name_locked":  true,
     "name_lock_revision":  1,
-    "brand_kit_complete":  false,
+    "brand_kit_complete":  true,
     "demo_architecture_complete":  true,
     "evidence_plan_complete":  true,
     "dependency_attack_complete":  true,
@@ -41,8 +41,8 @@
     "references_synthesized":  true,
     "visual_asset_strategy_complete":  true,
     "motion_storyboard_complete":  true,
-    "design_locked":  false,
-    "design_lock_revision":  null,
+    "design_locked":  true,
+    "design_lock_revision":  1,
     "visual_qa_static_complete":  true,
     "visual_qa_motion_complete":  false,
     "evidence_status":  "PARTIALLY_VERIFIED",
@@ -63,14 +63,16 @@
     "submission_receipt":  null,
     "milestones":  {
                        "nov8_integrity":  "23 tests and local browser regression verified; deployment and current demo pending",
-                       "nov9_name_and_links":  "NAME_LOCK documented as Docketrail; 26 Node tests pass; conditional source/NEAR explorer references implemented locally; public deployment pending"
+                       "nov9_name_and_links":  "NAME_LOCK documented as Docketrail; 26 Node tests pass; conditional source/NEAR explorer references implemented locally; public deployment pending",
+                       "nov9_published_brand":  "Vercel production 7f48fe5 READY; desktop/mobile screenshots inspected, OG 1200x630 deployed; F1/F2/F3 and 390px no-overflow verified",
+                       "nov9_public_explorer_lookup":  "Commit 99d8257 Vercel READY; public Explorer HTML parser matched 10/10 source-reported outcomes; live endpoint/browser uncaptured failed, refunded, completed and unknown-ID safety; 30/30 tests, 9/9 red team; local Node API reproduced HTTP 200"
                    },
     "blockers":  [
-                     "General historical identifier lookup still needs partner JWT or source-attributed manual evidence",
-                     "Unobserved or unknown-chain external links intentionally unavailable",
-                     "Social preview and published version not yet verified",
-                     "Current demo and final hygiene/judge/submission still pending"
+                     "Original P0-01 does not yet resolve unrelated source-chain transaction hashes, deposit addresses, or correlation IDs without other evidence",
+                     "P0-07 links only when explicit supported chain and transaction hash exist; missing records remain unknown",
+                     "Latest Docketrail lookup needs final live-recorded demo QA and Product Hygiene / Proof audit",
+                     "No external user validation or official X post and submission receipt"
                  ],
-    "next_action":  "Verify new Docketrail deployment and known-chain links; finish full P0 proof, Product Hygiene, current demo and judge audit",
-    "updated_at":  "2026-11-09T01:39:38Z"
+    "next_action":  "Audit original P0-01/P0-07 coverage and latest public lookup; capture final demo from published commit; run Proof Engine, Product Hygiene, four-lens Judge Simulation and submission audit",
+    "updated_at":  "2026-11-09T03:39:08Z"
 }

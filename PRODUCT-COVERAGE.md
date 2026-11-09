@@ -4,7 +4,7 @@ Original approval: Idea 1, product lock revision 1 on 2026-10-25. **Current deli
 
 | Locked ID | User value / expected surface | Implementation | Acceptance / proof | Status | Gap |
 |---|---|---|---|---|---|
-| P0-01 | Paste identifier or official evidence payload, then investigate | `src/intake.mjs`, identifier form, JSON drawer, 3 captured fixtures | 6 intake tests; Playwright known URL + unknown ID + manual input | IN_PROGRESS | Only 3 captured cases resolve from identifier. Arbitrary addresses/hashes require source-attributed JSON; no live historic API without partner JWT. |
+| P0-01 | Paste identifier or official evidence payload, then investigate | `src/intake.mjs`, `api/incident.js`, `src/public-explorer.mjs`, identifier form, JSON fallback | Public Explorer parser classified 10/10 public cases consistently; live browser uncaptured FAILED, HTTP REFUNDED and SUCCESS; unknown ID clears stale result | IN_PROGRESS | Public Explorer transaction URL/record ID supported with snapshot warning. Direct lookup from arbitrary deposit addresses, unrelated source-chain hashes, correlation IDs or private partner statuses remains unsupported; manual evidence fallback remains. |
 | P0-02 | Recognizable 5-leg NEAR Intents path | `src/lifecycle.mjs`, product canvas | F1/F2/F3 + browser rendered route | VERIFIED on captured cases | Not a proof of continuous live ingestion |
 | P0-03 | Conservative outcome / missing-leg diagnosis | `src/classifier.mjs` | 23 test suite and red team | VERIFIED on supported evidence schema | Supplied custom evidence can be false; UI now labels as provisional |
 | P0-04 | Observed vs inferred vs unknown + assurance | `src/lifecycle.mjs`, canvas, source assurance in export | Playwright manual-provisional and F1 screenshot | VERIFIED on captured/manual flow | Raw source identity is not independently authenticated |
@@ -15,11 +15,11 @@ Original approval: Idea 1, product lock revision 1 on 2026-10-25. **Current deli
 ## PRODUCT INTEGRITY
 approved_product: Evidence-first NEAR Intents incident response, original lock rev 1
 current_deliverable: PARTIAL_PRODUCT / captured-case integrated slice
-mechanism_proven: F1 failed, F2 refunded, F3 success; 23/23 tests; three-case browser regression; actual JSON download
-full_user_journey: known Explorer/hash -> captured evidence -> lifecycle -> safe action -> downloadable handoff. Unknown identifier -> honest no-capture message -> manual JSON fallback.
+mechanism_proven: F1 failed, F2 refunded, F3 success; 30/30 tests; three-case browser regression; actual JSON download
+full_user_journey: known captured case OR public Explorer record URL/ID -> source-attributed page snapshot -> lifecycle -> conservative action -> downloadable handoff. Unknown/unparseable identifier -> honest no-diagnosis message -> manual JSON fallback.
 locked_P0_total: 7
 P0_verified: [P0-02,P0-03,P0-04,P0-05,P0-06] limited to available evidence mode
-P0_missing_or_blocked: [P0-01 general identifier resolution (authenticated historical API), P0-07 unknown-chain / absent-hash links cannot be generated]
+P0_missing_or_blocked: [P0-01 arbitrary deposit address/source-chain tx/correlation-ID resolution remains unsupported without additional verifiable sources; P0-07 absent-hash/unknown-chain links cannot be generated and must remain absent]
 differentiators_retained: evidence boundary, provenance, next-action predicates, exported handoff
 new_or_replaced_thesis: NO
 next_action: Decide practical permitted source coverage without claiming universal live lookups; complete naming, hygiene, re-record final demo, deploy/revalidate and submit
