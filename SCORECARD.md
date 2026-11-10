@@ -1,4 +1,4 @@
-# SCORECARD â€” 2026-11-09 Judge Simulation
+# SCORECARD - current evidence and judge simulation history
 
 ## 2026-11-10 - final demo evidence update (not a re-score)
 

@@ -1,4 +1,4 @@
-# DEMO â€” original approved story + November 8 re-record gate
+# DEMO - OSIALI final production and QA (2026-11-10)
 
 ## CURRENT FINAL RECORDING - 2026-11-10
 
@@ -39,6 +39,8 @@ The public Explorer result is a captured public page snapshot, not independent c
 
 ---
 
+
+## Historical recording and architecture notes
 
 Original approved goal: 60â€“90-second judge demo. The movie must prove: failed swap identifier â†’ canonical trace â†’ first unresolved leg â†’ conservative action â†’ actual support bundle â†’ refunded/success contrast. Do not claim automatic funds recovery.
 

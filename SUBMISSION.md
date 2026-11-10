@@ -6,7 +6,7 @@
 ## Current public assets
 - Public repo: https://github.com/ShalyX/intent-rescue
 - Live app: https://intent-rescue.vercel.app/ (OSIALI identity and social preview verified)
-- Demo video: final OSIALI recording produced and DEMO_QA passed. Local artifact: `C:\\Users\\USER\\Videos\\OSIALI-Demo\\osiali-demo-final.mp4` (84.8 seconds, H.264 1600x900, 25 fps, AAC stereo 48 kHz). It is not public yet; attach this current-brand video to the X demo post. Older Docketrail-labelled recordings remain ignored local QA artifacts under qa/ and are explicitly excluded.
+- Demo video: final OSIALI recording produced and DEMO_QA passed. Local artifact: `C:\Users\USER\Videos\OSIALI-Demo\osiali-demo-final.mp4` (84.8 seconds, H.264 1600x900, 25 fps, AAC stereo 48 kHz). It is not public yet; attach this current-brand video to the X demo post. Older Docketrail-labelled recordings remain ignored local QA artifacts under qa/ and are explicitly excluded.
 
 ## Track decision
 Original PRODUCT.md revision 1 records primary Unstoppable DeFi and secondary Open Innovation. Current recommendation is Open Innovation, but the final track selection remains open until explicitly reconciled.
