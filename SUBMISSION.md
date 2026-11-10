@@ -1,7 +1,7 @@
 # NEAR Hackathon submission pack — OSIALI
 
 ## Status
-**NOT SUBMISSION READY — DEMO_QA, PITCH and four-lens JUDGE_SIMULATION passed; feature freeze is active, while the public demo post, submission audit and receipt remain outstanding.** The mark, favicon, avatar and 1200×630 OG preview are live and browser-verified. Visual QA passed 20/24 with zero axe violations.
+**SUBMISSION_AUDIT IN PROGRESS ? DEMO_QA, PITCH, four-lens JUDGE_SIMULATION, terminal evidence consistency correction and production regression verification passed. Public X demo post, human-owned form values, final payload approval and receipt remain outstanding.** The mark, favicon, avatar and 1200?630 OG preview are live and browser-verified. Visual QA passed 20/24 with zero axe violations.
 
 ## Current public assets
 - Public repo: https://github.com/ShalyX/intent-rescue
@@ -22,3 +22,39 @@ User-confirmed 2026-11-10: **Unstoppable DeFi primary; Open Innovation secondary
 - [ ] Keep payout NEAR account address private; enter only in official form if required.
 
 Status: NOT SUBMITTED. No public post URL or official receipt recorded.
+
+
+## Official form audit ? 2026-11-10
+
+**Official form inspected:** https://nearhackathon.com/#apply
+**Official API contract:** https://nearhackathon.com/HACKATHON.md
+**API endpoint:** POST https://nearhackathon.com/api/applications
+**Deadline:** 2026-11-14 23:59 UTC.
+**Submission policy:** one submission per project/repository; after sending, corrections go through the organizer's Request changes page. No submission has been sent.
+
+### Field mapping
+
+| Official field | Prepared value / status |
+|---|---|
+| projectName | OSIALI |
+| leadName | Awaiting user's exact confirmation |
+| email | Awaiting user's exact contact email |
+| size | 1 (solo-builder working assumption; confirm before sending) |
+| tracks | ["defi", "open"] ? user-confirmed Unstoppable DeFi + Open Innovation |
+| nearAddress | Awaiting user's NEAR mainnet payout account |
+| projectUrl | https://github.com/ShalyX/intent-rescue |
+| demoUrl | Awaiting the public X post URL |
+| idea | Prepared below (848 characters) |
+| consent | Awaiting explicit agreement to the exact contact notice |
+| requestId | Generate once only after every field is confirmed; reuse on retries |
+| website | Hidden honeypot; keep blank and omit from the API payload |
+
+### Prepared project description
+
+OSIALI is an evidence-first incident-response desk for NEAR Intents cross-chain swaps. When a swap stalls or reports failure, it reconstructs the supported five-stage lifecycle?source deposit, 1Click intake, intent/solver execution, destination delivery, and refund?from source-attributed public Explorer snapshots or matching user-supplied evidence. It labels each stage OBSERVED, INFERRED, or UNKNOWN, identifies the first unresolved leg, recommends a conservative next step, and exports a support-ready JSON case with identifiers, evidence references, missing proof, and escalation context. OSIALI supports operational reliability around NEAR Intents-powered cross-chain swap settlement. It is read-only: it does not custody funds, execute refunds, guarantee recovery, or claim independent on-chain verification of historical Explorer snapshots.
+
+### Exact consent notice
+
+"I agree that the organizers may use these details to review our submission and contact us about this hackathon."
+
+Do not set consent=true until the user explicitly agrees. The official API accepts only the documented fields; do not add website or other extras. The final JSON payload must be shown to the user and receive explicit approval before the single POST.

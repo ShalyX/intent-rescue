@@ -1,14 +1,26 @@
 {
   "schema_version": 4,
-  "revision": 26,
+  "revision": 27,
   "recovered_from_legacy": true,
   "previous_local_state": "ABSENT",
   "legacy_checkpoint_revision": "UNKNOWN",
   "project_root": "C:\\Users\\USER\\Documents\\intent-rescue",
-  "phase": "FEATURE_FREEZE",
-  "active_specialist": "Presentation / Submission Audit",
-  "human_input_required": false,
-  "pending_gate": null,
+  "phase": "SUBMISSION_AUDIT",
+  "active_specialist": "Submission Audit",
+  "human_input_required": true,
+  "pending_gate": {
+    "id": "near-hackathon-submission-fields",
+    "type": "SUBMISSION_DETAILS",
+    "reason": "The official NEAR form requires human-owned identity/contact/payout values and explicit consent; the X demo post must be published by the human. These values must not be guessed.",
+    "exact_question": "Please provide the team lead name, contact email and NEAR mainnet payout account; confirm team size is 1; publish the prepared X demo post and provide its URL; and explicitly agree or decline the official contact notice before the final payload is prepared.",
+    "recommendation": "Keep the one-time submission unsent until all values are confirmed and the full JSON payload is shown to the user.",
+    "choices": [
+      "Provide the missing values and X post URL",
+      "Hold submission"
+    ],
+    "scope": "Submission fields and final approval only; no product changes, no public posting by the assistant, and no form submission before explicit approval.",
+    "phase": "SUBMISSION_AUDIT"
+  },
   "product_locked": true,
   "product_lock_revision": 1,
   "original_product_reference": "PRODUCT.md / 2026-10-25 original lock",
@@ -95,18 +107,20 @@
     "nov10_prioritized_fixes": "PRIORITIZED_FIXES PASS: no product/code changes recommended; preserve all seven P0s and user-selected track order. Mandatory remaining work: publish final demo X post with required event wording/tag/hashtag; complete one official submission with repository and X post URL, selecting both tracks if available; verify receipt. Optional external operator feedback is non-blocking.",
     "nov10_feature_freeze": "FEATURE_FREEZE started 2026-11-10. No new features; allow only reliability, evidence, hygiene, demo, pitch, links, submission and critical visual fixes.",
     "nov10_demo_voice_caption_fix": "Narrow-scope revision v4: TTS changed from en-NG-AbeoNeural to en-US-AndrewNeural. Removed only phonetic pronunciation aside from narration segment 2; other seven segments, eight scene timings, screen recording, script/storyline, evidence, end card and 84.8-second duration unchanged. Corrected subtitles with explicit 1600x900 PlayRes/original_size, 18-size bottom-centred text, thin outline and no opaque panel. Audio rebuilt to exact scene slots, 48 kHz stereo, -18 LUFS. Final video 5,912,118 bytes, SHA-256 9d29aade7b85d3b404fdc0d4bb7e061298dad8db2879202c9210155d3b1d95f2. Full decode and representative-frame visual QA pass.",
-    "nov10_terminal_evidence_consistency_fix": "P0 terminal evidence inconsistency reproduced, fixed and production-verified. Classifier/lifecycle share hasRefundEvidence/hasDestinationEvidence; unsupported verified flags cannot promote terminal stages. Regression tests cover analysis and JSON export, negative and positive cases. Local npm test 37/37, red-team 9/9, static build PASS. Production deployment dpl_5ErUfDtVucj9BCJgdsugVR6yUHiN READY on commit b250d2c032045f776c50b3f0cf6ed930cbf144f7; homepage and F1/F2/F3 routes HTTP 200; served modules byte-match tested source; live-code negative/positive/export parity checks PASS."
+    "nov10_terminal_evidence_consistency_fix": "P0 terminal evidence inconsistency reproduced, fixed and production-verified. Classifier/lifecycle share hasRefundEvidence/hasDestinationEvidence; unsupported verified flags cannot promote terminal stages. Regression tests cover analysis and JSON export, negative and positive cases. Local npm test 37/37, red-team 9/9, static build PASS. Production deployment dpl_5ErUfDtVucj9BCJgdsugVR6yUHiN READY on commit b250d2c032045f776c50b3f0cf6ed930cbf144f7; homepage and F1/F2/F3 routes HTTP 200; served modules byte-match tested source; live-code negative/positive/export parity checks PASS.",
+    "nov10_submission_form_audit": "Live official NEAR HACKATHON HACKATHON.md fetched HTTP 200; #apply server-rendered form inspected. Confirmed exact fields and constraints: projectName, leadName, email, size, tracks, nearAddress, projectUrl, demoUrl, idea 20-2000 chars, consent true only after explicit agreement, requestId UUID. Hidden website honeypot is excluded from API payload. Tracks defi and open are both official IDs and selected in one submission. Prepared OSIALI description length 848 chars. Remaining human values: lead name, email, NEAR mainnet payout account, X post URL and consent. Team size 1 is a working solo-builder assumption to confirm. No POST sent."
   },
   "blockers": [
     "Mandatory public X demo post with final OSIALI video, explicit NEAR HACKATHON wording, @NEARProtocol and #NEARHackathon is not yet published.",
-    "Official submission audit and one project submission with repository and public X post links are not complete; verify the portal's track fields and select both if available.",
     "Unstoppable DeFi primary fit is adjacent rather than direct; keep the limitation explicit and do not claim OSIALI is an exchange, perps, lending, vault or trading agent.",
     "No external operator adoption or customer validation is currently evidenced; do not invent it.",
     "Formal trademark, domain and social-handle clearance for OSIALI remains outstanding; do not claim legal availability.",
-    "Terminal-evidence consistency correction is locally verified but not yet committed/deployed; verify the production release before final submission audit."
+    "Terminal-evidence consistency correction is locally verified but not yet committed/deployed; verify the production release before final submission audit.",
+    "Human must publish the final OSIALI X demo post and provide its URL before submission.",
+    "Lead name, contact email, NEAR mainnet payout account, team-size confirmation and explicit contact-consent approval are required; do not guess."
   ],
-  "next_action": "Publish the final OSIALI demo X post with the current branded video, explicit NEAR HACKATHON wording, @NEARProtocol and #NEARHackathon. Then run SUBMISSION_AUDIT against the live official form, populate one project submission with Unstoppable DeFi and Open Innovation if both are offered, obtain user review/approval, submit once, and record the receipt. Keep feature freeze active.",
-  "updated_at": "2026-11-10T12:59:41Z",
+  "next_action": "Collect the human-owned submission fields and public X post URL. Prepare the exact official JSON payload with OSIALI, size 1 if confirmed, tracks [defi, open], public repository, demo post, 20-2000 character description, and consent only after explicit agreement. Show the complete payload and wait for the user's explicit yes before the one permitted submission. Keep feature freeze active.",
+  "updated_at": "2026-11-10T13:03:56Z",
   "name_status": "LOCKED_USER_APPROVED",
   "proposed_name": "OSIALI",
   "proposed_name_user_approved": true,
@@ -274,12 +288,12 @@
     {
       "n": 32,
       "phase": "FEATURE_FREEZE",
-      "status": "IN PROGRESS ? feature freeze remains active. Narrow P0 terminal-evidence consistency correction implemented, locally verified (37/37 tests, 9/9 red-team, build PASS), pushed and production-verified on dpl_5ErUfDtVucj9BCJgdsugVR6yUHiN; no feature expansion."
+      "status": "PASS ? feature freeze maintained; no feature expansion. Final P0 terminal-evidence consistency correction passed 37/37 tests, 9/9 red-team, build and production live-code regression verification."
     },
     {
       "n": 33,
       "phase": "SUBMISSION_AUDIT",
-      "status": "OPEN ? final public X demo post and actual official portal field audit remain outstanding."
+      "status": "IN PROGRESS ? official live form and API contract inspected; exact fields, tracks and consent recorded; project description prepared. X post and human-owned values/consent remain pending; no submission sent."
     },
     {
       "n": 34,
@@ -293,7 +307,7 @@
     }
   ],
   "phase_audit_version": "hackathon-operator 0.5.0",
-  "phase_audit_updated_at": "2026-11-10T12:59:41Z",
+  "phase_audit_updated_at": "2026-11-10T13:03:56Z",
   "naming_candidate_count": 0,
   "naming_territories": [
     "Route / lifecycle",

@@ -10,3 +10,20 @@ Fit and risk: OSIALI is an evidence-first incident-response layer for NEAR Inten
 Source: https://nearhackathon.com/ and https://nearhackathon.com/HACKATHON.md
 Disqualification risks: private repository, missing X demo requirements, missed UTC deadline, fake claims, or incomplete submission.
 Freeze recommendation: 2026-11-12 12:00 UTC, reserving two days for fresh demo, links, X post, final portal submission and confirmation. This is planning, not a published rule.
+
+## Submission form audit ? 2026-11-10
+
+Live official sources checked:
+- Rules and API contract: https://nearhackathon.com/HACKATHON.md (HTTP 200).
+- Form: https://nearhackathon.com/#apply; actual server-rendered form markup inspected.
+- API: POST https://nearhackathon.com/api/applications.
+
+Required payload fields, exactly: requestId (UUID), projectName (2?80 chars), leadName (2?80 chars), email (valid, max 160 chars), size (one of 1 / 2 - 4 / 4 - 6 / 6 - 8 / 8+), tracks (one or more unique official track IDs), nearAddress (lowercase NEAR mainnet account, 2?64 chars), projectUrl (public repo URL, max 300 chars), demoUrl (public X demo post URL, max 300 chars), idea (20?2,000 chars), consent (true only after explicit agreement to the contact notice). Do not add fields. The form includes a hidden website honeypot; leave it empty and omit it from the API payload.
+
+User-confirmed tracks: Unstoppable DeFi = defi; Open Innovation = open. The official rule says select every track the project fits; both belong in one submission, not two. There is no primary/secondary ranking field in the API.
+
+The form's contact notice must be shown verbatim: "I agree that the organizers may use these details to review our submission and contact us about this hackathon."
+
+The form cannot be edited directly after submission. One repository can be submitted once; mistakes go through https://nearhackathon.com/request-changes. Generate requestId only after the complete payload is ready; reuse the same ID on any retry after an uncertain network/503 response.
+
+Human-only values still required: lead name, contact email, NEAR mainnet payout address, public X post URL, and explicit contact-consent approval. Team size working assumption is 1 (solo builder) and must be confirmed before submission. No submission request has been sent.

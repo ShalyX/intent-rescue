@@ -50,7 +50,7 @@ Position OSIALI as a new incident-response workflow for cross-chain intent execu
 | It recommends a conservative action | P0-05; classifier and red-team tests; F1 UI/demo | Preserve evidence and verify destination delivery or refund before creating a fresh quote; no automatic retry |
 | It creates a real support handoff | P0-06; downloaded `osiali-F1.json`; final demo | Export contains identifiers, evidence references, missing proof and escalation context; it is not a signed attestation |
 | F2 is refunded and F3 is complete | Captured public fixtures, `EVIDENCE.md`, final demo | These are the captured case outcomes; do not generalize to universal tracking |
-| Core checks are reproducible | `EVIDENCE.md`, `HYGIENE.md`, `PRODUCT-COVERAGE.md` | 35/35 local tests, 9/9 red-team scenarios, 30,000 deterministic classifications; benchmark is machine-local, not user-facing latency |
+| Core checks are reproducible | `EVIDENCE.md`, `HYGIENE.md`, `PRODUCT-COVERAGE.md` | 37/37 local tests, 9/9 red-team scenarios, 30,000 deterministic classifications; benchmark is machine-local, not user-facing latency |
 | Public Explorer lookup works without partner JWT | `EVIDENCE.md` C13/C14/C15; final demo | Read-only, fixed-host public page snapshot; 10/10 matched Explorer-reported categories in one corpus pass, not independent on-chain verification |
 
 ## Explicit non-claims
@@ -80,7 +80,7 @@ The narration, product, README, evidence pack and submission description must re
 
 ## Remaining presentation work
 
-- Run the four-lens JUDGE_SIMULATION against the live app, final recording, README and evidence pack.
-- Apply only high-value, evidence-backed corrections; do not add features during pitch/judging.
-- Publish the final video in an X post that says it was built at NEAR HACKATHON, tags @NEARProtocol and includes #NEARHackathon.
-- Submit one project entry with repository and public X demo-post links; select both tracks if the form offers both.
+- Four-lens JUDGE_SIMULATION passed on 2026-11-10. A later P0 terminal-evidence consistency defect was fixed, covered by regression tests and verified against the live production modules.
+- Feature freeze remains active; no feature additions or demo redesigns.
+- The human publishes the final video on X, saying it was built at NEAR HACKATHON, tagging @NEARProtocol and including #NEARHackathon.
+- Complete one official form submission with the public repository and X demo-post links; select both defi and open. The full field contract and remaining human-owned values are in SUBMISSION.md.

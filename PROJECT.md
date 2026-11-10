@@ -1,7 +1,7 @@
 # PROJECT — OSIALI / original approved concept: Intent Rescue
 
 ## CURRENT CHECKPOINT - 2026-11-10
-- **Authoritative phase:** FEATURE_FREEZE (Hackathon Operator v0.5.0). DEMO_PRODUCTION, DEMO_QA, PITCH and JUDGE_SIMULATION passed on 2026-11-10. New features are frozen; only reliability, evidence, hygiene, demo, pitch, links and submission fixes are allowed.
+- **Authoritative phase:** SUBMISSION_AUDIT (Hackathon Operator v0.5.0); FEATURE_FREEZE remains active. DEMO_PRODUCTION, DEMO_QA, PITCH, JUDGE_SIMULATION and the terminal-evidence reliability correction are complete and production-verified. No feature expansion is permitted.
 - **Final demo:** `C:\Users\USER\Videos\OSIALI-Demo\osiali-demo-final.mp4`; 84.8 seconds, H.264 1600x900 at 25 fps, AAC stereo 48 kHz, -18 LUFS, 5,912,118 bytes; SHA-256 `9d29aade7b85d3b404fdc0d4bb7e061298dad8db2879202c9210155d3b1d95f2`. Karaxis render source: `/tmp/osiali-demo/osiali-demo-final-v4.mp4`.
 - **DEMO_QA:** PASS on revised v4. Full decode passed; audio is neutral US English (`en-US-AndrewNeural`), 48 kHz stereo, -18 LUFS. Only the pronunciation aside in narration segment 2 was removed; the other seven sections, eight scene timings, screen recording, demo script, evidence, end card and 84.8-second duration remain unchanged. Captions now use the correct 1600x900 subtitle canvas, small bottom-centred type, thin outline and no opaque panel. Frames at 3/18/50/65 seconds and the contact sheet were inspected.
 - **Terminal evidence consistency fix:** P0 mismatch fixed and production-verified. Classifier and lifecycle share the same terminal-evidence predicates; unsupported destination_verified / refund_verified flags remain NOT_OBSERVED / UNKNOWN. Analysis and JSON export negative/positive regressions pass. Local 37/37 tests, 9/9 red-team and build PASS; deployed source and production-code regressions also PASS on dpl_5ErUfDtVucj9BCJgdsugVR6yUHiN.
@@ -14,7 +14,7 @@
 - **Live verification:** production deployment dpl_5ErUfDtVucj9BCJgdsugVR6yUHiN is READY on commit b250d2c032045f776c50b3f0cf6ed930cbf144f7 with alias https://intent-rescue.vercel.app. Homepage, F1/F2/F3 routes and app.js returned HTTP 200. Deployed analyze/classifier/lifecycle/evidence-bundle/explorer-links modules match the tested local sources; production negative/positive terminal-evidence and JSON-export parity checks passed. Earlier live Explorer snapshot smoke remains separately documented.
 - **Prioritized fixes:** the P0 terminal-evidence consistency defect found in final QA is fixed and production-verified. No further product/code changes are recommended; remaining mandatory work is the public demo post, one official project submission with both selected tracks where offered, and receipt verification. Optional external operator feedback is non-blocking.
 - **Feature freeze:** active from 2026-11-10. No feature expansion; only reliability, proof, hygiene, demo, pitch, links and submission corrections.
-- **Next:** publish the required X demo post with the final OSIALI video, then complete SUBMISSION_AUDIT against the actual portal fields and final public links before any submission.
+- **Next:** human publishes the final OSIALI X demo post and supplies its URL; collect the remaining human-owned form values and contact-consent approval; show the complete exact JSON payload for review before any one-time submission.
 
 Historical checkpoints follow. Earlier notes that say the product name or production identity is unresolved are superseded by the current checkpoint above.
 
