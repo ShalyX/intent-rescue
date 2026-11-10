@@ -2,7 +2,7 @@ export const validTransactionHash = value => typeof value === 'string' && /^(?:0
 const canonicalIdentifier = value => /^(?:0x)?[0-9a-fA-F]+$/.test(value) ? value.toLowerCase() : value;
 // A credential-free resolver for local, source-attributed captures only.
 // It must never turn an unknown identifier into a "verified" swap.
-const FIELDS = ['origin_tx_hashes','intent_hashes','near_deposit_tx_hashes','near_swap_tx_hashes','destination_tx_hashes','refund_tx_hashes','deposit_address','depositAddress','correlation_id','correlationId','recipient','sender'];
+const FIELDS = ['origin_tx_hashes','intent_hashes','near_deposit_tx_hashes','near_swap_tx_hashes','destination_tx_hashes','refund_tx_hashes','deposit_address','depositAddress','correlation_id','correlationId','recipient','sender','searched_reference'];
 export function extractIdentifier(input) {
   const trimmed = String(input ?? '').trim();
   if (!trimmed) return '';
@@ -37,7 +37,7 @@ export function parseEvidenceEnvelope(input) {
     origin_tx_hashes:'originTxHashes', destination_tx_hashes:'destinationTxHashes',
     refund_tx_hashes:'refundTxHashes', intent_hashes:'intentHashes' };
   for (const [key,alias] of Object.entries(aliases)) if (normalized[key] == null && data[alias]!=null) normalized[key]=data[alias];
-  const recognizable = ['reported_status','source_url','origin_tx_hashes','intent_hashes','deposit_evidence','destination_evidence','refund_evidence','deposit_address','correlation_id','destination_tx_hashes'];
+  const recognizable = ['reported_status','source_url','origin_tx_hashes','intent_hashes','deposit_evidence','destination_evidence','refund_evidence','deposit_address','correlation_id','destination_tx_hashes','searched_reference'];
   if (!recognizable.some(key => Object.hasOwn(normalized,key))) throw new Error('This is not an incident evidence envelope. Include a status, transaction evidence, address, correlation ID, or source URL.');
   for (const [key, value] of Object.entries(normalized)) {
     if (key.endsWith('_tx_hashes') || key === 'intent_hashes') {

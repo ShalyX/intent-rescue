@@ -1,250 +1,55 @@
-TAP version 13
-# Subtest: F1 failed/no-refund becomes FAILED_UNRESOLVED at destination delivery
-ok 1 - F1 failed/no-refund becomes FAILED_UNRESOLVED at destination delivery
-  ---
-  duration_ms: 5.5791
-  type: 'test'
-  ...
-# Subtest: F2 refunded becomes REFUND_VERIFIED
-ok 2 - F2 refunded becomes REFUND_VERIFIED
-  ---
-  duration_ms: 1.0027
-  type: 'test'
-  ...
-# Subtest: F3 successful becomes COMPLETE
-ok 3 - F3 successful becomes COMPLETE
-  ---
-  duration_ms: 0.8346
-  type: 'test'
-  ...
-# Subtest: destination plus refund is treated as conflicted evidence
-ok 4 - destination plus refund is treated as conflicted evidence
-  ---
-  duration_ms: 0.6826
-  type: 'test'
-  ...
-# Subtest: reported refund without refund tx stays insufficient
-ok 5 - reported refund without refund tx stays insufficient
-  ---
-  duration_ms: 1.7026
-  type: 'test'
-  ...
-# Subtest: pending deposit with no deposit evidence asks for source verification
-ok 6 - pending deposit with no deposit evidence asks for source verification
-  ---
-  duration_ms: 0.6489
-  type: 'test'
-  ...
-# Subtest: empty evidence stays insufficient and low-confidence
-ok 7 - empty evidence stays insufficient and low-confidence
-  ---
-  duration_ms: 0.7281
-  type: 'test'
-  ...
-# Subtest: reported success without concrete destination evidence does not become COMPLETE
-ok 8 - reported success without concrete destination evidence does not become COMPLETE
-  ---
-  duration_ms: 0.6007
-  type: 'test'
-  ...
-# Subtest: reported refund without concrete refund evidence does not become REFUND_VERIFIED
-ok 9 - reported refund without concrete refund evidence does not become REFUND_VERIFIED
-  ---
-  duration_ms: 3.0094
-  type: 'test'
-  ...
-# Subtest: direct Explorer observations count as concrete terminal evidence
-ok 10 - direct Explorer observations count as concrete terminal evidence
-  ---
-  duration_ms: 1.3732
-  type: 'test'
-  ...
-# Subtest: public corpus contains at least 10 unique real-world cases
-ok 11 - public corpus contains at least 10 unique real-world cases
-  ---
-  duration_ms: 3.4868
-  type: 'test'
-  ...
-# Subtest: public corpus covers failed, refunded and complete outcomes
-ok 12 - public corpus covers failed, refunded and complete outcomes
-  ---
-  duration_ms: 0.4682
-  type: 'test'
-  ...
-# Subtest: every corpus case is source-attributed and capture-dated
-ok 13 - every corpus case is source-attributed and capture-dated
-  ---
-  duration_ms: 0.8316
-  type: 'test'
-  ...
-# Subtest: public F1 source transaction gets an explicitly identified Litecoin explorer link
-ok 14 - public F1 source transaction gets an explicitly identified Litecoin explorer link
-  ---
-  duration_ms: 13.3727
-  type: 'test'
-  ...
-# Subtest: explicit source/destination/refund chain produces well-formed, chain-specific links
-ok 15 - explicit source/destination/refund chain produces well-formed, chain-specific links
-  ---
-  duration_ms: 0.8567
-  type: 'test'
-  ...
-# Subtest: no invented links for ambiguous assets, unknown chains, malformed hashes or untrusted urls
-ok 16 - no invented links for ambiguous assets, unknown chains, malformed hashes or untrusted urls
-  ---
-  duration_ms: 1.8614
-  type: 'test'
-  ...
-# Subtest: F2 frozen refund evidence produces Base source and refund links without inventing delivery
-ok 17 - F2 frozen refund evidence produces Base source and refund links without inventing delivery
-  ---
-  duration_ms: 2.0514
-  type: 'test'
-  ...
-# Subtest: matches deposit address, correlation ID and source/destination identifiers
-ok 18 - matches deposit address, correlation ID and source/destination identifiers
-  ---
-  duration_ms: 5.4221
-  type: 'test'
-  ...
-# Subtest: normalizes official status payload without inventing refund evidence
-ok 19 - normalizes official status payload without inventing refund evidence
-  ---
-  duration_ms: 2.3787
-  type: 'test'
-  ...
-# Subtest: rejects irrelevant JSON
-ok 20 - rejects irrelevant JSON
-  ---
-  duration_ms: 2.8125
-  type: 'test'
-  ...
-# Subtest: resolver accepts a source explorer URL including tracking query
-ok 21 - resolver accepts a source explorer URL including tracking query
-  ---
-  duration_ms: 17.1872
-  type: 'test'
-  ...
-# Subtest: resolver matches known source and NEAR execution identifiers
-ok 22 - resolver matches known source and NEAR execution identifiers
-  ---
-  duration_ms: 6.2329
-  type: 'test'
-  ...
-# Subtest: unrecognized hash never receives invented classification
-ok 23 - unrecognized hash never receives invented classification
-  ---
-  duration_ms: 0.8405
-  type: 'test'
-  ...
-# Subtest: rejects arbitrary URLs and unsupported domains
-ok 24 - rejects arbitrary URLs and unsupported domains
-  ---
-  duration_ms: 0.3541
-  type: 'test'
-  ...
-# Subtest: rejects ambiguous identifiers rather than choosing a match
-ok 25 - rejects ambiguous identifiers rather than choosing a match
-  ---
-  duration_ms: 1.0155
-  type: 'test'
-  ...
-# Subtest: manual evidence requires a recognizable object
-ok 26 - manual evidence requires a recognizable object
-  ---
-  duration_ms: 10.5495
-  type: 'test'
-  ...
-# Subtest: public HTML failed-case reconstruction stays source-attributed
-ok 27 - public HTML failed-case reconstruction stays source-attributed
-  ---
-  duration_ms: 12.3446
-  type: 'test'
-  ...
-# Subtest: public refund and withdrawal require exact visible outcomes
-ok 28 - public refund and withdrawal require exact visible outcomes
-  ---
-  duration_ms: 4.8369
-  type: 'test'
-  ...
-# Subtest: ambiguous or forged status fails closed
-ok 29 - ambiguous or forged status fails closed
-  ---
-  duration_ms: 1.9909
-  type: 'test'
-  ...
-# Subtest: API does not proxy non-Explorer domains or accept writes
-ok 30 - API does not proxy non-Explorer domains or accept writes
-  ---
-  duration_ms: 1.4543
-  type: 'test'
-  ...
-# Subtest: explicit public source-chain transaction link preserves chain for F1-type evidence
-ok 31 - explicit public source-chain transaction link preserves chain for F1-type evidence
-  ---
-  duration_ms: 3.8894
-  type: 'test'
-  ...
-# Subtest: malformed terminal references and typed evidence fail intake
-ok 32 - malformed terminal references and typed evidence fail intake
-  ---
-  duration_ms: 8.8836
-  type: 'test'
-  ...
-# Subtest: case-sensitive references never match a case-mutated identifier
-ok 33 - case-sensitive references never match a case-mutated identifier
-  ---
-  duration_ms: 1.2274
-  type: 'test'
-  ...
-# Subtest: manual case export preserves correlation and chain context and stays reported
-ok 34 - manual case export preserves correlation and chain context and stays reported
-  ---
-  duration_ms: 3.6024
-  type: 'test'
-  ...
-# Subtest: F1 vertical slice reconstructs the locked hero story
-ok 35 - F1 vertical slice reconstructs the locked hero story
-  ---
-  duration_ms: 4.7303
-  type: 'test'
-  ...
-# Subtest: export bundle carries source, diagnosis, lifecycle and identifiers
-ok 36 - export bundle carries source, diagnosis, lifecycle and identifiers
-  ---
-  duration_ms: 3.3884
-  type: 'test'
-  ...
-# Subtest: F1 exposes provenance basis and exact advice predicates
-ok 37 - F1 exposes provenance basis and exact advice predicates
-  ---
-  duration_ms: 0.7763
-  type: 'test'
-  ...
-# Subtest: terminal verified flags cannot promote lifecycle or export without concrete evidence
-ok 38 - terminal verified flags cannot promote lifecycle or export without concrete evidence
-  ---
-  duration_ms: 0.8609
-  type: 'test'
-  ...
-# Subtest: terminal lifecycle stages become verified only when matching concrete evidence exists
-ok 39 - terminal lifecycle stages become verified only when matching concrete evidence exists
-  ---
-  duration_ms: 0.7594
-  type: 'test'
-  ...
-# Subtest: contrast fixtures contain no placeholder evidence
-ok 40 - contrast fixtures contain no placeholder evidence
-  ---
-  duration_ms: 1.2937
-  type: 'test'
-  ...
-1..40
-# tests 40
-# suites 0
-# pass 40
-# fail 0
-# cancelled 0
-# skipped 0
-# todo 0
-# duration_ms 3055.457
+
+> osiali@0.1.0 test
+> node --test
+
+✔ F1 failed/no-refund becomes FAILED_UNRESOLVED at destination delivery (10.0184ms)
+✔ F2 refunded becomes REFUND_VERIFIED (5.5329ms)
+✔ F3 successful becomes COMPLETE (3.3953ms)
+✔ destination plus refund is treated as conflicted evidence (1.148ms)
+✔ reported refund without refund tx stays insufficient (1.6931ms)
+✔ pending deposit with no deposit evidence asks for source verification (0.5617ms)
+✔ empty evidence stays insufficient and low-confidence (0.5953ms)
+✔ reported success without concrete destination evidence does not become COMPLETE (0.5663ms)
+✔ reported refund without concrete refund evidence does not become REFUND_VERIFIED (0.6507ms)
+✔ direct Explorer observations count as concrete terminal evidence (0.8449ms)
+✔ API status must match requested deposit and supports active stages (16.2901ms)
+✔ guided unknown report exports its reference and notes without claiming observation (1.4971ms)
+✔ memo-specific results reject missing or different quote memos (0.7859ms)
+✔ public corpus contains at least 10 unique real-world cases (3.2174ms)
+✔ public corpus covers failed, refunded and complete outcomes (0.6221ms)
+✔ every corpus case is source-attributed and capture-dated (3.2347ms)
+✔ public F1 source transaction gets an explicitly identified Litecoin explorer link (8.8365ms)
+✔ explicit source/destination/refund chain produces well-formed, chain-specific links (0.9096ms)
+✔ no invented links for ambiguous assets, unknown chains, malformed hashes or untrusted urls (0.7352ms)
+✔ F2 frozen refund evidence produces Base source and refund links without inventing delivery (4.1188ms)
+✔ matches deposit address, correlation ID and source/destination identifiers (6.36ms)
+✔ normalizes official status payload without inventing refund evidence (6.1796ms)
+✔ rejects irrelevant JSON (1.7663ms)
+✔ resolver accepts a source explorer URL including tracking query (9.228ms)
+✔ resolver matches known source and NEAR execution identifiers (4.6856ms)
+✔ unrecognized hash never receives invented classification (1.27ms)
+✔ rejects arbitrary URLs and unsupported domains (1.3502ms)
+✔ rejects ambiguous identifiers rather than choosing a match (1.2188ms)
+✔ manual evidence requires a recognizable object (2.0296ms)
+✔ public HTML failed-case reconstruction stays source-attributed (10.391ms)
+✔ public refund and withdrawal require exact visible outcomes (3.8427ms)
+✔ ambiguous or forged status fails closed (3.3177ms)
+✔ API does not proxy non-Explorer domains or accept writes (1.6534ms)
+✔ explicit public source-chain transaction link preserves chain for F1-type evidence (1.3966ms)
+✔ malformed terminal references and typed evidence fail intake (5.6679ms)
+✔ case-sensitive references never match a case-mutated identifier (2.0552ms)
+✔ manual case export preserves correlation and chain context and stays reported (4.8204ms)
+✔ F1 vertical slice reconstructs the locked hero story (8.5979ms)
+✔ export bundle carries source, diagnosis, lifecycle and identifiers (14.7299ms)
+✔ F1 exposes provenance basis and exact advice predicates (2.8793ms)
+✔ terminal verified flags cannot promote lifecycle or export without concrete evidence (2.4782ms)
+✔ terminal lifecycle stages become verified only when matching concrete evidence exists (1.9468ms)
+✔ contrast fixtures contain no placeholder evidence (10.1636ms)
+ℹ tests 43
+ℹ suites 0
+ℹ pass 43
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1345.1407

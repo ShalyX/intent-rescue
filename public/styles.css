@@ -77,3 +77,5 @@
 
 .mobile-action{display:none}.basis-supplied{border-style:dotted}
 @media(max-width:760px){.mobile-action{display:block;margin:16px 20px;padding:12px;border-left:2px solid var(--red);font-size:14px}.fixture-buttons{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));overflow:visible}.fixture{min-width:0;display:flex;flex-direction:column;padding:10px 6px}.fixture-copy strong{font-size:12px}.fixture-copy small{font-size:11px}}
+
+#guided-report{margin:16px}}

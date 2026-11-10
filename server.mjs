@@ -17,7 +17,7 @@ const server = http.createServer((req,res) => {
       status(code){ res.statusCode=code; return this; },
       json(value){res.setHeader('Content-Type','application/json; charset=utf-8');res.end(JSON.stringify(value));return this;}
     };
-    return Promise.resolve(incidentHandler({method:req.method, query:{reference:url.searchParams.get('reference')}},apiRes))
+    return Promise.resolve(incidentHandler({method:req.method, query:{reference:url.searchParams.get('reference'),memo:url.searchParams.get('memo')}},apiRes))
       .catch(() => { if(!res.headersSent) apiRes.status(500).json({error:'The public evidence reader is temporarily unavailable.'}); });
   }
   if (url.pathname === '/') return send(path.join(root,'public','index.html'),res);
