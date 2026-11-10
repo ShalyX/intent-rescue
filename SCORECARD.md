@@ -1,5 +1,14 @@
 # SCORECARD â€” 2026-11-09 Judge Simulation
 
+## 2026-11-10 - final demo evidence update (not a re-score)
+
+- The current OSIALI demo has been produced and passed DEMO_QA.
+- 84.8 seconds, 1600x900, H.264 at 25 fps, AAC stereo 48 kHz, -18 LUFS.
+- Visible proof: F1 identifier lookup and snapshot-only boundary; source deposit / 1Click / NEAR intent observations; safe no-duplicate-retry recommendation; actual downloaded `osiali-F1.json`; F2 refund-verified and F3 complete contrast; current OSIALI end card.
+- Final 16 pt captions are split into short cues to preserve visibility of the JSON evidence. Full decode and audio checks passed.
+- The previous numeric estimates below are historical and remain provisional. They are **not** refreshed by demo production alone. Rerun the four-lens judge simulation in the JUDGE_SIMULATION phase after the track-selection gate and pitch refresh.
+
+
 Official 2026 scoring weights: UNKNOWN. Internal estimates, not official scores.
 
 | Lens | Estimate | Visible proof | Deduction |

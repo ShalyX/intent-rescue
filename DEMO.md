@@ -1,5 +1,45 @@
 # DEMO â€” original approved story + November 8 re-record gate
 
+## CURRENT FINAL RECORDING - 2026-11-10
+
+Status: PRODUCED. The final OSIALI recording has passed DEMO_QA.
+
+- Final local artifact: `C:\Users\USER\Videos\OSIALI-Demo\osiali-demo-final.mp4`
+- Render source on Karaxis: `/tmp/osiali-demo/osiali-demo-final-v3.mp4`
+- Supporting assets: `osiali-demo-raw.webm`, `voiceover.wav`, final 17-cue `osiali-demo.srt`, `endcard.png`, and QA contact sheets in `C:\Users\USER\Videos\OSIALI-Demo\`
+- Duration: 84.8 seconds; within the original 60-90-second demo target.
+- Video: H.264, 1600x900, 25 fps, 16:9.
+- Audio: AAC stereo, 48 kHz, normalized to -18 LUFS with a -1.5 dBTP ceiling.
+- Final local file size: 6,539,434 bytes.
+- Full video decode: PASS. Audio loudness measurement: PASS. Final visual review: PASS.
+
+### Final scene and proof review
+
+1. F1 investigation: public Explorer identifier intake, captured public snapshot, and explicit evidence boundary. The JSON records `independently_chain_verified: false`; the narration does not claim independent on-chain verification.
+2. Route reconstruction: source deposit, 1Click intake, and NEAR intent execution are observed; destination delivery and refund remain unknown.
+3. Safe recovery: preserve evidence, escalate with identifiers, and verify destination delivery or refund before creating a fresh quote. No duplicate retry or automatic recovery is claimed.
+4. Actual export: the recording shows the real downloaded `osiali-F1.json` support bundle, including source links, observed steps, missing evidence, and snapshot limitation.
+5. Contrast: F2 is shown as refund verified; F3 is shown as transfer complete.
+6. Ending: OSIALI wordmark, "Know what happened", evidence-before-action descriptor, and NEAR Hackathon 2026 attribution.
+
+### DEMO_QA - PASS
+
+- Current deployed OSIALI identity is consistent throughout; no Docketrail label appears.
+- The opening establishes the problem without requiring prior context.
+- The real JSON download is visible, not a mock export button or static illustration.
+- F1/F2/F3 states and the evidence boundary are legible in the final 16 pt, 17-cue subtitle treatment.
+- Captions are burned in; the initial oversized treatment was rejected and replaced before this final render.
+- Full-file decode passed after the final render. Audio measures -18 LUFS at 48 kHz stereo; no clipping was reported by the normalization pass.
+- Inspected final frames at 62, 66, 74, and 82 seconds, plus the full contact sheet. No credentials or personal notifications were visible in the inspected frames.
+- Format and duration are 16:9, H.264, 1600x900, 25 fps, 84.8 seconds.
+
+### Remaining claim limits
+
+The public Explorer result is a captured public page snapshot, not independent chain-finality verification. Unknown destination/refund evidence remains unknown. The product does not custody funds, automatically recover funds, or guarantee a refund. The final video is a local artifact and is not yet attached to a public X post or official submission.
+
+---
+
+
 Original approved goal: 60â€“90-second judge demo. The movie must prove: failed swap identifier â†’ canonical trace â†’ first unresolved leg â†’ conservative action â†’ actual support bundle â†’ refunded/success contrast. Do not claim automatic funds recovery.
 
 ## Current recording status

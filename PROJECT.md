@@ -1,12 +1,14 @@
 # PROJECT — OSIALI / original approved concept: Intent Rescue
 
-## CURRENT CHECKPOINT — 2026-11-09
-- **Authoritative phase:** DEMO_PRODUCTION (Operator v0.5.0); DESIGN_ENGINEERING, VISUAL_QA and PRODUCT_HYGIENE are passed. GitHub main is 4049b2c31084bf4566c1df240a3e155abf399b8f; Vercel deployment dpl_J3TVstXj9Cy8jNEZohbo3FhTk3TE is READY with the canonical intent-rescue.vercel.app alias.
-- **Brand:** OSIALI is explicitly user-approved and deployed across the app, wordmark, favicon, avatar and OG preview. Docketrail is an unapproved legacy label only in ignored local recordings and historical notes; those videos are excluded from submission.
-- **Product integrity:** all seven original P0s remain verified; 35/35 tests and 9/9 red-team scenarios pass on the latest main source; static build passes; no external npm dependencies.
-- **Hygiene findings:** current tracked source/history scans found no high-confidence secret patterns or sensitive filename candidates. No dedicated gitleaks/trufflehog scanner is installed; NVDA is unavailable on the Windows host. Visual QA already recorded zero axe violations, keyboard/focus/reduced-motion checks, and manual contrast measurements. These limitations are documented as residual P2 notes, not claims of a full screen-reader/security-vendor audit.
-- **Hygiene:** fallback gate PASS WITH ACCEPTED P2 notes. Latest source tests 35/35, red-team 9/9, build pass, targeted current/history secret scans clean, public asset/API smoke pass. No dedicated Gitleaks/TruffleHog, NVDA/VoiceOver or LICENSE decision; all disclosed, not claimed complete.
-- **Next:** produce a fresh 60–90s OSIALI demo with voiceover/captions from the current production UI. Track selection (Unstoppable DeFi vs Open Innovation) remains unresolved and must be reconciled before pitch/submission.
+## CURRENT CHECKPOINT - 2026-11-10
+- **Authoritative phase:** PITCH (Hackathon Operator v0.5.0). DEMO_PRODUCTION and DEMO_QA both passed on 2026-11-10. PITCH is the next phase and is paused at the explicit NEAR track-selection gate.
+- **Final demo:** `C:\Users\USER\Videos\OSIALI-Demo\osiali-demo-final.mp4`; 84.8 seconds, H.264 1600x900 at 25 fps, AAC stereo 48 kHz, -18 LUFS, 6,539,434 bytes. Karaxis render source: `/tmp/osiali-demo/osiali-demo-final-v3.mp4`.
+- **DEMO_QA:** PASS. Full decode and audio checks passed. Final frames and contact sheets were inspected. The video shows F1 public Explorer lookup and snapshot boundary, safe recovery recommendation, actual downloaded `osiali-F1.json`, F2 refund verified, F3 transfer complete, and the OSIALI end card. Captions were reduced to 16 pt and split into 17 cues after the first treatment obscured JSON evidence.
+- **Product integrity:** original Idea 1 / Intent Rescue thesis and all seven locked P0s remain unchanged. Existing 35/35 tests, 9/9 red-team scenarios, build, and Product Hygiene evidence remain the recorded baseline; this demo pass does not replace those proofs.
+- **Brand:** OSIALI remains explicitly user-approved. Docketrail recordings remain historical and excluded from submission.
+- **Track decision:** OPEN. Original PRODUCT.md revision 1 records Unstoppable DeFi as primary and Open Innovation as secondary. HACKATHON.md recommends Open Innovation as the cleaner fit, but the user has not approved a switch.
+- **Submission:** NOT READY / NOT SUBMITTED. The final video is local and has not yet been attached to a public X post or official form. No receipt exists.
+- **Next:** obtain the user's explicit track selection, then finish the pitch and rerun the four-lens judge simulation against the final OSIALI artifact. Continue sequentially through prioritized fixes, feature freeze, submission audit, and authorized submission.
 
 Historical checkpoints follow. Earlier notes that say the product name or production identity is unresolved are superseded by the current checkpoint above.
 
