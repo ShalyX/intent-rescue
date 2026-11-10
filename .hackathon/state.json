@@ -1,6 +1,6 @@
 {
   "schema_version": 4,
-  "revision": 23,
+  "revision": 24,
   "recovered_from_legacy": true,
   "previous_local_state": "ABSENT",
   "legacy_checkpoint_revision": "UNKNOWN",
@@ -93,7 +93,8 @@
     "nov10_live_judge_smoke": "On synchronized commit 65dd208: npm test 35/35; red-team 9/9; static build PASS. Production homepage HTTP 200, OSIALI title, no Docketrail string; /public brand assets, CSS, JS, font and F1/F2/F3 demo routes HTTP 200. Live read-only public Explorer API returned HTTP 200 for 221c8aa1... as public_explorer_snapshot, Explorer-reported FAILED, deposit completed observation, no destination/refund evidence, explicit NOT independently verified on-chain notice. Final local video SHA-256 215d410cdee3a9e7fa2815d7c1d7efc09315723ecd93205211b9efd505cf4071.",
     "nov10_judge_simulation": "Fresh four-lens review PASS with explicit track-fit risk. Product 8/10, technical 8/10, sponsor 7/10, 30-second 7.5/10; all internal estimates, official 2026 weights UNKNOWN. Prior-criteria proxies: technical 8, design 8, impact 6, originality 7.5, sustainability 5.5. Unstoppable DeFi fit adjacent (5.5/10 internal); Open Innovation stronger (8/10 internal). No new P0/P1 product defect found. Full review and ranked improvements in SCORECARD.md.",
     "nov10_prioritized_fixes": "PRIORITIZED_FIXES PASS: no product/code changes recommended; preserve all seven P0s and user-selected track order. Mandatory remaining work: publish final demo X post with required event wording/tag/hashtag; complete one official submission with repository and X post URL, selecting both tracks if available; verify receipt. Optional external operator feedback is non-blocking.",
-    "nov10_feature_freeze": "FEATURE_FREEZE started 2026-11-10. No new features; allow only reliability, evidence, hygiene, demo, pitch, links, submission and critical visual fixes."
+    "nov10_feature_freeze": "FEATURE_FREEZE started 2026-11-10. No new features; allow only reliability, evidence, hygiene, demo, pitch, links, submission and critical visual fixes.",
+    "nov10_demo_voice_caption_fix": "Narrow-scope revision v4: TTS changed from en-NG-AbeoNeural to en-US-AndrewNeural. Removed only phonetic pronunciation aside from narration segment 2; other seven segments, eight scene timings, screen recording, script/storyline, evidence, end card and 84.8-second duration unchanged. Corrected subtitles with explicit 1600x900 PlayRes/original_size, 18-size bottom-centred text, thin outline and no opaque panel. Audio rebuilt to exact scene slots, 48 kHz stereo, -18 LUFS. Final video 5,912,118 bytes, SHA-256 9d29aade7b85d3b404fdc0d4bb7e061298dad8db2879202c9210155d3b1d95f2. Full decode and representative-frame visual QA pass."
   },
   "blockers": [
     "Mandatory public X demo post with final OSIALI video, explicit NEAR HACKATHON wording, @NEARProtocol and #NEARHackathon is not yet published.",
@@ -103,7 +104,7 @@
     "Formal trademark, domain and social-handle clearance for OSIALI remains outstanding; do not claim legal availability."
   ],
   "next_action": "Maintain feature freeze. Prepare and publish the required public X demo post with the final OSIALI video, then run SUBMISSION_AUDIT against the actual official form and final public links. Submit one project entry, selecting Unstoppable DeFi and Open Innovation if both options are offered, and record the visible receipt.",
-  "updated_at": "2026-11-10T04:38:51.251Z",
+  "updated_at": "2026-11-10T05:22:26.416Z",
   "name_status": "LOCKED_USER_APPROVED",
   "proposed_name": "OSIALI",
   "proposed_name_user_approved": true,
@@ -246,12 +247,12 @@
     {
       "n": 27,
       "phase": "DEMO_PRODUCTION",
-      "status": "PASS - fresh current-brand OSIALI 84.8-second recording produced; real identifier lookup, actual JSON export, F2/F3 contrast, approved voiceover/captions and OSIALI end card captured."
+      "status": "PASS — revised final OSIALI recording v4 uses neutral US English neural narration; only phonetic pronunciation aside removed; all other seven narration sections, scene timings, screen capture and evidence preserved."
     },
     {
       "n": 28,
       "phase": "DEMO_QA",
-      "status": "PASS - full decode, audio loudness/format, compact captions, real JSON download, F1 evidence boundary, F2 refund, F3 completion, brand consistency and final visual frames inspected."
+      "status": "PASS — v4 full decode/audio QA; -18 LUFS, 48 kHz stereo; subtitles correctly scaled to 1600x900 with compact bottom placement/no opaque panel; frames 3/18/50/65 and contact sheet inspected; final hash recorded in DEMO.md."
     },
     {
       "n": 29,
@@ -290,7 +291,7 @@
     }
   ],
   "phase_audit_version": "hackathon-operator 0.5.0",
-  "phase_audit_updated_at": "2026-11-10T04:38:51.251Z",
+  "phase_audit_updated_at": "2026-11-10T05:22:26.416Z",
   "naming_candidate_count": 0,
   "naming_territories": [
     "Route / lifecycle",

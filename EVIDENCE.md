@@ -200,8 +200,18 @@ Evidence rules: preserve input source, date, freshness, environment and limitati
 - Production homepage `https://intent-rescue.vercel.app/`: HTTP 200; title `OSIALI - Incident Desk`; inspected HTML contains no Docketrail string.
 - Production assets checked under their actual `/public/` paths: favicon SVG/PNG, OSIALI mark, avatar, OG preview, CSS, JS and IBM Plex font all HTTP 200. The F1, F2 and F3 demo URLs each returned HTTP 200.
 - Live read-only endpoint check: `GET /api/incident?reference=https://explorer.near-intents.org/transactions/221c8aa1a8ac320aa58174f9ff57d0fbc36316d7dc469f630e05e1b34f9e4d80` returned HTTP 200 with `kind=public_explorer_snapshot`, Explorer-reported status `FAILED`, and capture time `2026-11-10T04:35:42.328Z`. The response showed the Explorer's “Deposit Completed” observation and no destination/refund transaction evidence. It explicitly stated that the result is **not independently verified on-chain**, is not an authenticated partner API status, and is not a refund guarantee.
-- Final demo local artifact: `C:\\Users\\USER\\Videos\\OSIALI-Demo\\osiali-demo-final.mp4`, 6,539,434 bytes; SHA-256 `215d410cdee3a9e7fa2815d7c1d7efc09315723ecd93205211b9efd505cf4071`.
+- Final demo local artifact: `C:\\Users\\USER\\Videos\\OSIALI-Demo\\osiali-demo-final.mp4`, 5,912,118 bytes; SHA-256 `9d29aade7b85d3b404fdc0d4bb7e061298dad8db2879202c9210155d3b1d95f2`.
 
 ### Evidence boundary
 
 This is a current production smoke and one real public Explorer snapshot observation. It does not prove independent chain finality, universal historical lookup, private partner-history access, automatic refund/recovery, or adoption. The snapshot's missing destination/refund evidence remains unknown rather than evidence of loss or protocol fault.
+
+
+## 2026-11-10 — narrowly scoped demo voice and caption correction
+
+- Replaced the prior `en-NG-AbeoNeural` narration with `en-US-AndrewNeural` (neutral US English neural voice).
+- Removed only the phonetic OSIALI pronunciation aside from narration segment 2. The revised line is: “This is OSIALI, an evidence-first incident desk for NEAR Intents.” The other seven narration sections, all eight scene timings, screen recording, end card, demo storyline and evidence claims remain unchanged.
+- Rebuilt each voice segment to its original scene duration; final voiceover is 84.792 seconds, 48 kHz stereo. Final video duration remains 84.8 seconds and measures -18.0 LUFS.
+- Corrected the subtitle scaling by explicitly setting the subtitle canvas to 1600x900. Captions are small, bottom-centred, transparent-background text with a thin outline; no opaque full-screen caption panel.
+- Final video: `/tmp/osiali-demo/osiali-demo-final-v4.mp4`, 5,912,118 bytes; SHA-256 `9d29aade7b85d3b404fdc0d4bb7e061298dad8db2879202c9210155d3b1d95f2`.
+- Full-file decode: PASS. Audio loudness: -18.0 LUFS. Visual review of 3s, 18s, 50s and 65s frames plus contact sheet: PASS. Actual JSON export and F1 evidence boundary remain visible.

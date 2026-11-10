@@ -5,13 +5,14 @@
 Status: PRODUCED. The final OSIALI recording has passed DEMO_QA.
 
 - Final local artifact: `C:\Users\USER\Videos\OSIALI-Demo\osiali-demo-final.mp4`
-- Render source on Karaxis: `/tmp/osiali-demo/osiali-demo-final-v3.mp4`
+- Render source on Karaxis: `/tmp/osiali-demo/osiali-demo-final-v4.mp4`
 - Supporting assets: `osiali-demo-raw.webm`, `voiceover.wav`, final 17-cue `osiali-demo.srt`, `endcard.png`, and QA contact sheets in `C:\Users\USER\Videos\OSIALI-Demo\`
 - Duration: 84.8 seconds; within the original 60-90-second demo target.
 - Video: H.264, 1600x900, 25 fps, 16:9.
-- Audio: AAC stereo, 48 kHz, normalized to -18 LUFS with a -1.5 dBTP ceiling.
-- Final local file size: 6,539,434 bytes.
-- Final local SHA-256: `215d410cdee3a9e7fa2815d7c1d7efc09315723ecd93205211b9efd505cf4071`.
+- Audio: neutral US English neural voice (`en-US-AndrewNeural`), AAC stereo, 48 kHz, normalized to -18 LUFS.
+- Voiceover script: only the OSIALI pronunciation aside was removed. Segment 2 now reads: “This is OSIALI, an evidence-first incident desk for NEAR Intents.” The other seven narration sections and all eight scene timings are unchanged.
+- Final local file size: 5,912,118 bytes.
+- Final local SHA-256: `9d29aade7b85d3b404fdc0d4bb7e061298dad8db2879202c9210155d3b1d95f2`.
 - Full video decode: PASS. Audio loudness measurement: PASS. Final visual review: PASS.
 
 ### Final scene and proof review
@@ -28,10 +29,10 @@ Status: PRODUCED. The final OSIALI recording has passed DEMO_QA.
 - Current deployed OSIALI identity is consistent throughout; no Docketrail label appears.
 - The opening establishes the problem without requiring prior context.
 - The real JSON download is visible, not a mock export button or static illustration.
-- F1/F2/F3 states and the evidence boundary are legible in the final 16 pt, 17-cue subtitle treatment.
-- Captions are burned in; the initial oversized treatment was rejected and replaced before this final render.
+- F1/F2/F3 states and the evidence boundary are legible in the revised 17-cue caption treatment, correctly scaled to the 1600x900 frame.
+- Captions are small, bottom-centred, white with a thin outline and no opaque text panel. The subtitle canvas is explicitly 1600x900; this fixes the prior font-scaling error.
 - Full-file decode passed after the final render. Audio measures -18 LUFS at 48 kHz stereo; no clipping was reported by the normalization pass.
-- Inspected final frames at 62, 66, 74, and 82 seconds, plus the full contact sheet. No credentials or personal notifications were visible in the inspected frames.
+- Inspected final frames at 3, 18, 50, and 65 seconds, plus the revised contact sheet. The product interface and actual JSON evidence remain visible; captions do not cover the screen.
 - Format and duration are 16:9, H.264, 1600x900, 25 fps, 84.8 seconds.
 
 ### Remaining claim limits
