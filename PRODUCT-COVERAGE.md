@@ -23,3 +23,12 @@ verdict: PASS for locked P0 acceptance; no universal live-tracing claim.
 
 ## 2026-11-09 — brand-only release note
 The customer-facing brand is OSIALI. The support export filename prefix was changed from the historical Docketrail prefix to osiali- in the name-alignment commit. This does not change the JSON schema or any P0 behavior. Visual QA reverified the current OSIALI export as osiali-F1.json (4,414 bytes) on the current production release.
+
+
+## 2026-11-10 ? terminal evidence consistency correction
+
+P0-02 / P0-03 reliability correction: classifier and lifecycle now share the same concrete terminal-evidence predicates. Caller-supplied destination_verified / refund_verified booleans cannot promote terminal stages without matching transaction/evidence records. Regression coverage checks both diagnosis and exported JSON, negative and positive cases.
+
+- Local: 37/37 tests, 9/9 red-team, static build PASS.
+- Production: deployment dpl_5ErUfDtVucj9BCJgdsugVR6yUHiN READY on commit b250d2c032045f776c50b3f0cf6ed930cbf144f7. Live source modules match the tested repository modules; production-code negative/positive and export-parity checks PASS.
+- No feature scope or locked P0 definition changed.

@@ -5,7 +5,7 @@
 - A P0 reliability inconsistency was found after the four-lens review: terminal verified booleans could mark Refund or Destination delivery VERIFIED in the lifecycle despite the classifier correctly rejecting missing terminal evidence.
 - Both outputs now share the exact same evidence predicates; JSON export is covered by regression tests. Unsupported flags leave the relevant terminal stage NOT_OBSERVED / UNKNOWN. Concrete transaction/evidence records continue to produce VERIFIED / OBSERVED.
 - Latest local verification: 37/37 automated tests, 9/9 red-team scenarios, static build PASS. The pre-existing four-lens scores and track-fit assessment are unchanged; this is a reliability correction, not a product feature or a new score.
-- The earlier 35/35 test references below describe the inspected pre-fix revision. The new local result supersedes them for current source; production deployment verification remains pending.
+- The earlier 35/35 test references below describe the inspected pre-fix revision. The new local result supersedes them for current source. Production deployment dpl_5ErUfDtVucj9BCJgdsugVR6yUHiN is READY on commit b250d2c032045f776c50b3f0cf6ed930cbf144f7; the served modules were matched to tested source and live negative/positive/export-parity checks passed.
 
 
 ## 2026-11-10 - final demo evidence update (not a re-score)

@@ -1,12 +1,12 @@
 {
   "schema_version": 4,
-  "revision": 25,
+  "revision": 26,
   "recovered_from_legacy": true,
   "previous_local_state": "ABSENT",
   "legacy_checkpoint_revision": "UNKNOWN",
   "project_root": "C:\\Users\\USER\\Documents\\intent-rescue",
   "phase": "FEATURE_FREEZE",
-  "active_specialist": "Engineering / QA / Proof",
+  "active_specialist": "Presentation / Submission Audit",
   "human_input_required": false,
   "pending_gate": null,
   "product_locked": true,
@@ -95,7 +95,7 @@
     "nov10_prioritized_fixes": "PRIORITIZED_FIXES PASS: no product/code changes recommended; preserve all seven P0s and user-selected track order. Mandatory remaining work: publish final demo X post with required event wording/tag/hashtag; complete one official submission with repository and X post URL, selecting both tracks if available; verify receipt. Optional external operator feedback is non-blocking.",
     "nov10_feature_freeze": "FEATURE_FREEZE started 2026-11-10. No new features; allow only reliability, evidence, hygiene, demo, pitch, links, submission and critical visual fixes.",
     "nov10_demo_voice_caption_fix": "Narrow-scope revision v4: TTS changed from en-NG-AbeoNeural to en-US-AndrewNeural. Removed only phonetic pronunciation aside from narration segment 2; other seven segments, eight scene timings, screen recording, script/storyline, evidence, end card and 84.8-second duration unchanged. Corrected subtitles with explicit 1600x900 PlayRes/original_size, 18-size bottom-centred text, thin outline and no opaque panel. Audio rebuilt to exact scene slots, 48 kHz stereo, -18 LUFS. Final video 5,912,118 bytes, SHA-256 9d29aade7b85d3b404fdc0d4bb7e061298dad8db2879202c9210155d3b1d95f2. Full decode and representative-frame visual QA pass.",
-    "nov10_terminal_evidence_consistency_fix": "P0 reliability defect reproduced on local Windows checkout: refund_verified/destination_verified booleans without terminal evidence could promote lifecycle stage to VERIFIED while classifier returned INSUFFICIENT_EVIDENCE. Added shared hasRefundEvidence/hasDestinationEvidence predicates used by classifier and lifecycle; terminal flags alone are ignored. Regression tests cover analysis and JSON export, both negative and positive cases. npm test 37/37, red-team 9/9, static build PASS, git diff --check PASS. Production deployment/browser verification pending."
+    "nov10_terminal_evidence_consistency_fix": "P0 terminal evidence inconsistency reproduced, fixed and production-verified. Classifier/lifecycle share hasRefundEvidence/hasDestinationEvidence; unsupported verified flags cannot promote terminal stages. Regression tests cover analysis and JSON export, negative and positive cases. Local npm test 37/37, red-team 9/9, static build PASS. Production deployment dpl_5ErUfDtVucj9BCJgdsugVR6yUHiN READY on commit b250d2c032045f776c50b3f0cf6ed930cbf144f7; homepage and F1/F2/F3 routes HTTP 200; served modules byte-match tested source; live-code negative/positive/export parity checks PASS."
   },
   "blockers": [
     "Mandatory public X demo post with final OSIALI video, explicit NEAR HACKATHON wording, @NEARProtocol and #NEARHackathon is not yet published.",
@@ -105,8 +105,8 @@
     "Formal trademark, domain and social-handle clearance for OSIALI remains outstanding; do not claim legal availability.",
     "Terminal-evidence consistency correction is locally verified but not yet committed/deployed; verify the production release before final submission audit."
   ],
-  "next_action": "Commit and push the narrow terminal-evidence consistency correction; verify the Vercel production deployment and the diagnosis/lifecycle/JSON-export parity on the deployed product; then publish the final OSIALI X demo post and complete SUBMISSION_AUDIT. Keep feature freeze active.",
-  "updated_at": "2026-11-10T12:56:24Z",
+  "next_action": "Publish the final OSIALI demo X post with the current branded video, explicit NEAR HACKATHON wording, @NEARProtocol and #NEARHackathon. Then run SUBMISSION_AUDIT against the live official form, populate one project submission with Unstoppable DeFi and Open Innovation if both are offered, obtain user review/approval, submit once, and record the receipt. Keep feature freeze active.",
+  "updated_at": "2026-11-10T12:59:41Z",
   "name_status": "LOCKED_USER_APPROVED",
   "proposed_name": "OSIALI",
   "proposed_name_user_approved": true,
@@ -274,12 +274,12 @@
     {
       "n": 32,
       "phase": "FEATURE_FREEZE",
-      "status": "IN PROGRESS ? feature freeze remains active. Narrow P0 terminal-evidence consistency correction implemented and locally verified (37/37 tests, 9/9 red-team, build PASS); no feature expansion. Push and production verification remain required before submission audit."
+      "status": "IN PROGRESS ? feature freeze remains active. Narrow P0 terminal-evidence consistency correction implemented, locally verified (37/37 tests, 9/9 red-team, build PASS), pushed and production-verified on dpl_5ErUfDtVucj9BCJgdsugVR6yUHiN; no feature expansion."
     },
     {
       "n": 33,
       "phase": "SUBMISSION_AUDIT",
-      "status": "OPEN"
+      "status": "OPEN ? final public X demo post and actual official portal field audit remain outstanding."
     },
     {
       "n": 34,
@@ -293,7 +293,7 @@
     }
   ],
   "phase_audit_version": "hackathon-operator 0.5.0",
-  "phase_audit_updated_at": "2026-11-10T12:56:24Z",
+  "phase_audit_updated_at": "2026-11-10T12:59:41Z",
   "naming_candidate_count": 0,
   "naming_territories": [
     "Route / lifecycle",
