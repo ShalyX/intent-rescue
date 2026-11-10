@@ -9,7 +9,7 @@
 
 OSIALI turns a stalled swap into an evidence-bounded incident: it reconstructs the route, marks the first unresolved leg, recommends a safe next step, and exports a support-ready case.
 
-[Evidence pack](./EVIDENCE.md) Â· 10 public cases Â· 35/35 local tests Â· 9/9 red-team scenarios Â· 30,000 deterministic repeat classifications
+[Evidence pack](./EVIDENCE.md) Â· 10 public cases Â· 37/37 local tests Â· 9/9 red-team scenarios Â· 30,000 deterministic repeat classifications
 
 OSIALI reconstructs a swap from source-attributed evidence, identifies the first unresolved lifecycle leg, explains what the evidence does and does not prove, recommends a conservative next action, and exports a support-ready incident bundle.
 

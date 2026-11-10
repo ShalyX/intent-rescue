@@ -1,12 +1,18 @@
 const has = (arr) => Array.isArray(arr) && arr.length > 0;
 
+// Terminal lifecycle states and classifications must share identical evidence gates.
+export const hasDestinationEvidence = (evidence) =>
+  has(evidence.destination_tx_hashes) || has(evidence.destination_evidence);
+export const hasRefundEvidence = (evidence) =>
+  has(evidence.refund_tx_hashes) || has(evidence.refund_evidence);
+
 export function classifyIncident(evidence) {
   const reported = String(evidence.reported_status || '').toUpperCase();
   const depositVerified = Boolean(evidence.deposit_verified) || has(evidence.origin_tx_hashes) || has(evidence.near_deposit_tx_hashes) || has(evidence.deposit_evidence);
   const intentVerified = Boolean(evidence.intent_verified) || has(evidence.intent_hashes) || has(evidence.near_swap_tx_hashes);
   // Terminal outcomes require concrete evidence, not a caller-supplied verified flag alone.
-  const destinationObserved = has(evidence.destination_tx_hashes) || has(evidence.destination_evidence);
-  const refundObserved = has(evidence.refund_tx_hashes) || has(evidence.refund_evidence);
+  const destinationObserved = hasDestinationEvidence(evidence);
+  const refundObserved = hasRefundEvidence(evidence);
   const basePredicates = [
     `reported_status=${reported || 'UNKNOWN'}`,
     `deposit_verified=${depositVerified}`,

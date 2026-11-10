@@ -1,12 +1,12 @@
 {
   "schema_version": 4,
-  "revision": 24,
+  "revision": 25,
   "recovered_from_legacy": true,
   "previous_local_state": "ABSENT",
   "legacy_checkpoint_revision": "UNKNOWN",
   "project_root": "C:\\Users\\USER\\Documents\\intent-rescue",
   "phase": "FEATURE_FREEZE",
-  "active_specialist": "HQ / Feature Freeze",
+  "active_specialist": "Engineering / QA / Proof",
   "human_input_required": false,
   "pending_gate": null,
   "product_locked": true,
@@ -94,17 +94,19 @@
     "nov10_judge_simulation": "Fresh four-lens review PASS with explicit track-fit risk. Product 8/10, technical 8/10, sponsor 7/10, 30-second 7.5/10; all internal estimates, official 2026 weights UNKNOWN. Prior-criteria proxies: technical 8, design 8, impact 6, originality 7.5, sustainability 5.5. Unstoppable DeFi fit adjacent (5.5/10 internal); Open Innovation stronger (8/10 internal). No new P0/P1 product defect found. Full review and ranked improvements in SCORECARD.md.",
     "nov10_prioritized_fixes": "PRIORITIZED_FIXES PASS: no product/code changes recommended; preserve all seven P0s and user-selected track order. Mandatory remaining work: publish final demo X post with required event wording/tag/hashtag; complete one official submission with repository and X post URL, selecting both tracks if available; verify receipt. Optional external operator feedback is non-blocking.",
     "nov10_feature_freeze": "FEATURE_FREEZE started 2026-11-10. No new features; allow only reliability, evidence, hygiene, demo, pitch, links, submission and critical visual fixes.",
-    "nov10_demo_voice_caption_fix": "Narrow-scope revision v4: TTS changed from en-NG-AbeoNeural to en-US-AndrewNeural. Removed only phonetic pronunciation aside from narration segment 2; other seven segments, eight scene timings, screen recording, script/storyline, evidence, end card and 84.8-second duration unchanged. Corrected subtitles with explicit 1600x900 PlayRes/original_size, 18-size bottom-centred text, thin outline and no opaque panel. Audio rebuilt to exact scene slots, 48 kHz stereo, -18 LUFS. Final video 5,912,118 bytes, SHA-256 9d29aade7b85d3b404fdc0d4bb7e061298dad8db2879202c9210155d3b1d95f2. Full decode and representative-frame visual QA pass."
+    "nov10_demo_voice_caption_fix": "Narrow-scope revision v4: TTS changed from en-NG-AbeoNeural to en-US-AndrewNeural. Removed only phonetic pronunciation aside from narration segment 2; other seven segments, eight scene timings, screen recording, script/storyline, evidence, end card and 84.8-second duration unchanged. Corrected subtitles with explicit 1600x900 PlayRes/original_size, 18-size bottom-centred text, thin outline and no opaque panel. Audio rebuilt to exact scene slots, 48 kHz stereo, -18 LUFS. Final video 5,912,118 bytes, SHA-256 9d29aade7b85d3b404fdc0d4bb7e061298dad8db2879202c9210155d3b1d95f2. Full decode and representative-frame visual QA pass.",
+    "nov10_terminal_evidence_consistency_fix": "P0 reliability defect reproduced on local Windows checkout: refund_verified/destination_verified booleans without terminal evidence could promote lifecycle stage to VERIFIED while classifier returned INSUFFICIENT_EVIDENCE. Added shared hasRefundEvidence/hasDestinationEvidence predicates used by classifier and lifecycle; terminal flags alone are ignored. Regression tests cover analysis and JSON export, both negative and positive cases. npm test 37/37, red-team 9/9, static build PASS, git diff --check PASS. Production deployment/browser verification pending."
   },
   "blockers": [
     "Mandatory public X demo post with final OSIALI video, explicit NEAR HACKATHON wording, @NEARProtocol and #NEARHackathon is not yet published.",
     "Official submission audit and one project submission with repository and public X post links are not complete; verify the portal's track fields and select both if available.",
     "Unstoppable DeFi primary fit is adjacent rather than direct; keep the limitation explicit and do not claim OSIALI is an exchange, perps, lending, vault or trading agent.",
     "No external operator adoption or customer validation is currently evidenced; do not invent it.",
-    "Formal trademark, domain and social-handle clearance for OSIALI remains outstanding; do not claim legal availability."
+    "Formal trademark, domain and social-handle clearance for OSIALI remains outstanding; do not claim legal availability.",
+    "Terminal-evidence consistency correction is locally verified but not yet committed/deployed; verify the production release before final submission audit."
   ],
-  "next_action": "Maintain feature freeze. Prepare and publish the required public X demo post with the final OSIALI video, then run SUBMISSION_AUDIT against the actual official form and final public links. Submit one project entry, selecting Unstoppable DeFi and Open Innovation if both options are offered, and record the visible receipt.",
-  "updated_at": "2026-11-10T05:22:26.416Z",
+  "next_action": "Commit and push the narrow terminal-evidence consistency correction; verify the Vercel production deployment and the diagnosis/lifecycle/JSON-export parity on the deployed product; then publish the final OSIALI X demo post and complete SUBMISSION_AUDIT. Keep feature freeze active.",
+  "updated_at": "2026-11-10T12:56:24Z",
   "name_status": "LOCKED_USER_APPROVED",
   "proposed_name": "OSIALI",
   "proposed_name_user_approved": true,
@@ -272,7 +274,7 @@
     {
       "n": 32,
       "phase": "FEATURE_FREEZE",
-      "status": "IN PROGRESS — feature freeze activated 2026-11-10; no feature expansion; only reliability, evidence, hygiene, demo, pitch, link and submission fixes permitted."
+      "status": "IN PROGRESS ? feature freeze remains active. Narrow P0 terminal-evidence consistency correction implemented and locally verified (37/37 tests, 9/9 red-team, build PASS); no feature expansion. Push and production verification remain required before submission audit."
     },
     {
       "n": 33,
@@ -291,7 +293,7 @@
     }
   ],
   "phase_audit_version": "hackathon-operator 0.5.0",
-  "phase_audit_updated_at": "2026-11-10T05:22:26.416Z",
+  "phase_audit_updated_at": "2026-11-10T12:56:24Z",
   "naming_candidate_count": 0,
   "naming_territories": [
     "Route / lifecycle",

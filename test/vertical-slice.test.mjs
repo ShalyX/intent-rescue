@@ -35,6 +35,64 @@ test('F1 exposes provenance basis and exact advice predicates', () => {
   assert.ok(out.evidence_predicates.includes('refund_observed=false'));
 });
 
+
+test('terminal verified flags cannot promote lifecycle or export without concrete evidence', () => {
+  const cases = [
+    { label: 'Destination delivery', flag: 'destination_verified', reported_status: 'SUCCESS' },
+    { label: 'Refund', flag: 'refund_verified', reported_status: 'REFUNDED' }
+  ];
+  for (const item of cases) {
+    const evidence = {
+      reported_status: item.reported_status,
+      [item.flag]: true,
+      destination_tx_hashes: [],
+      destination_evidence: [],
+      refund_tx_hashes: [],
+      refund_evidence: []
+    };
+    const analysis = analyzeEvidence(evidence);
+    assert.equal(analysis.classification, 'INSUFFICIENT_EVIDENCE', item.label);
+    const stage = analysis.lifecycle.find(entry => entry.label === item.label);
+    assert.deepEqual(
+      { status: stage.status, basis: stage.basis, evidence: stage.evidence },
+      { status: 'NOT_OBSERVED', basis: 'UNKNOWN', evidence: [] },
+      item.label
+    );
+    const bundle = exportBundle(evidence);
+    assert.equal(bundle.diagnosis.classification, 'INSUFFICIENT_EVIDENCE', item.label + ' export diagnosis');
+    const exportedStage = bundle.lifecycle.find(entry => entry.label === item.label);
+    assert.equal(exportedStage.status, 'NOT_OBSERVED', item.label + ' export lifecycle');
+  }
+});
+
+test('terminal lifecycle stages become verified only when matching concrete evidence exists', () => {
+  const cases = [
+    {
+      label: 'Destination delivery',
+      evidence: { reported_status: 'SUCCESS', destination_tx_hashes: ['destination-tx'] }
+    },
+    {
+      label: 'Refund',
+      evidence: { reported_status: 'REFUNDED', refund_tx_hashes: ['refund-tx'] }
+    }
+  ];
+  for (const item of cases) {
+    const analysis = analyzeEvidence(item.evidence);
+    const expected = item.label === 'Refund' ? 'REFUND_VERIFIED' : 'COMPLETE';
+    assert.equal(analysis.classification, expected, item.label);
+    const stage = analysis.lifecycle.find(entry => entry.label === item.label);
+    assert.deepEqual(
+      { status: stage.status, basis: stage.basis, evidence: stage.evidence },
+      {
+        status: 'VERIFIED',
+        basis: 'OBSERVED',
+        evidence: item.label === 'Refund' ? ['refund-tx'] : ['destination-tx']
+      },
+      item.label
+    );
+  }
+});
+
 test('contrast fixtures contain no placeholder evidence', () => {
   for (const name of ['f2-refunded.json','f3-success.json']) {
     const raw = fs.readFileSync(path.join(here, '..', 'fixtures', name), 'utf8');

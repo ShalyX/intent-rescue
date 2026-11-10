@@ -1,3 +1,5 @@
+import { hasDestinationEvidence, hasRefundEvidence } from './classifier.mjs';
+
 const has = (arr) => Array.isArray(arr) && arr.length > 0;
 
 export function buildLifecycle(evidence) {
@@ -9,8 +11,8 @@ export function buildLifecycle(evidence) {
   const deposit = Boolean(evidence.deposit_verified) || originEvidence.length > 0;
   const intake = deposit && (Boolean(evidence.intent_verified) || intakeEvidence.length > 0 || has(evidence.near_swap_tx_hashes));
   const intent = Boolean(evidence.intent_verified) || intentEvidence.length > 0;
-  const destination = Boolean(evidence.destination_verified) || destinationEvidence.length > 0;
-  const refund = Boolean(evidence.refund_verified) || refundEvidence.length > 0;
+  const destination = hasDestinationEvidence(evidence);
+  const refund = hasRefundEvidence(evidence);
   return [
     stage('Source deposit', deposit ? 'VERIFIED' : 'NOT_OBSERVED', originEvidence, originEvidence.length ? 'OBSERVED' : evidence.deposit_verified ? 'INFERRED' : 'UNKNOWN'),
     stage('1Click intake', intake ? 'VERIFIED' : deposit ? 'UNKNOWN' : 'NOT_OBSERVED', intakeEvidence, intakeEvidence.length ? 'OBSERVED' : intake ? 'INFERRED' : 'UNKNOWN'),

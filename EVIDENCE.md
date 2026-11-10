@@ -215,3 +215,14 @@ This is a current production smoke and one real public Explorer snapshot observa
 - Corrected the subtitle scaling by explicitly setting the subtitle canvas to 1600x900. Captions are small, bottom-centred, transparent-background text with a thin outline; no opaque full-screen caption panel.
 - Final video: `/tmp/osiali-demo/osiali-demo-final-v4.mp4`, 5,912,118 bytes; SHA-256 `9d29aade7b85d3b404fdc0d4bb7e061298dad8db2879202c9210155d3b1d95f2`.
 - Full-file decode: PASS. Audio loudness: -18.0 LUFS. Visual review of 3s, 18s, 50s and 65s frames plus contact sheet: PASS. Actual JSON export and F1 evidence boundary remain visible.
+
+
+## 2026-11-10 ? terminal-state evidence consistency regression and correction
+
+- **Finding:** A caller-supplied refund_verified: true without a refund transaction/evidence array correctly produced INSUFFICIENT_EVIDENCE in the classifier, but buildLifecycle marked Refund VERIFIED with INFERRED provenance and an empty evidence list. The equivalent inconsistency existed for destination_verified: true without destination evidence.
+- **Severity:** P0 reliability / evidence-integrity defect. A judge or support operator could see contradictory terminal-state claims in the same analysis or exported JSON.
+- **Fix:** Added shared hasRefundEvidence and hasDestinationEvidence predicates in src/classifier.mjs; both the classifier and lifecycle now use those exact predicates. Caller-supplied terminal verified booleans alone cannot promote Refund or Destination delivery. A terminal stage is VERIFIED / OBSERVED only when the corresponding transaction hash or evidence array is present.
+- **Regression proof:** test/vertical-slice.test.mjs now covers both unsupported flags across analysis and JSON export, plus positive terminal cases with concrete evidence. The regression failed before the implementation change and passes after it.
+- **Local verification (Windows / Node):** npm test 37/37 PASS; npm run red-team 9/9 PASS; npm run build PASS; git diff --check PASS. Exact refund reproduction now returns diagnosis INSUFFICIENT_EVIDENCE, lifecycle NOT_OBSERVED / UNKNOWN, and the same status in exported JSON.
+- **Scope:** Reliability/evidence correction only. No product feature, product thesis, demo recording, brand, UI design, or locked P0 scope changed.
+- **Freshness boundary:** This proof is from the local Windows checkout. GitHub push and Vercel production deployment/browser verification remain pending; do not describe the production alias as updated until independently checked.
