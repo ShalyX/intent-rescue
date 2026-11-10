@@ -1,109 +1,78 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="color-scheme" content="light" />
-  <meta name="description" content="Evidence-first NEAR Intents incident response: reconstruct, verify what is known, and prepare a support handoff." />
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="OSIALI — Incident Desk" />
-  <meta property="og:description" content="Trace a NEAR Intents swap from captured evidence, locate the unresolved leg, and export a safe support handoff." />
-  <meta property="og:url" content="https://osiali.vercel.app/" />
-  <meta property="og:site_name" content="OSIALI" />
-  <meta property="og:image" content="https://osiali.vercel.app/public/og-preview.png" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
-  <meta property="og:image:alt" content="OSIALI incident desk showing a NEAR Intents swap lifecycle and its first unresolved evidence boundary." />
-  <meta name="twitter:title" content="OSIALI — Know what happened" />
-  <meta name="twitter:description" content="Evidence-first incident investigation for NEAR Intents." />
-  <meta name="twitter:image" content="https://osiali.vercel.app/public/og-preview.png" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <title>OSIALI — Incident Desk</title>
-  <link rel="icon" type="image/png" sizes="32x32" href="/public/favicon-32.png" />
-  <link rel="icon" type="image/svg+xml" href="/public/favicon.svg" />
-  <link rel="apple-touch-icon" href="/public/osiali-avatar.png" />
-  <meta name="theme-color" content="#f2f3ef" />
-  <link rel="canonical" href="https://osiali.vercel.app/" />
-  <link rel="preload" href="/public/fonts/ibm-plex-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />
-  <link rel="stylesheet" href="/public/styles.css" />
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light">
+<meta name="description" content="Evidence-first incident response for NEAR Intents. Reconstruct a stalled swap, identify the first unresolved step, and prepare a support-ready case.">
+<meta name="robots" content="index,follow">
+<meta property="og:type" content="website"><meta property="og:site_name" content="OSIALI">
+<meta property="og:title" content="OSIALI ? See where the evidence stops">
+<meta property="og:description" content="Reconstruct the transfer route, identify the first unresolved step, and prepare a support-ready case.">
+<meta property="og:url" content="https://osiali.vercel.app/">
+<meta property="og:image" content="https://osiali.vercel.app/public/landing/og-preview.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://osiali.vercel.app/">
+<link rel="icon" href="/public/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/public/landing.css">
+<title>OSIALI ? Evidence-first NEAR Intents incident response</title>
+<script>(()=>{const d=new URLSearchParams(location.search).get('demo');if(['F1','F2','F3'].includes(d))location.replace('/app/?demo='+d)})();</script>
 </head>
 <body>
-<a class="skip-link" href="#investigation">Skip to investigation</a>
-<header class="topbar">
-  <a class="brand" href="/" aria-label="OSIALI home"><img class="brand-mark" src="/public/osiali-mark.svg" alt="" width="28" height="24" aria-hidden="true" />OSIALI</a>
-  <span class="topbar-center">NEAR Intents / evidence-first incident response</span>
-  <a class="file-link" href="#case-file">Case file <span aria-hidden="true">↓</span></a>
-</header>
-<main>
-  <div class="workspace">
-    <aside class="case-rail" aria-labelledby="queue-title">
-      <div class="rail-heading"><h2 id="queue-title">Incident intake</h2><span>3 captures</span></div>
-      <form id="identifier-form" class="identifier-form">
-        <label for="identifier">Explorer URL or transaction / intent hash</label>
-        <input id="identifier" name="identifier" autocomplete="off" spellcheck="false" placeholder="Paste a swap identifier" />
-        <button type="submit" class="button-primary">Investigate swap</button>
-        <small>Checks captured cases, then reads a public Explorer page when available. Never independently proves chain state; unknowns stay unknown.</small>
-      </form>
-      <nav class="fixture-buttons" aria-label="Captured public incidents">
-        <button type="button" data-fixture="f1-failed.json" class="fixture" aria-pressed="false"><span class="fixture-id">F1</span><span class="fixture-copy"><strong>LTC → ETH</strong><small>Failed / unresolved</small></span><span class="selection-mark" aria-hidden="true">→</span></button>
-        <button type="button" data-fixture="f2-refunded.json" class="fixture" aria-pressed="false"><span class="fixture-id">F2</span><span class="fixture-copy"><strong>USDC → xDAI</strong><small>Refunded</small></span><span class="selection-mark" aria-hidden="true">→</span></button>
-        <button type="button" data-fixture="f3-success.json" class="fixture" aria-pressed="false"><span class="fixture-id">F3</span><span class="fixture-copy"><strong>ZEC → ETH</strong><small>Complete</small></span><span class="selection-mark" aria-hidden="true">→</span></button>
-      </nav>
-      <details class="evidence-input"><summary>Paste evidence JSON</summary>
-        <div class="input-drawer"><label for="evidence">Source-attributed incident evidence</label><a href="/public/evidence-template.json" download>Download an evidence template</a><p>Replace the example identifiers with your own. Active swaps and unsupported public pages can be investigated using a matching status payload.</p><textarea id="evidence" spellcheck="false"></textarea><button type="button" id="trace" class="button-primary">Trace supplied evidence</button><small>Manual inputs are unverified. The diagnosis must be checked against original sources before acting.</small></div>
-      </details>
-      <div class="case-docket">
-        <h3>Capture record</h3>
-        <dl class="case-facts">
-          <div><dt>Reported status</dt><dd id="reported-status">—</dd></div>
-          <div><dt>Evidence basis</dt><dd id="case-basis">Awaiting input</dd></div>
-          <div><dt>Captured / UTC</dt><dd id="captured-at">—</dd></div>
-        </dl>
-        <a id="source-link" class="source-link disabled" href="#" target="_blank" rel="noopener noreferrer" aria-disabled="true" tabindex="-1">Open source evidence ↗</a>
-      </div>
-      <p id="input-status" class="input-status" role="status" aria-live="polite">Loading captured case F1</p>
-      <p class="rail-footnote">Public Explorer evidence is a page snapshot, not independent chain or refund verification.</p>
-    </aside>
-
-    <section id="investigation" class="investigation" aria-labelledby="trace-title" tabindex="-1">
-      <header class="canvas-header">
-        <div class="canvas-heading"><span id="case-id" class="case-id">No case loaded</span><h1 id="trace-title"><span id="route-source">—</span><span class="route-arrow" aria-hidden="true">→</span><span id="route-destination">—</span></h1></div>
-        <div class="diagnosis-summary"><strong id="classification"></strong><span id="confidence"></span></div>
-        <p id="canvas-provenance" class="canvas-provenance"></p>
-      </header>
-      <div id="empty-state" class="empty-state"><h2>Load evidence to reconstruct the route</h2><p>Choose a captured case, look up a known identifier, or paste an evidence envelope.</p></div>
-      <div id="result" class="hidden" aria-live="polite">
-        <p id="mobile-action" class="mobile-action"></p><div class="map-heading"><h2>Transfer reconstruction</h2><span>5 lifecycle nodes / 2 terminal alternatives</span></div>
-        <div id="lifecycle" class="lifecycle" aria-label="Source deposit to intake and solver, branching to destination or refund"></div>
-        <div id="boundary-handoff" class="boundary-handoff"></div>
-        <p class="trace-caption">Missing evidence marks a boundary. It does not prove failure, loss, or refund.</p>
-      </div>
-    </section>
-
-    <aside class="recovery-rail" aria-labelledby="protocol-title">
-      <header class="protocol-head"><span class="protocol-connector" aria-hidden="true"></span><h2 id="protocol-title">Recovery protocol</h2><span class="protocol-index">R / 01</span></header>
-      <div id="protocol-body" class="hidden">
-        <div class="protocol-classification"><span class="field-label">Classification</span><strong id="protocol-classification"></strong></div>
-        <div class="decision-block"><span class="field-label">First unresolved step</span><h3 id="unresolved">—</h3></div>
-        <div class="safe-action-block"><span class="field-label">Next action / evidence-bounded</span><p id="safe-action"></p></div>
-        <details class="predicate-block"><summary>Exact action predicates</summary><div id="predicates" class="predicates"></div></details>
-      </div>
-      <div class="legend-panel"><h3>Evidence language</h3><ul class="legend-list">
-        <li><i class="key-line observed" aria-hidden="true"></i><div><strong>Observed</strong><small>Direct identifier or transaction evidence in the evidence set</small></div></li>
-        <li><i class="key-line inferred" aria-hidden="true"></i><div><strong>Inferred</strong><small>Supported by related evidence; not directly seen</small></div></li>
-        <li><i class="key-line unknown" aria-hidden="true"></i><div><strong>Unknown</strong><small>No evidence observed; no conclusion drawn</small></div></li>
-      </ul></div>
-      <p class="safety-note">No loss, root cause, or guaranteed refund is inferred from missing evidence.</p>
-    </aside>
-  </div>
-
-  <section id="case-file" class="evidence-section hidden" aria-labelledby="evidence-title">
-    <div class="file-heading"><div><span class="file-kicker">Support handoff / evidence ledger</span><h2 id="evidence-title">Case file</h2></div><button type="button" id="export" class="button-primary">Export incident bundle <span aria-hidden="true">↓</span></button></div>
-    <div class="file-provenance"><span class="file-tab">Source provenance</span><div><span id="file-source">—</span><span id="file-captured">—</span></div></div>
-    <div id="evidence-list" class="evidence-list"></div><details class="raw-evidence"><summary>Raw incident bundle and escalation summary</summary><pre id="preview"></pre></details>
-  </section>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="/" aria-label="OSIALI home"><img src="/public/osiali-mark.svg" width="28" height="24" alt=""><span>OSIALI</span></a>
+<nav class="site-nav" id="site-nav" aria-label="Main navigation"><a href="#how-it-works">How it works</a><a href="#cases">Example cases</a><a href="#evidence-standard">Evidence standard</a><a href="https://github.com/ShalyX/osiali" target="_blank" rel="noopener noreferrer">GitHub ?</a></nav>
+<button class="nav-toggle" type="button" aria-controls="site-nav" aria-expanded="false" aria-label="Open navigation"><span></span><span></span></button>
+<a class="header-cta" href="/app/">Open OSIALI ?</a>
+</div></header>
+<main id="main">
+<section class="hero"><div class="hero-inner">
+<div class="hero-copy"><p class="eyebrow">? NEAR INTENTS / EVIDENCE-FIRST INCIDENT RESPONSE</p>
+<h1>When a swap stalls,<br><em>see where the evidence stops.</em></h1>
+<p class="hero-lede">Reconstruct the transfer route, identify the first unresolved step, and prepare a support-ready case ? without guessing what happened to the funds.</p>
+<div class="hero-actions"><a class="button-primary" href="/app/">Investigate a swap ?</a><a class="text-link" href="#how-it-works">See how it works ?</a></div>
+<div class="trust-line"><span>Read-only investigation</span><span>No wallet connection</span><span>No funds moved</span></div></div>
+<div class="hero-visual"><div class="visual-meta"><span>OSIALI / INCIDENT DESK</span><span>CAPTURED CASE ? F1</span></div>
+<figure class="product-window"><img src="/public/landing/osiali-f1-preview.webp" alt="Actual OSIALI investigation desk showing a failed LTC to ETH swap and its unresolved evidence boundary" width="1440" height="1070" fetchpriority="high"></figure>
+<div class="visual-caption"><span class="caption-status">? FAILED / UNRESOLVED</span><span>Historical public snapshot ? F1</span></div></div></div>
+<div class="hero-index"><span>01</span><span>INVESTIGATE WITH EVIDENCE</span><span>NEAR INTENTS</span></div></section>
+<section class="proof-band"><div><span class="proof-index">01</span><strong>NEAR Intents-specific</strong><small>Built around the transfer lifecycle</small></div><div><span class="proof-index">02</span><strong>Source-attributed</strong><small>Evidence keeps its provenance</small></div><div><span class="proof-index">03</span><strong>Unknown stays unknown</strong><small>No conclusions from missing proof</small></div><div><span class="proof-index">04</span><strong>Portable case file</strong><small>Export a support-ready JSON bundle</small></div></section>
+<section class="problem-section section-shell"><div class="section-label"><span>01 / THE PROBLEM</span><span>STATUS ? EXPLANATION</span></div><div class="problem-layout"><div class="problem-copy"><h2>A transaction status isn't an explanation.</h2><p>A swap can report failure while the evidence tells a more complicated story. The useful question isn't just what status appeared ? it's which part of the transfer can actually be established.</p><p class="problem-emphasis">A missing destination record does not tell you where the funds went. A missing refund record does not prove a refund happened.</p></div>
+<div class="problem-proof"><div class="proof-head"><span>CAPTURED INVESTIGATION / F1</span><span>HISTORICAL SNAPSHOT</span></div><div class="proof-route">
+<div class="proof-leg is-observed"><span class="proof-dot">01</span><div><strong>Source deposit</strong><small>Evidence observed</small></div><b>OBSERVED</b></div>
+<div class="proof-leg is-observed"><span class="proof-dot">02</span><div><strong>1Click intake</strong><small>Evidence observed</small></div><b>OBSERVED</b></div>
+<div class="proof-leg is-observed"><span class="proof-dot">03</span><div><strong>Intent / solver</strong><small>Evidence observed</small></div><b>OBSERVED</b></div>
+<div class="proof-leg is-unknown"><span class="proof-dot">04</span><div><strong>Destination delivery</strong><small>No evidence observed</small></div><b>UNKNOWN</b></div>
+<div class="proof-leg is-unknown"><span class="proof-dot">05</span><div><strong>Refund</strong><small>No evidence observed</small></div><b>UNKNOWN</b></div>
+</div><div class="proof-foot">? Evidence stops at destination delivery.</div></div></div></section>
+<section class="workflow-section section-shell" id="how-it-works"><div class="section-label"><span>02 / THE WORKFLOW</span><span>FROM IDENTIFIER TO HANDOFF</span></div><div class="workflow-heading"><h2>One investigation.<br><em>Three clear moves.</em></h2><p>OSIALI turns scattered transaction references into a structured view of what the available evidence supports ? and what still needs checking.</p></div>
+<div class="workflow-steps"><article class="workflow-step"><span class="step-number">01</span><div class="step-rule"></div><h3>Trace the swap</h3><p>Enter a supported NEAR Intents Explorer identifier or a matching evidence payload. Start with the references you already have.</p><span class="step-note">IDENTIFIER / EVIDENCE INPUT</span></article>
+<article class="workflow-step"><span class="step-number">02</span><div class="step-rule"></div><h3>Reconstruct the route</h3><p>Follow source deposit, 1Click intake, intent/solver, then destination or refund alternatives. See the first unresolved evidence boundary.</p><span class="step-note">LIFECYCLE / EVIDENCE PROVENANCE</span></article>
+<article class="workflow-step"><span class="step-number">03</span><div class="step-rule"></div><h3>Prepare the handoff</h3><p>Read the evidence-bounded next action and export a support-ready case with identifiers, evidence references, and missing proof.</p><span class="step-note">SAFE ACTION / JSON EXPORT</span></article></div>
+<div class="workflow-cta"><a class="text-link" href="/app/">Explore the investigation desk ?</a></div></section>
+<section class="cases-section" id="cases"><div class="section-shell"><div class="section-label"><span>03 / CAPTURED EXAMPLES</span><span>ONE EVIDENCE STANDARD</span></div>
+<div class="cases-heading"><h2>Three outcomes.<br><em>One evidence standard.</em></h2><p>Explore three captured public snapshots. Each shows a different reported outcome; none should be mistaken for live monitoring or independent chain-finality verification.</p></div>
+<div class="case-explorer"><div class="case-tabs" role="tablist" aria-label="Select a captured example">
+<button type="button" role="tab" id="case-tab-f1" aria-controls="case-panel" aria-selected="true" tabindex="0" data-case="F1"><span>F1</span><small>Unresolved</small></button>
+<button type="button" role="tab" id="case-tab-f2" aria-controls="case-panel" aria-selected="false" tabindex="-1" data-case="F2"><span>F2</span><small>Refund reported</small></button>
+<button type="button" role="tab" id="case-tab-f3" aria-controls="case-panel" aria-selected="false" tabindex="-1" data-case="F3"><span>F3</span><small>Completion reported</small></button></div>
+<div class="case-panel" id="case-panel" role="tabpanel" aria-labelledby="case-tab-f1" tabindex="0"><div class="case-image-wrap"><div class="case-image-meta"><span>OSIALI / CASE <b id="case-image-id">F1</b></span><span>CAPTURED PRODUCT STATE</span></div><img id="case-preview" src="/public/landing/osiali-f1-preview.webp" alt="OSIALI F1 captured investigation showing an unresolved destination evidence boundary" width="1440" height="1070" loading="lazy"></div>
+<div class="case-detail"><p class="case-kicker" id="case-kicker">FAILED / UNRESOLVED ? LTC ? ETH</p><h3 id="case-title">The transfer reaches an evidence boundary.</h3><p id="case-description">Source deposit, 1Click intake, and intent/solver evidence are present. Destination delivery and refund evidence are not observed in this captured evidence set.</p>
+<dl class="case-facts"><div><dt>Reported outcome</dt><dd id="case-status">Failed / unresolved</dd></div><div><dt>Evidence boundary</dt><dd id="case-boundary">Destination delivery</dd></div><div><dt>Evidence basis</dt><dd>Historical public snapshot</dd></div></dl><a class="case-open" id="case-open" href="/app/?demo=F1">Inspect F1 in OSIALI ?</a></div></div></div>
+<p class="case-disclaimer">Captured examples preserve what the source reported at capture time. They do not establish current chain state.</p></div></section>
+<section class="evidence-section" id="evidence-standard"><div class="section-shell"><div class="section-label section-label-dark"><span>04 / THE EVIDENCE STANDARD</span><span>NO GUESSWORK</span></div>
+<div class="evidence-heading"><h2>Known, supported,<br><em>and unknown are different.</em></h2><p>OSIALI keeps the evidence language visible throughout an investigation. A confident-looking status is not a substitute for a source that supports it.</p></div>
+<div class="route-diagram" role="img" aria-label="NEAR Intents lifecycle: source deposit to 1Click intake to intent and solver, then destination delivery or refund."><svg viewBox="0 0 1120 270" aria-hidden="true"><path class="route-line" d="M82 92H370H660H830"/><path class="route-branch" d="M830 92V48H1040M830 92V218H1040"/><circle class="route-node" cx="82" cy="92" r="9"/><circle class="route-node" cx="370" cy="92" r="9"/><circle class="route-node" cx="660" cy="92" r="9"/><circle class="route-node route-terminal" cx="1040" cy="48" r="9"/><circle class="route-node route-terminal" cx="1040" cy="218" r="9"/><text x="82" y="130" text-anchor="middle">SOURCE DEPOSIT</text><text x="370" y="130" text-anchor="middle">1CLICK INTAKE</text><text x="660" y="130" text-anchor="middle">INTENT / SOLVER</text><text x="1040" y="24" text-anchor="middle">DESTINATION</text><text x="1040" y="253" text-anchor="middle">REFUND</text></svg></div>
+<div class="evidence-legend"><article class="legend-item"><span class="legend-line observed"></span><div><strong>OBSERVED</strong><p>Direct identifier or transaction evidence is present in the evidence set.</p></div></article><article class="legend-item"><span class="legend-line inferred"></span><div><strong>INFERRED</strong><p>Supported by related evidence, but not directly observed.</p></div></article><article class="legend-item"><span class="legend-line unknown"></span><div><strong>UNKNOWN</strong><p>No evidence observed. No conclusion is drawn.</p></div></article></div>
+<div class="evidence-callout"><span>THE BOUNDARY MATTERS</span><strong>Missing evidence is not proof of loss, protocol fault, or refund.</strong></div><p class="evidence-note">Public Explorer snapshots can be stale and are not independent chain-finality verification. User-supplied evidence remains provisional until checked against original sources.</p></div></section>
+<section class="handoff-section section-shell"><div class="section-label"><span>05 / THE SUPPORT HANDOFF</span><span>PORTABLE BY DESIGN</span></div><div class="handoff-layout"><div class="handoff-copy"><h2>Leave with a case,<br><em>not just a screenshot.</em></h2><p>Carry the investigation forward with its identifiers, source references, evidence boundary, and escalation context in one support-ready JSON bundle.</p><ul class="handoff-points"><li>Source provenance and capture context</li><li>Lifecycle evidence and missing proof</li><li>Evidence-bounded next action</li></ul><a class="button-primary" href="/app/">Open OSIALI and export a case ?</a></div>
+<figure class="handoff-visual"><img src="/public/landing/osiali-casefile.webp" alt="Actual OSIALI support-ready case file with source provenance and indexed evidence records" width="1184" height="685" loading="lazy"><figcaption><span>CASE FILE / EVIDENCE LEDGER</span><span>EXPORTABLE JSON</span></figcaption></figure></div></section>
+<section class="closing-section"><div class="closing-inner"><p class="eyebrow">? START WITH THE EVIDENCE YOU HAVE</p><h2>Make the next step<br><em>an informed one.</em></h2><p>Trace a captured case or investigate a supported NEAR Intents identifier. Unknowns stay unknown.</p><div class="closing-actions"><a class="button-primary button-light" href="/app/">Open OSIALI ?</a><a class="closing-link" href="https://github.com/ShalyX/osiali" target="_blank" rel="noopener noreferrer">Explore the source ?</a></div></div><div class="closing-index"><span>OSIALI</span><span>NEAR INTENTS / INCIDENT RESPONSE</span><span>END OF OVERVIEW</span></div></section>
 </main>
-<footer class="desk-footer"><span>OSIALI · Built for NEAR Hackathon · Captured cases, not real-time recovery</span><a href="https://github.com/ShalyX/osiali" target="_blank" rel="noopener noreferrer">Source and proof ↗</a></footer>
-<script type="module" src="/public/app.js"></script>
-</body>
-</html>
+<footer class="site-footer"><div class="footer-main"><div class="footer-brand"><a class="brand brand-footer" href="/"><img src="/public/osiali-mark.svg" width="28" height="24" alt=""><span>OSIALI</span></a><p>Evidence-first incident response for NEAR Intents.</p></div>
+<div class="footer-column"><span>PRODUCT</span><a href="/app/">Open OSIALI</a><a href="#how-it-works">How it works</a><a href="#cases">Example cases</a></div>
+<div class="footer-column"><span>TRANSPARENCY</span><a href="#evidence-standard">Evidence standard</a><a href="https://github.com/ShalyX/osiali/blob/main/docs/EVIDENCE.md">Evidence &amp; limitations ?</a><a href="https://github.com/ShalyX/osiali">Source code ?</a></div>
+<div class="footer-note"><strong>Read-only by design.</strong><p>OSIALI does not custody funds, execute swaps or refunds, or guarantee recovery. Missing evidence is not proof of loss.</p></div></div>
+<div class="footer-bottom"><span>? 2026 OSIALI / Independent incident response for NEAR Intents</span><span>Evidence first. Conclusions second.</span></div></footer>
+<script src="/public/landing.js" defer></script>
+</body></html>

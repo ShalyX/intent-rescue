@@ -4,7 +4,7 @@ Investigate a stalled NEAR Intents swap and prepare a support-ready case.
 
 OSIALI reconstructs the transfer route, identifies the first unresolved step, separates available evidence from unknowns, and recommends what to check next. Export the investigation with identifiers, evidence links and an escalation summary.
 
-[Open OSIALI](https://osiali.vercel.app) · [Evidence and limitations](docs/EVIDENCE.md) · [How it works](docs/ARCHITECTURE.md)
+[Open OSIALI](https://osiali.vercel.app/app/) · [Evidence and limitations](docs/EVIDENCE.md) · [How it works](docs/ARCHITECTURE.md)
 
 ![OSIALI investigating an unresolved swap](docs/images/desktop.png)
 
@@ -14,7 +14,7 @@ OSIALI reconstructs the transfer route, identifies the first unresolved step, se
 2. Follow the route to the first unresolved step and read the recommended action.
 3. Export the incident bundle to share with support.
 
-Try the captured [unresolved](https://osiali.vercel.app/?demo=F1), [refunded](https://osiali.vercel.app/?demo=F2) and [completed](https://osiali.vercel.app/?demo=F3) cases. They are historical public snapshots, not live transfer monitoring.
+Try the captured [unresolved](https://osiali.vercel.app/app/?demo=F1), [refunded](https://osiali.vercel.app/app/?demo=F2) and [completed](https://osiali.vercel.app/app/?demo=F3) cases. They are historical public snapshots, not live transfer monitoring.
 
 Supported public lookup reads terminal Explorer pages. Pending swaps, deposit addresses, unrelated chain hashes and correlation IDs may require a matching evidence JSON payload. Download the template inside the app. Supplied evidence stays provisional and does not establish verification. [Input format](docs/INPUTS.md).
 

@@ -2,7 +2,7 @@
 
 OSIALI 0.1.0 preserves the incident-investigation purpose. This release validates manual evidence, labels manual outcomes as reported, preserves fallback identifiers in exported cases, protects newer selections from delayed lookups, and improves mobile action/case navigation.
 
-The public repository and canonical app address are now `ShalyX/osiali` and `osiali.vercel.app`. Export schema is `osiali-evidence/v1`; manual terminal classifications are REFUND_REPORTED or DELIVERY_REPORTED, with provisional assurance and SUPPLIED lifecycle provenance. Integrations consuming the old schema/name should update their expectations.
+The public repository and canonical domain are `ShalyX/osiali` and `osiali.vercel.app`. The public homepage is `/`; the incident application is `/app/`. Export schema is `osiali-evidence/v1`; manual terminal classifications are REFUND_REPORTED or DELIVERY_REPORTED, with provisional assurance and SUPPLIED lifecycle provenance. Integrations consuming the old schema/name should update their expectations.
 
 Verification before publication:
 

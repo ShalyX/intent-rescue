@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="color-scheme" content="light" />
+  <meta name="robots" content="noindex,follow" />
+  <meta name="description" content="Evidence-first NEAR Intents incident response: reconstruct, verify what is known, and prepare a support handoff." />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="OSIALI — Incident Desk" />
+  <meta property="og:description" content="Trace a NEAR Intents swap from captured evidence, locate the unresolved leg, and export a safe support handoff." />
+  <meta property="og:url" content="https://osiali.vercel.app/app/" />
+  <meta property="og:site_name" content="OSIALI" />
+  <meta property="og:image" content="https://osiali.vercel.app/public/og-preview.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="OSIALI incident desk showing a NEAR Intents swap lifecycle and its first unresolved evidence boundary." />
+  <meta name="twitter:title" content="OSIALI — Know what happened" />
+  <meta name="twitter:description" content="Evidence-first incident investigation for NEAR Intents." />
+  <meta name="twitter:image" content="https://osiali.vercel.app/public/og-preview.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <title>OSIALI — Incident Desk</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="/public/favicon-32.png" />
+  <link rel="icon" type="image/svg+xml" href="/public/favicon.svg" />
+  <link rel="apple-touch-icon" href="/public/osiali-avatar.png" />
+  <meta name="theme-color" content="#f2f3ef" />
+  <link rel="canonical" href="https://osiali.vercel.app/app/" />
+  <link rel="preload" href="/public/fonts/ibm-plex-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="/public/styles.css" />
+</head>
+<body>
+<a class="skip-link" href="#investigation">Skip to investigation</a>
+<header class="topbar">
+  <a class="brand" href="/" aria-label="OSIALI home"><img class="brand-mark" src="/public/osiali-mark.svg" alt="" width="28" height="24" aria-hidden="true" />OSIALI</a>
+  <span class="topbar-center">NEAR Intents / evidence-first incident response</span>
+  <a class="file-link" href="#case-file">Case file <span aria-hidden="true">↓</span></a>
+</header>
+<main>
+  <div class="workspace">
+    <aside class="case-rail" aria-labelledby="queue-title">
+      <div class="rail-heading"><h2 id="queue-title">Incident intake</h2><span>3 captures</span></div>
+      <form id="identifier-form" class="identifier-form">
+        <label for="identifier">Explorer URL or transaction / intent hash</label>
+        <input id="identifier" name="identifier" autocomplete="off" spellcheck="false" placeholder="Paste a swap identifier" />
+        <button type="submit" class="button-primary">Investigate swap</button>
+        <small>Checks captured cases, then reads a public Explorer page when available. Never independently proves chain state; unknowns stay unknown.</small>
+      </form>
+      <nav class="fixture-buttons" aria-label="Captured public incidents">
+        <button type="button" data-fixture="f1-failed.json" class="fixture" aria-pressed="false"><span class="fixture-id">F1</span><span class="fixture-copy"><strong>LTC → ETH</strong><small>Failed / unresolved</small></span><span class="selection-mark" aria-hidden="true">→</span></button>
+        <button type="button" data-fixture="f2-refunded.json" class="fixture" aria-pressed="false"><span class="fixture-id">F2</span><span class="fixture-copy"><strong>USDC → xDAI</strong><small>Refunded</small></span><span class="selection-mark" aria-hidden="true">→</span></button>
+        <button type="button" data-fixture="f3-success.json" class="fixture" aria-pressed="false"><span class="fixture-id">F3</span><span class="fixture-copy"><strong>ZEC → ETH</strong><small>Complete</small></span><span class="selection-mark" aria-hidden="true">→</span></button>
+      </nav>
+      <details class="evidence-input"><summary>Paste evidence JSON</summary>
+        <div class="input-drawer"><label for="evidence">Source-attributed incident evidence</label><a href="/public/evidence-template.json" download>Download an evidence template</a><p>Replace the example identifiers with your own. Active swaps and unsupported public pages can be investigated using a matching status payload.</p><textarea id="evidence" spellcheck="false"></textarea><button type="button" id="trace" class="button-primary">Trace supplied evidence</button><small>Manual inputs are unverified. The diagnosis must be checked against original sources before acting.</small></div>
+      </details>
+      <div class="case-docket">
+        <h3>Capture record</h3>
+        <dl class="case-facts">
+          <div><dt>Reported status</dt><dd id="reported-status">—</dd></div>
+          <div><dt>Evidence basis</dt><dd id="case-basis">Awaiting input</dd></div>
+          <div><dt>Captured / UTC</dt><dd id="captured-at">—</dd></div>
+        </dl>
+        <a id="source-link" class="source-link disabled" href="#" target="_blank" rel="noopener noreferrer" aria-disabled="true" tabindex="-1">Open source evidence ↗</a>
+      </div>
+      <p id="input-status" class="input-status" role="status" aria-live="polite">Loading captured case F1</p>
+      <p class="rail-footnote">Public Explorer evidence is a page snapshot, not independent chain or refund verification.</p>
+    </aside>
+
+    <section id="investigation" class="investigation" aria-labelledby="trace-title" tabindex="-1">
+      <header class="canvas-header">
+        <div class="canvas-heading"><span id="case-id" class="case-id">No case loaded</span><h1 id="trace-title"><span id="route-source">—</span><span class="route-arrow" aria-hidden="true">→</span><span id="route-destination">—</span></h1></div>
+        <div class="diagnosis-summary"><strong id="classification"></strong><span id="confidence"></span></div>
+        <p id="canvas-provenance" class="canvas-provenance"></p>
+      </header>
+      <div id="empty-state" class="empty-state"><h2>Load evidence to reconstruct the route</h2><p>Choose a captured case, look up a known identifier, or paste an evidence envelope.</p></div>
+      <div id="result" class="hidden" aria-live="polite">
+        <p id="mobile-action" class="mobile-action"></p><div class="map-heading"><h2>Transfer reconstruction</h2><span>5 lifecycle nodes / 2 terminal alternatives</span></div>
+        <div id="lifecycle" class="lifecycle" aria-label="Source deposit to intake and solver, branching to destination or refund"></div>
+        <div id="boundary-handoff" class="boundary-handoff"></div>
+        <p class="trace-caption">Missing evidence marks a boundary. It does not prove failure, loss, or refund.</p>
+      </div>
+    </section>
+
+    <aside class="recovery-rail" aria-labelledby="protocol-title">
+      <header class="protocol-head"><span class="protocol-connector" aria-hidden="true"></span><h2 id="protocol-title">Recovery protocol</h2><span class="protocol-index">R / 01</span></header>
+      <div id="protocol-body" class="hidden">
+        <div class="protocol-classification"><span class="field-label">Classification</span><strong id="protocol-classification"></strong></div>
+        <div class="decision-block"><span class="field-label">First unresolved step</span><h3 id="unresolved">—</h3></div>
+        <div class="safe-action-block"><span class="field-label">Next action / evidence-bounded</span><p id="safe-action"></p></div>
+        <details class="predicate-block"><summary>Exact action predicates</summary><div id="predicates" class="predicates"></div></details>
+      </div>
+      <div class="legend-panel"><h3>Evidence language</h3><ul class="legend-list">
+        <li><i class="key-line observed" aria-hidden="true"></i><div><strong>Observed</strong><small>Direct identifier or transaction evidence in the evidence set</small></div></li>
+        <li><i class="key-line inferred" aria-hidden="true"></i><div><strong>Inferred</strong><small>Supported by related evidence; not directly seen</small></div></li>
+        <li><i class="key-line unknown" aria-hidden="true"></i><div><strong>Unknown</strong><small>No evidence observed; no conclusion drawn</small></div></li>
+      </ul></div>
+      <p class="safety-note">No loss, root cause, or guaranteed refund is inferred from missing evidence.</p>
+    </aside>
+  </div>
+
+  <section id="case-file" class="evidence-section hidden" aria-labelledby="evidence-title">
+    <div class="file-heading"><div><span class="file-kicker">Support handoff / evidence ledger</span><h2 id="evidence-title">Case file</h2></div><button type="button" id="export" class="button-primary">Export incident bundle <span aria-hidden="true">↓</span></button></div>
+    <div class="file-provenance"><span class="file-tab">Source provenance</span><div><span id="file-source">—</span><span id="file-captured">—</span></div></div>
+    <div id="evidence-list" class="evidence-list"></div><details class="raw-evidence"><summary>Raw incident bundle and escalation summary</summary><pre id="preview"></pre></details>
+  </section>
+</main>
+<footer class="desk-footer"><span>OSIALI · Built for NEAR Hackathon · Captured cases, not real-time recovery</span><a href="https://github.com/ShalyX/osiali" target="_blank" rel="noopener noreferrer">Source and proof ↗</a></footer>
+<script type="module" src="/public/app.js"></script>
+</body>
+</html>

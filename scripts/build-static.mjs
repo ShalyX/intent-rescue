@@ -8,6 +8,11 @@ const dist = path.join(root, 'dist');
 await fs.rm(dist, { recursive: true, force: true });
 await fs.mkdir(dist, { recursive: true });
 await fs.copyFile(path.join(root, 'public', 'index.html'), path.join(dist, 'index.html'));
+for (const file of ['robots.txt', 'sitemap.xml']) {
+  await fs.copyFile(path.join(root, 'public', file), path.join(dist, file));
+}
+await fs.mkdir(path.join(dist, 'app'), { recursive: true });
+await fs.copyFile(path.join(root, 'app', 'index.html'), path.join(dist, 'app', 'index.html'));
 await fs.cp(path.join(root, 'public'), path.join(dist, 'public'), { recursive: true });
 await fs.cp(path.join(root, 'src'), path.join(dist, 'src'), { recursive: true });
 await fs.mkdir(path.join(dist, 'fixtures'), { recursive: true });

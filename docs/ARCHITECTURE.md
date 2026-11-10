@@ -6,7 +6,8 @@ The browser loads captured public cases or requests a fixed-host public Explorer
 - `src/public-explorer.mjs`: conservative extraction from supported terminal Explorer pages.
 - `src/classifier.mjs` and `src/lifecycle.mjs`: diagnosis and five-stage evidence reconstruction.
 - `src/evidence-bundle.mjs`: portable case, source assurance, identifiers and escalation context.
-- `public/`: incident desk and locally bundled fonts/assets.
+- `public/`: public marketing homepage, landing assets, incident-desk styles/assets, and locally bundled fonts.
+- `app/index.html`: existing incident desk, served at `/app/`; its evidence workflow and semantics are preserved.
 - `server.mjs`: local HTTP server; `scripts/build-static.mjs`: static packaging.
 
 The API accepts GET only, restricts lookup to the official Explorer host, rejects redirects and applies a timeout/document-size bound. No wallet connection, partner JWT, private key or write transaction is required. Source text is rendered as text or escaped HTML.
