@@ -1,5 +1,3 @@
-[Reading 81 lines from start (total: 81 lines, 0 remaining)]
-
 async (page) => {
   const base = 'https://osiali.vercel.app';
   const status = page.locator('#input-status');
@@ -81,5 +79,3 @@ async (page) => {
     mobileOverflow: false
   };
 }
-
-[executed on device: DESKTOP-G26AFAJ (849e7718-0a01-4461-8536-10f52a28f3ae)]
