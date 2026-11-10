@@ -1,0 +1,12 @@
+{
+  "reported_status": "PROCESSING",
+  "deposit_address": "REPLACE_WITH_YOUR_DEPOSIT_ADDRESS",
+  "correlation_id": "REPLACE_WITH_YOUR_CORRELATION_ID",
+  "source_url": "https://explorer.near-intents.org/transactions/REPLACE_WITH_RECORD_ID",
+  "source_asset": "USDC",
+  "destination_asset": "ETH",
+  "origin_tx_hashes": [],
+  "destination_tx_hashes": [],
+  "refund_tx_hashes": [],
+  "deposit_evidence": []
+}

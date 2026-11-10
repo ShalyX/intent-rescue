@@ -1,8 +1,9 @@
+import { fileURLToPath } from 'node:url';
 import fs from 'node:fs/promises';
 import path from 'node:path';
 
 const endpoint = process.env.NEAR_RPC_URL || 'https://rpc.mainnet.near.org';
-const outDir = 'C:\\Users\\USER\\Documents\\intent-rescue\\fixtures\\rpc';
+const outDir = fileURLToPath(new URL('../fixtures/rpc/', import.meta.url));
 const checks = [
   ['deposit', '9bQSpWs3WNeXLF61CVHjYVZYhi5A6cUnw4aVoou1w5WF', 'bridge-mng.near'],
   ['swap', 'HFnNzz8w5UQ6Mfga3oeKza4MiziDjASHk57fLxW3RMxT', 'intents.near']
@@ -11,7 +12,7 @@ const checks = [
 await fs.mkdir(outDir, { recursive: true });
 for (const [label, txHash, senderAccountId] of checks) {
   const body = {
-    jsonrpc: '2.0', id: 'intent-rescue', method: 'tx',
+    jsonrpc: '2.0', id: 'osiali', method: 'tx',
     params: { tx_hash: txHash, sender_account_id: senderAccountId, wait_until: 'FINAL' }
   };
   const startedAt = new Date().toISOString();

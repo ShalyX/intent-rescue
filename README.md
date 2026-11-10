@@ -1,104 +1,49 @@
 # OSIALI
 
-> OSIALI is the user-approved customer-facing brand for the original Intent Rescue product concept. The current production release is live at https://intent-rescue.vercel.app with the OSIALI wordmark, favicon, avatar and 1200×630 social preview verified. Visual QA passed 20/24 with zero axe violations across desktop and mobile.
+Investigate a stalled NEAR Intents swap and prepare a support-ready case.
 
-**Live demo:** https://intent-rescue.vercel.app
-**Public repo:** https://github.com/ShalyX/intent-rescue
+OSIALI reconstructs the transfer route, identifies the first unresolved step, separates available evidence from unknowns, and recommends what to check next. Export the investigation with identifiers, evidence links and an escalation summary.
 
-**Evidence-first incident response for NEAR Intents swaps.**
+[Open OSIALI](https://osiali.vercel.app) · [Evidence and limitations](docs/EVIDENCE.md) · [How it works](docs/ARCHITECTURE.md)
 
-OSIALI turns a stalled swap into an evidence-bounded incident: it reconstructs the route, marks the first unresolved leg, recommends a safe next step, and exports a support-ready case.
+![OSIALI investigating an unresolved swap](docs/images/desktop.png)
 
-[Evidence pack](./EVIDENCE.md) Â· 10 public cases Â· 37/37 local tests Â· 9/9 red-team scenarios Â· 30,000 deterministic repeat classifications
+## Investigate a swap
 
-OSIALI reconstructs a swap from source-attributed evidence, identifies the first unresolved lifecycle leg, explains what the evidence does and does not prove, recommends a conservative next action, and exports a support-ready incident bundle.
+1. Paste a public NEAR Intents Explorer transaction URL or record ID and select **Investigate swap**.
+2. Follow the route to the first unresolved step and read the recommended action.
+3. Export the incident bundle to share with support.
 
-## Why it exists
+Try the captured [unresolved](https://osiali.vercel.app/?demo=F1), [refunded](https://osiali.vercel.app/?demo=F2) and [completed](https://osiali.vercel.app/?demo=F3) cases. They are historical public snapshots, not live transfer monitoring.
 
-A cross-chain swap can expose a single terminal label such as `FAILED` while the useful evidence is scattered across the source chain, NEAR Intents execution, destination delivery, and refund path. OSIALI turns that evidence into one trace:
-
-`Source deposit â†’ 1Click intake â†’ Intent / solver â†’ Destination delivery or Refund`
-
-Every stage carries both a state and provenance: `OBSERVED`, `INFERRED`, or `UNKNOWN`. Missing evidence is never treated as proof of loss or protocol fault.
-
-## Demo cases
-
-The project ships with three captured public NEAR Intents cases:
-
-- **F1 â€” failed / unresolved:** LTC â†’ ETH, deposit and NEAR intent execution observed, no destination or refund evidence. Result: `FAILED_UNRESOLVED` at destination delivery.
-- **F2 â€” refunded:** Base USDC â†’ Gnosis xDAI with an observed refund transaction. Result: `REFUND_VERIFIED`.
-- **F3 â€” complete:** ZEC â†’ ETH with the Explorer explicitly reporting a successful withdrawal. Result: `COMPLETE`.
-
-The source Explorer URL is retained in each fixture so a judge can inspect the original public evidence.
-
-**Identifier intake boundary:** Paste any supported public NEAR Intents Explorer transaction URL or record ID to retrieve a **source-attributed public page snapshot**, or load one of the three captured demo cases. This read-only lookup does not use partner JWTs and is **not independently verified on-chain** or real-time refund tracking. Arbitrary deposit addresses, unrelated source-chain hashes and correlation IDs are not generally resolved. If the page cannot be safely reconstructed, the UI clears its diagnosis and offers manually supplied evidence JSON (marked provisional/unverified).
-
-**Support handoff:** Export a real JSON case bundle with step-by-step evidence, unresolved fields, NEAR transaction links, source assurance and an escalation request. [Product coverage and remaining P0 gaps](./PRODUCT-COVERAGE.md).
-
-## Judge quickstart
-
-Use the deployed build; no account or credentials are required:
-
-1. Open https://intent-rescue.vercel.app/?demo=F1 â€” see FAILED_UNRESOLVED, with **Destination delivery** as the first unresolved leg and a conservative recovery action.
-2. Open https://intent-rescue.vercel.app/?demo=F2 â€” see REFUND_VERIFIED from concrete refund evidence.
-3. Open https://intent-rescue.vercel.app/?demo=F3 â€” see COMPLETE from concrete destination evidence.
-4. Paste an uncaptured public Explorer record such as `https://explorer.near-intents.org/transactions/221c8aa1a8ac320aa58174f9ff57d0fbc36316d7dc469f630e05e1b34f9e4d80` and see a source-attributed public page snapshot; unknown IDs produce no diagnosis.
-5. Export the actual JSON incident bundle and inspect assurance, evidence gaps, source links and escalation request.
-6. Run `npm test` and `npm run red-team` to reproduce the checks.
-
-## NEAR technology used
-
-- **NEAR Intents** is the core product surface: OSIALI reconstructs the source deposit, 1Click intake, intent/solver execution, destination delivery, and refund path from source-attributed evidence.
-- **NEAR mainnet RPC** was used separately in a technical de-risking spike to observe a real `FINAL` transaction with receipts. The deployed incident lookup reads public NEAR Intents Explorer pages; it does **not** independently verify each historical transaction on-chain.
-- Partner JWT APIs and solver-relay access are optional enrichments, not requirements for the judge path.
-
-**Track selection (user-confirmed):** Unstoppable DeFi primary; Open Innovation secondary. The official NEAR Hackathon FAQ permits selecting every track a project fits in one submission. OSIALI is operational incident-response tooling for NEAR Intents swap settlement, not an exchange, perps, lending, vault or trading agent. Unstoppable DeFi is therefore an adjacent fit; Open Innovation is the broader category fit. See [track rationale](./HACKATHON.md) and [pitch](./PITCH.md).
+Supported public lookup reads terminal Explorer pages. Pending swaps, deposit addresses, unrelated chain hashes and correlation IDs may require a matching evidence JSON payload. Download the template inside the app. Supplied evidence stays provisional and does not establish verification. [Input format](docs/INPUTS.md).
 
 ## Run locally
 
-Requirements: Node.js 18+.
+Use Node.js 22 or later. There are no third-party runtime dependencies.
 
-```bash
+```sh
+git clone https://github.com/ShalyX/osiali.git
+cd osiali
 npm test
 npm run red-team
 npm start
 ```
 
-Open `http://127.0.0.1:4173/`.
+Open http://127.0.0.1:4173. `npm run build` creates the static bundle; Vercel serves the separate read-only API route.
 
-Useful demo URLs:
+## NEAR integration and boundaries
 
-```text
-http://127.0.0.1:4173/?demo=F1
-http://127.0.0.1:4173/?demo=F2
-http://127.0.0.1:4173/?demo=F3
-```
+NEAR Intents is the investigation surface: source deposit → 1Click intake → intent/solver → destination delivery or refund. Public lookup reads source-attributed Explorer HTML. It does not independently establish chain finality, track refunds in real time, custody funds or execute recovery. Missing evidence does not prove loss or protocol fault.
 
-## Verified explorer links
+Manual reports require checking original sources before any financial action. Never send private keys or credentials in evidence JSON.
 
-The case export and on-screen evidence ledger include source-chain, NEAR, destination and refund explorer references **only when both the chain and transaction hash are explicit and supported**. Unknown chains, absent transaction hashes and missing refund/destination evidence intentionally produce no link. The official NEAR Intents Explorer case is preserved. This is navigation to external records, not independent verification of their current status.
+## Validation
 
-## Safety contract
+Run `npm test`, `npm run red-team` and `npm run evidence:benchmark`. The repeatability benchmark classifies three captured cases 10,000 times; it is not an accuracy study or user-impact measurement. [Current verification](docs/EVIDENCE.md).
 
-OSIALI does **not** custody funds, trigger refunds, or claim a protocol root cause without evidence. Terminal success/refund classifications require concrete transaction evidence or a direct captured observation; caller-supplied `*_verified` flags alone are not enough.
+Built for NEAR HACKATHON 2026. Tracks: Unstoppable DeFi and Open Innovation. [Submission status](docs/SUBMISSION.md).
 
-## Architecture
+## License
 
-- `src/classifier.mjs` â€” deterministic incident classification and safe-action rules.
-- `src/intake.mjs` â€” captured-identifier matching, strict unsupported-ID behavior, manual JSON evidence validation.
-- `src/public-explorer.mjs` and `api/incident.js` â€” conservative parsing and fixed-host, read-only public Explorer snapshot lookup; no partner JWT or automatic refunds.
-- `src/lifecycle.mjs` â€” five-stage reconstruction with provenance labels.
-- `src/evidence-bundle.mjs` â€” portable support-ready incident export.
-- `fixtures/` â€” frozen public evidence cases.
-- `public/` â€” judge-facing incident console.
-- `scripts/red-team.mjs` â€” adversarial runtime checks.
-- `scripts/verify-near-rpc.mjs` â€” NEAR RPC verification spike.
-- `test/` â€” Node test suite.
-
-## Reliability choices
-
-Partner JWT APIs and solver-relay access are optional enrichments, not demo-critical dependencies. The hosted product can read a public Explorer page snapshot or work from manually supplied source-attributed evidence. Historical incident proof is snapshot-backed because free public NEAR RPC providers are not guaranteed archival; a current mainnet `tx` RPC call was separately verified during technical de-risking.
-
-## Hackathon
-
-Built during the NEAR Hackathon build window beginning **November 1, 2026 00:00 UTC**.
+[MIT](LICENSE). Bundled IBM Plex fonts retain their own licenses in `public/fonts/`.

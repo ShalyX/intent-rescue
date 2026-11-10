@@ -11,3 +11,9 @@ Thumbs.db
 .env
 .env.*
 !.env.example
+
+.internal/
+.vercel/
+.unslop-pass2.txt
+DESIGN-PASS3.md
+UI-POLISH.md

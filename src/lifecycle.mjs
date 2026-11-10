@@ -21,5 +21,5 @@ export function buildLifecycle(evidence) {
     stage('Refund', refund ? 'VERIFIED' : 'NOT_OBSERVED', refundEvidence, refundEvidence.length ? 'OBSERVED' : refund ? 'INFERRED' : 'UNKNOWN')
   ];
 }
-function provenance(...arrays) { return arrays.flat().filter(Boolean); }
+function provenance(...arrays) { return arrays.filter(Array.isArray).flat().filter(value => typeof value === 'string' && value.trim()); }
 function stage(label,status,evidence,basis) { return {label,status,basis,evidence}; }

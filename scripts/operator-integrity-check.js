@@ -1,7 +1,7 @@
 [Reading 81 lines from start (total: 81 lines, 0 remaining)]
 
 async (page) => {
-  const base = 'https://intent-rescue.vercel.app';
+  const base = 'https://osiali.vercel.app';
   const status = page.locator('#input-status');
   const evidence = page.locator('#evidence');
   const startManual = async (identifier) => {

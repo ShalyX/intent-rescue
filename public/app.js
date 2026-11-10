@@ -21,19 +21,22 @@ async function getFixture(name) {
 }
 for (const name of demoFiles) getFixture(name).catch(() => {});
 let pendingIdentifier = null;
+let investigationRevision = 0;
 
 document.querySelector('#identifier-form').addEventListener('submit', async event => {
   event.preventDefault();
+  const revision = ++investigationRevision;
   const input = document.querySelector('#identifier').value.trim();
   try {
     inputStatus.textContent = 'Checking captured public evidence…';
-    const captures = await Promise.all(demoFiles.map(getFixture));
+    const captures = (await Promise.allSettled(demoFiles.map(getFixture))).filter(item => item.status === 'fulfilled').map(item => item.value);
+    if (revision !== investigationRevision) return;
     const match = findCapturedCase(input, captures);
     if (match.kind === 'captured') {
       pendingIdentifier = null;
       evidenceInput.value = JSON.stringify(match.evidence, null, 2);
       evidenceAssurance = 'CAPTURED_PUBLIC_SNAPSHOT';
-      selectFixture(fixtureButtons.find(b => b.dataset.fixture === demoFiles[captures.indexOf(match.evidence)]) ?? null);
+      selectFixture(fixtureButtons.find(b => b.dataset.fixture === demoFiles.find(name => fixtureCache.get(name) === match.evidence)) ?? null);
       traceCurrent();
       return;
     }
@@ -47,6 +50,7 @@ document.querySelector('#identifier-form').addEventListener('submit', async even
     inputStatus.textContent = 'Reading public Explorer page, without partner credentials…';
     const response = await fetch('/api/incident?reference=' + encodeURIComponent(input), {cache: 'no-store'});
     const payload = await response.json();
+    if (revision !== investigationRevision) return;
     if (!response.ok || payload.kind !== 'public_explorer_snapshot' || !payload.evidence) {
       clearView();
       inputStatus.textContent = (payload.error || 'Public Explorer lookup unavailable.') + ' Paste matching official status/evidence JSON below to continue provisionally.';
@@ -58,7 +62,7 @@ document.querySelector('#identifier-form').addEventListener('submit', async even
     evidenceAssurance = 'PUBLIC_EXPLORER_SNAPSHOT';
     selectFixture(null);
     traceCurrent();
-  } catch (err) { clearView(); inputStatus.textContent = 'Identifier lookup unavailable: ' + err.message; }
+  } catch (err) { if (revision !== investigationRevision) return; clearView(); inputStatus.textContent = 'Identifier lookup unavailable: ' + err.message; }
 });
 function clearView() {
   currentEvidence = null;
@@ -70,11 +74,12 @@ function clearView() {
 
 for (const button of fixtureButtons) {
   button.addEventListener('click', async () => {
-    try { await loadFixture(button.dataset.fixture, button); traceCurrent(); }
+    ++investigationRevision;
+    try { if (await loadFixture(button.dataset.fixture, button)) traceCurrent(); }
     catch (error) { inputStatus.textContent = `Case load failed: ${error.message}`; }
   });
 }
-evidenceInput.addEventListener('input', () => { evidenceAssurance = 'USER_SUPPLIED_UNVERIFIED'; selectFixture(null); });
+evidenceInput.addEventListener('input', () => { ++investigationRevision; evidenceAssurance = 'USER_SUPPLIED_UNVERIFIED'; selectFixture(null); });
 document.querySelector('#trace').addEventListener('click', traceCurrent);
 document.querySelector('#export').addEventListener('click', exportCurrentBundle);
 
@@ -85,14 +90,17 @@ function selectFixture(activeButton) {
   });
 }
 async function loadFixture(name, activeButton) {
+  const revision = investigationRevision;
   fixtureButtons.forEach(button => { button.disabled = true; });
   inputStatus.textContent = 'Loading captured evidence…';
   try {
     const data = await getFixture(name);
+    if (revision !== investigationRevision) return false;
     pendingIdentifier = null;
     evidenceInput.value = JSON.stringify(data, null, 2);
     evidenceAssurance = 'CAPTURED_PUBLIC_SNAPSHOT';
     selectFixture(activeButton);
+    return true;
   } finally { fixtureButtons.forEach(button => { button.disabled = false; }); }
 }
 function traceCurrent() {
@@ -102,6 +110,10 @@ function traceCurrent() {
         && findCapturedCase(pendingIdentifier, [evidence]).kind !== 'captured')
       throw new Error('Supplied evidence does not contain the searched identifier. Match the deposit address, transaction hash, correlation ID, or source URL first.');
     const analysis = analyzeEvidence(evidence);
+    if (!isSourceSnapshot()) {
+      analysis.classification = ({REFUND_VERIFIED:'REFUND_REPORTED', COMPLETE:'DELIVERY_REPORTED'})[analysis.classification] || analysis.classification;
+      analysis.lifecycle = analysis.lifecycle.map(stage => ({...stage, status:stage.status === 'VERIFIED' ? 'REPORTED' : stage.status, basis:stage.basis === 'OBSERVED' ? 'SUPPLIED' : stage.basis}));
+    }
     currentEvidence = evidence;
     renderCase(evidence);
     renderAnalysis(analysis);
@@ -178,6 +190,7 @@ function renderAnalysis(analysis) {
     const boundary = document.createElement('span'); boundary.className = `break-label break-at-${unresolvedIndex}`;
     boundary.textContent = 'Evidence stops here'; lifecycle.append(boundary);
   }
+  document.querySelector('#mobile-action').textContent = document.querySelector('#safe-action').textContent;
   const boundaryText = document.createElement('span');
   boundaryText.textContent = analysis.first_unresolved_step ? `Evidence boundary / ${statusLabel(analysis.first_unresolved_step)}` : `Observed outcome / ${statusLabel(analysis.classification)}`;
   const protocolLink = document.createElement('a'); protocolLink.href = '#protocol-title'; protocolLink.textContent = 'Recovery protocol →';
@@ -236,7 +249,7 @@ function renderEvidence(bundle) {
   const linkGroups = [bundle.source_links.origin_transactions, [], bundle.source_links.near_deposit_transactions, bundle.source_links.near_swap_transactions, bundle.source_links.destination_transactions, bundle.source_links.refund_transactions];
   const traceJunctions = [1, 3, 1, 3, 4, 5];
   document.querySelector('#evidence-list').replaceChildren(...entries.map(([label, values], index) => {
-    const basis = values.length ? 'OBSERVED' : 'UNKNOWN';
+    const basis = values.length ? (isSourceSnapshot() ? 'OBSERVED' : 'SUPPLIED') : 'UNKNOWN';
     const row = document.createElement('div'); row.id = `evidence-${index}`; row.className = `evidence-row evidence-${basis.toLowerCase()}`;
     const value = values.length ? values.join('\n') : 'Not observed in this evidence set';
     row.innerHTML = `<span class="file-junction" aria-label="Evidence E0${index + 1}, lifecycle step ${traceJunctions[index]}">E0${index + 1}</span><div class="evidence-key"><span>${escapeHtml(label)}</span><em>${statusLabel(basis)}</em></div><code>${escapeHtml(value)}</code>`;
@@ -262,4 +275,4 @@ const demoMap = { F1:'f1-failed.json', F2:'f2-refunded.json', F3:'f3-success.jso
 const requestedDemo = new URLSearchParams(window.location.search).get('demo');
 const selectedDemo = demoMap[requestedDemo] ? requestedDemo : 'F1';
 loadFixture(demoMap[selectedDemo], fixtureButtons[{F1:0,F2:1,F3:2}[selectedDemo]])
-  .then(traceCurrent).catch(error => { inputStatus.textContent = `Case load failed: ${error.message}`; });
+  .then(loaded => { if (loaded) traceCurrent(); }).catch(error => { inputStatus.textContent = `Case load failed: ${error.message}`; });

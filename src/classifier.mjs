@@ -1,10 +1,12 @@
+import { validTransactionHash } from './intake.mjs';
+const hasHashes = values => Array.isArray(values) && values.length > 0 && values.every(validTransactionHash);
 const has = (arr) => Array.isArray(arr) && arr.length > 0;
 
 // Terminal lifecycle states and classifications must share identical evidence gates.
 export const hasDestinationEvidence = (evidence) =>
-  has(evidence.destination_tx_hashes) || has(evidence.destination_evidence);
+  hasHashes(evidence.destination_tx_hashes) || has(evidence.destination_evidence);
 export const hasRefundEvidence = (evidence) =>
-  has(evidence.refund_tx_hashes) || has(evidence.refund_evidence);
+  hasHashes(evidence.refund_tx_hashes) || has(evidence.refund_evidence);
 
 export function classifyIncident(evidence) {
   const reported = String(evidence.reported_status || '').toUpperCase();

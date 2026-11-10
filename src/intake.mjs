@@ -1,3 +1,5 @@
+export const validTransactionHash = value => typeof value === 'string' && /^(?:0x[0-9a-fA-F]{64}|[0-9a-fA-F]{64}|[1-9A-HJ-NP-Za-km-z]{32,90})$/.test(value);
+const canonicalIdentifier = value => /^(?:0x)?[0-9a-fA-F]+$/.test(value) ? value.toLowerCase() : value;
 // A credential-free resolver for local, source-attributed captures only.
 // It must never turn an unknown identifier into a "verified" swap.
 const FIELDS = ['origin_tx_hashes','intent_hashes','near_deposit_tx_hashes','near_swap_tx_hashes','destination_tx_hashes','refund_tx_hashes','deposit_address','depositAddress','correlation_id','correlationId','recipient','sender'];
@@ -8,8 +10,8 @@ export function extractIdentifier(input) {
     const u = new URL(trimmed);
     if (u.protocol !== 'https:' || u.hostname !== 'explorer.near-intents.org') return null;
     const match = u.pathname.match(/^\/transactions\/([^/]+)\/?$/);
-    return match ? decodeURIComponent(match[1]).toLowerCase() : null;
-  } catch { return trimmed.toLowerCase(); }
+    return match ? canonicalIdentifier(decodeURIComponent(match[1])) : null;
+  } catch { return canonicalIdentifier(trimmed); }
 }
 export function findCapturedCase(input, captures) {
   const needle = extractIdentifier(input);
@@ -20,7 +22,7 @@ export function findCapturedCase(input, captures) {
   });
   if (matches.length === 1) return { kind:'captured', evidence:matches[0] };
   if (matches.length > 1) return { kind:'ambiguous', reason:'Multiple captured cases share that identifier. Do not guess.' };
-  return { kind:'uncaptured', identifier:String(input).trim(), reason:'No captured evidence for this identifier. Live historical lookup requires partner access; paste a source-attributed evidence JSON envelope to continue.' };
+  return { kind:'uncaptured', identifier:String(input).trim(), reason:'No captured evidence for this identifier. Paste a source-attributed evidence JSON envelope to continue.' };
 }
 export function parseEvidenceEnvelope(input) {
   let value;
@@ -37,5 +39,16 @@ export function parseEvidenceEnvelope(input) {
   for (const [key,alias] of Object.entries(aliases)) if (normalized[key] == null && data[alias]!=null) normalized[key]=data[alias];
   const recognizable = ['reported_status','source_url','origin_tx_hashes','intent_hashes','deposit_evidence','destination_evidence','refund_evidence','deposit_address','correlation_id','destination_tx_hashes'];
   if (!recognizable.some(key => Object.hasOwn(normalized,key))) throw new Error('This is not an incident evidence envelope. Include a status, transaction evidence, address, correlation ID, or source URL.');
+  for (const [key, value] of Object.entries(normalized)) {
+    if (key.endsWith('_tx_hashes') || key === 'intent_hashes') {
+      if (!Array.isArray(value) || !value.every(validTransactionHash)) throw new Error(key + ' must be an array of valid transaction identifiers.');
+    }
+    if (['deposit_evidence','destination_evidence','refund_evidence'].includes(key)) {
+      if (!Array.isArray(value) || !value.every(item => typeof item === 'string' && item.trim().length > 0 && item.length <= 4000)) throw new Error(key + ' must be an array of nonempty observation strings.');
+    }
+    if (['id','reported_status','deposit_address','correlation_id','source_url','source_chain','destination_chain','refund_chain','source_asset','destination_asset','captured_at','sender','recipient'].includes(key) && value != null && (typeof value !== 'string' || value.length > 4000)) throw new Error(key + ' must be text.');
+    if (key.endsWith('_verified') && typeof value !== 'boolean') throw new Error(key + ' must be boolean.');
+  }
+  if (status) normalized.reported_status = status;
   return normalized;
 }

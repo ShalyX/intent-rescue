@@ -19,7 +19,7 @@ test('F1 vertical slice reconstructs the locked hero story', () => {
 test('export bundle carries source, diagnosis, lifecycle and identifiers', () => {
   const evidence = fixture('f1-failed.json');
   const bundle = exportBundle(evidence);
-  assert.equal(bundle.schema, 'intent-rescue-evidence/v1');
+  assert.equal(bundle.schema, 'osiali-evidence/v1');
   assert.equal(bundle.source.url, evidence.source_url);
   assert.equal(bundle.diagnosis.classification, 'FAILED_UNRESOLVED');
   assert.equal(bundle.lifecycle.length, 5);
@@ -69,11 +69,11 @@ test('terminal lifecycle stages become verified only when matching concrete evid
   const cases = [
     {
       label: 'Destination delivery',
-      evidence: { reported_status: 'SUCCESS', destination_tx_hashes: ['destination-tx'] }
+      evidence: { reported_status: 'SUCCESS', destination_tx_hashes: ['0x' + 'd'.repeat(64)] }
     },
     {
       label: 'Refund',
-      evidence: { reported_status: 'REFUNDED', refund_tx_hashes: ['refund-tx'] }
+      evidence: { reported_status: 'REFUNDED', refund_tx_hashes: ['0x' + 'e'.repeat(64)] }
     }
   ];
   for (const item of cases) {
@@ -86,7 +86,7 @@ test('terminal lifecycle stages become verified only when matching concrete evid
       {
         status: 'VERIFIED',
         basis: 'OBSERVED',
-        evidence: item.label === 'Refund' ? ['refund-tx'] : ['destination-tx']
+        evidence: item.label === 'Refund' ? ['0x' + 'e'.repeat(64)] : ['0x' + 'd'.repeat(64)]
       },
       item.label
     );

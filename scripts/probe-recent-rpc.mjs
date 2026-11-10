@@ -1,7 +1,8 @@
+import { fileURLToPath } from 'node:url';
 import fs from 'node:fs/promises';
 
 const endpoint = process.env.NEAR_RPC_URL || 'https://near.drpc.org';
-const out = 'C:\\Users\\USER\\Documents\\intent-rescue\\fixtures\\rpc\\recent-tx-proof.json';
+const out = fileURLToPath(new URL('../fixtures/rpc/recent-tx-proof.json', import.meta.url));
 
 async function rpc(method, params, timeoutMs = 15000) {
   const controller = new AbortController();
@@ -10,7 +11,7 @@ async function rpc(method, params, timeoutMs = 15000) {
     const response = await fetch(endpoint, {
       method: 'POST',
       headers: { 'content-type': 'application/json' },
-      body: JSON.stringify({ jsonrpc: '2.0', id: 'intent-rescue', method, params }),
+      body: JSON.stringify({ jsonrpc: '2.0', id: 'osiali', method, params }),
       signal: controller.signal,
     });
     const json = await response.json();
