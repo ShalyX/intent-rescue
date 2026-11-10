@@ -1,7 +1,7 @@
 # PROJECT — OSIALI / original approved concept: Intent Rescue
 
 ## CURRENT CHECKPOINT - 2026-11-10
-- **Authoritative phase:** PITCH (Hackathon Operator v0.5.0). DEMO_PRODUCTION and DEMO_QA both passed on 2026-11-10. PITCH is complete; the four-lens JUDGE_SIMULATION is now active.
+- **Authoritative phase:** FEATURE_FREEZE (Hackathon Operator v0.5.0). DEMO_PRODUCTION, DEMO_QA, PITCH and JUDGE_SIMULATION passed on 2026-11-10. New features are frozen; only reliability, evidence, hygiene, demo, pitch, links and submission fixes are allowed.
 - **Final demo:** `C:\Users\USER\Videos\OSIALI-Demo\osiali-demo-final.mp4`; 84.8 seconds, H.264 1600x900 at 25 fps, AAC stereo 48 kHz, -18 LUFS, 6,539,434 bytes. Karaxis render source: `/tmp/osiali-demo/osiali-demo-final-v3.mp4`.
 - **DEMO_QA:** PASS. Full decode and audio checks passed. Final frames and contact sheets were inspected. The video shows F1 public Explorer lookup and snapshot boundary, safe recovery recommendation, actual downloaded `osiali-F1.json`, F2 refund verified, F3 transfer complete, and the OSIALI end card. Captions were reduced to 16 pt and split into 17 cues after the first treatment obscured JSON evidence.
 - **Product integrity:** original Idea 1 / Intent Rescue thesis and all seven locked P0s remain unchanged. Existing 35/35 tests, 9/9 red-team scenarios, build, and Product Hygiene evidence remain the recorded baseline; this demo pass does not replace those proofs.
@@ -9,7 +9,11 @@
 - **Track decision:** USER-CONFIRMED 2026-11-10 — Unstoppable DeFi primary; Open Innovation secondary. Official FAQ permits selecting every track the project fits in one submission. Select both if offered. The Unstoppable DeFi fit is adjacent (swap-settlement reliability tooling, not a DEX/perps/lending/vault/trading agent); Open Innovation is the broader category fit.
 - **Submission:** NOT READY / NOT SUBMITTED. The final video is local and has not yet been attached to a public X post or official form. No receipt exists.
 - **Pitch:** `PITCH.md` now contains the one-line, 30-second and extended narrative, track positioning, claim-to-evidence map, and explicit non-claims; README and submission pack are aligned. PITCH phase passed on 2026-11-10.
-- **Next:** complete the four-lens JUDGE_SIMULATION against the live OSIALI product, final recording, evidence registry and selected tracks. Then proceed to PRIORITIZED_FIXES, FEATURE_FREEZE, SUBMISSION_AUDIT, and authorized submission.
+- **Fresh judge simulation:** PASS with explicit limitations. Product 8/10, technical 8/10, sponsor 7/10, 30-second 7.5/10 (internal estimates; official weights UNKNOWN). Main deductions: adjacent Unstoppable DeFi fit, no external adoption evidence, and public Explorer snapshots are not independent chain-finality proof. Full review and ranked actions are in SCORECARD.md.
+- **Live verification:** current commit 65dd208 passed 35/35 tests, 9/9 red-team and static build. Production homepage/assets/F1-F3 routes returned HTTP 200; live public Explorer API returned a bounded FAILED snapshot with explicit non-verification notice. Final video SHA-256 recorded in DEMO.md/EVIDENCE.md.
+- **Prioritized fixes:** no new product features or P0/P1 code changes recommended. Remaining work is public demo post, one official form submission with both selected tracks where offered, and receipt verification. Optional external operator feedback is non-blocking.
+- **Feature freeze:** active from 2026-11-10. No feature expansion; only reliability, proof, hygiene, demo, pitch, links and submission corrections.
+- **Next:** prepare/publish the required X demo post, then complete SUBMISSION_AUDIT against the actual portal fields and final public links before any submission.
 
 Historical checkpoints follow. Earlier notes that say the product name or production identity is unresolved are superseded by the current checkpoint above.
 

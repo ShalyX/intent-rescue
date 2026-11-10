@@ -11,6 +11,7 @@ Status: PRODUCED. The final OSIALI recording has passed DEMO_QA.
 - Video: H.264, 1600x900, 25 fps, 16:9.
 - Audio: AAC stereo, 48 kHz, normalized to -18 LUFS with a -1.5 dBTP ceiling.
 - Final local file size: 6,539,434 bytes.
+- Final local SHA-256: `215d410cdee3a9e7fa2815d7c1d7efc09315723ecd93205211b9efd505cf4071`.
 - Full video decode: PASS. Audio loudness measurement: PASS. Final visual review: PASS.
 
 ### Final scene and proof review

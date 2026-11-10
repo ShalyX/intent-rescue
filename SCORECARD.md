@@ -6,7 +6,58 @@
 - 84.8 seconds, 1600x900, H.264 at 25 fps, AAC stereo 48 kHz, -18 LUFS.
 - Visible proof: F1 identifier lookup and snapshot-only boundary; source deposit / 1Click / NEAR intent observations; safe no-duplicate-retry recommendation; actual downloaded `osiali-F1.json`; F2 refund-verified and F3 complete contrast; current OSIALI end card.
 - Final 16 pt captions are split into short cues to preserve visibility of the JSON evidence. Full decode and audio checks passed.
-- Track selection is user-confirmed: Unstoppable DeFi primary, Open Innovation secondary; official FAQ permits selecting every fitting track in one submission. Track-fit risk: Unstoppable DeFi is adjacent because OSIALI is swap-settlement incident-response tooling, not a trading venue, lending market, vault or trading agent. Open Innovation is the broader fit. The previous numeric estimates below are historical and remain provisional; they are **not** a current score. PITCH is complete in PITCH.md. Run a fresh four-lens judge simulation now against the final product, recording and selected tracks.
+- Track selection is user-confirmed: Unstoppable DeFi primary, Open Innovation secondary; official FAQ permits selecting every fitting track in one submission. Track-fit risk: Unstoppable DeFi is adjacent because OSIALI is swap-settlement incident-response tooling, not a trading venue, lending market, vault or trading agent. Open Innovation is the broader fit. The previous November 9 numeric estimates are historical; the fresh four-lens review below supersedes them.
+
+## 2026-11-10 — fresh four-lens Judge Simulation (Hackathon Operator v0.5.0)
+
+**Scope actually inspected:** current production OSIALI page and public assets; F1/F2/F3 demo routes; one live read-only public Explorer API result; final 84.8-second OSIALI recording and its DEMO_QA record; README, PITCH.md, PRODUCT.md, PRODUCT-COVERAGE.md, EVIDENCE.md, HYGIENE.md and current source tests/build.
+
+**Scoring note:** official 2026 weights are UNKNOWN. Scores below are internal judge-simulation estimates, not official weights, results or predictions.
+
+| Lens | Internal estimate | Confidence | What lands | Doubt / deduction |
+|---|---:|---|---|---|
+| Product judge | 8/10 | Medium-high | Specific incident job; five-stage reconstruction; first unresolved leg; explicit OBSERVED / INFERRED / UNKNOWN boundary; conservative action; real JSON support handoff; F1/F2/F3 contrast | No external operator adoption or customer interview evidence; supported public snapshots and matching manual evidence are bounded, not universal private-history lookup |
+| Technical judge | 8/10 | High | 35/35 tests, 9/9 red-team, static build PASS on commit 65dd208; live production endpoint HTTP 200; fixed-host read-only Explorer snapshot; strict evidence rules and real export | Public HTML snapshot is not independent chain-finality proof; no archival verification for historical F1; partner-authenticated private history is not implemented |
+| Sponsor judge | 7/10 | Medium | NEAR Intents is the actual incident surface, not a decorative logo; route reconstruction and explorer references depend on NEAR Intents lifecycle evidence | OSIALI is read-only incident-response tooling, not a new swap venue or settlement primitive; Unstoppable DeFi's examples focus on exchanges, perps, lending, vaults and trading agents |
+| 30-second judge | 7.5/10 | Medium | The opening frames the problem, identifies OSIALI, then shows the public record and where evidence stops; the export and three outcomes provide a memorable payoff | “1Click” and “intent/solver” may be unfamiliar to a generalist; the Unstoppable DeFi track fit may confuse judges if not described honestly |
+
+### 30-second cold read
+
+- **What I think the product is:** an evidence-first incident-response desk for NEAR Intents cross-chain swaps.
+- **What I think is special:** it shows the first unresolved lifecycle leg and distinguishes missing evidence from verified refund or delivery, then produces a real support case.
+- **What I do not believe yet:** that it independently verifies every historical chain leg, searches all private partner history, automatically recovers funds, or has proven adoption.
+- **What confused me:** why an incident-response product is primarily in Unstoppable DeFi when the official track examples name trading and liquidity products; the meaning of 1Click/solver terminology without NEAR context.
+- **What I would remember tomorrow:** “A FAILED label is not an incident explanation — OSIALI shows where the evidence stops.”
+
+### Track-fit assessment (internal, not official)
+
+- **Unstoppable DeFi — 5.5/10 fit:** defensible as operational reliability and incident-response tooling around NEAR Intents-powered DeFi swap settlement, but adjacent to the track's stated exchange/perps/lending/vault/trading-agent build examples. A track-specific deduction is plausible.
+- **Open Innovation — 8/10 fit:** the stronger category fit for a cross-cutting evidence/provenance/safe-action/support-handoff workflow.
+- User selection remains binding: Unstoppable DeFi primary; Open Innovation secondary. Do not silently switch or claim OSIALI implements a DEX, perps, lending, vault or trading agent.
+
+### Prior-criteria proxy (weights UNKNOWN; internal estimates only)
+
+| Prior-criteria area | Internal estimate | Evidence / main deduction |
+|---|---:|---|
+| Technical implementation | 8/10 | 35/35 tests, 9/9 red-team, build, live read-only endpoint; deduction for snapshot rather than independent historical chain proof |
+| Design | 8/10 | Visual QA 20/24, zero axe violations, responsive desktop/mobile, current OSIALI identity and demo |
+| Impact | 6/10 | Real NEAR incident problem evidence and public case corpus; no external adoption, operator interview or usage metric |
+| Originality | 7.5/10 | Distinctive combination of evidence boundary, conservative action and support export; avoid claiming no competitors |
+| Sustainability | 5.5/10 | Clear potential integrator/support use; no validated operating partner, business model or usage proof |
+
+### Judge verdict
+
+**Credible and coherent product; not yet submission-ready.** No new P0/P1 product defect was found in this review. The strongest strengths are the bounded evidence model, real support export and reliable deterministic behavior. The biggest weaknesses are the adjacent Unstoppable DeFi category fit, lack of external adoption validation, and the explicitly limited public-snapshot evidence source.
+
+### Ranked improvements
+
+1. **Preserve truthful track framing** in README, pitch and submission: Unstoppable DeFi primary as user-selected operational reliability tooling; Open Innovation secondary as the broader fit. This is already recorded; no product rewrite is authorized.
+2. **Complete the mandatory public demo post** with the final OSIALI video, a clear “built at NEAR HACKATHON” statement, @NEARProtocol and #NEARHackathon.
+3. **Complete one official project submission** with repository and public X post links; select both track options if shown. The official FAQ permits selecting every track the project fits; it remains one submission per project.
+4. **Optional, non-blocking:** seek one short external NEAR Intents integrator/support-operator review if available before submission. Do not invent feedback or delay mandatory submission steps.
+5. **No new features recommended.** Keep the seven locked P0s unchanged; only reliability, evidence, hygiene, demo, pitch, links and submission fixes remain.
+
+
 
 
 Official 2026 scoring weights: UNKNOWN. Internal estimates, not official scores.

@@ -191,3 +191,17 @@ Evidence rules: preserve input source, date, freshness, environment and limitati
 - Visual QA: 20/24, zero axe violations desktop/mobile; responsive, keyboard/focus, reduced-motion, F1/F2/F3 and export verified.
 - Current-main reproducibility: 35/35 tests, 9/9 red-team, static build pass.
 - Brand C17 is VERIFIED for current public product surfaces; legacy local recordings are excluded from submission.
+
+
+## 2026-11-10 — live production verification for pitch and judge simulation
+
+- Windows project checkout synchronized to Git commit `65dd2087497c169a170d313e71a88f7321c4a0c7`.
+- Current code verification on that commit: `npm test` **35/35 PASS**; `npm run red-team` **9/9 PASS**; `npm run build` **PASS**. Three pre-existing untracked design notes were preserved and not modified.
+- Production homepage `https://intent-rescue.vercel.app/`: HTTP 200; title `OSIALI - Incident Desk`; inspected HTML contains no Docketrail string.
+- Production assets checked under their actual `/public/` paths: favicon SVG/PNG, OSIALI mark, avatar, OG preview, CSS, JS and IBM Plex font all HTTP 200. The F1, F2 and F3 demo URLs each returned HTTP 200.
+- Live read-only endpoint check: `GET /api/incident?reference=https://explorer.near-intents.org/transactions/221c8aa1a8ac320aa58174f9ff57d0fbc36316d7dc469f630e05e1b34f9e4d80` returned HTTP 200 with `kind=public_explorer_snapshot`, Explorer-reported status `FAILED`, and capture time `2026-11-10T04:35:42.328Z`. The response showed the Explorer's “Deposit Completed” observation and no destination/refund transaction evidence. It explicitly stated that the result is **not independently verified on-chain**, is not an authenticated partner API status, and is not a refund guarantee.
+- Final demo local artifact: `C:\\Users\\USER\\Videos\\OSIALI-Demo\\osiali-demo-final.mp4`, 6,539,434 bytes; SHA-256 `215d410cdee3a9e7fa2815d7c1d7efc09315723ecd93205211b9efd505cf4071`.
+
+### Evidence boundary
+
+This is a current production smoke and one real public Explorer snapshot observation. It does not prove independent chain finality, universal historical lookup, private partner-history access, automatic refund/recovery, or adoption. The snapshot's missing destination/refund evidence remains unknown rather than evidence of loss or protocol fault.

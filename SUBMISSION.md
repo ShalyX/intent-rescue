@@ -1,7 +1,7 @@
 # NEAR Hackathon submission pack — OSIALI
 
 ## Status
-**NOT SUBMISSION READY — the final OSIALI demo is produced and DEMO_QA passed; PITCH is complete, while judge simulation and public submission gates remain open.** The mark, favicon, avatar and 1200×630 OG preview are live and browser-verified. Visual QA passed 20/24 with zero axe violations.
+**NOT SUBMISSION READY — DEMO_QA, PITCH and four-lens JUDGE_SIMULATION passed; feature freeze is active, while the public demo post, submission audit and receipt remain outstanding.** The mark, favicon, avatar and 1200×630 OG preview are live and browser-verified. Visual QA passed 20/24 with zero axe violations.
 
 ## Current public assets
 - Public repo: https://github.com/ShalyX/intent-rescue
