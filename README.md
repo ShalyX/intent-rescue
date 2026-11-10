@@ -5,7 +5,9 @@
 **Live demo:** https://intent-rescue.vercel.app
 **Public repo:** https://github.com/ShalyX/intent-rescue
 
-**Evidence-first incident response for NEAR Intents.**
+**Evidence-first incident response for NEAR Intents swaps.**
+
+OSIALI turns a stalled swap into an evidence-bounded incident: it reconstructs the route, marks the first unresolved leg, recommends a safe next step, and exports a support-ready case.
 
 [Evidence pack](./EVIDENCE.md) Â· 10 public cases Â· 35/35 local tests Â· 9/9 red-team scenarios Â· 30,000 deterministic repeat classifications
 
@@ -50,7 +52,7 @@ Use the deployed build; no account or credentials are required:
 - **NEAR mainnet RPC** was used separately in a technical de-risking spike to observe a real `FINAL` transaction with receipts. The deployed incident lookup reads public NEAR Intents Explorer pages; it does **not** independently verify each historical transaction on-chain.
 - Partner JWT APIs and solver-relay access are optional enrichments, not requirements for the judge path.
 
-**Track decision:** OPEN. Original PRODUCT.md revision 1 records primary Unstoppable DeFi and secondary Open Innovation. Current official track descriptions suggest Open Innovation is the stronger fit, but no explicit track change is recorded. See HACKATHON.md.
+**Track selection (user-confirmed):** Unstoppable DeFi primary; Open Innovation secondary. The official NEAR Hackathon FAQ permits selecting every track a project fits in one submission. OSIALI is operational incident-response tooling for NEAR Intents swap settlement, not an exchange, perps, lending, vault or trading agent. Unstoppable DeFi is therefore an adjacent fit; Open Innovation is the broader category fit. See [track rationale](./HACKATHON.md) and [pitch](./PITCH.md).
 
 ## Run locally
 

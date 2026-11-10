@@ -1,14 +1,15 @@
 # PROJECT — OSIALI / original approved concept: Intent Rescue
 
 ## CURRENT CHECKPOINT - 2026-11-10
-- **Authoritative phase:** PITCH (Hackathon Operator v0.5.0). DEMO_PRODUCTION and DEMO_QA both passed on 2026-11-10. PITCH is the next phase and is paused at the explicit NEAR track-selection gate.
+- **Authoritative phase:** PITCH (Hackathon Operator v0.5.0). DEMO_PRODUCTION and DEMO_QA both passed on 2026-11-10. PITCH is complete; the four-lens JUDGE_SIMULATION is now active.
 - **Final demo:** `C:\Users\USER\Videos\OSIALI-Demo\osiali-demo-final.mp4`; 84.8 seconds, H.264 1600x900 at 25 fps, AAC stereo 48 kHz, -18 LUFS, 6,539,434 bytes. Karaxis render source: `/tmp/osiali-demo/osiali-demo-final-v3.mp4`.
 - **DEMO_QA:** PASS. Full decode and audio checks passed. Final frames and contact sheets were inspected. The video shows F1 public Explorer lookup and snapshot boundary, safe recovery recommendation, actual downloaded `osiali-F1.json`, F2 refund verified, F3 transfer complete, and the OSIALI end card. Captions were reduced to 16 pt and split into 17 cues after the first treatment obscured JSON evidence.
 - **Product integrity:** original Idea 1 / Intent Rescue thesis and all seven locked P0s remain unchanged. Existing 35/35 tests, 9/9 red-team scenarios, build, and Product Hygiene evidence remain the recorded baseline; this demo pass does not replace those proofs.
 - **Brand:** OSIALI remains explicitly user-approved. Docketrail recordings remain historical and excluded from submission.
-- **Track decision:** OPEN. Original PRODUCT.md revision 1 records Unstoppable DeFi as primary and Open Innovation as secondary. HACKATHON.md recommends Open Innovation as the cleaner fit, but the user has not approved a switch.
+- **Track decision:** USER-CONFIRMED 2026-11-10 — Unstoppable DeFi primary; Open Innovation secondary. Official FAQ permits selecting every track the project fits in one submission. Select both if offered. The Unstoppable DeFi fit is adjacent (swap-settlement reliability tooling, not a DEX/perps/lending/vault/trading agent); Open Innovation is the broader category fit.
 - **Submission:** NOT READY / NOT SUBMITTED. The final video is local and has not yet been attached to a public X post or official form. No receipt exists.
-- **Next:** obtain the user's explicit track selection, then finish the pitch and rerun the four-lens judge simulation against the final OSIALI artifact. Continue sequentially through prioritized fixes, feature freeze, submission audit, and authorized submission.
+- **Pitch:** `PITCH.md` now contains the one-line, 30-second and extended narrative, track positioning, claim-to-evidence map, and explicit non-claims; README and submission pack are aligned. PITCH phase passed on 2026-11-10.
+- **Next:** complete the four-lens JUDGE_SIMULATION against the live OSIALI product, final recording, evidence registry and selected tracks. Then proceed to PRIORITIZED_FIXES, FEATURE_FREEZE, SUBMISSION_AUDIT, and authorized submission.
 
 Historical checkpoints follow. Earlier notes that say the product name or production identity is unresolved are superseded by the current checkpoint above.
 

@@ -6,7 +6,7 @@
 - 84.8 seconds, 1600x900, H.264 at 25 fps, AAC stereo 48 kHz, -18 LUFS.
 - Visible proof: F1 identifier lookup and snapshot-only boundary; source deposit / 1Click / NEAR intent observations; safe no-duplicate-retry recommendation; actual downloaded `osiali-F1.json`; F2 refund-verified and F3 complete contrast; current OSIALI end card.
 - Final 16 pt captions are split into short cues to preserve visibility of the JSON evidence. Full decode and audio checks passed.
-- The previous numeric estimates below are historical and remain provisional. They are **not** refreshed by demo production alone. Rerun the four-lens judge simulation in the JUDGE_SIMULATION phase after the track-selection gate and pitch refresh.
+- Track selection is user-confirmed: Unstoppable DeFi primary, Open Innovation secondary; official FAQ permits selecting every fitting track in one submission. Track-fit risk: Unstoppable DeFi is adjacent because OSIALI is swap-settlement incident-response tooling, not a trading venue, lending market, vault or trading agent. Open Innovation is the broader fit. The previous numeric estimates below are historical and remain provisional; they are **not** a current score. PITCH is complete in PITCH.md. Run a fresh four-lens judge simulation now against the final product, recording and selected tracks.
 
 
 Official 2026 scoring weights: UNKNOWN. Internal estimates, not official scores.
