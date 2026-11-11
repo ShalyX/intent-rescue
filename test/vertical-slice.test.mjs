@@ -10,10 +10,10 @@ const fixture = (name) => JSON.parse(fs.readFileSync(path.join(here, '..', 'fixt
 
 test('F1 vertical slice reconstructs the locked hero story', () => {
   const evidence = fixture('f1-failed.json');
-  const out = analyzeEvidence(evidence);
+  const out = analyzeEvidence(evidence, { assurance: 'CAPTURED_PUBLIC_SNAPSHOT' });
   assert.equal(out.classification, 'FAILED_UNRESOLVED');
   assert.equal(out.first_unresolved_step, 'destination_delivery');
-  assert.deepEqual(out.lifecycle.map(s => s.status), ['VERIFIED','VERIFIED','VERIFIED','NOT_OBSERVED','NOT_OBSERVED']);
+  assert.deepEqual(out.lifecycle.map(s => s.status), ['REPORTED','REPORTED','REPORTED','NOT_OBSERVED','NOT_OBSERVED']);
 });
 
 test('export bundle carries source, diagnosis, lifecycle and identifiers', () => {
@@ -28,8 +28,8 @@ test('export bundle carries source, diagnosis, lifecycle and identifiers', () =>
 
 test('F1 exposes provenance basis and exact advice predicates', () => {
   const evidence = fixture('f1-failed.json');
-  const out = analyzeEvidence(evidence);
-  assert.deepEqual(out.lifecycle.map(s => s.basis), ['OBSERVED','OBSERVED','OBSERVED','UNKNOWN','UNKNOWN']);
+  const out = analyzeEvidence(evidence, { assurance: 'CAPTURED_PUBLIC_SNAPSHOT' });
+  assert.deepEqual(out.lifecycle.map(s => s.basis), ['SOURCE_REPORTED','SOURCE_REPORTED','SOURCE_REPORTED','UNKNOWN','UNKNOWN']);
   assert.ok(out.evidence_predicates.includes('reported_status=FAILED'));
   assert.ok(out.evidence_predicates.includes('destination_observed=false'));
   assert.ok(out.evidence_predicates.includes('refund_observed=false'));
@@ -50,7 +50,7 @@ test('terminal verified flags cannot promote lifecycle or export without concret
       refund_tx_hashes: [],
       refund_evidence: []
     };
-    const analysis = analyzeEvidence(evidence);
+    const analysis = analyzeEvidence(evidence, { assurance: 'CAPTURED_PUBLIC_SNAPSHOT' });
     assert.equal(analysis.classification, 'INSUFFICIENT_EVIDENCE', item.label);
     const stage = analysis.lifecycle.find(entry => entry.label === item.label);
     assert.deepEqual(
@@ -65,7 +65,7 @@ test('terminal verified flags cannot promote lifecycle or export without concret
   }
 });
 
-test('terminal lifecycle stages become verified only when matching concrete evidence exists', () => {
+test('terminal source snapshots remain reported even when transaction identifiers are present', () => {
   const cases = [
     {
       label: 'Destination delivery',
@@ -77,15 +77,15 @@ test('terminal lifecycle stages become verified only when matching concrete evid
     }
   ];
   for (const item of cases) {
-    const analysis = analyzeEvidence(item.evidence);
-    const expected = item.label === 'Refund' ? 'REFUND_VERIFIED' : 'COMPLETE';
+    const analysis = analyzeEvidence(item.evidence, { assurance: 'CAPTURED_PUBLIC_SNAPSHOT' });
+    const expected = item.label === 'Refund' ? 'REFUND_REPORTED' : 'DELIVERY_REPORTED';
     assert.equal(analysis.classification, expected, item.label);
     const stage = analysis.lifecycle.find(entry => entry.label === item.label);
     assert.deepEqual(
       { status: stage.status, basis: stage.basis, evidence: stage.evidence },
       {
-        status: 'VERIFIED',
-        basis: 'OBSERVED',
+        status: 'REPORTED',
+        basis: 'SOURCE_REPORTED',
         evidence: item.label === 'Refund' ? ['0x' + 'e'.repeat(64)] : ['0x' + 'd'.repeat(64)]
       },
       item.label
@@ -101,7 +101,7 @@ test('contrast fixtures contain no placeholder evidence', () => {
   const f2 = fixture('f2-refunded.json');
   assert.equal(f2.refund_tx_hashes[0], '0x8a6cbe7715108be0078123944ec7c7995e3ffb526b8ca48618171ba369b70b5e');
   const f3 = fixture('f3-success.json');
-  const out = analyzeEvidence(f3);
-  assert.equal(out.lifecycle[3].basis, 'OBSERVED');
+  const out = analyzeEvidence(f3, { assurance: 'CAPTURED_PUBLIC_SNAPSHOT' });
+  assert.equal(out.lifecycle[3].basis, 'SOURCE_REPORTED');
   assert.equal(f3.near_swap_tx_hashes[0], 'Eh8v4CJDhF7m7Er8EsvWDrs9Sw9xpacofrA2oe5qSYBA');
 });

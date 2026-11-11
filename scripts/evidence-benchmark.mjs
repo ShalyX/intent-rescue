@@ -7,7 +7,7 @@ import { analyzeEvidence } from '../src/analyze.mjs';
 const here = path.dirname(fileURLToPath(import.meta.url));
 const root = path.join(here, '..');
 const fixtures = ['f1-failed.json','f2-refunded.json','f3-success.json'].map(name => JSON.parse(fs.readFileSync(path.join(root, 'fixtures', name), 'utf8')));
-const expected = ['FAILED_UNRESOLVED','REFUND_VERIFIED','COMPLETE'];
+const expected = ['FAILED_UNRESOLVED','REFUND_REPORTED','DELIVERY_REPORTED'];
 const runs = 10000;
 const timings = [];
 

@@ -34,12 +34,16 @@ export function explorerReferences(evidence) {
   } catch {}
   const nearDeposit = links('near', evidence.near_deposit_tx_hashes);
   const nearSwap = links('near', evidence.near_swap_tx_hashes);
+  const unassignedOrigin = links(evidence.source_chain, evidence.unassigned_origin_tx_hashes || evidence.origin_chain_tx_hashes);
+  const unassignedNear = links('near', evidence.unassigned_near_tx_hashes);
   return {
     near_intents_explorer: official,
     origin_transactions: links(evidence.source_chain, evidence.origin_tx_hashes),
+    unassigned_origin_transactions: unassignedOrigin,
     near_deposit_transactions: nearDeposit,
     near_swap_transactions: nearSwap,
     near_transactions: [...nearDeposit, ...nearSwap],
+    unassigned_near_transactions: unassignedNear,
     destination_transactions: links(evidence.destination_chain, evidence.destination_tx_hashes),
     refund_transactions: links(evidence.refund_chain, evidence.refund_tx_hashes)
   };

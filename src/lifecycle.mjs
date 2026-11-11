@@ -1,25 +1,62 @@
-import { hasDestinationEvidence, hasRefundEvidence } from './classifier.mjs';
+import { validTransactionHash } from './intake.mjs';
 
-const has = (arr) => Array.isArray(arr) && arr.length > 0;
+const values = (...arrays) => arrays.filter(Array.isArray).flat()
+  .filter(value => typeof value === 'string' && value.trim());
+
+function validHashes(...arrays) {
+  return arrays.filter(Array.isArray).flat().filter(validTransactionHash);
+}
 
 export function buildLifecycle(evidence) {
-  const originEvidence = provenance(evidence.origin_tx_hashes, evidence.near_deposit_tx_hashes, evidence.deposit_evidence);
-  const intakeEvidence = provenance(evidence.intent_hashes);
-  const intentEvidence = provenance(evidence.intent_hashes, evidence.near_swap_tx_hashes);
-  const destinationEvidence = provenance(evidence.destination_tx_hashes, evidence.destination_evidence);
-  const refundEvidence = provenance(evidence.refund_tx_hashes, evidence.refund_evidence);
-  const deposit = Boolean(evidence.deposit_verified) || originEvidence.length > 0;
-  const intake = deposit && (Boolean(evidence.intent_verified) || intakeEvidence.length > 0 || has(evidence.near_swap_tx_hashes));
-  const intent = Boolean(evidence.intent_verified) || intentEvidence.length > 0;
-  const destination = hasDestinationEvidence(evidence);
-  const refund = hasRefundEvidence(evidence);
+  const reported = String(evidence.reported_status || '').toUpperCase();
+  const originHashes = validHashes(evidence.origin_tx_hashes, evidence.near_deposit_tx_hashes);
+  const depositObservations = values(evidence.deposit_evidence);
+  const nearSwapHashes = validHashes(evidence.near_swap_tx_hashes);
+  const intentHashes = [...validHashes(evidence.intent_hashes), ...nearSwapHashes];
+  const destinationHashes = validHashes(evidence.destination_tx_hashes);
+  const destinationObservations = values(evidence.destination_evidence);
+  const refundHashes = validHashes(evidence.refund_tx_hashes);
+  const refundObservations = values(evidence.refund_evidence);
+
+  const depositObserved = originHashes.length > 0;
+  const activeDepositReported = ['KNOWN_DEPOSIT_TX', 'PROCESSING', 'PENDING'].includes(reported);
+  const depositDeclared = evidence.deposit_verified === true;
+  const depositReported = depositObserved || depositObservations.length > 0 || activeDepositReported || depositDeclared;
+  const depositStatus = depositObserved ? 'VERIFIED' : depositReported ? 'REPORTED' : 'NOT_OBSERVED';
+  const depositBasis = depositObserved ? 'OBSERVED'
+    : depositObservations.length || activeDepositReported ? 'SOURCE_REPORTED'
+    : depositDeclared ? 'DECLARED' : 'UNKNOWN';
+
+  const intentObserved = intentHashes.length > 0;
+  const intentDeclared = evidence.intent_verified === true;
+  const intakeReported = ['KNOWN_DEPOSIT_TX', 'PROCESSING', 'PENDING', 'INCOMPLETE_DEPOSIT', 'SUCCESS', 'REFUNDED', 'FAILED'].includes(reported);
+  const intakeStatus = intakeReported ? 'REPORTED' : depositReported ? 'UNKNOWN' : 'NOT_OBSERVED';
+  const intakeBasis = intakeReported ? 'SOURCE_REPORTED' : 'UNKNOWN';
+  const intakeEvidence = intakeReported ? ['1Click status reports ' + reported] : [];
+  const intentStatus = intentObserved ? 'VERIFIED'
+    : intentDeclared ? 'REPORTED'
+    : depositObserved && reported === 'FAILED' ? 'FAILED_OR_TERMINAL'
+    : 'UNKNOWN';
+  const intentBasis = intentObserved ? 'OBSERVED' : intentDeclared ? 'DECLARED' : 'UNKNOWN';
+
+  const destinationStatus = destinationHashes.length ? 'VERIFIED'
+    : destinationObservations.length ? 'REPORTED' : 'NOT_OBSERVED';
+  const refundStatus = refundHashes.length ? 'VERIFIED'
+    : refundObservations.length ? 'REPORTED' : 'NOT_OBSERVED';
+
   return [
-    stage('Source deposit', deposit ? 'VERIFIED' : 'NOT_OBSERVED', originEvidence, originEvidence.length ? 'OBSERVED' : evidence.deposit_verified ? 'INFERRED' : 'UNKNOWN'),
-    stage('1Click intake', intake ? 'VERIFIED' : deposit ? 'UNKNOWN' : 'NOT_OBSERVED', intakeEvidence, intakeEvidence.length ? 'OBSERVED' : intake ? 'INFERRED' : 'UNKNOWN'),
-    stage('Intent / solver', intent ? 'VERIFIED' : deposit && String(evidence.reported_status || '').toUpperCase() === 'FAILED' ? 'FAILED_OR_TERMINAL' : 'UNKNOWN', intentEvidence, intentEvidence.length ? 'OBSERVED' : intent ? 'INFERRED' : 'UNKNOWN'),
-    stage('Destination delivery', destination ? 'VERIFIED' : 'NOT_OBSERVED', destinationEvidence, destinationEvidence.length ? 'OBSERVED' : destination ? 'INFERRED' : 'UNKNOWN'),
-    stage('Refund', refund ? 'VERIFIED' : 'NOT_OBSERVED', refundEvidence, refundEvidence.length ? 'OBSERVED' : refund ? 'INFERRED' : 'UNKNOWN')
+    stage('Source deposit', depositStatus, [...originHashes, ...depositObservations], depositBasis),
+    stage('1Click intake', intakeStatus, intakeEvidence, intakeBasis),
+    stage('Intent / solver', intentStatus, intentHashes, intentBasis),
+    stage('Destination delivery', destinationStatus,
+      [...destinationHashes, ...destinationObservations],
+      destinationHashes.length ? 'OBSERVED' : destinationObservations.length ? 'SOURCE_REPORTED' : 'UNKNOWN'),
+    stage('Refund', refundStatus,
+      [...refundHashes, ...refundObservations],
+      refundHashes.length ? 'OBSERVED' : refundObservations.length ? 'SOURCE_REPORTED' : 'UNKNOWN')
   ];
 }
-function provenance(...arrays) { return arrays.filter(Array.isArray).flat().filter(value => typeof value === 'string' && value.trim()); }
-function stage(label,status,evidence,basis) { return {label,status,basis,evidence}; }
+
+function stage(label, status, evidence, basis) {
+  return { label, status, basis, evidence };
+}

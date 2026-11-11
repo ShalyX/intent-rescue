@@ -1,26 +1,28 @@
 import { validTransactionHash } from './intake.mjs';
-const hasHashes = values => Array.isArray(values) && values.length > 0 && values.every(validTransactionHash);
-const has = (arr) => Array.isArray(arr) && arr.length > 0;
 
-// Terminal lifecycle states and classifications must share identical evidence gates.
-export const hasDestinationEvidence = (evidence) =>
+const hasHashes = values => Array.isArray(values) && values.length > 0 && values.every(validTransactionHash);
+const has = values => Array.isArray(values) && values.length > 0;
+
+export const hasDestinationEvidence = evidence =>
   hasHashes(evidence.destination_tx_hashes) || has(evidence.destination_evidence);
-export const hasRefundEvidence = (evidence) =>
+export const hasRefundEvidence = evidence =>
   hasHashes(evidence.refund_tx_hashes) || has(evidence.refund_evidence);
 
 export function classifyIncident(evidence) {
   const reported = String(evidence.reported_status || '').toUpperCase();
-  const depositVerified = Boolean(evidence.deposit_verified) || has(evidence.origin_tx_hashes) || has(evidence.near_deposit_tx_hashes) || has(evidence.deposit_evidence);
-  const intentVerified = Boolean(evidence.intent_verified) || has(evidence.intent_hashes) || has(evidence.near_swap_tx_hashes);
-  // Terminal outcomes require concrete evidence, not a caller-supplied verified flag alone.
+  // Boolean *_verified fields are declarations, not evidence. Only concrete
+  // identifiers or source-attributed evidence arrays can satisfy these gates.
+  const depositVerified = hasHashes(evidence.origin_tx_hashes) ||
+    hasHashes(evidence.near_deposit_tx_hashes) || has(evidence.deposit_evidence);
+  const intentVerified = hasHashes(evidence.intent_hashes) || hasHashes(evidence.near_swap_tx_hashes);
   const destinationObserved = hasDestinationEvidence(evidence);
   const refundObserved = hasRefundEvidence(evidence);
   const basePredicates = [
-    `reported_status=${reported || 'UNKNOWN'}`,
-    `deposit_verified=${depositVerified}`,
-    `intent_verified=${intentVerified}`,
-    `destination_observed=${destinationObserved}`,
-    `refund_observed=${refundObserved}`,
+    'reported_status=' + (reported || 'UNKNOWN'),
+    'deposit_verified=' + depositVerified,
+    'intent_verified=' + intentVerified,
+    'destination_observed=' + destinationObserved,
+    'refund_observed=' + refundObserved
   ];
 
   if (destinationObserved && refundObserved) {
@@ -32,7 +34,7 @@ export function classifyIncident(evidence) {
       return result('INSUFFICIENT_EVIDENCE', 'destination_delivery', 'LOW',
         'The reported status is successful, but destination evidence is missing from this evidence set.', basePredicates);
     }
-    return result('COMPLETE', null, 'HIGH', 'Complete — no recovery action required.', basePredicates);
+    return result('COMPLETE', null, 'HIGH', 'Complete - no recovery action required.', basePredicates);
   }
   if (refundObserved || reported === 'REFUNDED') {
     if (!refundObserved && reported === 'REFUNDED') {
@@ -40,19 +42,23 @@ export function classifyIncident(evidence) {
         'A refund is reported, but no refund transaction is present in this evidence set.', basePredicates);
     }
     return result('REFUND_VERIFIED', null, 'HIGH',
-      'Refund confirmed. Create a fresh quote if you choose to retry.', basePredicates);
+      'Refund confirmed. Verify receipt in the refund wallet before creating a fresh quote.', basePredicates);
   }
   if (reported === 'INCOMPLETE_DEPOSIT') {
     if (refundObserved) {
       return result('INCOMPLETE_REFUNDED', null, 'HIGH',
-        'Refund verified. A fresh quote is required before retrying.', basePredicates);
+        'Refund evidence is present. Verify receipt before creating a fresh quote.', basePredicates);
     }
     return result('INCOMPLETE_REFUND_UNRESOLVED', 'refund', depositVerified ? 'MEDIUM' : 'LOW',
       'Track the refund or escalate. Do not assume funds have been returned.', basePredicates);
   }
-  if ((reported === 'PROCESSING' || reported === 'PENDING' || reported === 'KNOWN_DEPOSIT_TX') && depositVerified) {
-    return result('IN_PROGRESS', intentVerified ? 'destination_delivery' : 'intent_execution', 'MEDIUM',
-      'Wait for terminal evidence. Do not duplicate-retry while this transfer is still active.', basePredicates);
+  if (['PROCESSING', 'PENDING', 'KNOWN_DEPOSIT_TX'].includes(reported)) {
+    const unresolved = depositVerified
+      ? (intentVerified ? 'destination_delivery' : 'intent_execution')
+      : 'source_deposit';
+    return result('IN_PROGRESS', unresolved, depositVerified ? 'MEDIUM' : 'LOW',
+      'The status source reports an active transfer. Do not submit a duplicate or retry with the same funds. Refresh the status and verify the source deposit and next unresolved leg before considering recovery.',
+      basePredicates);
   }
   if ((reported === 'PENDING_DEPOSIT' || reported === 'AWAITING_DEPOSIT') && !depositVerified) {
     return result('DEPOSIT_NOT_OBSERVED', 'source_deposit', 'MEDIUM',

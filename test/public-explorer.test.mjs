@@ -17,17 +17,17 @@ test('public HTML failed-case reconstruction stays source-attributed',()=>{
  assert.equal(evidence.reported_status,'FAILED');
  assert.equal(evidence.source_asset,'LTC');
  assert.equal(evidence.destination_asset,'ETH');
- assert.equal(analyzeEvidence(evidence).classification,'FAILED_UNRESOLVED');
+ assert.equal(analyzeEvidence(evidence, { assurance: 'PUBLIC_EXPLORER_SNAPSHOT' }).classification,'FAILED_UNRESOLVED');
  assert.equal(evidence.near_deposit_tx_hashes.length,1);
  assert.equal(evidence.destination_tx_hashes.length,0);
 });
 test('public refund and withdrawal require exact visible outcomes',()=>{
  const refund=parsePublicExplorer(page('<h3>Refunded</h3><p>Transaction refunded</p>'),URL);
  assert.equal(refund.reported_status,'REFUNDED');
- assert.equal(analyzeEvidence(refund).classification,'REFUND_VERIFIED');
+ assert.equal(analyzeEvidence(refund, { assurance: 'PUBLIC_EXPLORER_SNAPSHOT' }).classification,'REFUND_REPORTED');
  const complete=parsePublicExplorer(page('<h3>Withdrawn</h3><p>Funds were successfully withdrawn</p>'),URL);
  assert.equal(complete.reported_status,'SUCCESS');
- assert.equal(analyzeEvidence(complete).classification,'COMPLETE');
+ assert.equal(analyzeEvidence(complete, { assurance: 'PUBLIC_EXPLORER_SNAPSHOT' }).classification,'DELIVERY_REPORTED');
 });
 test('ambiguous or forged status fails closed',()=>{
  assert.throws(()=>parsePublicExplorer(page('<h3>Failed</h3>Transaction failed<h3>Refunded</h3>Transaction refunded'),URL),/uniquely/);
@@ -50,4 +50,42 @@ test('explicit public source-chain transaction link preserves chain for F1-type 
   const e=parsePublicExplorer(body,URL);
   assert.equal(e.source_chain,'litecoin');
   assert.equal(e.origin_tx_hashes[0],'1e59a2a06ee0985eec6ca76a5264697f44581017a9f8383598a7538daed2f6df');
+});
+
+
+test('an explicit Explorer URL with a Base58 NEAR transaction hash bypasses 1Click address lookup', async t => {
+  const originalFetch = globalThis.fetch;
+  t.after(() => { globalThis.fetch = originalFetch; });
+  const nearHash = '9bQSpWs3WNeXLF61CVHjYVZYhi5A6cUnw4aVoou1w5WF';
+  const explorerUrl = 'https://explorer.near-intents.org/transactions/' + nearHash;
+  const calls = [];
+  globalThis.fetch = async url => {
+    calls.push(String(url));
+    return new Response(source, { status: 200, headers: { 'content-type': 'text/html' } });
+  };
+  const response = { code: 200, body: null, headers: {}, setHeader(k,v){this.headers[k]=v;}, status(n){this.code=n;return this;}, json(d){this.body=d;return this;} };
+  await handler({ method: 'GET', query: { reference: explorerUrl } }, response);
+  assert.equal(response.code, 200);
+  assert.equal(response.body.kind, 'public_explorer_snapshot');
+  assert.deepEqual(calls, [explorerUrl]);
+});
+
+test('an unqualified Base58 transaction hash falls back to public Explorer when 1Click has no matching deposit', async t => {
+  const originalFetch = globalThis.fetch;
+  t.after(() => { globalThis.fetch = originalFetch; });
+  const nearHash = '9bQSpWs3WNeXLF61CVHjYVZYhi5A6cUnw4aVoou1w5WF';
+  const calls = [];
+  globalThis.fetch = async url => {
+    calls.push(String(url));
+    if (String(url).startsWith('https://1click.chaindefuser.com/v0/status'))
+      return new Response('not found', { status: 404, headers: { 'content-type': 'text/plain' } });
+    return new Response(source, { status: 200, headers: { 'content-type': 'text/html' } });
+  };
+  const response = { code: 200, body: null, headers: {}, setHeader(k,v){this.headers[k]=v;}, status(n){this.code=n;return this;}, json(d){this.body=d;return this;} };
+  await handler({ method: 'GET', query: { reference: nearHash } }, response);
+  assert.equal(response.code, 200);
+  assert.equal(response.body.kind, 'public_explorer_snapshot');
+  assert.equal(calls.length, 2);
+  assert.ok(calls[0].startsWith('https://1click.chaindefuser.com/v0/status'));
+  assert.equal(calls[1], 'https://explorer.near-intents.org/transactions/' + nearHash);
 });
