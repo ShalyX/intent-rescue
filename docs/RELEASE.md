@@ -15,3 +15,7 @@ Verification before publication:
 Public docs were consolidated. Original working notes/checkpoints were preserved locally outside tracking rather than published as current product documentation. Git history was not rewritten. MIT licensing and Node 22/24 CI were added.
 
 Remaining limits: active pending public pages require matching manual evidence; no universal history lookup, independent chain finality, refund execution or impact/adoption claim. No fresh full screen-reader certification or trademark clearance is claimed. Older videos predate the new address/export semantics and need a consistency check before publication. No X post or hackathon submission is included in this release.
+
+## 11 November — landing and lookup integration
+
+The landing page remains at /; the incident desk at /app/ now includes current deposit-address lookup and the JSON-free guided form. Legacy demo links redirect to /app/. Integrated verification: 46 tests, nine red-team scenarios and build pass. Local browser passed landing-to-app navigation, real provider lookup, real Explorer lookup, guided export, simulated provider outage, F1/F2/F3 deep links, landing case links and mobile checks. Production is verified separately after deployment.

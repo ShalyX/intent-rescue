@@ -28,8 +28,9 @@ export function parsePublicExplorer(html,sourceUrl,capturedAt=new Date().toISOSt
   const isRefund=names.includes('refunded') && /Transaction refunded|Transaction was refunded/i.test(visible);
   const isSuccess=names.includes('withdrawn') && visible.includes('Funds were successfully withdrawn');
   const total=[isFailed,isRefund,isSuccess].filter(Boolean).length;
-  if(total!==1)throw Error('Terminal status cannot be uniquely verified from public page');
-  const state=isFailed?'FAILED':isRefund?'REFUNDED':'SUCCESS';
+  const active=names.includes('processing')?'PROCESSING':names.includes('pending deposit')?'PENDING_DEPOSIT':null;
+  if(total>1 || (total===0&&!active))throw Error('Status cannot be uniquely verified from public page');
+  const state=isFailed?'FAILED':isRefund?'REFUNDED':isSuccess?'SUCCESS':active;
   const intentHashes=refs(visible,u=>u.hostname==='pikespeak.ai' && u.pathname.startsWith('/intents/'));
   const nearHashes=refs(visible,u=>u.hostname==='nearblocks.io' && u.pathname.startsWith('/txns/'));
   const h3=key => segment(visible,headings,key);

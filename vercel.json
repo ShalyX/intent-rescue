@@ -3,5 +3,43 @@
   "framework": null,
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
-  "trailingSlash": true
+  "trailingSlash": true,
+  "redirects": [
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "demo",
+          "value": "F1"
+        }
+      ],
+      "destination": "/app/?demo=F1",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "demo",
+          "value": "F2"
+        }
+      ],
+      "destination": "/app/?demo=F2",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "demo",
+          "value": "F3"
+        }
+      ],
+      "destination": "/app/?demo=F3",
+      "permanent": false
+    }
+  ]
 }

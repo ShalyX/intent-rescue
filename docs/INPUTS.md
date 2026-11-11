@@ -1,11 +1,7 @@
-# Supported inputs
+# Investigating your swap
 
-Use an HTTPS `explorer.near-intents.org/transactions/<record>` URL or record ID for public terminal-page lookup. Captured examples also match their recorded transaction identifiers. Case-sensitive identifiers retain their case; hexadecimal identifiers compare without case.
+Paste the public Explorer link or deposit address from your receipt. OSIALI checks current source data before using a historical example. Deposit-address lookup reads the official 1Click status API, including processing/waiting states when returned. Optional deposit memo is preserved; a mismatched response is rejected. Explorer lookup supports recognized terminal and active page headings.
 
-For pending transfers or unsupported identifiers, submit a matching evidence object using the in-app template. `deposit_address`, `correlation_id`, source/NEAR/destination/refund transaction arrays, chain context and source URL are retained when supplied. A searched identifier must occur in the supplied evidence.
+If the source is unavailable or your identifier cannot be resolved, open **Create a case without JSON**. Add your reference, wallet status, known transaction hashes, network and notes. Unknown fields can stay blank. This creates a provisional support case; it does not establish delivery or refund. Advanced JSON input remains optional.
 
-Transaction arrays must contain syntactically valid identifiers. Observations are arrays of nonempty strings. Private keys and credentials do not belong in an incident report. A valid format does not prove that a transaction exists or settled.
-
-Manual evidence is displayed as supplied/reported and exported as provisional. Confirm source records before acting. Public snapshots are source-reported, not independently chain-verified. Active pending pages currently require manual evidence; automatic pending-page reconstruction is not claimed.
-
-Only conditional, supported explorer links are generated. Unknown chain or absent/malformed identifiers do not produce invented links.
+A source-chain hash alone cannot always locate the associated swap. Use the deposit address or Explorer record when possible. Source responses are not independent chain verification. Historical fallback is labelled with its capture time. Export retains the reference, notes, deposit/memo and available identifiers. Never enter credentials or private keys.

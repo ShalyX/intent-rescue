@@ -11,15 +11,18 @@ const mime = { '.html':'text/html; charset=utf-8','.js':'text/javascript; charse
 
 const server = http.createServer((req,res) => {
   const url = new URL(req.url, `http://${req.headers.host}`);
-  if (url.pathname === '/api/incident') {
+  if (url.pathname === '/api/incident' || url.pathname === '/api/incident/') {
     const apiRes = {
       setHeader(key,value){ res.setHeader(key,value); return this; },
       status(code){ res.statusCode=code; return this; },
       json(value){res.setHeader('Content-Type','application/json; charset=utf-8');res.end(JSON.stringify(value));return this;}
     };
-    return Promise.resolve(incidentHandler({method:req.method, query:{reference:url.searchParams.get('reference')}},apiRes))
+    return Promise.resolve(incidentHandler({method:req.method, query:{reference:url.searchParams.get('reference'),memo:url.searchParams.get('memo')}},apiRes))
       .catch(() => { if(!res.headersSent) apiRes.status(500).json({error:'The public evidence reader is temporarily unavailable.'}); });
   }
+  if (url.pathname === '/' && ['F1','F2','F3'].includes(url.searchParams.get('demo'))) {res.writeHead(302,{Location:'/app/?demo='+url.searchParams.get('demo')}).end();return;}
+  if (url.pathname === '/app' || url.pathname === '/app/') return send(path.join(root,'app','index.html'),res);
+  if (url.pathname === '/robots.txt' || url.pathname === '/sitemap.xml') return send(path.join(root,'public',url.pathname.slice(1)),res);
   if (url.pathname === '/') return send(path.join(root,'public','index.html'),res);
   for (const [prefix,dir] of Object.entries(mounts)) {
     if (url.pathname.startsWith(prefix)) {

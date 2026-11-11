@@ -3,7 +3,7 @@
 The browser loads captured public cases or requests a fixed-host public Explorer snapshot through `api/incident.js`. Unsupported or unavailable pages offer manual evidence input.
 
 - `src/intake.mjs`: identifier matching, aliases and evidence-envelope validation.
-- `src/public-explorer.mjs`: conservative extraction from supported terminal Explorer pages.
+- `src/public-explorer.mjs`: conservative extraction from supported terminal and active Explorer pages.
 - `src/classifier.mjs` and `src/lifecycle.mjs`: diagnosis and five-stage evidence reconstruction.
 - `src/evidence-bundle.mjs`: portable case, source assurance, identifiers and escalation context.
 - `public/`: public marketing homepage, landing assets, incident-desk styles/assets, and locally bundled fonts.
@@ -15,3 +15,5 @@ The API accepts GET only, restricts lookup to the official Explorer host, reject
 Public HTML is an external dependency and can change or lag. Parser failure produces no invented diagnosis. Manual evidence is not authenticated; schema validity is not chain verification. The separate RPC spike under scripts/ is research tooling, not part of runtime incident verification.
 
 See [product purpose](PRODUCT.md), [inputs](INPUTS.md) and [evidence limits](EVIDENCE.md).
+
+The incident desk at `/app/` includes deposit-address 1Click status lookup and a guided provisional case form. The public root is the landing page. Legacy `/?demo=F1` (and F2/F3) links redirect into `/app/`.

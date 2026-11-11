@@ -42,3 +42,13 @@
 
 .mobile-action{display:none}.basis-supplied{border-style:dotted}
 @media(max-width:760px){.mobile-action{display:block;margin:16px 20px;padding:12px;border-left:2px solid var(--red);font-size:14px}.fixture-buttons{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));overflow:visible}.fixture{min-width:0;display:flex;flex-direction:column;padding:10px 6px}.fixture-copy strong{font-size:12px}.fixture-copy small{font-size:11px}}
+
+
+
+#guided-report{font-size:13px;margin:20px 0}
+#guided-form input,#guided-form select{display:block;width:100%;min-height:44px;margin:0 0 12px;padding:8px;border:1px solid #a7b2b4;background:var(--surface);color:var(--ink);font:inherit;border-radius:0}
+#guided-form label{display:block;margin:12px 0 6px}
+#guided-form p{line-height:1.6;margin-bottom:12px}
+#guided-form textarea{min-height:100px;font-family:inherit}
+#guided-form .guided-extra{margin:12px 0}
+@media(max-width:760px){#guided-report{margin:16px}}
