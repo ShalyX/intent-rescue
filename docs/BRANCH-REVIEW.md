@@ -22,7 +22,7 @@ The initial branch was **not safe to merge unchanged**. Review found inconsisten
 
 ## Verification after corrections
 
-- Automated tests: **62 passed, 0 failed**.
+- Automated tests: **60 passed, 0 failed** (fresh rerun on the reviewed branch).
 - Red-team checks: **9 passed**.
 - Evidence benchmark: **30,000 classifications across 10,000 rounds; deterministic**.
 - Static build and JavaScript syntax checks: **passed**.
