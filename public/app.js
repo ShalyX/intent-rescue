@@ -27,14 +27,14 @@ document.querySelector('#identifier-form').addEventListener('submit', async even
   event.preventDefault();
   const revision = ++investigationRevision;
   const input = document.querySelector('#identifier').value.trim();
+  clearView();
+  pendingIdentifier = input;
   try {
     inputStatus.textContent = 'Checking captured public evidence…';
     const captures = (await Promise.allSettled(demoFiles.map(getFixture))).filter(item => item.status === 'fulfilled').map(item => item.value);
     if (revision !== investigationRevision) return;
     const match = findCapturedCase(input, captures);
     if (match.kind === 'invalid' || match.kind === 'ambiguous') { clearView(); inputStatus.textContent = match.reason; return; }
-    clearView();
-    pendingIdentifier = input;
     inputStatus.textContent = 'Reading public Explorer page, without partner credentials…';
     const response = await fetch('/api/incident?reference=' + encodeURIComponent(input) + '&memo=' + encodeURIComponent(document.querySelector('#deposit-memo')?.value || ''), {cache: 'no-store'});
     const payload = await response.json();
@@ -60,6 +60,13 @@ function clearView() {
   renderCase({});
   [result, document.querySelector('#protocol-body'), document.querySelector('#case-file')].forEach(el => el.classList.add('hidden'));
   emptyState.classList.remove('hidden');
+  document.querySelector('#investigation').removeAttribute('data-kind');
+  document.querySelector('.recovery-rail').removeAttribute('data-kind');
+  document.querySelector('#guided-report').open = false;
+  for (const selector of ['#classification','#protocol-classification','#confidence','#unresolved','#safe-action',
+    '#mobile-action','#predicates','#boundary-handoff','#lifecycle','#evidence-list','#preview']) {
+    document.querySelector(selector)?.replaceChildren();
+  }
   selectFixture(null);
 }
 
@@ -70,7 +77,7 @@ for (const button of fixtureButtons) {
     catch (error) { inputStatus.textContent = `Case load failed: ${error.message}`; }
   });
 }
-evidenceInput.addEventListener('input', () => { ++investigationRevision; evidenceAssurance = 'USER_SUPPLIED_UNVERIFIED'; selectFixture(null); });
+evidenceInput.addEventListener('input', () => { ++investigationRevision; evidenceAssurance = 'USER_SUPPLIED_UNVERIFIED'; pendingIdentifier = null; clearView(); inputStatus.textContent = 'Evidence changed. Trace it again to rebuild the case.'; });
 document.querySelectorAll('#guided-form input').forEach(field=>field.addEventListener('input',()=>field.setCustomValidity('')));
 document.querySelector('#trace').addEventListener('click', traceCurrent);
 document.querySelector('#export').addEventListener('click', exportCurrentBundle);
@@ -82,7 +89,11 @@ function selectFixture(activeButton) {
   });
 }
 async function loadFixture(name, activeButton) {
+  pendingIdentifier = null;
+  clearView();
   const revision = investigationRevision;
+  pendingIdentifier = null;
+  clearView();
   fixtureButtons.forEach(button => { button.disabled = true; });
   inputStatus.textContent = 'Loading captured evidence…';
   try {
@@ -101,28 +112,26 @@ function traceCurrent() {
     if (pendingIdentifier && evidenceAssurance === 'USER_SUPPLIED_UNVERIFIED'
         && findCapturedCase(pendingIdentifier, [evidence]).kind !== 'captured')
       throw new Error('Supplied evidence does not contain the searched identifier. Match the deposit address, transaction hash, correlation ID, or source URL first.');
-    const analysis = analyzeEvidence(evidence);
-    if (!isSourceSnapshot()) {
-      analysis.classification = ({REFUND_VERIFIED:'REFUND_REPORTED', COMPLETE:'DELIVERY_REPORTED'})[analysis.classification] || analysis.classification;
-      analysis.lifecycle = analysis.lifecycle.map(stage => ({...stage, status:stage.status === 'VERIFIED' ? 'REPORTED' : stage.status, basis:stage.basis === 'OBSERVED' ? 'SUPPLIED' : stage.basis}));
-    }
+    const analysis = analyzeEvidence(evidence, { assurance: evidenceAssurance });
     currentEvidence = evidence;
     renderCase(evidence);
     renderAnalysis(analysis);
     [result, document.querySelector('#protocol-body'), document.querySelector('#case-file')].forEach(el => el.classList.remove('hidden'));
     emptyState.classList.add('hidden');
-    inputStatus.textContent = evidenceAssurance === 'OFFICIAL_STATUS_SNAPSHOT' ? 'Current 1Click status response · Not independently verified on-chain' : evidenceAssurance === 'PUBLIC_EXPLORER_SNAPSHOT' ? 'Public Explorer page snapshot · Not independently verified on-chain' : evidenceAssurance === 'CAPTURED_PUBLIC_SNAPSHOT' ? `Case ${evidence.id || 'captured'} traced · Historical public snapshot` : 'Provisional analysis · User-supplied evidence is not independently verified';
+    inputStatus.textContent = evidenceAssurance === 'OFFICIAL_STATUS_SNAPSHOT'
+      ? '1Click status snapshot retrieved ' + formatTimestamp(evidence.captured_at) +
+        (evidence.source_updated_at ? '; provider state last changed ' + formatTimestamp(evidence.source_updated_at) : '') +
+        '. Not independently verified on-chain.'
+      : evidenceAssurance === 'PUBLIC_EXPLORER_SNAPSHOT'
+        ? 'Public Explorer page snapshot; not independently verified on-chain.'
+        : evidenceAssurance === 'CAPTURED_PUBLIC_SNAPSHOT'
+          ? 'Case ' + (evidence.id || 'captured') + ' traced; historical public snapshot.'
+          : 'Provisional analysis; user-supplied evidence is not independently verified.';
   } catch (error) {
-    currentEvidence = null;
-    selectFixture(null);
-    renderCase({});
-    [result, document.querySelector('#protocol-body'), document.querySelector('#case-file')].forEach(el => el.classList.add('hidden'));
-    emptyState.classList.remove('hidden');
-    document.querySelector('#classification').textContent = '';
-    document.querySelector('#confidence').textContent = '';
+    clearView();
     document.querySelector('#investigation').removeAttribute('data-kind');
     document.querySelector('.recovery-rail').removeAttribute('data-kind');
-    inputStatus.textContent = `Could not build case: ${error.message}`;
+    inputStatus.textContent = 'Could not build case: ' + error.message;
   }
 }
 function exportCurrentBundle() {
@@ -146,15 +155,26 @@ function renderCase(evidence) {
   document.querySelector('#captured-at').textContent = formatTimestamp(evidence.captured_at);
   document.querySelector('#canvas-provenance').textContent = `${evidenceAssurance === 'OFFICIAL_STATUS_SNAPSHOT' ? '1Click status response · not chain verified' : evidenceAssurance === 'PUBLIC_EXPLORER_SNAPSHOT' ? 'Explorer page snapshot · not chain verified' : evidenceAssurance === 'CAPTURED_PUBLIC_SNAPSHOT' ? 'Historical public evidence snapshot' : 'Unverified user input'} · ${formatTimestamp(evidence.captured_at)}`;
   document.querySelector('#file-source').textContent = evidence.source_url || 'No source URL supplied';
-  document.querySelector('#file-captured').textContent = evidence.captured_at ? `Captured ${formatTimestamp(evidence.captured_at)}` : 'No capture time supplied';
+  document.querySelector('#file-captured').textContent = evidence.captured_at ? 'Retrieved ' + formatTimestamp(evidence.captured_at) : 'No retrieval time supplied';
+  document.querySelector('#file-updated').textContent = providerUpdateLabel(evidence.source_updated_at, evidence.captured_at);
   if (!currentEvidence) document.querySelector('#canvas-provenance').textContent='No evidence loaded';
   const link = document.querySelector('#source-link');
   let safeSource = false;
-  try { const url = new URL(evidence.source_url); safeSource = url.protocol === 'https:' && url.hostname === 'explorer.near-intents.org'
-    && /^\/transactions\/[A-Za-z0-9_-]{16,150}\/?$/.test(url.pathname); } catch {}
+  let sourceHost = '';
+  try {
+    const url = new URL(evidence.source_url);
+    sourceHost = url.hostname;
+    const explorer = url.protocol === 'https:' && url.hostname === 'explorer.near-intents.org'
+      && /^\/transactions\/[A-Za-z0-9_-]{16,150}\/?$/.test(url.pathname);
+    const oneClick = url.protocol === 'https:' && url.hostname === '1click.chaindefuser.com'
+      && url.pathname === '/v0/status' && url.searchParams.has('depositAddress')
+      && [...url.searchParams.keys()].every(key => ['depositAddress','depositMemo'].includes(key));
+    safeSource = explorer || oneClick;
+  } catch {}
   link.setAttribute('aria-disabled', String(!safeSource));
   link.tabIndex = safeSource ? 0 : -1;
   link.href = safeSource ? evidence.source_url : '#';
+  link.textContent = safeSource ? (sourceHost === '1click.chaindefuser.com' ? 'Open 1Click status source' : 'Open public Explorer evidence') : 'No verified source link available';
   link.classList.toggle('disabled', !safeSource);
 }
 function renderAnalysis(analysis) {
@@ -232,16 +252,38 @@ function routeWires(stages, unresolvedIndex) {
   return svg;
 }
 function renderEvidence(bundle) {
+  const provider = bundle.provider_details || {};
+  const providerSummary = [
+    ['Deposited', provider.deposited_amount_formatted || provider.deposited_amount],
+    ['Refunded', provider.refunded_amount_formatted || provider.refunded_amount],
+    ['Refund reason', provider.refund_reason],
+    ['Refund fee', provider.refund_fee_formatted || provider.refund_fee],
+    ['Withdraw fee', provider.withdraw_fee_formatted || provider.withdraw_fee],
+    ['Amount in', provider.amount_in_formatted || provider.amount_in],
+    ['Amount out', provider.amount_out_formatted || provider.amount_out],
+    ['Recipient', provider.recipient],
+    ['Refund to', provider.refund_to],
+    ['Quote deadline', provider.deadline]
+  ].filter(entry => entry[1] !== null && entry[1] !== undefined && entry[1] !== '')
+   .map(entry => entry[0] + ': ' + entry[1]);
   const entries = [
-    ['Source transaction', [...bundle.identifiers.origin_tx_hashes, ...bundle.observations.deposit]],
+    ['Source deposit evidence', [...bundle.identifiers.origin_tx_hashes, ...bundle.observations.deposit]],
     ['Intent', bundle.identifiers.intent_hashes],
     ['NEAR deposit', bundle.identifiers.near_deposit_tx_hashes],
     ['NEAR intent execution', bundle.identifiers.near_swap_tx_hashes],
     ['Destination evidence', [...bundle.identifiers.destination_tx_hashes, ...bundle.observations.destination]],
-    ['Refund evidence', [...bundle.identifiers.refund_tx_hashes, ...bundle.observations.refund]]
+    ['Refund evidence', [...bundle.identifiers.refund_tx_hashes, ...bundle.observations.refund]],
+    ['Origin-chain transactions (role unassigned)', bundle.identifiers.unassigned_origin_tx_hashes],
+    ['NEAR transactions (role unassigned)', bundle.identifiers.unassigned_near_tx_hashes],
+    ['1Click provider details', providerSummary]
   ];
-  const linkGroups = [bundle.source_links.origin_transactions, [], bundle.source_links.near_deposit_transactions, bundle.source_links.near_swap_transactions, bundle.source_links.destination_transactions, bundle.source_links.refund_transactions];
-  const traceJunctions = [1, 3, 1, 3, 4, 5];
+  const linkGroups = [
+    bundle.source_links.origin_transactions, [], bundle.source_links.near_deposit_transactions,
+    bundle.source_links.near_swap_transactions, bundle.source_links.destination_transactions,
+    bundle.source_links.refund_transactions, bundle.source_links.unassigned_origin_transactions,
+    bundle.source_links.unassigned_near_transactions, []
+  ];
+  const traceJunctions = [1, 3, 1, 3, 4, 5, 1, 3, 5];
   document.querySelector('#evidence-list').replaceChildren(...entries.map(([label, values], index) => {
     const basis = values.length ? (isSourceSnapshot() ? 'OBSERVED' : 'SUPPLIED') : 'UNKNOWN';
     const row = document.createElement('div'); row.id = `evidence-${index}`; row.className = `evidence-row evidence-${basis.toLowerCase()}`;
@@ -263,7 +305,30 @@ function classificationKind(value) {
   return 'attention';
 }
 function statusLabel(value) { const label = String(value || '').replaceAll('_', ' ').toLowerCase(); return label.charAt(0).toUpperCase() + label.slice(1); }
-function formatTimestamp(value) { if (!value) return '—'; const date = new Date(value); return Number.isNaN(date.valueOf()) ? value : date.toISOString().replace('T', ' ').replace('.000Z', 'Z'); }
+function formatTimestamp(value) {
+  if (!value) return '?';
+  const date = new Date(value);
+  return Number.isNaN(date.valueOf()) ? String(value) : date.toISOString().replace('T', ' ').replace('.000Z', 'Z');
+}
+function providerUpdateLabel(updatedAt, capturedAt) {
+  if (!updatedAt) return 'Provider state update time not supplied';
+  const updated = new Date(updatedAt).valueOf();
+  const captured = capturedAt ? new Date(capturedAt).valueOf() : Date.now();
+  if (Number.isNaN(updated) || Number.isNaN(captured)) return 'Provider state last changed ' + formatTimestamp(updatedAt) + '; age unavailable';
+  const delta = captured - updated;
+  if (delta < 0) return 'Provider state timestamp is later than retrieval; check source clocks';
+  return 'Provider state last changed ' + formatTimestamp(updatedAt) + ' (' + formatElapsed(delta) + ' before retrieval)';
+}
+function formatElapsed(milliseconds) {
+  const minutes = Math.floor(milliseconds / 60000);
+  if (minutes < 1) return 'less than 1 minute';
+  const days = Math.floor(minutes / 1440);
+  const hours = Math.floor((minutes % 1440) / 60);
+  const remaining = minutes % 60;
+  if (days) return days + 'd ' + hours + 'h';
+  if (hours) return hours + 'h ' + remaining + 'm';
+  return minutes + 'm';
+}
 function escapeHtml(value) { return String(value).replace(/[&<>'"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c])); }
 const demoMap = { F1:'f1-failed.json', F2:'f2-refunded.json', F3:'f3-success.json' };
 const requestedDemo = new URLSearchParams(window.location.search).get('demo');
@@ -274,7 +339,7 @@ if (demoMap[requestedDemo]) {
 
 const guided=document.querySelector('#guided-form');
 guided?.addEventListener('submit',event=>{
- event.preventDefault();++investigationRevision;
+ event.preventDefault();++investigationRevision;pendingIdentifier=null;
  const value=id=>document.querySelector('#'+id).value.trim();
  const reference=value('guided-reference');
  for(const id of ['guided-source-tx','guided-destination-tx','guided-refund-tx']){const field=document.querySelector('#'+id);field.setCustomValidity(field.value.trim()&&!validTransactionHash(field.value.trim())?'Paste a transaction hash from your wallet receipt, or leave this blank.':'');if(!field.checkValidity())field.closest('details').open=true;if(!field.reportValidity())return;}
