@@ -124,12 +124,12 @@ test('deposit_verified and intent_verified flags alone are declarations, never v
   assert.equal(diagnosis.classification, 'INSUFFICIENT_EVIDENCE');
   assert.equal(lifecycle[0].status, 'REPORTED');
   assert.equal(lifecycle[0].basis, 'DECLARED');
-  assert.equal(lifecycle[1].status, 'REPORTED');
-  assert.equal(lifecycle[1].basis, 'DECLARED');
+  assert.equal(lifecycle[1].status, 'UNKNOWN');
+  assert.equal(lifecycle[1].basis, 'UNKNOWN');
   assert.equal(lifecycle[2].status, 'REPORTED');
   assert.equal(lifecycle[2].basis, 'DECLARED');
   const bundle = exportBundle(evidence);
-  assert.deepEqual(bundle.lifecycle.slice(0, 3).map(stage => stage.status), ['REPORTED','REPORTED','REPORTED']);
+  assert.deepEqual(bundle.lifecycle.slice(0, 3).map(stage => stage.status), ['REPORTED','UNKNOWN','REPORTED']);
   assert.ok(bundle.unresolved_evidence.some(item => item.step === 'Source deposit'));
   assert.ok(bundle.unresolved_evidence.some(item => item.step === 'Intent / solver'));
 });
@@ -196,4 +196,15 @@ test('a failed memo-specific status lookup stops at the provider and does not fa
   assert.equal(response.statusCode, 422);
   assert.match(response.body.error, /memo/i);
   assert.equal(calls, 1);
+});
+
+
+test('1Click intake is attributed to provider status, not duplicated intent hashes', () => {
+  const evidence = normalizeStatus(refundedPayload(), address, 'memo-123');
+  const lifecycle = buildLifecycle(evidence);
+  assert.equal(lifecycle[1].label, '1Click intake');
+  assert.equal(lifecycle[1].status, 'REPORTED');
+  assert.match(lifecycle[1].evidence[0], /1Click status reports REFUNDED/);
+  assert.equal(lifecycle[2].label, 'Intent / solver');
+  assert.deepEqual(lifecycle[2].evidence, [intentHash, ...[]].filter(Boolean));
 });

@@ -17,17 +17,17 @@ test('public HTML failed-case reconstruction stays source-attributed',()=>{
  assert.equal(evidence.reported_status,'FAILED');
  assert.equal(evidence.source_asset,'LTC');
  assert.equal(evidence.destination_asset,'ETH');
- assert.equal(analyzeEvidence(evidence).classification,'FAILED_UNRESOLVED');
+ assert.equal(analyzeEvidence(evidence, { assurance: 'PUBLIC_EXPLORER_SNAPSHOT' }).classification,'FAILED_UNRESOLVED');
  assert.equal(evidence.near_deposit_tx_hashes.length,1);
  assert.equal(evidence.destination_tx_hashes.length,0);
 });
 test('public refund and withdrawal require exact visible outcomes',()=>{
  const refund=parsePublicExplorer(page('<h3>Refunded</h3><p>Transaction refunded</p>'),URL);
  assert.equal(refund.reported_status,'REFUNDED');
- assert.equal(analyzeEvidence(refund).classification,'REFUND_VERIFIED');
+ assert.equal(analyzeEvidence(refund, { assurance: 'PUBLIC_EXPLORER_SNAPSHOT' }).classification,'REFUND_REPORTED');
  const complete=parsePublicExplorer(page('<h3>Withdrawn</h3><p>Funds were successfully withdrawn</p>'),URL);
  assert.equal(complete.reported_status,'SUCCESS');
- assert.equal(analyzeEvidence(complete).classification,'COMPLETE');
+ assert.equal(analyzeEvidence(complete, { assurance: 'PUBLIC_EXPLORER_SNAPSHOT' }).classification,'DELIVERY_REPORTED');
 });
 test('ambiguous or forged status fails closed',()=>{
  assert.throws(()=>parsePublicExplorer(page('<h3>Failed</h3>Transaction failed<h3>Refunded</h3>Transaction refunded'),URL),/uniquely/);

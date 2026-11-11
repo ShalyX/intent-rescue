@@ -40,7 +40,9 @@ function applyAssurance(analysis, assurance) {
 }
 
 export function analyzeEvidence(evidence, options = {}) {
-  const assurance = options.assurance || 'SOURCE_SNAPSHOT';
+  const requestedAssurance = options.assurance;
+  const assurance = ['CAPTURED_PUBLIC_SNAPSHOT', 'PUBLIC_EXPLORER_SNAPSHOT', 'OFFICIAL_STATUS_SNAPSHOT']
+    .includes(requestedAssurance) ? requestedAssurance : 'USER_SUPPLIED_UNVERIFIED';
   const diagnosis = classifyIncident(evidence);
   const lifecycle = buildLifecycle(evidence);
   return applyAssurance({ ...diagnosis, lifecycle }, assurance);

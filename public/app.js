@@ -40,7 +40,8 @@ document.querySelector('#identifier-form').addEventListener('submit', async even
     const payload = await response.json();
     if (revision !== investigationRevision) return;
     if (!response.ok || !['public_explorer_snapshot','official_status_snapshot'].includes(payload.kind) || !payload.evidence) {
-      if (match.kind === 'captured') { pendingIdentifier=null; evidenceInput.value=JSON.stringify(match.evidence); evidenceAssurance='CAPTURED_PUBLIC_SNAPSHOT'; traceCurrent(); inputStatus.textContent='Live lookup unavailable. Showing historical capture from '+match.evidence.captured_at; return; }
+      const suppliedMemo = document.querySelector('#deposit-memo')?.value.trim() || '';
+      if (match.kind === 'captured' && !suppliedMemo) { pendingIdentifier=null; evidenceInput.value=JSON.stringify(match.evidence); evidenceAssurance='CAPTURED_PUBLIC_SNAPSHOT'; traceCurrent(); inputStatus.textContent='Live lookup unavailable. Showing historical capture from '+match.evidence.captured_at; return; }
       clearView();
       document.querySelector('#guided-reference').value=input;
       document.querySelector('#guided-report').open=true;
@@ -92,8 +93,6 @@ async function loadFixture(name, activeButton) {
   pendingIdentifier = null;
   clearView();
   const revision = investigationRevision;
-  pendingIdentifier = null;
-  clearView();
   fixtureButtons.forEach(button => { button.disabled = true; });
   inputStatus.textContent = 'Loading captured evidence…';
   try {
@@ -233,7 +232,7 @@ function stageNode(stage, index, unresolvedIndex) {
 }
 function evidenceLedgerIndex(value, index) {
   if (index === 0) return currentEvidence.near_deposit_tx_hashes?.includes(value) ? 2 : 0;
-  if (index === 1) return 1;
+  if (index === 1) return 8;
   if (index === 2) return currentEvidence.near_swap_tx_hashes?.includes(value) ? 3 : 1;
   return index === 3 ? 4 : 5;
 }
@@ -254,11 +253,12 @@ function routeWires(stages, unresolvedIndex) {
 function renderEvidence(bundle) {
   const provider = bundle.provider_details || {};
   const providerSummary = [
+    ['1Click status', bundle.incident.reported_status],
     ['Deposited', provider.deposited_amount_formatted || provider.deposited_amount],
     ['Refunded', provider.refunded_amount_formatted || provider.refunded_amount],
     ['Refund reason', provider.refund_reason],
-    ['Refund fee', provider.refund_fee_formatted || provider.refund_fee],
-    ['Withdraw fee', provider.withdraw_fee_formatted || provider.withdraw_fee],
+    ['Refund fee', provider.refund_fee_formatted || (provider.refund_fee ? provider.refund_fee + ' (raw provider units)' : null)],
+    ['Withdraw fee', provider.withdraw_fee_formatted || (provider.withdraw_fee ? provider.withdraw_fee + ' (raw provider units)' : null)],
     ['Amount in', provider.amount_in_formatted || provider.amount_in],
     ['Amount out', provider.amount_out_formatted || provider.amount_out],
     ['Recipient', provider.recipient],

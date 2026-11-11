@@ -2,7 +2,7 @@ import test from 'node:test';import assert from 'node:assert/strict';
 import {normalizeStatus} from '../src/status-api.mjs';import {analyzeEvidence,exportBundle} from '../src/analyze.mjs';import {parseEvidenceEnvelope} from '../src/intake.mjs';
 const address='0x'+'a'.repeat(40);
 test('API status must match requested deposit and supports active stages',()=>{
- for(const status of ['PENDING_DEPOSIT','PROCESSING','REFUNDED','SUCCESS']){const evidence=normalizeStatus({status,quoteResponse:{quote:{depositAddress:address}},swapDetails:{}},address);const analysis=analyzeEvidence(evidence);if(status==='PENDING_DEPOSIT')assert.equal(analysis.classification,'DEPOSIT_NOT_OBSERVED');if(status==='REFUNDED')assert.equal(analysis.classification,'REFUND_VERIFIED');assert.equal(exportBundle(evidence,{assurance:'OFFICIAL_STATUS_SNAPSHOT'}).source.independently_chain_verified,false);}
+ for(const status of ['PENDING_DEPOSIT','PROCESSING','REFUNDED','SUCCESS']){const evidence=normalizeStatus({status,quoteResponse:{quote:{depositAddress:address}},swapDetails:{}},address);const analysis=analyzeEvidence(evidence,{assurance:'OFFICIAL_STATUS_SNAPSHOT'});if(status==='PENDING_DEPOSIT')assert.equal(analysis.classification,'DEPOSIT_NOT_OBSERVED');if(status==='REFUNDED')assert.equal(analysis.classification,'REFUND_REPORTED');assert.equal(exportBundle(evidence,{assurance:'OFFICIAL_STATUS_SNAPSHOT'}).source.independently_chain_verified,false);}
  assert.throws(()=>normalizeStatus({status:'SUCCESS',quoteResponse:{quote:{depositAddress:'other'}}},address),/match/);
  assert.throws(()=>normalizeStatus({status:'made-up'},address),/Unrecognized/);
 });

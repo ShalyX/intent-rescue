@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { classifyIncident } from '../src/classifier.mjs';
 import { buildLifecycle } from '../src/lifecycle.mjs';
-import { exportBundle } from '../src/analyze.mjs';
+import { analyzeEvidence, exportBundle } from '../src/analyze.mjs';
 
 const cases = [
   ['reported refund plus verified flag, but no refund evidence', { reported_status: 'REFUNDED', refund_verified: true }, 'refund'],
@@ -52,4 +52,39 @@ test('provider and public Explorer snapshots remain reported until independent c
   assert.equal(delivery.diagnosis.first_unresolved_step, 'destination_delivery');
   assert.equal(delivery.lifecycle[3].status, 'REPORTED');
   assert.equal(delivery.lifecycle[3].basis, 'SOURCE_REPORTED');
+});
+
+
+test('invalid transaction identifiers cannot verify lifecycle stages', () => {
+  const cases = [
+    [{ reported_status: 'PROCESSING', origin_tx_hashes: ['not-a-hash'] }, 0, 'source_deposit'],
+    [{ reported_status: 'REFUNDED', refund_tx_hashes: ['not-a-hash'] }, 4, 'refund'],
+    [{ reported_status: 'SUCCESS', destination_tx_hashes: ['not-a-hash'] }, 3, 'destination_delivery']
+  ];
+  for (const [evidence, index, unresolved] of cases) {
+    const diagnosis = classifyIncident(evidence);
+    const lifecycle = buildLifecycle(evidence);
+    assert.notEqual(lifecycle[index].status, 'VERIFIED');
+    assert.equal(diagnosis.first_unresolved_step, unresolved);
+  }
+});
+
+test('source-reported deposit amounts are reported, not independently verified', () => {
+  const lifecycle = buildLifecycle({
+    reported_status: 'PROCESSING',
+    deposit_evidence: ['1Click reports a deposited amount of 100']
+  });
+  assert.equal(lifecycle[0].status, 'REPORTED');
+  assert.equal(lifecycle[0].basis, 'SOURCE_REPORTED');
+});
+
+test('analyzeEvidence defaults to the conservative user-supplied assurance', () => {
+  const analysis = analyzeEvidence({
+    reported_status: 'REFUNDED',
+    refund_evidence: ['user says refunded']
+  });
+  assert.equal(analysis.classification, 'REFUND_REPORTED');
+  assert.equal(analysis.first_unresolved_step, 'refund');
+  assert.equal(analysis.lifecycle[4].status, 'REPORTED');
+  assert.equal(analysis.lifecycle[4].basis, 'SUPPLIED');
 });
