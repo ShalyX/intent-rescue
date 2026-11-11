@@ -3,7 +3,7 @@
 **Review date:** 11 November 2026
 **Base:** origin/main at b275b79
 **Initial branch head reviewed:** dd7046a
-**Current state:** review fixes are local; not merged.
+**Current state:** PR #2 merged into `main` on 11 November 2026 as `35b8dd09d0ab4d5b90d75da44eaef91afd643f7f`; the merged production deployment is READY.
 
 ## Review conclusion
 
@@ -34,15 +34,27 @@ The initial branch was **not safe to merge unchanged**. Review found inconsisten
 
 ## Production security configuration
 
-The Vercel Firewall is now enabled for the OSIALI project. An active custom rule matches GET /api/incident and limits each IP to **30 requests per 60-second fixed window**, denying excess requests. The active configuration was read back and confirmed valid. This protects the unauthenticated read-only proxy from simple per-IP request bursts; it is not a substitute for abuse monitoring or a broader bot strategy.
+The Vercel Firewall is enabled. A post-merge `vercel firewall rules list --json` readback confirms one live, valid custom rule (`rule_rate_limit_public_osiali_incident_lookup_pvEvmi`) matching GET `/api/incident`, limited to **30 requests per 60-second fixed window per IP**, with deny on excess. The readback reports no draft changes. This protects the unauthenticated read-only proxy from simple per-IP request bursts; it is not a substitute for abuse monitoring or a broader bot strategy.
 
-## Remaining gates - deliberately not claimed complete
+## Merged production-candidate audit — 11 November 2026
 
-- This branch has **not** been merged.
-- The complete audit against the merged production candidate has **not** been run.
-- The production deployment has **not** been verified as part of this branch review.
+- PR #2 merged successfully as `35b8dd09d0ab4d5b90d75da44eaef91afd643f7f`.
+- Vercel production deployment `dpl_Ap1pgCzVMeMWJzQHvrcf6QD4C57t` reached READY and assigned the canonical `osiali.vercel.app` alias.
+- Production HTTP smoke checks: `/` and `/app/` both returned HTTP 200.
+- Browser F1/F2/F3 fixture flows rendered FAILED_UNRESOLVED, REFUND_REPORTED and DELIVERY_REPORTED respectively. The F3 source-reported success was not promoted to COMPLETE.
+- Live F2 1Click lookup returned HTTP 200. The current response reported REFUNDED / NO_LIQUIDITY; the export classified it REFUND_REPORTED with REFUND as the first unresolved step and SNAPSHOT_ONLY verification.
+- The live F2 JSON export downloaded successfully and was inspected. It preserves OFFICIAL_STATUS_SNAPSHOT provenance, source update time, provider details and unassigned transaction roles without claiming independent chain verification.
+- Wrong-memo UI regression returned HTTP 422, cleared the prior case and exposed the guided support form; no historical record was substituted.
+- An explicit F1 NEAR Explorer URL returned HTTP 200 as a public_explorer_snapshot.
+- Browser viewport checks at 320, 360, 390, 768 and 1024 px showed no horizontal overflow. Normal successful browser flows had no console errors; the deliberate wrong-memo request produced the expected HTTP 422 resource error, not a JavaScript runtime exception.
+
+## Remaining gates — deliberately not claimed complete
+
 - The empty-state case-navigation affordance remains a small UX follow-up.
 - No fresh full screen-reader certification or trademark clearance is claimed.
 - Provider and Explorer snapshots remain source-reported. The application does not claim independent NEAR private-settlement finality or wallet-balance confirmation.
+- The firewall rule is a basic per-IP throttle, not a complete abuse-monitoring or bot-mitigation strategy.
+- Vercel's production build used Node 26 because `package.json` allows `>=22`, overriding the project's configured Node 24.x setting. The build and smoke tests passed; pinning the engine for reproducible builds is a non-blocking follow-up.
+- NEAR Hackathon submission evidence and any adoption or impact claims remain separate and are not implied by deployment readiness.
 
-**Decision:** code-level findings identified in this review are corrected and PR #2 is open for review. Do not merge until required checks are green; do not mark OSIALI product-ready. The merged production-candidate audit remains a separate gate.
+**Decision:** PR #2 is merged and the production deployment has passed the recorded smoke and browser checks. The code-level findings are resolved, but OSIALI is **not** marked fully product-ready; the remaining gates above still apply.
