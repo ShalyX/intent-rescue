@@ -2,35 +2,39 @@ import { classifyIncident } from './classifier.mjs';
 import { buildLifecycle } from './lifecycle.mjs';
 import { makeEvidenceBundle } from './evidence-bundle.mjs';
 
-const PROVISIONAL_OUTCOMES = {
+const REPORTED_OUTCOMES = {
   REFUND_VERIFIED: {
     classification: 'REFUND_REPORTED',
     first_unresolved_step: 'refund',
-    safe_action: 'User-supplied evidence reports a refund. Confirm the refund transaction and returned funds in your wallet before starting another swap. Do not retry on the basis of this report alone.'
+    safe_action: 'The source reports a refund. Confirm the refund transaction and verify returned funds in your wallet before starting another swap. Do not retry on the basis of a provider or Explorer snapshot alone.'
   },
   COMPLETE: {
     classification: 'DELIVERY_REPORTED',
     first_unresolved_step: 'destination_delivery',
-    safe_action: 'User-supplied evidence reports destination delivery. Verify the destination transaction and confirm receipt in your wallet before treating the transfer as complete.'
+    safe_action: 'The source reports destination delivery. Verify the destination transaction and confirm receipt in your wallet before treating the transfer as complete.'
   },
   INCOMPLETE_REFUNDED: {
     classification: 'INCOMPLETE_REFUND_REPORTED',
     first_unresolved_step: 'refund',
-    safe_action: 'User-supplied evidence reports a refund for an incomplete deposit. Verify the refund transaction and confirm returned funds before starting another swap.'
+    safe_action: 'The source reports a refund for an incomplete deposit. Verify the refund transaction and confirm returned funds before starting another swap.'
   }
 };
 
 function applyAssurance(analysis, assurance) {
-  if (assurance !== 'USER_SUPPLIED_UNVERIFIED') return analysis;
-  const provisional = PROVISIONAL_OUTCOMES[analysis.classification];
+  const reported = REPORTED_OUTCOMES[analysis.classification];
+  if (assurance !== 'USER_SUPPLIED_UNVERIFIED' && assurance !== 'CAPTURED_PUBLIC_SNAPSHOT'
+      && assurance !== 'PUBLIC_EXPLORER_SNAPSHOT' && assurance !== 'OFFICIAL_STATUS_SNAPSHOT') return analysis;
+  const isUserSupplied = assurance === 'USER_SUPPLIED_UNVERIFIED';
   return {
     ...analysis,
-    ...(provisional || {}),
-    confidence: provisional ? 'LOW' : analysis.confidence,
+    ...(reported || {}),
+    confidence: reported ? (isUserSupplied ? 'LOW' : 'MEDIUM') : analysis.confidence,
     lifecycle: analysis.lifecycle.map(stage => ({
       ...stage,
       status: stage.status === 'VERIFIED' ? 'REPORTED' : stage.status,
-      basis: stage.basis === 'OBSERVED' || stage.basis === 'SOURCE_REPORTED' ? 'SUPPLIED' : stage.basis
+      basis: stage.basis === 'OBSERVED' || stage.basis === 'SOURCE_REPORTED'
+        ? (isUserSupplied ? 'SUPPLIED' : 'SOURCE_REPORTED')
+        : stage.basis
     }))
   };
 }
