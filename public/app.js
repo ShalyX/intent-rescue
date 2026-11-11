@@ -147,6 +147,7 @@ function renderCase(evidence) {
   document.querySelector('#canvas-provenance').textContent = `${evidenceAssurance === 'OFFICIAL_STATUS_SNAPSHOT' ? '1Click status response · not chain verified' : evidenceAssurance === 'PUBLIC_EXPLORER_SNAPSHOT' ? 'Explorer page snapshot · not chain verified' : evidenceAssurance === 'CAPTURED_PUBLIC_SNAPSHOT' ? 'Historical public evidence snapshot' : 'Unverified user input'} · ${formatTimestamp(evidence.captured_at)}`;
   document.querySelector('#file-source').textContent = evidence.source_url || 'No source URL supplied';
   document.querySelector('#file-captured').textContent = evidence.captured_at ? `Captured ${formatTimestamp(evidence.captured_at)}` : 'No capture time supplied';
+  if (!currentEvidence) document.querySelector('#canvas-provenance').textContent='No evidence loaded';
   const link = document.querySelector('#source-link');
   let safeSource = false;
   try { const url = new URL(evidence.source_url); safeSource = url.protocol === 'https:' && url.hostname === 'explorer.near-intents.org'
