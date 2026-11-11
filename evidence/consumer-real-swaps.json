@@ -1,0 +1,92 @@
+[
+  {
+    "id": "C02",
+    "http": 200,
+    "reported": "FAILED",
+    "classification": "FAILED_UNRESOLVED",
+    "expectedHistorical": "FAILED_UNRESOLVED",
+    "url": "https://explorer.near-intents.org/transactions/221c8aa1a8ac320aa58174f9ff57d0fbc36316d7dc469f630e05e1b34f9e4d80",
+    "capturedAt": "2026-11-10T19:38:21.489Z"
+  },
+  {
+    "id": "C01",
+    "http": 200,
+    "reported": "FAILED",
+    "classification": "FAILED_UNRESOLVED",
+    "expectedHistorical": "FAILED_UNRESOLVED",
+    "url": "https://explorer.near-intents.org/transactions/Lh8noxsXRWxJLg6hsxYRVuYD5iiWSNz9Bc",
+    "capturedAt": "2026-11-10T19:38:21.670Z"
+  },
+  {
+    "id": "C03",
+    "http": 200,
+    "reported": "FAILED",
+    "classification": "FAILED_UNRESOLVED",
+    "expectedHistorical": "FAILED_UNRESOLVED",
+    "url": "https://explorer.near-intents.org/transactions/6475adb530651d8a41a370e581e9d19e382da6833b9360abd520cd0782f92b24",
+    "capturedAt": "2026-11-10T19:38:24.741Z"
+  },
+  {
+    "id": "C04",
+    "http": 200,
+    "reported": "REFUNDED",
+    "classification": "REFUND_VERIFIED",
+    "expectedHistorical": "REFUND_VERIFIED",
+    "url": "https://explorer.near-intents.org/transactions/0x2f3003AC7A8C8E54eb04abbA1Fd7cA5e4e1a5a32",
+    "capturedAt": "2026-11-10T19:38:25.237Z"
+  },
+  {
+    "id": "C06",
+    "http": 200,
+    "reported": "REFUNDED",
+    "classification": "REFUND_VERIFIED",
+    "expectedHistorical": "REFUND_VERIFIED",
+    "url": "https://explorer.near-intents.org/transactions/0x3EB6c51559B3761729119493C7033fF747275BC1",
+    "capturedAt": "2026-11-10T19:38:25.276Z"
+  },
+  {
+    "id": "C05",
+    "http": 200,
+    "reported": "REFUNDED",
+    "classification": "REFUND_VERIFIED",
+    "expectedHistorical": "REFUND_VERIFIED",
+    "url": "https://explorer.near-intents.org/transactions/XmTZSEyEme5cQM1tsVjPDwLDxoBCSWpFyD",
+    "capturedAt": "2026-11-10T19:38:25.564Z"
+  },
+  {
+    "id": "C07",
+    "http": 200,
+    "reported": "REFUNDED",
+    "classification": "REFUND_VERIFIED",
+    "expectedHistorical": "REFUND_VERIFIED",
+    "url": "https://explorer.near-intents.org/transactions/4b9f982928955f1b140749894825b84c5f3e1ad7292d11bb61d5ee58cc4c0562?referral=trezu",
+    "capturedAt": "2026-11-10T19:38:25.963Z"
+  },
+  {
+    "id": "C08",
+    "http": 200,
+    "reported": "SUCCESS",
+    "classification": "COMPLETE",
+    "expectedHistorical": "COMPLETE",
+    "url": "https://explorer.near-intents.org/transactions/6c57a1c578be1a6d219f20ba8e182408e3daf47065441179b87d0d6602f038e1",
+    "capturedAt": "2026-11-10T19:38:26.032Z"
+  },
+  {
+    "id": "C09",
+    "http": 200,
+    "reported": "SUCCESS",
+    "classification": "COMPLETE",
+    "expectedHistorical": "COMPLETE",
+    "url": "https://explorer.near-intents.org/transactions/4333daacf55c30f5c4baab649899bf8be280051ff90245952f702df612d7a73c",
+    "capturedAt": "2026-11-10T19:38:27.840Z"
+  },
+  {
+    "id": "C10",
+    "http": 200,
+    "reported": "SUCCESS",
+    "classification": "COMPLETE",
+    "expectedHistorical": "COMPLETE",
+    "url": "https://explorer.near-intents.org/transactions/c90a6a3eaa0b2bbdf79d56f734d6fc68c854c9e479377d0ef051b86b65c9b9d3",
+    "capturedAt": "2026-11-10T19:38:28.295Z"
+  }
+]

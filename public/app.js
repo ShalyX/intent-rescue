@@ -1,5 +1,5 @@
 import { analyzeEvidence, exportBundle } from '/src/analyze.mjs';
-import { findCapturedCase, parseEvidenceEnvelope } from '/src/intake.mjs';
+import { findCapturedCase, parseEvidenceEnvelope, validTransactionHash } from '/src/intake.mjs';
 
 const evidenceInput = document.querySelector('#evidence');
 const result = document.querySelector('#result');
@@ -8,7 +8,7 @@ const inputStatus = document.querySelector('#input-status');
 const fixtureButtons = [...document.querySelectorAll('[data-fixture]')];
 let currentEvidence = null;
 let evidenceAssurance = 'CAPTURED_PUBLIC_SNAPSHOT';
-const isSourceSnapshot = () => evidenceAssurance === 'CAPTURED_PUBLIC_SNAPSHOT' || evidenceAssurance === 'PUBLIC_EXPLORER_SNAPSHOT';
+const isSourceSnapshot = () => evidenceAssurance === 'CAPTURED_PUBLIC_SNAPSHOT' || evidenceAssurance === 'PUBLIC_EXPLORER_SNAPSHOT' || evidenceAssurance === 'OFFICIAL_STATUS_SNAPSHOT';
 const demoFiles = ['f1-failed.json','f2-refunded.json','f3-success.json'];
 const fixtureCache = new Map();
 async function getFixture(name) {
@@ -32,37 +32,28 @@ document.querySelector('#identifier-form').addEventListener('submit', async even
     const captures = (await Promise.allSettled(demoFiles.map(getFixture))).filter(item => item.status === 'fulfilled').map(item => item.value);
     if (revision !== investigationRevision) return;
     const match = findCapturedCase(input, captures);
-    if (match.kind === 'captured') {
-      pendingIdentifier = null;
-      evidenceInput.value = JSON.stringify(match.evidence, null, 2);
-      evidenceAssurance = 'CAPTURED_PUBLIC_SNAPSHOT';
-      selectFixture(fixtureButtons.find(b => b.dataset.fixture === demoFiles.find(name => fixtureCache.get(name) === match.evidence)) ?? null);
-      traceCurrent();
-      return;
-    }
-    if (match.kind !== 'uncaptured') {
-      clearView();
-      inputStatus.textContent = match.reason;
-      return;
-    }
+    if (match.kind === 'invalid' || match.kind === 'ambiguous') { clearView(); inputStatus.textContent = match.reason; return; }
     clearView();
     pendingIdentifier = input;
     inputStatus.textContent = 'Reading public Explorer page, without partner credentials…';
-    const response = await fetch('/api/incident?reference=' + encodeURIComponent(input), {cache: 'no-store'});
+    const response = await fetch('/api/incident?reference=' + encodeURIComponent(input) + '&memo=' + encodeURIComponent(document.querySelector('#deposit-memo')?.value || ''), {cache: 'no-store'});
     const payload = await response.json();
     if (revision !== investigationRevision) return;
-    if (!response.ok || payload.kind !== 'public_explorer_snapshot' || !payload.evidence) {
+    if (!response.ok || !['public_explorer_snapshot','official_status_snapshot'].includes(payload.kind) || !payload.evidence) {
+      if (match.kind === 'captured') { pendingIdentifier=null; evidenceInput.value=JSON.stringify(match.evidence); evidenceAssurance='CAPTURED_PUBLIC_SNAPSHOT'; traceCurrent(); inputStatus.textContent='Live lookup unavailable. Showing historical capture from '+match.evidence.captured_at; return; }
       clearView();
-      inputStatus.textContent = (payload.error || 'Public Explorer lookup unavailable.') + ' Paste matching official status/evidence JSON below to continue provisionally.';
-      document.querySelector('.evidence-input').open = true;
+      document.querySelector('#guided-reference').value=input;
+      document.querySelector('#guided-report').open=true;
+      inputStatus.textContent = (payload.error || 'Public Explorer lookup unavailable.') + ' Tell us what you know below; no JSON needed.';
+
       return;
     }
     pendingIdentifier = null;
     evidenceInput.value = JSON.stringify(payload.evidence, null, 2);
-    evidenceAssurance = 'PUBLIC_EXPLORER_SNAPSHOT';
+    evidenceAssurance = payload.kind === 'official_status_snapshot' ? 'OFFICIAL_STATUS_SNAPSHOT' : 'PUBLIC_EXPLORER_SNAPSHOT';
     selectFixture(null);
     traceCurrent();
-  } catch (err) { if (revision !== investigationRevision) return; clearView(); inputStatus.textContent = 'Identifier lookup unavailable: ' + err.message; }
+  } catch (err) { if (revision !== investigationRevision) return; clearView(); document.querySelector('#guided-reference').value=input; document.querySelector('#guided-report').open=true; inputStatus.textContent='Lookup is unavailable. You can still build a support case below.'; }
 });
 function clearView() {
   currentEvidence = null;
@@ -80,6 +71,7 @@ for (const button of fixtureButtons) {
   });
 }
 evidenceInput.addEventListener('input', () => { ++investigationRevision; evidenceAssurance = 'USER_SUPPLIED_UNVERIFIED'; selectFixture(null); });
+document.querySelectorAll('#guided-form input').forEach(field=>field.addEventListener('input',()=>field.setCustomValidity('')));
 document.querySelector('#trace').addEventListener('click', traceCurrent);
 document.querySelector('#export').addEventListener('click', exportCurrentBundle);
 
@@ -119,7 +111,7 @@ function traceCurrent() {
     renderAnalysis(analysis);
     [result, document.querySelector('#protocol-body'), document.querySelector('#case-file')].forEach(el => el.classList.remove('hidden'));
     emptyState.classList.add('hidden');
-    inputStatus.textContent = evidenceAssurance === 'PUBLIC_EXPLORER_SNAPSHOT' ? 'Public Explorer page snapshot · Not independently verified on-chain' : evidenceAssurance === 'CAPTURED_PUBLIC_SNAPSHOT' ? `Case ${evidence.id || 'captured'} traced · Historical public snapshot` : 'Provisional analysis · User-supplied evidence is not independently verified';
+    inputStatus.textContent = evidenceAssurance === 'OFFICIAL_STATUS_SNAPSHOT' ? 'Current 1Click status response · Not independently verified on-chain' : evidenceAssurance === 'PUBLIC_EXPLORER_SNAPSHOT' ? 'Public Explorer page snapshot · Not independently verified on-chain' : evidenceAssurance === 'CAPTURED_PUBLIC_SNAPSHOT' ? `Case ${evidence.id || 'captured'} traced · Historical public snapshot` : 'Provisional analysis · User-supplied evidence is not independently verified';
   } catch (error) {
     currentEvidence = null;
     selectFixture(null);
@@ -130,7 +122,7 @@ function traceCurrent() {
     document.querySelector('#confidence').textContent = '';
     document.querySelector('#investigation').removeAttribute('data-kind');
     document.querySelector('.recovery-rail').removeAttribute('data-kind');
-    inputStatus.textContent = `Invalid evidence JSON: ${error.message}`;
+    inputStatus.textContent = `Could not build case: ${error.message}`;
   }
 }
 function exportCurrentBundle() {
@@ -150,9 +142,9 @@ function renderCase(evidence) {
   document.querySelector('#route-source').textContent = evidence.source_asset || '—';
   document.querySelector('#route-destination').textContent = evidence.destination_asset || '—';
   document.querySelector('#reported-status').textContent = statusLabel(evidence.reported_status || 'UNKNOWN');
-  document.querySelector('#case-basis').textContent = currentEvidence ? (isSourceSnapshot() ? 'Public Explorer snapshot / not on-chain verified' : 'User-supplied / unverified') : 'Awaiting valid input';
+  document.querySelector('#case-basis').textContent = currentEvidence ? (isSourceSnapshot() ? 'Source response / not on-chain verified' : 'User-supplied / unverified') : 'Awaiting valid input';
   document.querySelector('#captured-at').textContent = formatTimestamp(evidence.captured_at);
-  document.querySelector('#canvas-provenance').textContent = `${evidenceAssurance === 'PUBLIC_EXPLORER_SNAPSHOT' ? 'Explorer page snapshot · not chain verified' : evidenceAssurance === 'CAPTURED_PUBLIC_SNAPSHOT' ? 'Historical public evidence snapshot' : 'Unverified user input'} · ${formatTimestamp(evidence.captured_at)}`;
+  document.querySelector('#canvas-provenance').textContent = `${evidenceAssurance === 'OFFICIAL_STATUS_SNAPSHOT' ? '1Click status response · not chain verified' : evidenceAssurance === 'PUBLIC_EXPLORER_SNAPSHOT' ? 'Explorer page snapshot · not chain verified' : evidenceAssurance === 'CAPTURED_PUBLIC_SNAPSHOT' ? 'Historical public evidence snapshot' : 'Unverified user input'} · ${formatTimestamp(evidence.captured_at)}`;
   document.querySelector('#file-source').textContent = evidence.source_url || 'No source URL supplied';
   document.querySelector('#file-captured').textContent = evidence.captured_at ? `Captured ${formatTimestamp(evidence.captured_at)}` : 'No capture time supplied';
   const link = document.querySelector('#source-link');
@@ -171,11 +163,12 @@ function renderAnalysis(analysis) {
   classification.textContent = statusLabel(analysis.classification);
   classification.dataset.kind = kind;
   document.querySelector('#protocol-classification').textContent = statusLabel(analysis.classification);
-  document.querySelector('#confidence').textContent = evidenceAssurance === 'CAPTURED_PUBLIC_SNAPSHOT' ? `${statusLabel(analysis.confidence)} / snapshot-based` : 'Provisional / unverified input';
+  document.querySelector('#confidence').textContent = isSourceSnapshot() ? `${statusLabel(analysis.confidence)} / source-reported` : 'Provisional / unverified input';
   document.querySelector('#unresolved').textContent = analysis.first_unresolved_step
     ? statusLabel(analysis.first_unresolved_step)
     : analysis.classification === 'COMPLETE' ? 'Transfer complete' : 'No unresolved recovery step';
   document.querySelector('#safe-action').textContent = isSourceSnapshot() ? analysis.safe_action : 'Unverified evidence. Confirm original transactions and any refund/destination record before taking action. Do not retry on the basis of this report alone.';
+  if(evidenceAssurance==='OFFICIAL_STATUS_SNAPSHOT'&&analysis.classification==='REFUND_VERIFIED')document.querySelector('#safe-action').textContent='1Click reports a refund. Confirm it in your wallet before starting another swap.';
   document.querySelector('#predicates').replaceChildren(...analysis.evidence_predicates.map(predicate => {
     const item = document.createElement('code'); item.textContent = predicate; return item;
   }));
@@ -273,6 +266,20 @@ function formatTimestamp(value) { if (!value) return '—'; const date = new Dat
 function escapeHtml(value) { return String(value).replace(/[&<>'"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c])); }
 const demoMap = { F1:'f1-failed.json', F2:'f2-refunded.json', F3:'f3-success.json' };
 const requestedDemo = new URLSearchParams(window.location.search).get('demo');
-const selectedDemo = demoMap[requestedDemo] ? requestedDemo : 'F1';
-loadFixture(demoMap[selectedDemo], fixtureButtons[{F1:0,F2:1,F3:2}[selectedDemo]])
-  .then(loaded => { if (loaded) traceCurrent(); }).catch(error => { inputStatus.textContent = `Case load failed: ${error.message}`; });
+if (demoMap[requestedDemo]) {
+ loadFixture(demoMap[requestedDemo], fixtureButtons[{F1:0,F2:1,F3:2}[requestedDemo]])
+ .then(loaded=>{if(loaded)traceCurrent();}).catch(()=>{clearView();inputStatus.textContent='Example unavailable. You can investigate your own swap.';});
+} else {clearView();inputStatus.textContent='Paste the Explorer link or deposit address from your swap receipt. Or create a case with the form below.';}
+
+const guided=document.querySelector('#guided-form');
+guided?.addEventListener('submit',event=>{
+ event.preventDefault();++investigationRevision;
+ const value=id=>document.querySelector('#'+id).value.trim();
+ const reference=value('guided-reference');
+ for(const id of ['guided-source-tx','guided-destination-tx','guided-refund-tx']){const field=document.querySelector('#'+id);field.setCustomValidity(field.value.trim()&&!validTransactionHash(field.value.trim())?'Paste a transaction hash from your wallet receipt, or leave this blank.':'');if(!field.checkValidity())field.closest('details').open=true;if(!field.reportValidity())return;}
+ const evidence={deposit_memo:document.querySelector('#deposit-memo')?.value.trim()||null,id:'User-report',searched_reference:reference,reported_status:value('guided-status'),user_notes:value('guided-notes'),captured_at:new Date().toISOString()};
+ for(const [field,id] of [['origin_tx_hashes','guided-source-tx'],['destination_tx_hashes','guided-destination-tx'],['refund_tx_hashes','guided-refund-tx']]){const text=value(id);evidence[field]=text?[text]:[];}
+ if(value('guided-deposit'))evidence.deposit_address=value('guided-deposit');
+ if(value('guided-chain'))evidence.source_chain=value('guided-chain');
+ evidenceInput.value=JSON.stringify(evidence);evidenceAssurance='USER_SUPPLIED_UNVERIFIED';selectFixture(null);traceCurrent();
+});

@@ -2,249 +2,285 @@ TAP version 13
 # Subtest: F1 failed/no-refund becomes FAILED_UNRESOLVED at destination delivery
 ok 1 - F1 failed/no-refund becomes FAILED_UNRESOLVED at destination delivery
   ---
-  duration_ms: 5.5791
+  duration_ms: 6.6733
   type: 'test'
   ...
 # Subtest: F2 refunded becomes REFUND_VERIFIED
 ok 2 - F2 refunded becomes REFUND_VERIFIED
   ---
-  duration_ms: 1.0027
+  duration_ms: 3.1331
   type: 'test'
   ...
 # Subtest: F3 successful becomes COMPLETE
 ok 3 - F3 successful becomes COMPLETE
   ---
-  duration_ms: 0.8346
+  duration_ms: 2.7251
   type: 'test'
   ...
 # Subtest: destination plus refund is treated as conflicted evidence
 ok 4 - destination plus refund is treated as conflicted evidence
   ---
-  duration_ms: 0.6826
+  duration_ms: 0.787
   type: 'test'
   ...
 # Subtest: reported refund without refund tx stays insufficient
 ok 5 - reported refund without refund tx stays insufficient
   ---
-  duration_ms: 1.7026
+  duration_ms: 1.4224
   type: 'test'
   ...
 # Subtest: pending deposit with no deposit evidence asks for source verification
 ok 6 - pending deposit with no deposit evidence asks for source verification
   ---
-  duration_ms: 0.6489
+  duration_ms: 0.5193
   type: 'test'
   ...
 # Subtest: empty evidence stays insufficient and low-confidence
 ok 7 - empty evidence stays insufficient and low-confidence
   ---
-  duration_ms: 0.7281
+  duration_ms: 0.6891
   type: 'test'
   ...
 # Subtest: reported success without concrete destination evidence does not become COMPLETE
 ok 8 - reported success without concrete destination evidence does not become COMPLETE
   ---
-  duration_ms: 0.6007
+  duration_ms: 0.4502
   type: 'test'
   ...
 # Subtest: reported refund without concrete refund evidence does not become REFUND_VERIFIED
 ok 9 - reported refund without concrete refund evidence does not become REFUND_VERIFIED
   ---
-  duration_ms: 3.0094
+  duration_ms: 0.5951
   type: 'test'
   ...
 # Subtest: direct Explorer observations count as concrete terminal evidence
 ok 10 - direct Explorer observations count as concrete terminal evidence
   ---
-  duration_ms: 1.3732
+  duration_ms: 6.8466
+  type: 'test'
+  ...
+# Subtest: API status must match requested deposit and supports active stages
+ok 11 - API status must match requested deposit and supports active stages
+  ---
+  duration_ms: 32.91
+  type: 'test'
+  ...
+# Subtest: guided unknown report exports its reference and notes without claiming observation
+ok 12 - guided unknown report exports its reference and notes without claiming observation
+  ---
+  duration_ms: 4.3665
+  type: 'test'
+  ...
+# Subtest: memo-specific results reject missing or different quote memos
+ok 13 - memo-specific results reject missing or different quote memos
+  ---
+  duration_ms: 0.7984
   type: 'test'
   ...
 # Subtest: public corpus contains at least 10 unique real-world cases
-ok 11 - public corpus contains at least 10 unique real-world cases
+ok 14 - public corpus contains at least 10 unique real-world cases
   ---
-  duration_ms: 3.4868
+  duration_ms: 12.2389
   type: 'test'
   ...
 # Subtest: public corpus covers failed, refunded and complete outcomes
-ok 12 - public corpus covers failed, refunded and complete outcomes
+ok 15 - public corpus covers failed, refunded and complete outcomes
   ---
-  duration_ms: 0.4682
+  duration_ms: 0.5047
   type: 'test'
   ...
 # Subtest: every corpus case is source-attributed and capture-dated
-ok 13 - every corpus case is source-attributed and capture-dated
+ok 16 - every corpus case is source-attributed and capture-dated
   ---
-  duration_ms: 0.8316
+  duration_ms: 2.5144
   type: 'test'
   ...
 # Subtest: public F1 source transaction gets an explicitly identified Litecoin explorer link
-ok 14 - public F1 source transaction gets an explicitly identified Litecoin explorer link
+ok 17 - public F1 source transaction gets an explicitly identified Litecoin explorer link
   ---
-  duration_ms: 13.3727
+  duration_ms: 17.1043
   type: 'test'
   ...
 # Subtest: explicit source/destination/refund chain produces well-formed, chain-specific links
-ok 15 - explicit source/destination/refund chain produces well-formed, chain-specific links
+ok 18 - explicit source/destination/refund chain produces well-formed, chain-specific links
   ---
-  duration_ms: 0.8567
+  duration_ms: 6.8138
   type: 'test'
   ...
 # Subtest: no invented links for ambiguous assets, unknown chains, malformed hashes or untrusted urls
-ok 16 - no invented links for ambiguous assets, unknown chains, malformed hashes or untrusted urls
+ok 19 - no invented links for ambiguous assets, unknown chains, malformed hashes or untrusted urls
   ---
-  duration_ms: 1.8614
+  duration_ms: 3.2911
   type: 'test'
   ...
 # Subtest: F2 frozen refund evidence produces Base source and refund links without inventing delivery
-ok 17 - F2 frozen refund evidence produces Base source and refund links without inventing delivery
+ok 20 - F2 frozen refund evidence produces Base source and refund links without inventing delivery
   ---
-  duration_ms: 2.0514
+  duration_ms: 5.7121
   type: 'test'
   ...
 # Subtest: matches deposit address, correlation ID and source/destination identifiers
-ok 18 - matches deposit address, correlation ID and source/destination identifiers
+ok 21 - matches deposit address, correlation ID and source/destination identifiers
   ---
-  duration_ms: 5.4221
+  duration_ms: 5.5985
   type: 'test'
   ...
 # Subtest: normalizes official status payload without inventing refund evidence
-ok 19 - normalizes official status payload without inventing refund evidence
+ok 22 - normalizes official status payload without inventing refund evidence
   ---
-  duration_ms: 2.3787
+  duration_ms: 7.5062
   type: 'test'
   ...
 # Subtest: rejects irrelevant JSON
-ok 20 - rejects irrelevant JSON
+ok 23 - rejects irrelevant JSON
   ---
-  duration_ms: 2.8125
+  duration_ms: 1.4075
   type: 'test'
   ...
 # Subtest: resolver accepts a source explorer URL including tracking query
-ok 21 - resolver accepts a source explorer URL including tracking query
+ok 24 - resolver accepts a source explorer URL including tracking query
   ---
-  duration_ms: 17.1872
+  duration_ms: 7.9267
   type: 'test'
   ...
 # Subtest: resolver matches known source and NEAR execution identifiers
-ok 22 - resolver matches known source and NEAR execution identifiers
+ok 25 - resolver matches known source and NEAR execution identifiers
   ---
-  duration_ms: 6.2329
+  duration_ms: 5.4841
   type: 'test'
   ...
 # Subtest: unrecognized hash never receives invented classification
-ok 23 - unrecognized hash never receives invented classification
+ok 26 - unrecognized hash never receives invented classification
   ---
-  duration_ms: 0.8405
+  duration_ms: 0.8731
   type: 'test'
   ...
 # Subtest: rejects arbitrary URLs and unsupported domains
-ok 24 - rejects arbitrary URLs and unsupported domains
+ok 27 - rejects arbitrary URLs and unsupported domains
   ---
-  duration_ms: 0.3541
+  duration_ms: 0.4171
   type: 'test'
   ...
 # Subtest: rejects ambiguous identifiers rather than choosing a match
-ok 25 - rejects ambiguous identifiers rather than choosing a match
+ok 28 - rejects ambiguous identifiers rather than choosing a match
   ---
-  duration_ms: 1.0155
+  duration_ms: 1.1447
   type: 'test'
   ...
 # Subtest: manual evidence requires a recognizable object
-ok 26 - manual evidence requires a recognizable object
+ok 29 - manual evidence requires a recognizable object
   ---
-  duration_ms: 10.5495
+  duration_ms: 1.861
+  type: 'test'
+  ...
+# Subtest: refund flag alone is not proof: reported refund plus verified flag, but no refund evidence
+ok 30 - refund flag alone is not proof: reported refund plus verified flag, but no refund evidence
+  ---
+  duration_ms: 3.4692
+  type: 'test'
+  ...
+# Subtest: refund flag alone is not proof: verified flag alone, without a reported outcome or refund evidence
+ok 31 - refund flag alone is not proof: verified flag alone, without a reported outcome or refund evidence
+  ---
+  duration_ms: 0.9225
+  type: 'test'
+  ...
+# Subtest: exported case keeps diagnosis and refund lifecycle consistent without refund evidence
+ok 32 - exported case keeps diagnosis and refund lifecycle consistent without refund evidence
+  ---
+  duration_ms: 7.4044
   type: 'test'
   ...
 # Subtest: public HTML failed-case reconstruction stays source-attributed
-ok 27 - public HTML failed-case reconstruction stays source-attributed
+ok 33 - public HTML failed-case reconstruction stays source-attributed
   ---
-  duration_ms: 12.3446
+  duration_ms: 14.3127
   type: 'test'
   ...
 # Subtest: public refund and withdrawal require exact visible outcomes
-ok 28 - public refund and withdrawal require exact visible outcomes
+ok 34 - public refund and withdrawal require exact visible outcomes
   ---
-  duration_ms: 4.8369
+  duration_ms: 4.2555
   type: 'test'
   ...
 # Subtest: ambiguous or forged status fails closed
-ok 29 - ambiguous or forged status fails closed
+ok 35 - ambiguous or forged status fails closed
   ---
-  duration_ms: 1.9909
+  duration_ms: 2.0758
   type: 'test'
   ...
 # Subtest: API does not proxy non-Explorer domains or accept writes
-ok 30 - API does not proxy non-Explorer domains or accept writes
+ok 36 - API does not proxy non-Explorer domains or accept writes
   ---
-  duration_ms: 1.4543
+  duration_ms: 1.8275
   type: 'test'
   ...
 # Subtest: explicit public source-chain transaction link preserves chain for F1-type evidence
-ok 31 - explicit public source-chain transaction link preserves chain for F1-type evidence
+ok 37 - explicit public source-chain transaction link preserves chain for F1-type evidence
   ---
-  duration_ms: 3.8894
+  duration_ms: 4.4694
   type: 'test'
   ...
 # Subtest: malformed terminal references and typed evidence fail intake
-ok 32 - malformed terminal references and typed evidence fail intake
+ok 38 - malformed terminal references and typed evidence fail intake
   ---
-  duration_ms: 8.8836
+  duration_ms: 9.2669
   type: 'test'
   ...
 # Subtest: case-sensitive references never match a case-mutated identifier
-ok 33 - case-sensitive references never match a case-mutated identifier
+ok 39 - case-sensitive references never match a case-mutated identifier
   ---
-  duration_ms: 1.2274
+  duration_ms: 2.4956
   type: 'test'
   ...
 # Subtest: manual case export preserves correlation and chain context and stays reported
-ok 34 - manual case export preserves correlation and chain context and stays reported
+ok 40 - manual case export preserves correlation and chain context and stays reported
   ---
-  duration_ms: 3.6024
+  duration_ms: 6.9446
   type: 'test'
   ...
 # Subtest: F1 vertical slice reconstructs the locked hero story
-ok 35 - F1 vertical slice reconstructs the locked hero story
+ok 41 - F1 vertical slice reconstructs the locked hero story
   ---
-  duration_ms: 4.7303
+  duration_ms: 4.6918
   type: 'test'
   ...
 # Subtest: export bundle carries source, diagnosis, lifecycle and identifiers
-ok 36 - export bundle carries source, diagnosis, lifecycle and identifiers
+ok 42 - export bundle carries source, diagnosis, lifecycle and identifiers
   ---
-  duration_ms: 3.3884
+  duration_ms: 4.8081
   type: 'test'
   ...
 # Subtest: F1 exposes provenance basis and exact advice predicates
-ok 37 - F1 exposes provenance basis and exact advice predicates
+ok 43 - F1 exposes provenance basis and exact advice predicates
   ---
-  duration_ms: 0.7763
+  duration_ms: 1.8007
   type: 'test'
   ...
 # Subtest: terminal verified flags cannot promote lifecycle or export without concrete evidence
-ok 38 - terminal verified flags cannot promote lifecycle or export without concrete evidence
+ok 44 - terminal verified flags cannot promote lifecycle or export without concrete evidence
   ---
-  duration_ms: 0.8609
+  duration_ms: 1.5265
   type: 'test'
   ...
 # Subtest: terminal lifecycle stages become verified only when matching concrete evidence exists
-ok 39 - terminal lifecycle stages become verified only when matching concrete evidence exists
+ok 45 - terminal lifecycle stages become verified only when matching concrete evidence exists
   ---
-  duration_ms: 0.7594
+  duration_ms: 1.2047
   type: 'test'
   ...
 # Subtest: contrast fixtures contain no placeholder evidence
-ok 40 - contrast fixtures contain no placeholder evidence
+ok 46 - contrast fixtures contain no placeholder evidence
   ---
-  duration_ms: 1.2937
+  duration_ms: 5.1479
   type: 'test'
   ...
-1..40
-# tests 40
+1..46
+# tests 46
 # suites 0
-# pass 40
+# pass 46
 # fail 0
 # cancelled 0
 # skipped 0
 # todo 0
-# duration_ms 3055.457
+# duration_ms 1489.7648
