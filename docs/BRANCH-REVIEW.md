@@ -84,7 +84,7 @@ These are local follow-up results, not GitHub CI or production verification of t
 
 ### Remaining gates
 
-- The follow-up branch is not merged and its CI has not yet run.
-- The current production deployment remains on `b76e1c6`; these follow-up fixes are not deployed.
+- PR #3 is open; GitHub Verify passed (both matrix jobs), and the Vercel preview deployment is READY.
+- The current production deployment remains on `b76e1c6`; these follow-up fixes are not deployed. Authenticated preview smoke checks confirmed the `/app/` shell and a live F2 1Click API response; the full interactive browser click-through remains outstanding.
 - After the follow-up merge, repeat the complete production-candidate audit across intake/identifier resolution, evidence provenance, recovery safety, export/escalation, and error/accessibility/mobile behavior.
 - Do not declare OSIALI product-ready based on the local test suite or the previous production smoke checks.
