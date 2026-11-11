@@ -36,12 +36,22 @@ Final local validation: 62 automated tests passed; all nine red-team scenarios p
 This audit does not claim production deployment verification or NEAR Hackathon submission. See SUBMISSION.md for submission status and required public demo evidence.
 
 
-## 11 November - branch review before merge
+## 11 November — branch review and production release
 
-The branch review found and corrected a lifecycle hash-validation mismatch, a source-snapshot default that was too permissive, duplicated 1Click intake/intent attribution, unsafe historical fallback when a memo is supplied, ambiguous raw fee labels, an incorrect lifecycle evidence link and Base58 NEAR hash routing to the wrong provider. Full findings and residual gates are recorded in BRANCH-REVIEW.md.
+The branch review found and corrected a lifecycle hash-validation mismatch, an unsafe source-snapshot default, duplicated 1Click intake/intent attribution, unsafe historical fallback when a memo is supplied, ambiguous raw fee labels, an incorrect lifecycle evidence link and Base58 NEAR hash routing to the wrong provider. Full findings and residual gates are recorded in BRANCH-REVIEW.md.
 
-Post-review validation: 60 tests passed (fresh rerun on the reviewed branch); nine red-team scenarios passed; 30,000 deterministic classifications passed; build and syntax checks passed. Live F2 browser lookup returned HTTP 200 and exported a SNAPSHOT_ONLY case. A deliberately incorrect memo returned HTTP 422 and opened the guided form without historical fallback. Explicit Explorer URLs containing Base58 NEAR hashes now bypass 1Click address lookup; bare ambiguous hashes fall back to Explorer when 1Click has no status. Mobile viewport checks at 320 to 1024 px showed no horizontal overflow.
+Post-review local validation: **60 tests passed, 0 failed**; nine red-team scenarios passed; 30,000 deterministic classifications passed across 10,000 rounds; static build, JavaScript syntax checks and git diff checks passed.
 
-Vercel Firewall is enabled with a valid active per-IP rule for GET /api/incident: 30 requests per 60-second window, deny on excess. This is a basic abuse control, not a complete bot or abuse-monitoring strategy.
+PR #2 was merged into main as `35b8dd09d0ab4d5b90d75da44eaef91afd643f7f`. The production deployment `dpl_Ap1pgCzVMeMWJzQHvrcf6QD4C57t` reached READY and assigned `osiali.vercel.app`. Both the homepage and `/app/` returned HTTP 200.
 
-The branch remains unmerged. The merged production-candidate audit and production deployment verification are outstanding and must be completed separately.
+Production browser audit:
+- F1, F2 and F3 fixture flows rendered FAILED_UNRESOLVED, REFUND_REPORTED and DELIVERY_REPORTED. F3 was not promoted to COMPLETE from source-reported evidence.
+- Live F2 1Click lookup returned HTTP 200. It reported REFUNDED / NO_LIQUIDITY; the UI and JSON export preserved REFUND_REPORTED, REFUND as the first unresolved step, OFFICIAL_STATUS_SNAPSHOT provenance and SNAPSHOT_ONLY verification.
+- The live F2 JSON export downloaded and was inspected. Provider details and raw fee units were retained; transaction identifiers whose lifecycle roles were not independently established remained unassigned.
+- A deliberately incorrect memo returned HTTP 422, cleared the previous case and opened the guided form without historical fallback.
+- An explicit F1 Explorer URL returned HTTP 200 as a public_explorer_snapshot.
+- Viewports at 320, 360, 390, 768 and 1024 px showed no horizontal overflow. Successful flows had no browser console errors; the deliberate 422 regression produced only the expected failed-resource console entry.
+
+The Vercel Firewall rule was re-read after merge. It is live and valid for GET `/api/incident`: 30 requests per 60-second fixed window per IP, deny on excess; no draft changes remain.
+
+Remaining limits: no fresh full screen-reader certification or trademark clearance; no independent NEAR private-settlement finality or wallet-balance confirmation; no complete abuse-monitoring or bot strategy; no adoption/impact claim. The production build used Node 26 because the package engine range `>=22` overrides the configured Node 24.x setting; build and smoke checks passed, but pinning the engine is a non-blocking reproducibility follow-up. Production deployment readiness does not mean OSIALI is fully product-ready or that a hackathon submission has been completed.
