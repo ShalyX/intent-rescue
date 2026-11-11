@@ -25,32 +25,42 @@ export function classifyIncident(evidence) {
     'refund_observed=' + refundObserved
   ];
 
-  if (destinationObserved && refundObserved) {
+  const successReported = ['SUCCESS', 'COMPLETED'].includes(reported);
+  const refundReported = reported === 'REFUNDED';
+  const activeReported = ['PROCESSING', 'PENDING', 'KNOWN_DEPOSIT_TX', 'PENDING_DEPOSIT', 'AWAITING_DEPOSIT'].includes(reported);
+  const failedReported = reported === 'FAILED';
+  const incompleteReported = reported === 'INCOMPLETE_DEPOSIT';
+  const statusConflict = (destinationObserved && refundObserved) ||
+    (refundReported && destinationObserved) ||
+    (successReported && refundObserved) ||
+    ((activeReported || failedReported || incompleteReported) && destinationObserved) ||
+    (activeReported && refundObserved);
+  if (statusConflict) {
     return result('CONFLICTED_EVIDENCE', 'outcome', 'UNKNOWN',
-      'Destination delivery and refund are both present. Do not infer retry safety until the conflict is resolved.', basePredicates);
+      'Source status and terminal evidence conflict. Do not infer retry safety until the source assertions are reconciled.', basePredicates);
   }
-  if (destinationObserved || reported === 'SUCCESS' || reported === 'COMPLETED') {
-    if (!destinationObserved && (reported === 'SUCCESS' || reported === 'COMPLETED')) {
+  if (successReported || destinationObserved) {
+    if (!destinationObserved && successReported) {
       return result('INSUFFICIENT_EVIDENCE', 'destination_delivery', 'LOW',
         'The reported status is successful, but destination evidence is missing from this evidence set.', basePredicates);
     }
     return result('COMPLETE', null, 'HIGH', 'Complete - no recovery action required.', basePredicates);
   }
-  if (refundObserved || reported === 'REFUNDED') {
-    if (!refundObserved && reported === 'REFUNDED') {
+  if (incompleteReported) {
+    if (refundObserved) {
+      return result('INCOMPLETE_REFUNDED', null, 'HIGH',
+        'Refund evidence is present for an incomplete deposit. Verify receipt before creating a fresh quote.', basePredicates);
+    }
+    return result('INCOMPLETE_REFUND_UNRESOLVED', 'refund', depositVerified ? 'MEDIUM' : 'LOW',
+      'Track the refund or escalate. Do not assume funds have been returned.', basePredicates);
+  }
+  if (refundObserved || refundReported) {
+    if (!refundObserved && refundReported) {
       return result('INSUFFICIENT_EVIDENCE', 'refund', 'LOW',
         'A refund is reported, but no refund transaction is present in this evidence set.', basePredicates);
     }
     return result('REFUND_VERIFIED', null, 'HIGH',
       'Refund confirmed. Verify receipt in the refund wallet before creating a fresh quote.', basePredicates);
-  }
-  if (reported === 'INCOMPLETE_DEPOSIT') {
-    if (refundObserved) {
-      return result('INCOMPLETE_REFUNDED', null, 'HIGH',
-        'Refund evidence is present. Verify receipt before creating a fresh quote.', basePredicates);
-    }
-    return result('INCOMPLETE_REFUND_UNRESOLVED', 'refund', depositVerified ? 'MEDIUM' : 'LOW',
-      'Track the refund or escalate. Do not assume funds have been returned.', basePredicates);
   }
   if (['PROCESSING', 'PENDING', 'KNOWN_DEPOSIT_TX'].includes(reported)) {
     const unresolved = depositVerified

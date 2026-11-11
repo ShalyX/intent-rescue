@@ -70,3 +70,28 @@ test('direct Explorer observations count as concrete terminal evidence', () => {
   const refunded = classifyIncident({ reported_status: 'REFUNDED', refund_evidence: ['Explorer: refunded'] });
   assert.equal(refunded.classification, 'REFUND_VERIFIED');
 });
+
+test('contradictory terminal source assertions stay conflicted instead of overriding one another', () => {
+  const cases = [
+    { reported_status: 'REFUNDED', destination_evidence: ['Explorer reports withdrawn'] },
+    { reported_status: 'SUCCESS', refund_evidence: ['1Click reports refunded'] },
+    { reported_status: 'PROCESSING', destination_evidence: ['Explorer reports withdrawn'] },
+    { reported_status: 'FAILED', destination_evidence: ['Explorer reports withdrawn'] },
+    { reported_status: 'INCOMPLETE_DEPOSIT', destination_evidence: ['Explorer reports withdrawn'] }
+  ];
+  for (const evidence of cases) {
+    const out = classifyIncident(evidence);
+    assert.equal(out.classification, 'CONFLICTED_EVIDENCE', JSON.stringify(evidence));
+    assert.equal(out.first_unresolved_step, 'outcome');
+    assert.match(out.safe_action, /Do not infer retry safety/);
+  }
+});
+
+test('incomplete deposit plus refund evidence preserves the incomplete-refund outcome', () => {
+  const out = classifyIncident({
+    reported_status: 'INCOMPLETE_DEPOSIT',
+    refund_evidence: ['1Click reports a refund']
+  });
+  assert.equal(out.classification, 'INCOMPLETE_REFUNDED');
+  assert.equal(out.first_unresolved_step, null);
+});
