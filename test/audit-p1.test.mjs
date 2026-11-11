@@ -88,6 +88,20 @@ test('1Click origin and NEAR hashes keep ambiguous transaction roles unassigned 
   assert.deepEqual(bundle.identifiers.unassigned_near_tx_hashes, [nearOne, nearTwo]);
 });
 
+test('1Click correlation IDs remain metadata and do not change the stable case identity', () => {
+  const first = normalizeStatus(refundedPayload(), address, 'memo-123');
+  const secondPayload = refundedPayload();
+  secondPayload.correlationId = 'audit-correlation-2';
+  const second = normalizeStatus(secondPayload, address, 'memo-123');
+  assert.match(first.id, /^1click-[a-f0-9]{16}$/);
+  assert.equal(second.id, first.id);
+  assert.equal(first.correlation_id, 'audit-correlation-1');
+  assert.equal(second.correlation_id, 'audit-correlation-2');
+  const otherMemoPayload = refundedPayload();
+  otherMemoPayload.quoteResponse.quote.depositMemo = 'memo-456';
+  assert.notEqual(normalizeStatus(otherMemoPayload, address, 'memo-456').id, first.id);
+});
+
 test('1Click refund reason, amounts, fees, quote context and provider timestamp survive export', () => {
   const evidence = normalizeStatus(refundedPayload(), address, 'memo-123');
   assert.equal(evidence.source_updated_at, updatedAt);

@@ -32,9 +32,17 @@ test('public refund and withdrawal require exact visible outcomes',()=>{
 test('ambiguous or forged status fails closed',()=>{
  assert.throws(()=>parsePublicExplorer(page('<h3>Failed</h3>Transaction failed<h3>Refunded</h3>Transaction refunded'),URL),/uniquely/);
  assert.throws(()=>parsePublicExplorer(page('<script>Transaction refunded</script>'),URL),/uniquely/);
+ assert.throws(()=>parsePublicExplorer(page('<h3>Failed</h3><!-- Transaction failed -->'),URL),/uniquely/);
  assert.throws(()=>parsePublicExplorer(source,'https://evil.example/transactions/1234567890abcdef'),/Unsupported/);
  assert.throws(()=>parsePublicExplorer('<html>oops</html>',URL),/unavailable/);
 });
+test('Explorer address links are never attributed as transaction hashes',()=>{
+  const addressPage=page('<h3>Failed</h3><p>Transaction failed</p><p>Deposit transaction: <a href="https://litecoinspace.org/address/ltc1qexampleaddress0123456789">address</a></p>');
+  const evidence=parsePublicExplorer(addressPage,URL);
+  assert.deepEqual(evidence.origin_tx_hashes,[]);
+  assert.equal(evidence.source_chain,null);
+});
+
 test('API does not proxy non-Explorer domains or accept writes',async()=>{
  const response={code:200,body:null,headers:{},setHeader(k,v){this.headers[k]=v},status(n){this.code=n;return this},json(d){this.body=d;return this}};
  await handler({method:'GET',query:{reference:'https://evil.example/transactions/1234567890abcdef'}},response);
@@ -89,3 +97,62 @@ test('an unqualified Base58 transaction hash falls back to public Explorer when 
   assert.ok(calls[0].startsWith('https://1click.chaindefuser.com/v0/status'));
   assert.equal(calls[1], 'https://explorer.near-intents.org/transactions/' + nearHash);
 });
+
+test('a memo-bound 1Click 404 does not fall through to Explorer', async t => {
+  const originalFetch = globalThis.fetch;
+  t.after(() => { globalThis.fetch = originalFetch; });
+  const address = '0x' + 'a'.repeat(40);
+  const calls = [];
+  globalThis.fetch = async url => {
+    calls.push(String(url));
+    return new Response('not found', { status: 404, headers: { 'content-type': 'text/plain' } });
+  };
+  const response = { code: 200, body: null, headers: {}, setHeader(k,v){this.headers[k]=v;}, status(n){this.code=n;return this;}, json(d){this.body=d;return this;} };
+  await handler({ method: 'GET', query: { reference: address, memo: 'memo-123' } }, response);
+  assert.equal(response.code, 422);
+  assert.match(response.body.error, /address and memo/i);
+  assert.equal(calls.length, 1);
+});
+
+test('a memo-bound 1Click provider outage returns 502 instead of a memo-validation error', async t => {
+  const originalFetch = globalThis.fetch;
+  t.after(() => { globalThis.fetch = originalFetch; });
+  const address = '0x' + 'a'.repeat(40);
+  const calls = [];
+  globalThis.fetch = async url => {
+    calls.push(String(url));
+    return new Response('upstream unavailable', { status: 503, headers: { 'content-type': 'text/plain' } });
+  };
+  const response = { code: 200, body: null, headers: {}, setHeader(k,v){this.headers[k]=v;}, status(n){this.code=n;return this;}, json(d){this.body=d;return this;} };
+  await handler({ method: 'GET', query: { reference: address, memo: 'memo-123' } }, response);
+  assert.equal(response.code, 502);
+  assert.match(response.body.error, /1Click status lookup failed/i);
+  assert.equal(calls.length, 1);
+});
+
+for (const scenario of [
+  ['HTTP 503', async () => new Response('upstream unavailable', { status: 503, headers: { 'content-type': 'text/plain' } })],
+  ['network failure', async () => { throw new TypeError('fetch failed'); }],
+  ['mismatched status payload', async () => new Response(JSON.stringify({
+    status: 'PROCESSING', quoteResponse: { quote: { depositAddress: '0x' + 'a'.repeat(40) } }, swapDetails: {}
+  }), { status: 200, headers: { 'content-type': 'application/json' } })]
+]) {
+  test('an unqualified Base58 identifier does not fall through to Explorer after a 1Click ' + scenario[0], async t => {
+    const originalFetch = globalThis.fetch;
+    t.after(() => { globalThis.fetch = originalFetch; });
+    const nearHash = '9bQSpWs3WNeXLF61CVHjYVZYhi5A6cUnw4aVoou1w5WF';
+    const calls = [];
+    globalThis.fetch = async url => {
+      calls.push(String(url));
+      if (String(url).startsWith('https://1click.chaindefuser.com/v0/status')) return scenario[1]();
+      return new Response(source, { status: 200, headers: { 'content-type': 'text/html' } });
+    };
+    const response = { code: 200, body: null, headers: {}, setHeader(k,v){this.headers[k]=v;}, status(n){this.code=n;return this;}, json(d){this.body=d;return this;} };
+    await handler({ method: 'GET', query: { reference: nearHash } }, response);
+    assert.equal(response.code, 502);
+    assert.match(response.body.error, /fallback was not attempted/i);
+    assert.equal(calls.length, 1);
+    assert.ok(calls[0].startsWith('https://1click.chaindefuser.com/v0/status'));
+  });
+}
+

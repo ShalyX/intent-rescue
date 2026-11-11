@@ -1,3 +1,4 @@
+import { createHash } from 'node:crypto';
 import { validTransactionHash } from './intake.mjs';
 
 const STATUSES = ['PENDING_DEPOSIT','KNOWN_DEPOSIT_TX','INCOMPLETE_DEPOSIT','PROCESSING','SUCCESS','REFUNDED','FAILED'];
@@ -98,7 +99,8 @@ export function normalizeStatus(payload, address, memo, capturedAt = new Date().
     encodeURIComponent(address) + (providerMemo ? '&depositMemo=' + encodeURIComponent(providerMemo) : '');
 
   return {
-    id: payload.correlationId || address,
+    // A deterministic hash keeps the case ID stable without exposing a deposit memo.
+    id: '1click-' + createHash('sha256').update(address).update('\0').update(providerMemo || '').digest('hex').slice(0, 16),
     deposit_address: address,
     deposit_memo: providerMemo,
     correlation_id: payload.correlationId || null,
@@ -141,7 +143,11 @@ export async function readStatus(address, memo) {
   const headers = { Accept: 'application/json' };
   if (process.env.ONECLICK_API_KEY) headers.Authorization = 'Bearer ' + process.env.ONECLICK_API_KEY;
   const response = await fetch(url, { headers, redirect: 'error', signal: AbortSignal.timeout(6000) });
-  if (!response.ok) throw Error('Status provider returned ' + response.status);
+  if (!response.ok) {
+    const error = new Error('Status provider returned ' + response.status);
+    error.status = response.status;
+    throw error;
+  }
   const text = await response.text();
   if (text.length > 250000) throw Error('Status response too large');
   const evidence = normalizeStatus(JSON.parse(text), address, memo);

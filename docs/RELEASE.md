@@ -55,3 +55,14 @@ Production browser audit:
 The Vercel Firewall rule was re-read after merge. It is live and valid for GET `/api/incident`: 30 requests per 60-second fixed window per IP, deny on excess; no draft changes remain.
 
 Remaining limits: no fresh full screen-reader certification or trademark clearance; no independent NEAR private-settlement finality or wallet-balance confirmation; no complete abuse-monitoring or bot strategy; no adoption/impact claim. The production build used Node 26 because the package engine range `>=22` overrides the configured Node 24.x setting; build and smoke checks passed, but pinning the engine is a non-blocking reproducibility follow-up. Production deployment readiness does not mean OSIALI is fully product-ready or that a hackathon submission has been completed.
+
+
+## 11 November — post-merge integrity follow-up
+
+The current production deployment is READY at `b76e1c6` and serves `osiali.vercel.app`; fresh HTTP checks returned 200 for both the homepage and `/app/`. The original PR #2 was already merged and its production audit is recorded above.
+
+A separate review found four additional defects in the merged code: broad Base58 fallback after any 1Click failure, unstable case IDs derived from provider correlation IDs, contradictory terminal source assertions being silently overridden, and public Explorer parsing that could accept comment-only status text or account/address links as transaction hashes. The follow-up branch corrects these by allowing fallback only after a memo-free provider 404, deriving a stable hashed case ID from address/memo, preserving conflicting outcomes as CONFLICTED_EVIDENCE, and requiring heading-scoped status text plus chain-valid transaction-path links.
+
+Follow-up local validation: **72 automated tests passed, 0 failed**; nine red-team scenarios passed; 30,000 deterministic classifications passed; static build and `git diff --check` passed. Provider HTTP 503, network failure and mismatched payloads no longer fall through to Explorer; memo-bound 404/503 responses remain distinct; incomplete-deposit refunds retain their separate outcome.
+
+The follow-up branch is not yet merged or deployed. The current production deployment remains on `b76e1c6`. After the follow-up merge, rerun the complete production-candidate audit across investigation intake, evidence provenance, recovery safety, case-file export/escalation, and error/accessibility/mobile behavior. Production deployment readiness is not a product-ready declaration.

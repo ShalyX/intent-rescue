@@ -88,3 +88,17 @@ test('analyzeEvidence defaults to the conservative user-supplied assurance', () 
   assert.equal(analysis.lifecycle[4].status, 'REPORTED');
   assert.equal(analysis.lifecycle[4].basis, 'SUPPLIED');
 });
+
+test('incomplete deposit refunds retain their distinct reported outcome in analysis and export', () => {
+  const evidence = {
+    reported_status: 'INCOMPLETE_DEPOSIT',
+    refund_evidence: ['1Click status reports a refund for an incomplete deposit']
+  };
+  const analysis = analyzeEvidence(evidence, { assurance: 'OFFICIAL_STATUS_SNAPSHOT' });
+  const bundle = exportBundle(evidence, { assurance: 'OFFICIAL_STATUS_SNAPSHOT' });
+  assert.equal(analysis.classification, 'INCOMPLETE_REFUND_REPORTED');
+  assert.equal(analysis.first_unresolved_step, 'refund');
+  assert.equal(analysis.lifecycle[4].status, 'REPORTED');
+  assert.equal(bundle.diagnosis.classification, 'INCOMPLETE_REFUND_REPORTED');
+  assert.equal(bundle.diagnosis.first_unresolved_step, 'refund');
+});

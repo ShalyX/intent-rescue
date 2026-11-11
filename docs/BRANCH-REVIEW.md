@@ -58,3 +58,33 @@ The Vercel Firewall is enabled. A post-merge `vercel firewall rules list --json`
 - NEAR Hackathon submission evidence and any adoption or impact claims remain separate and are not implied by deployment readiness.
 
 **Decision:** PR #2 is merged and the production deployment has passed the recorded smoke and browser checks. The code-level findings are resolved, but OSIALI is **not** marked fully product-ready; the remaining gates above still apply.
+
+
+## Post-merge integrity follow-up — 11 November 2026
+
+The original PR #2 is already merged into `main` as `35b8dd09d0ab4d5b90d75da44eaef91afd643f7f`. The current production candidate is `b76e1c6`, with Vercel deployment `dpl_2xNtkhEJ8yRrUEvRkwgWBBb3mnhw` in READY state and aliases including `osiali.vercel.app`. Fresh HTTP checks returned 200 for both `/` and `/app/`. The active per-IP firewall rule was independently read back and confirmed.
+
+A second review of the merged code found four additional integrity defects:
+
+9. **Provider outages could be mistaken for a missing 1Click deposit.** Bare Base58 fallback now occurs only on an explicit provider HTTP 404 with no memo supplied. HTTP 5xx, network failures, malformed payloads and address mismatches stop with HTTP 502; a memo-bound 404 stops with HTTP 422. None triggers Explorer fallback.
+10. **The provider correlation ID was being used as the case ID.** A deterministic hash is now derived from the deposit address plus memo (when present), without exposing the memo; correlation IDs remain request metadata.
+11. **Contradictory terminal assertions could silently override one another.** Refund-vs-delivery, success-vs-refund, and active/failed/incomplete states contradicted by destination evidence now classify as CONFLICTED_EVIDENCE. An incomplete deposit with refund evidence retains its distinct incomplete-refund outcome in analysis and export.
+12. **Explorer parsing could accept comment-only status text and treat account/address links as transaction hashes.** Status phrases are scoped to their matching heading after script/style/template/noscript/comment content is removed. Explorer records require an explicit transaction path and chain-specific hash validation.
+
+### Follow-up local verification
+
+- Automated tests: **72 passed, 0 failed**.
+- Red-team checks: **9 passed**.
+- Evidence benchmark: **30,000 classifications across 10,000 rounds; deterministic**.
+- Static build and JavaScript syntax checks: **passed**.
+- `git diff --check`: **passed**.
+- Regression coverage includes provider 503, network failure, mismatched payload, memo-bound 404/503, stable case identity, contradictory terminal outcomes, incomplete-deposit refunds, comment-only Explorer status and address-link rejection.
+
+These are local follow-up results, not GitHub CI or production verification of the follow-up fixes.
+
+### Remaining gates
+
+- The follow-up branch is not merged and its CI has not yet run.
+- The current production deployment remains on `b76e1c6`; these follow-up fixes are not deployed.
+- After the follow-up merge, repeat the complete production-candidate audit across intake/identifier resolution, evidence provenance, recovery safety, export/escalation, and error/accessibility/mobile behavior.
+- Do not declare OSIALI product-ready based on the local test suite or the previous production smoke checks.

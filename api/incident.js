@@ -37,13 +37,21 @@ export default async function handler(req, res) {
       return res.status(200).json({ kind: 'official_status_snapshot', evidence });
     } catch (error) {
       const memoFailure = /memo/i.test(error?.message || '');
-      if (req.query?.memo || memoFailure) {
-        const message = memoFailure ? error.message
-          : 'Could not verify this 1Click deposit status. Check the deposit address and memo, then try again or create a provisional case.';
-        return res.status(422).json({ error: message });
+      if (memoFailure) return res.status(422).json({ error: error.message });
+      // A bare Base58 identifier is ambiguous. Only a definitive provider 404
+      // means no 1Click deposit record exists; outages, malformed payloads and
+      // address mismatches must never be reinterpreted as a NEAR transaction hash.
+      if (error?.status !== 404) {
+        return res.status(502).json({
+          error: '1Click status lookup failed. Try again later or use the guided case form; Explorer fallback was not attempted.'
+        });
       }
-      // An unqualified Base58 identifier may be a NEAR transaction hash, not a deposit address.
-      // If 1Click has no status for it, preserve the public Explorer lookup path below.
+      if (req.query?.memo) {
+        return res.status(422).json({
+          error: 'No 1Click status matches this deposit address and memo. Check the receipt or create a provisional case.'
+        });
+      }
+      // No 1Click status exists for this identifier; try the public Explorer record.
     }
   }
 
