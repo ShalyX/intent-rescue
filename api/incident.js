@@ -20,23 +20,30 @@ export default async function handler(req, res) {
   res.setHeader('Cache-Control', 'no-store, max-age=0');
   res.setHeader('X-Content-Type-Options', 'nosniff');
   if (req.method !== 'GET') return res.status(405).json({ error: 'GET required' });
+  const rawReference = req.query?.reference;
+  const explicitExplorerUrl = typeof rawReference === 'string' && /^https?:\/\//i.test(rawReference);
   let url = null;
-  try { url = publicReference(req.query?.reference); } catch {}
+  try { url = publicReference(rawReference); } catch {}
   if (!url) return res.status(400).json({ error: 'Provide a NEAR Intents Explorer transaction URL or supported record identifier.' });
   if (req.query?.memo && (typeof req.query.memo !== 'string' || req.query.memo.length > 150)) {
     return res.status(400).json({ error: 'Deposit memo must be at most 150 characters.' });
   }
 
   const address = new URL(url).pathname.split('/').at(-1);
-  if (/^(?:0x[0-9a-fA-F]{40}|[1-9A-HJ-NP-Za-km-z]{26,60}|G[A-Z2-7]{55}|(?:bc1|ltc1)[a-z0-9]{20,90})$/.test(address)) {
+  const depositAddressPattern = /^(?:0x[0-9a-fA-F]{40}|[1-9A-HJ-NP-Za-km-z]{26,60}|G[A-Z2-7]{55}|(?:bc1|ltc1)[a-z0-9]{20,90})$/;
+  if (!explicitExplorerUrl && depositAddressPattern.test(address)) {
     try {
       const evidence = await readStatus(address, req.query?.memo);
       return res.status(200).json({ kind: 'official_status_snapshot', evidence });
     } catch (error) {
-      const message = /memo/i.test(error?.message || '')
-        ? error.message
-        : 'Could not verify this 1Click deposit status. Check the deposit address and memo, then try again or create a provisional case.';
-      return res.status(422).json({ error: message });
+      const memoFailure = /memo/i.test(error?.message || '');
+      if (req.query?.memo || memoFailure) {
+        const message = memoFailure ? error.message
+          : 'Could not verify this 1Click deposit status. Check the deposit address and memo, then try again or create a provisional case.';
+        return res.status(422).json({ error: message });
+      }
+      // An unqualified Base58 identifier may be a NEAR transaction hash, not a deposit address.
+      // If 1Click has no status for it, preserve the public Explorer lookup path below.
     }
   }
 

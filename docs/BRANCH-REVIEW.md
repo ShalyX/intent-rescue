@@ -1,4 +1,4 @@
-# Branch review ? fix/audit-p1-integrity
+# Branch review - fix/audit-p1-integrity
 
 **Review date:** 11 November 2026
 **Base:** origin/main at b275b79
@@ -18,10 +18,11 @@ The initial branch was **not safe to merge unchanged**. Review found inconsisten
 5. **Raw provider fee values looked like formatted token amounts.** When the provider supplies no formatted value, the UI now labels fees as raw provider units.
 6. **Lifecycle evidence navigation pointed intake at the Intent row.** The intake-stage evidence link now points to the 1Click provider-details row.
 7. **Benchmark expectations reflected the old overconfident labels.** Expected snapshot outcomes now use REFUND_REPORTED and DELIVERY_REPORTED.
+8. **Base58 NEAR transaction hashes could be mistaken for 1Click deposit addresses.** Explicit Explorer URLs now go directly to the public Explorer reader. Ambiguous bare Base58 identifiers try 1Click first, then fall back to Explorer only when no memo-specific lookup is in play.
 
 ## Verification after corrections
 
-- Automated tests: **60 passed, 0 failed**.
+- Automated tests: **62 passed, 0 failed**.
 - Red-team checks: **9 passed**.
 - Evidence benchmark: **30,000 classifications across 10,000 rounds; deterministic**.
 - Static build and JavaScript syntax checks: **passed**.
@@ -35,7 +36,7 @@ The initial branch was **not safe to merge unchanged**. Review found inconsisten
 
 The Vercel Firewall is now enabled for the OSIALI project. An active custom rule matches GET /api/incident and limits each IP to **30 requests per 60-second fixed window**, denying excess requests. The active configuration was read back and confirmed valid. This protects the unauthenticated read-only proxy from simple per-IP request bursts; it is not a substitute for abuse monitoring or a broader bot strategy.
 
-## Remaining gates ? deliberately not claimed complete
+## Remaining gates - deliberately not claimed complete
 
 - This branch has **not** been merged.
 - The complete audit against the merged production candidate has **not** been run.
@@ -44,4 +45,4 @@ The Vercel Firewall is now enabled for the OSIALI project. An active custom rule
 - No fresh full screen-reader certification or trademark clearance is claimed.
 - Provider and Explorer snapshots remain source-reported. The application does not claim independent NEAR private-settlement finality or wallet-balance confirmation.
 
-**Decision:** code-level findings identified in this review are corrected and the branch is ready to be opened as a pull request. Do not mark OSIALI product-ready; merge and production-candidate audit remain separate gates.
+**Decision:** code-level findings identified in this review are corrected and PR #2 is open for review. Do not merge until required checks are green; do not mark OSIALI product-ready. The merged production-candidate audit remains a separate gate.
