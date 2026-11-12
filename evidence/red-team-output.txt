@@ -1,13 +1,12 @@
-
 > osiali@0.1.0 red-team
 > node scripts/red-team.mjs
 
 PASS	empty	INSUFFICIENT_EVIDENCE	LOW	More evidence is required before a safe recovery action can be recommended.
 PASS	fake-success-flag	INSUFFICIENT_EVIDENCE	LOW	The reported status is successful, but destination evidence is missing from this evidence set.
 PASS	fake-refund-flag	INSUFFICIENT_EVIDENCE	LOW	A refund is reported, but no refund transaction is present in this evidence set.
-PASS	conflict	CONFLICTED_EVIDENCE	UNKNOWN	Destination delivery and refund are both present. Do not infer retry safety until the conflict is resolved.
-PASS	observed-success	COMPLETE	HIGH	Complete — no recovery action required.
-PASS	observed-refund	REFUND_VERIFIED	HIGH	Refund confirmed. Create a fresh quote if you choose to retry.
+PASS	conflict	CONFLICTED_EVIDENCE	UNKNOWN	Source status and terminal evidence conflict. Do not infer retry safety until the source assertions are reconciled.
+PASS	observed-success	COMPLETE	HIGH	Complete - no recovery action required.
+PASS	observed-refund	REFUND_VERIFIED	HIGH	Refund confirmed. Verify receipt in the refund wallet before creating a fresh quote.
 PASS	bundle:f1-failed.json	FAILED_UNRESOLVED	lifecycle=5
 PASS	bundle:f2-refunded.json	REFUND_REPORTED	lifecycle=5
 PASS	bundle:f3-success.json	DELIVERY_REPORTED	lifecycle=5
