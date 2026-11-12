@@ -56,7 +56,9 @@ test('queries the authenticated Explorer API and returns conservative refund evi
   assert.equal(evidence.reported_status, 'REFUNDED');
   assert.equal(evidence.source_chain, 'eth');
   assert.equal(evidence.destination_chain, 'gnosis');
-  assert.deepEqual(evidence.origin_tx_hashes, [HASH]);
+  assert.deepEqual(evidence.origin_tx_hashes, []);
+  assert.deepEqual(evidence.unassigned_origin_tx_hashes, [HASH]);
+  assert.deepEqual(evidence.deposit_evidence, []);
   assert.deepEqual(evidence.refund_tx_hashes, []);
   assert.equal(evidence.explorer_api_metadata.refund_reason, 'AMOUNT_MORE_THAN_BALANCE');
   assert.match(evidence.refund_evidence[0], /source-reported|No independent refund-chain verification/i);
@@ -73,6 +75,9 @@ test('does not invent a refund transaction hash from an origin transaction hash'
   });
   assert.deepEqual(evidence.refund_tx_hashes, []);
   assert.deepEqual(evidence.destination_tx_hashes, []);
+  assert.deepEqual(evidence.origin_tx_hashes, []);
+  assert.deepEqual(evidence.unassigned_origin_tx_hashes, [HASH]);
+  assert.deepEqual(evidence.deposit_evidence, []);
 });
 
 test('only assigns destination transaction hashes to a source-reported SUCCESS', async () => {
