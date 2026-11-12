@@ -1,286 +1,628 @@
 TAP version 13
-# Subtest: F1 failed/no-refund becomes FAILED_UNRESOLVED at destination delivery
-ok 1 - F1 failed/no-refund becomes FAILED_UNRESOLVED at destination delivery
+# Subtest: 1Click origin and NEAR hashes keep ambiguous transaction roles unassigned in the evidence bundle
+ok 1 - 1Click origin and NEAR hashes keep ambiguous transaction roles unassigned in the evidence bundle
   ---
-  duration_ms: 6.6733
+  duration_ms: 4.595832
+  type: 'test'
+  ...
+# Subtest: 1Click correlation IDs remain metadata and do not change the stable case identity
+ok 2 - 1Click correlation IDs remain metadata and do not change the stable case identity
+  ---
+  duration_ms: 0.849528
+  type: 'test'
+  ...
+# Subtest: 1Click refund reason, amounts, fees, quote context and provider timestamp survive export
+ok 3 - 1Click refund reason, amounts, fees, quote context and provider timestamp survive export
+  ---
+  duration_ms: 0.85598
+  type: 'test'
+  ...
+# Subtest: a memo-bearing 1Click quote cannot be resolved without the matching user memo
+ok 4 - a memo-bearing 1Click quote cannot be resolved without the matching user memo
+  ---
+  duration_ms: 0.606224
+  type: 'test'
+  ...
+# Subtest: deposit_verified and intent_verified flags alone are declarations, never verification
+ok 5 - deposit_verified and intent_verified flags alone are declarations, never verification
+  ---
+  duration_ms: 0.470129
+  type: 'test'
+  ...
+# Subtest: PROCESSING without transaction hashes remains active and explicitly blocks duplicate retry
+ok 6 - PROCESSING without transaction hashes remains active and explicitly blocks duplicate retry
+  ---
+  duration_ms: 0.209962
+  type: 'test'
+  ...
+# Subtest: user-reported refund hash stays provisional and remains the first unresolved escalation step
+ok 7 - user-reported refund hash stays provisional and remains the first unresolved escalation step
+  ---
+  duration_ms: 0.377546
+  type: 'test'
+  ...
+# Subtest: user-reported destination hash remains provisional and unresolved
+ok 8 - user-reported destination hash remains provisional and unresolved
+  ---
+  duration_ms: 0.253734
+  type: 'test'
+  ...
+# Subtest: KNOWN_DEPOSIT_TX without a hash is still active and blocks duplicate retry
+ok 9 - KNOWN_DEPOSIT_TX without a hash is still active and blocks duplicate retry
+  ---
+  duration_ms: 0.387084
+  type: 'test'
+  ...
+# Subtest: a failed memo-specific status lookup stops at the provider and does not fall through to Explorer
+ok 10 - a failed memo-specific status lookup stops at the provider and does not fall through to Explorer
+  ---
+  duration_ms: 34.954556
+  type: 'test'
+  ...
+# Subtest: 1Click intake is attributed to provider status, not duplicated intent hashes
+ok 11 - 1Click intake is attributed to provider status, not duplicated intent hashes
+  ---
+  duration_ms: 0.393666
+  type: 'test'
+  ...
+# Subtest: F1 failed/no-refund becomes FAILED_UNRESOLVED at destination delivery
+ok 12 - F1 failed/no-refund becomes FAILED_UNRESOLVED at destination delivery
+  ---
+  duration_ms: 3.069949
   type: 'test'
   ...
 # Subtest: F2 refunded becomes REFUND_VERIFIED
-ok 2 - F2 refunded becomes REFUND_VERIFIED
+ok 13 - F2 refunded becomes REFUND_VERIFIED
   ---
-  duration_ms: 3.1331
+  duration_ms: 0.380922
   type: 'test'
   ...
 # Subtest: F3 successful becomes COMPLETE
-ok 3 - F3 successful becomes COMPLETE
+ok 14 - F3 successful becomes COMPLETE
   ---
-  duration_ms: 2.7251
+  duration_ms: 0.426608
   type: 'test'
   ...
 # Subtest: destination plus refund is treated as conflicted evidence
-ok 4 - destination plus refund is treated as conflicted evidence
+ok 15 - destination plus refund is treated as conflicted evidence
   ---
-  duration_ms: 0.787
+  duration_ms: 0.361416
   type: 'test'
   ...
 # Subtest: reported refund without refund tx stays insufficient
-ok 5 - reported refund without refund tx stays insufficient
+ok 16 - reported refund without refund tx stays insufficient
   ---
-  duration_ms: 1.4224
+  duration_ms: 0.242764
   type: 'test'
   ...
 # Subtest: pending deposit with no deposit evidence asks for source verification
-ok 6 - pending deposit with no deposit evidence asks for source verification
+ok 17 - pending deposit with no deposit evidence asks for source verification
   ---
-  duration_ms: 0.5193
+  duration_ms: 0.222406
   type: 'test'
   ...
 # Subtest: empty evidence stays insufficient and low-confidence
-ok 7 - empty evidence stays insufficient and low-confidence
+ok 18 - empty evidence stays insufficient and low-confidence
   ---
-  duration_ms: 0.6891
+  duration_ms: 0.210313
   type: 'test'
   ...
 # Subtest: reported success without concrete destination evidence does not become COMPLETE
-ok 8 - reported success without concrete destination evidence does not become COMPLETE
+ok 19 - reported success without concrete destination evidence does not become COMPLETE
   ---
-  duration_ms: 0.4502
+  duration_ms: 0.244067
   type: 'test'
   ...
 # Subtest: reported refund without concrete refund evidence does not become REFUND_VERIFIED
-ok 9 - reported refund without concrete refund evidence does not become REFUND_VERIFIED
+ok 20 - reported refund without concrete refund evidence does not become REFUND_VERIFIED
   ---
-  duration_ms: 0.5951
+  duration_ms: 0.561039
   type: 'test'
   ...
 # Subtest: direct Explorer observations count as concrete terminal evidence
-ok 10 - direct Explorer observations count as concrete terminal evidence
+ok 21 - direct Explorer observations count as concrete terminal evidence
   ---
-  duration_ms: 6.8466
+  duration_ms: 0.638244
+  type: 'test'
+  ...
+# Subtest: contradictory terminal source assertions stay conflicted instead of overriding one another
+ok 22 - contradictory terminal source assertions stay conflicted instead of overriding one another
+  ---
+  duration_ms: 0.452045
+  type: 'test'
+  ...
+# Subtest: incomplete deposit plus refund evidence preserves the incomplete-refund outcome
+ok 23 - incomplete deposit plus refund evidence preserves the incomplete-refund outcome
+  ---
+  duration_ms: 0.188172
   type: 'test'
   ...
 # Subtest: API status must match requested deposit and supports active stages
-ok 11 - API status must match requested deposit and supports active stages
+ok 24 - API status must match requested deposit and supports active stages
   ---
-  duration_ms: 32.91
+  duration_ms: 5.712739
   type: 'test'
   ...
 # Subtest: guided unknown report exports its reference and notes without claiming observation
-ok 12 - guided unknown report exports its reference and notes without claiming observation
+ok 25 - guided unknown report exports its reference and notes without claiming observation
   ---
-  duration_ms: 4.3665
+  duration_ms: 0.771943
   type: 'test'
   ...
 # Subtest: memo-specific results reject missing or different quote memos
-ok 13 - memo-specific results reject missing or different quote memos
+ok 26 - memo-specific results reject missing or different quote memos
   ---
-  duration_ms: 0.7984
+  duration_ms: 0.427039
   type: 'test'
   ...
 # Subtest: public corpus contains at least 10 unique real-world cases
-ok 14 - public corpus contains at least 10 unique real-world cases
+ok 27 - public corpus contains at least 10 unique real-world cases
   ---
-  duration_ms: 12.2389
+  duration_ms: 1.410727
   type: 'test'
   ...
 # Subtest: public corpus covers failed, refunded and complete outcomes
-ok 15 - public corpus covers failed, refunded and complete outcomes
+ok 28 - public corpus covers failed, refunded and complete outcomes
   ---
-  duration_ms: 0.5047
+  duration_ms: 0.258483
   type: 'test'
   ...
 # Subtest: every corpus case is source-attributed and capture-dated
-ok 16 - every corpus case is source-attributed and capture-dated
+ok 29 - every corpus case is source-attributed and capture-dated
   ---
-  duration_ms: 2.5144
+  duration_ms: 0.507909
+  type: 'test'
+  ...
+# Subtest: queries the authenticated Explorer API and returns conservative refund evidence
+ok 30 - queries the authenticated Explorer API and returns conservative refund evidence
+  ---
+  duration_ms: 14.685384
+  type: 'test'
+  ...
+# Subtest: does not invent a refund transaction hash from an origin transaction hash
+ok 31 - does not invent a refund transaction hash from an origin transaction hash
+  ---
+  duration_ms: 0.860458
+  type: 'test'
+  ...
+# Subtest: only assigns destination transaction hashes to a source-reported SUCCESS
+ok 32 - only assigns destination transaction hashes to a source-reported SUCCESS
+  ---
+  duration_ms: 0.51839
+  type: 'test'
+  ...
+# Subtest: returns null when the API has no exact hash match
+ok 33 - returns null when the API has no exact hash match
+  ---
+  duration_ms: 0.35806
+  type: 'test'
+  ...
+# Subtest: matches EVM hashes case-insensitively but keeps Base58 transaction identifiers case-sensitive
+ok 34 - matches EVM hashes case-insensitively but keeps Base58 transaction identifiers case-sensitive
+  ---
+  duration_ms: 3.661825
+  type: 'test'
+  ...
+# Subtest: rejects ambiguous exact hash matches
+ok 35 - rejects ambiguous exact hash matches
+  ---
+  duration_ms: 1.130814
+  type: 'test'
+  ...
+# Subtest: requires a server-side JWT and never makes an unauthenticated request
+ok 36 - requires a server-side JWT and never makes an unauthenticated request
+  ---
+  duration_ms: 0.38513
+  type: 'test'
+  ...
+# Subtest: rejects unsupported hosts and paths before making a request
+ok 37 - rejects unsupported hosts and paths before making a request
+  ---
+  duration_ms: 0.315921
+  type: 'test'
+  ...
+# Subtest: maps rejected credentials, rate limits and transport failures to distinct errors
+ok 38 - maps rejected credentials, rate limits and transport failures to distinct errors
+  ---
+  duration_ms: 4.614316
+  type: 'test'
+  ...
+# Subtest: rejects invalid API payloads and unsupported statuses
+ok 39 - rejects invalid API payloads and unsupported statuses
+  ---
+  duration_ms: 1.066494
   type: 'test'
   ...
 # Subtest: public F1 source transaction gets an explicitly identified Litecoin explorer link
-ok 17 - public F1 source transaction gets an explicitly identified Litecoin explorer link
+ok 40 - public F1 source transaction gets an explicitly identified Litecoin explorer link
   ---
-  duration_ms: 17.1043
+  duration_ms: 3.738139
   type: 'test'
   ...
 # Subtest: explicit source/destination/refund chain produces well-formed, chain-specific links
-ok 18 - explicit source/destination/refund chain produces well-formed, chain-specific links
+ok 41 - explicit source/destination/refund chain produces well-formed, chain-specific links
   ---
-  duration_ms: 6.8138
+  duration_ms: 0.4066
   type: 'test'
   ...
 # Subtest: no invented links for ambiguous assets, unknown chains, malformed hashes or untrusted urls
-ok 19 - no invented links for ambiguous assets, unknown chains, malformed hashes or untrusted urls
+ok 42 - no invented links for ambiguous assets, unknown chains, malformed hashes or untrusted urls
   ---
-  duration_ms: 3.2911
+  duration_ms: 0.384469
   type: 'test'
   ...
 # Subtest: F2 frozen refund evidence produces Base source and refund links without inventing delivery
-ok 20 - F2 frozen refund evidence produces Base source and refund links without inventing delivery
+ok 43 - F2 frozen refund evidence produces Base source and refund links without inventing delivery
   ---
-  duration_ms: 5.7121
+  duration_ms: 0.801187
   type: 'test'
   ...
 # Subtest: matches deposit address, correlation ID and source/destination identifiers
-ok 21 - matches deposit address, correlation ID and source/destination identifiers
+ok 44 - matches deposit address, correlation ID and source/destination identifiers
   ---
-  duration_ms: 5.5985
+  duration_ms: 1.618356
   type: 'test'
   ...
 # Subtest: normalizes official status payload without inventing refund evidence
-ok 22 - normalizes official status payload without inventing refund evidence
+ok 45 - normalizes official status payload without inventing refund evidence
   ---
-  duration_ms: 7.5062
+  duration_ms: 1.029565
   type: 'test'
   ...
 # Subtest: rejects irrelevant JSON
-ok 23 - rejects irrelevant JSON
+ok 46 - rejects irrelevant JSON
   ---
-  duration_ms: 1.4075
+  duration_ms: 2.700902
   type: 'test'
   ...
 # Subtest: resolver accepts a source explorer URL including tracking query
-ok 24 - resolver accepts a source explorer URL including tracking query
+ok 47 - resolver accepts a source explorer URL including tracking query
   ---
-  duration_ms: 7.9267
+  duration_ms: 1.965144
   type: 'test'
   ...
 # Subtest: resolver matches known source and NEAR execution identifiers
-ok 25 - resolver matches known source and NEAR execution identifiers
+ok 48 - resolver matches known source and NEAR execution identifiers
   ---
-  duration_ms: 5.4841
+  duration_ms: 2.822797
   type: 'test'
   ...
 # Subtest: unrecognized hash never receives invented classification
-ok 26 - unrecognized hash never receives invented classification
+ok 49 - unrecognized hash never receives invented classification
   ---
-  duration_ms: 0.8731
+  duration_ms: 0.357368
   type: 'test'
   ...
 # Subtest: rejects arbitrary URLs and unsupported domains
-ok 27 - rejects arbitrary URLs and unsupported domains
+ok 50 - rejects arbitrary URLs and unsupported domains
   ---
-  duration_ms: 0.4171
+  duration_ms: 0.189514
   type: 'test'
   ...
 # Subtest: rejects ambiguous identifiers rather than choosing a match
-ok 28 - rejects ambiguous identifiers rather than choosing a match
+ok 51 - rejects ambiguous identifiers rather than choosing a match
   ---
-  duration_ms: 1.1447
+  duration_ms: 0.589982
   type: 'test'
   ...
 # Subtest: manual evidence requires a recognizable object
-ok 29 - manual evidence requires a recognizable object
+ok 52 - manual evidence requires a recognizable object
   ---
-  duration_ms: 1.861
+  duration_ms: 0.918107
   type: 'test'
   ...
 # Subtest: refund flag alone is not proof: reported refund plus verified flag, but no refund evidence
-ok 30 - refund flag alone is not proof: reported refund plus verified flag, but no refund evidence
+ok 53 - refund flag alone is not proof: reported refund plus verified flag, but no refund evidence
   ---
-  duration_ms: 3.4692
+  duration_ms: 1.314266
   type: 'test'
   ...
 # Subtest: refund flag alone is not proof: verified flag alone, without a reported outcome or refund evidence
-ok 31 - refund flag alone is not proof: verified flag alone, without a reported outcome or refund evidence
+ok 54 - refund flag alone is not proof: verified flag alone, without a reported outcome or refund evidence
   ---
-  duration_ms: 0.9225
+  duration_ms: 0.20861
   type: 'test'
   ...
 # Subtest: exported case keeps diagnosis and refund lifecycle consistent without refund evidence
-ok 32 - exported case keeps diagnosis and refund lifecycle consistent without refund evidence
+ok 55 - exported case keeps diagnosis and refund lifecycle consistent without refund evidence
   ---
-  duration_ms: 7.4044
+  duration_ms: 0.836223
+  type: 'test'
+  ...
+# Subtest: provider and public Explorer snapshots remain reported until independent chain verification
+ok 56 - provider and public Explorer snapshots remain reported until independent chain verification
+  ---
+  duration_ms: 0.562031
+  type: 'test'
+  ...
+# Subtest: invalid transaction identifiers cannot verify lifecycle stages
+ok 57 - invalid transaction identifiers cannot verify lifecycle stages
+  ---
+  duration_ms: 0.434522
+  type: 'test'
+  ...
+# Subtest: source-reported deposit amounts are reported, not independently verified
+ok 58 - source-reported deposit amounts are reported, not independently verified
+  ---
+  duration_ms: 0.178103
+  type: 'test'
+  ...
+# Subtest: analyzeEvidence defaults to the conservative user-supplied assurance
+ok 59 - analyzeEvidence defaults to the conservative user-supplied assurance
+  ---
+  duration_ms: 0.268763
+  type: 'test'
+  ...
+# Subtest: incomplete deposit refunds retain their distinct reported outcome in analysis and export
+ok 60 - incomplete deposit refunds retain their distinct reported outcome in analysis and export
+  ---
+  duration_ms: 0.250418
   type: 'test'
   ...
 # Subtest: public HTML failed-case reconstruction stays source-attributed
-ok 33 - public HTML failed-case reconstruction stays source-attributed
+ok 61 - public HTML failed-case reconstruction stays source-attributed
   ---
-  duration_ms: 14.3127
+  duration_ms: 9.057954
   type: 'test'
   ...
 # Subtest: public refund and withdrawal require exact visible outcomes
-ok 34 - public refund and withdrawal require exact visible outcomes
+ok 62 - public refund and withdrawal require exact visible outcomes
   ---
-  duration_ms: 4.2555
+  duration_ms: 1.299289
   type: 'test'
   ...
 # Subtest: ambiguous or forged status fails closed
-ok 35 - ambiguous or forged status fails closed
+ok 63 - ambiguous or forged status fails closed
   ---
-  duration_ms: 2.0758
+  duration_ms: 1.210783
+  type: 'test'
+  ...
+# Subtest: Explorer address links are never attributed as transaction hashes
+ok 64 - Explorer address links are never attributed as transaction hashes
+  ---
+  duration_ms: 1.23566
+  type: 'test'
+  ...
+# Subtest: Explorer ignores terminal assertions inside visually hidden content: hidden
+ok 65 - Explorer ignores terminal assertions inside visually hidden content: hidden
+  ---
+  duration_ms: 0.900092
+  type: 'test'
+  ...
+# Subtest: Explorer ignores terminal assertions inside visually hidden content: aria-hidden="true"
+ok 66 - Explorer ignores terminal assertions inside visually hidden content: aria-hidden="true"
+  ---
+  duration_ms: 0.496518
+  type: 'test'
+  ...
+# Subtest: Explorer ignores terminal assertions inside visually hidden content: style="display:none"
+ok 67 - Explorer ignores terminal assertions inside visually hidden content: style="display:none"
+  ---
+  duration_ms: 1.65801
+  type: 'test'
+  ...
+# Subtest: Explorer ignores terminal assertions inside visually hidden content: style="visibility:hidden"
+ok 68 - Explorer ignores terminal assertions inside visually hidden content: style="visibility:hidden"
+  ---
+  duration_ms: 0.573913
+  type: 'test'
+  ...
+# Subtest: Explorer ignores terminal assertions inside visually hidden content: class="hidden"
+ok 69 - Explorer ignores terminal assertions inside visually hidden content: class="hidden"
+  ---
+  duration_ms: 0.992756
+  type: 'test'
+  ...
+# Subtest: Explorer ignores terminal assertions inside visually hidden content: aria-hidden=true
+ok 70 - Explorer ignores terminal assertions inside visually hidden content: aria-hidden=true
+  ---
+  duration_ms: 0.947262
+  type: 'test'
+  ...
+# Subtest: Explorer ignores terminal assertions inside visually hidden content: style=display:none
+ok 71 - Explorer ignores terminal assertions inside visually hidden content: style=display:none
+  ---
+  duration_ms: 0.554587
+  type: 'test'
+  ...
+# Subtest: Explorer ignores terminal assertions inside visually hidden content: class=hidden
+ok 72 - Explorer ignores terminal assertions inside visually hidden content: class=hidden
+  ---
+  duration_ms: 0.439171
+  type: 'test'
+  ...
+# Subtest: restores Next.js streamed transaction details only with a matching reveal instruction
+ok 73 - restores Next.js streamed transaction details only with a matching reveal instruction
+  ---
+  duration_ms: 0.532055
+  type: 'test'
+  ...
+# Subtest: unrevealed and mismatched Next.js stream segments remain hidden
+ok 74 - unrevealed and mismatched Next.js stream segments remain hidden
+  ---
+  duration_ms: 0.495567
+  type: 'test'
+  ...
+# Subtest: restores nested Next.js stream segments after their parent boundary is revealed
+ok 75 - restores nested Next.js stream segments after their parent boundary is revealed
+  ---
+  duration_ms: 0.480288
+  type: 'test'
+  ...
+# Subtest: keeps nested stream content hidden when its own reveal marker is missing
+ok 76 - keeps nested stream content hidden when its own reveal marker is missing
+  ---
+  duration_ms: 0.374771
+  type: 'test'
+  ...
+# Subtest: script and style payload markup cannot mask visible transaction status
+ok 77 - script and style payload markup cannot mask visible transaction status
+  ---
+  duration_ms: 0.323344
   type: 'test'
   ...
 # Subtest: API does not proxy non-Explorer domains or accept writes
-ok 36 - API does not proxy non-Explorer domains or accept writes
+ok 78 - API does not proxy non-Explorer domains or accept writes
   ---
-  duration_ms: 1.8275
+  duration_ms: 0.827737
+  type: 'test'
+  ...
+# Subtest: transaction lookup reports missing server-side Explorer JWT without making an unauthenticated request
+ok 79 - transaction lookup reports missing server-side Explorer JWT without making an unauthenticated request
+  ---
+  duration_ms: 1.268531
+  type: 'test'
+  ...
+# Subtest: incident API uses the authenticated Explorer API and preserves source-reported refund semantics
+ok 80 - incident API uses the authenticated Explorer API and preserves source-reported refund semantics
+  ---
+  duration_ms: 32.323498
   type: 'test'
   ...
 # Subtest: explicit public source-chain transaction link preserves chain for F1-type evidence
-ok 37 - explicit public source-chain transaction link preserves chain for F1-type evidence
+ok 81 - explicit public source-chain transaction link preserves chain for F1-type evidence
   ---
-  duration_ms: 4.4694
+  duration_ms: 0.46506
+  type: 'test'
+  ...
+# Subtest: an explicit Explorer URL with a Base58 NEAR transaction hash bypasses 1Click address lookup
+ok 82 - an explicit Explorer URL with a Base58 NEAR transaction hash bypasses 1Click address lookup
+  ---
+  duration_ms: 1.729032
+  type: 'test'
+  ...
+# Subtest: an unqualified Base58 transaction hash checks 1Click first, then authenticated Explorer API
+ok 83 - an unqualified Base58 transaction hash checks 1Click first, then authenticated Explorer API
+  ---
+  duration_ms: 1.86673
+  type: 'test'
+  ...
+# Subtest: a memo-bound 1Click 404 does not fall through to Explorer
+ok 84 - a memo-bound 1Click 404 does not fall through to Explorer
+  ---
+  duration_ms: 0.799514
+  type: 'test'
+  ...
+# Subtest: a memo-bound 1Click provider outage returns 502 instead of a memo-validation error
+ok 85 - a memo-bound 1Click provider outage returns 502 instead of a memo-validation error
+  ---
+  duration_ms: 0.664362
+  type: 'test'
+  ...
+# Subtest: authenticated Explorer API transport failures return 502 without falling through to HTML
+ok 86 - authenticated Explorer API transport failures return 502 without falling through to HTML
+  ---
+  duration_ms: 0.756494
+  type: 'test'
+  ...
+# Subtest: unreconstructable public Explorer HTML remains unresolved and never invents a diagnosis
+ok 87 - unreconstructable public Explorer HTML remains unresolved and never invents a diagnosis
+  ---
+  duration_ms: 1.75441
+  type: 'test'
+  ...
+# Subtest: an unqualified Base58 identifier does not fall through to Explorer after a 1Click HTTP 503
+ok 88 - an unqualified Base58 identifier does not fall through to Explorer after a 1Click HTTP 503
+  ---
+  duration_ms: 0.96265
+  type: 'test'
+  ...
+# Subtest: an unqualified Base58 identifier does not fall through to Explorer after a 1Click network failure
+ok 89 - an unqualified Base58 identifier does not fall through to Explorer after a 1Click network failure
+  ---
+  duration_ms: 0.750393
+  type: 'test'
+  ...
+# Subtest: an unqualified Base58 identifier does not fall through to Explorer after a 1Click mismatched status payload
+ok 90 - an unqualified Base58 identifier does not fall through to Explorer after a 1Click mismatched status payload
+  ---
+  duration_ms: 1.298978
+  type: 'test'
+  ...
+# Subtest: source-reported refund references are not described as absent
+ok 91 - source-reported refund references are not described as absent
+  ---
+  duration_ms: 1.594581
+  type: 'test'
+  ...
+# Subtest: source-reported withdrawal observations remain explicitly unverified
+ok 92 - source-reported withdrawal observations remain explicitly unverified
+  ---
+  duration_ms: 0.547754
+  type: 'test'
+  ...
+# Subtest: missing terminal evidence is accurately described as missing
+ok 93 - missing terminal evidence is accurately described as missing
+  ---
+  duration_ms: 0.339755
+  type: 'test'
+  ...
+# Subtest: user-supplied terminal evidence is described as provisional, not source-verified
+ok 94 - user-supplied terminal evidence is described as provisional, not source-verified
+  ---
+  duration_ms: 0.348352
   type: 'test'
   ...
 # Subtest: malformed terminal references and typed evidence fail intake
-ok 38 - malformed terminal references and typed evidence fail intake
+ok 95 - malformed terminal references and typed evidence fail intake
   ---
-  duration_ms: 9.2669
+  duration_ms: 3.671474
   type: 'test'
   ...
 # Subtest: case-sensitive references never match a case-mutated identifier
-ok 39 - case-sensitive references never match a case-mutated identifier
+ok 96 - case-sensitive references never match a case-mutated identifier
   ---
-  duration_ms: 2.4956
+  duration_ms: 0.644434
   type: 'test'
   ...
 # Subtest: manual case export preserves correlation and chain context and stays reported
-ok 40 - manual case export preserves correlation and chain context and stays reported
+ok 97 - manual case export preserves correlation and chain context and stays reported
   ---
-  duration_ms: 6.9446
+  duration_ms: 1.586837
   type: 'test'
   ...
 # Subtest: F1 vertical slice reconstructs the locked hero story
-ok 41 - F1 vertical slice reconstructs the locked hero story
+ok 98 - F1 vertical slice reconstructs the locked hero story
   ---
-  duration_ms: 4.6918
+  duration_ms: 3.814982
   type: 'test'
   ...
 # Subtest: export bundle carries source, diagnosis, lifecycle and identifiers
-ok 42 - export bundle carries source, diagnosis, lifecycle and identifiers
+ok 99 - export bundle carries source, diagnosis, lifecycle and identifiers
   ---
-  duration_ms: 4.8081
+  duration_ms: 1.9043
   type: 'test'
   ...
 # Subtest: F1 exposes provenance basis and exact advice predicates
-ok 43 - F1 exposes provenance basis and exact advice predicates
+ok 100 - F1 exposes provenance basis and exact advice predicates
   ---
-  duration_ms: 1.8007
+  duration_ms: 0.831765
   type: 'test'
   ...
 # Subtest: terminal verified flags cannot promote lifecycle or export without concrete evidence
-ok 44 - terminal verified flags cannot promote lifecycle or export without concrete evidence
+ok 101 - terminal verified flags cannot promote lifecycle or export without concrete evidence
   ---
-  duration_ms: 1.5265
+  duration_ms: 1.36412
   type: 'test'
   ...
-# Subtest: terminal lifecycle stages become verified only when matching concrete evidence exists
-ok 45 - terminal lifecycle stages become verified only when matching concrete evidence exists
+# Subtest: terminal source snapshots remain reported even when transaction identifiers are present
+ok 102 - terminal source snapshots remain reported even when transaction identifiers are present
   ---
-  duration_ms: 1.2047
+  duration_ms: 1.026098
   type: 'test'
   ...
 # Subtest: contrast fixtures contain no placeholder evidence
-ok 46 - contrast fixtures contain no placeholder evidence
+ok 103 - contrast fixtures contain no placeholder evidence
   ---
-  duration_ms: 5.1479
+  duration_ms: 0.757106
   type: 'test'
   ...
-1..46
-# tests 46
+1..103
+# tests 103
 # suites 0
-# pass 46
+# pass 103
 # fail 0
 # cancelled 0
 # skipped 0
 # todo 0
-# duration_ms 1489.7648
+# duration_ms 506.607398
