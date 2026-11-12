@@ -52,3 +52,9 @@
 #guided-form textarea{min-height:100px;font-family:inherit}
 #guided-form .guided-extra{margin:12px 0}
 @media(max-width:760px){#guided-report{margin:16px}}
+
+/* Keep long chain asset identifiers inside the responsive investigation header. */
+.canvas-heading{min-width:0}
+.canvas-heading h1{min-width:0;max-width:100%;flex-wrap:wrap;overflow-wrap:anywhere}
+.canvas-heading h1>span:not(.route-arrow){min-width:0;max-width:100%;overflow-wrap:anywhere;word-break:break-word}
+.route-arrow{flex:0 0 auto}
