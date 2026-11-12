@@ -81,6 +81,22 @@ test('unrevealed and mismatched Next.js stream segments remain hidden', () => {
   assert.throws(() => parsePublicExplorer(page(mismatched), URL), /uniquely/);
 });
 
+test('restores nested Next.js stream segments after their parent boundary is revealed', () => {
+  const nested = '<template id="B:0"></template>' +
+    '<div hidden id="S:0"><div class="outer"><template id="B:1"></template>' +
+    '<div hidden id="S:1"><div><h3>Refunded</h3><p>Transaction refunded</p></div></div>' +
+    '</div></div><script>$RC("B:0","S:0");$RC("B:1","S:1")</script>';
+  assert.equal(parsePublicExplorer(page(nested), URL).reported_status, 'REFUNDED');
+});
+
+test('keeps nested stream content hidden when its own reveal marker is missing', () => {
+  const nested = '<template id="B:0"></template>' +
+    '<div hidden id="S:0"><template id="B:1"></template>' +
+    '<div hidden id="S:1"><div><h3>Refunded</h3><p>Transaction refunded</p></div></div>' +
+    '</div><script>$RC("B:0","S:0")</script>';
+  assert.throws(() => parsePublicExplorer(page(nested), URL), /uniquely/);
+});
+
 test('script and style payload markup cannot mask visible transaction status', () => {
   const body = '<script>const template = "<div hidden><h3>Refunded</h3>Transaction refunded</div>";</script>' +
     '<style>.x::after { content: "<div hidden>"; }</style>' +
