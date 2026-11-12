@@ -58,3 +58,28 @@
 .canvas-heading h1{min-width:0;max-width:100%;flex-wrap:wrap;overflow-wrap:anywhere}
 .canvas-heading h1>span:not(.route-arrow){min-width:0;max-width:100%;overflow-wrap:anywhere;word-break:break-word}
 .route-arrow{flex:0 0 auto}
+
+/* Keep secondary navigation and evidence links comfortably tappable on phones. */
+@media(max-width:760px){
+  .brand{min-height:44px}
+  .file-link{display:flex;align-items:center;min-height:44px;padding:0 8px;margin-right:-8px}
+  .source-link,
+  .input-drawer a,
+  .boundary-handoff a,
+  .desk-footer a,
+  .stage-records a,
+  .evidence-external{
+    display:inline-flex;
+    align-items:center;
+    min-height:44px;
+    padding-top:8px;
+    padding-bottom:8px;
+  }
+  .stage-records a{padding-left:6px;padding-right:6px;margin-left:-6px;margin-right:-6px}
+  .evidence-external{margin-right:8px}
+}
+
+/* Disclosure summaries are touch targets too. */
+@media(max-width:760px){
+  summary{min-height:48px}
+}
