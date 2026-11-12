@@ -36,11 +36,56 @@ test('ambiguous or forged status fails closed',()=>{
  assert.throws(()=>parsePublicExplorer(source,'https://evil.example/transactions/1234567890abcdef'),/Unsupported/);
  assert.throws(()=>parsePublicExplorer('<html>oops</html>',URL),/unavailable/);
 });
+
 test('Explorer address links are never attributed as transaction hashes',()=>{
   const addressPage=page('<h3>Failed</h3><p>Transaction failed</p><p>Deposit transaction: <a href="https://litecoinspace.org/address/ltc1qexampleaddress0123456789">address</a></p>');
   const evidence=parsePublicExplorer(addressPage,URL);
   assert.deepEqual(evidence.origin_tx_hashes,[]);
   assert.equal(evidence.source_chain,null);
+});
+
+for (const marker of [
+  'hidden',
+  'aria-hidden="true"',
+  'style="display:none"',
+  'style="visibility:hidden"',
+  'class="hidden"',
+  'aria-hidden=true',
+  'style=display:none',
+  'class=hidden'
+]) {
+  test('Explorer ignores terminal assertions inside visually hidden content: ' + marker, () => {
+    const hidden = page('<div ' + marker + '><section><h3>Refunded</h3><p>Transaction refunded</p></section></div>');
+    assert.throws(() => parsePublicExplorer(hidden, URL), /uniquely/);
+
+    const mixed = page('<h3>Failed</h3><p>Transaction failed</p><div ' + marker +
+      '><section><h3>Refunded</h3><p>Transaction refunded</p></section></div>');
+    assert.equal(parsePublicExplorer(mixed, URL).reported_status, 'FAILED');
+  });
+}
+
+test('restores Next.js streamed transaction details only with a matching reveal instruction', () => {
+  const streamed = '<template id="B:0"></template>' +
+    '<div hidden id="S:0"><div><h3>Refunded</h3><p>Transaction refunded</p>' +
+    '<script>const nestedMarkup = "</div>";</script></div></div>' +
+    '<script>$RC("B:0","S:0")</script>';
+  assert.equal(parsePublicExplorer(page(streamed), URL).reported_status, 'REFUNDED');
+});
+
+test('unrevealed and mismatched Next.js stream segments remain hidden', () => {
+  const hidden = '<template id="B:0"></template>' +
+    '<div hidden id="S:0"><div><h3>Refunded</h3><p>Transaction refunded</p></div></div>';
+  assert.throws(() => parsePublicExplorer(page(hidden), URL), /uniquely/);
+
+  const mismatched = hidden + '<script>$RC("B:1","S:0")</script>';
+  assert.throws(() => parsePublicExplorer(page(mismatched), URL), /uniquely/);
+});
+
+test('script and style payload markup cannot mask visible transaction status', () => {
+  const body = '<script>const template = "<div hidden><h3>Refunded</h3>Transaction refunded</div>";</script>' +
+    '<style>.x::after { content: "<div hidden>"; }</style>' +
+    '<h3>Failed</h3><p>Transaction failed</p>';
+  assert.equal(parsePublicExplorer(page(body), URL).reported_status, 'FAILED');
 });
 
 test('API does not proxy non-Explorer domains or accept writes',async()=>{
@@ -155,4 +200,3 @@ for (const scenario of [
     assert.ok(calls[0].startsWith('https://1click.chaindefuser.com/v0/status'));
   });
 }
-
