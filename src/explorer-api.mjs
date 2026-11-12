@@ -158,9 +158,8 @@ export async function fetchExplorerApiEvidence({
     ? ['NEAR Intents Explorer API reports SUCCESS and ' + destinationHashes.length +
       ' destination-chain transaction reference(s). This is source-reported, not independently verified.']
     : [];
-  const depositEvidence = originHashes.length
-    ? ['NEAR Intents Explorer API returned ' + originHashes.length + ' origin-chain transaction reference(s).']
-    : [];
+  // The API groups origin-chain references but does not reliably assign each
+  // hash to deposit vs refund. Preserve them as unassigned until role evidence exists.
 
   return {
     id: 'PUBLIC-' + transactionHash.slice(0, 12),
@@ -172,7 +171,8 @@ export async function fetchExplorerApiEvidence({
     source_chain: chainFromAsset(originAsset),
     destination_chain: chainFromAsset(destinationAsset),
     refund_chain: refundType === 'ORIGIN_CHAIN' ? chainFromAsset(originAsset) : null,
-    origin_tx_hashes: originHashes,
+    origin_tx_hashes: [],
+    unassigned_origin_tx_hashes: originHashes,
     intent_hashes: intentHashes,
     near_deposit_tx_hashes: [],
     near_swap_tx_hashes: [],
@@ -180,7 +180,7 @@ export async function fetchExplorerApiEvidence({
     // The documented Explorer API does not expose a dedicated refund transaction hash.
     // Never mislabel an origin or destination hash as a refund hash.
     refund_tx_hashes: [],
-    deposit_evidence: depositEvidence,
+    deposit_evidence: [],
     destination_evidence: destinationEvidence,
     refund_evidence: refundEvidence,
     unassigned_near_tx_hashes: nearHashes,
