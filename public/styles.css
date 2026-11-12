@@ -78,3 +78,8 @@
   .stage-records a{padding-left:6px;padding-right:6px;margin-left:-6px;margin-right:-6px}
   .evidence-external{margin-right:8px}
 }
+
+/* Disclosure summaries are touch targets too. */
+@media(max-width:760px){
+  summary{min-height:48px}
+}
