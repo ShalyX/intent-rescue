@@ -12,7 +12,7 @@ const TOKEN = 'test.jwt.value';
 function transaction(overrides = {}) {
   return {
     originAsset: 'nep141:eth-0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48.omft.near',
-    destinationAsset: 'nep141:gnosis-0x0000000000000000000000000000000000000000.omft.near',
+    destinationAsset: 'nep141:gnosis.omft.near',
     status: 'REFUNDED',
     createdAt: '2026-11-10T12:00:00.000Z',
     intentHashes: 'intent-hash-example',

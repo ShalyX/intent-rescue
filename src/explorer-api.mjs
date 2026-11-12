@@ -27,7 +27,7 @@ function safeList(value) {
 
 function chainFromAsset(asset) {
   if (typeof asset !== 'string') return null;
-  return asset.match(/^nep141:([a-z0-9]+)-/i)?.[1]?.toLowerCase() || null;
+  return asset.match(/^nep141:([a-z0-9]+)(?:-|\.)/i)?.[1]?.toLowerCase() || null;
 }
 
 function sameIdentifier(candidate, identifier) {
