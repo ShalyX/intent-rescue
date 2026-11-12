@@ -1,4 +1,5 @@
 import { analyzeEvidence, exportBundle } from '/src/analyze.mjs';
+import { unresolvedEvidenceMessage } from '/src/recovery-copy.mjs';
 import { findCapturedCase, parseEvidenceEnvelope, validTransactionHash } from '/src/intake.mjs';
 
 const evidenceInput = document.querySelector('#evidence');
@@ -227,7 +228,7 @@ function stageNode(stage, index, unresolvedIndex) {
       const shortValue = value.length > 26 ? `${value.slice(0, 12)}…${value.slice(-8)}` : value;
       return `<a href="#evidence-${ledgerIndex}" title="${escapeHtml(value)}" aria-label="Evidence E0${ledgerIndex + 1}: ${escapeHtml(value)}">E0${ledgerIndex + 1} ${escapeHtml(shortValue)}</a>`;
     }).join('')}
-    ${unresolved ? `<p class="evidence-boundary">${index === 3 ? 'Concrete destination evidence is absent from this evidence set' : index === 4 ? 'Concrete refund evidence is absent from this evidence set' : 'The supplied evidence does not resolve this leg'}</p>` : ''}</div>`;
+    ${unresolved ? `<p class="evidence-boundary">${escapeHtml(unresolvedEvidenceMessage(stage, index, isSourceSnapshot()))}</p>` : ''}</div>`;
   return node;
 }
 function evidenceLedgerIndex(value, index) {

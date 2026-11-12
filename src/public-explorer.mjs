@@ -13,19 +13,130 @@ function segment(html,headings,name){
   const start=headings[index].end;
   return html.slice(start, headings[index+1]?.start ?? Math.min(start+5000,html.length));
 }
+
+const VOID_TAGS = new Set(['area','base','br','col','embed','hr','img','input','link','meta','param','source','track','wbr']);
+const HIDDEN_CLASSES = new Set(['hidden','d-none','invisible','sr-only','visually-hidden']);
+
+function removeHiddenSubtrees(html) {
+  const tokens = /<!--[\s\S]*?-->|<(?:[^>"']|"[^"]*"|'[^']*')*>/g;
+  let output = '';
+  let cursor = 0;
+  const hiddenStack = [];
+  for (const match of html.matchAll(tokens)) {
+    const token = match[0];
+    const index = match.index;
+    if (!hiddenStack.length) output += html.slice(cursor, index);
+    if (token.startsWith('<!--')) {
+      if (!hiddenStack.length) output += token;
+      cursor = index + token.length;
+      continue;
+    }
+    const parsed = token.match(/^<\s*(\/?)\s*([A-Za-z][\w:-]*)/);
+    if (!parsed) {
+      if (!hiddenStack.length) output += token;
+      cursor = index + token.length;
+      continue;
+    }
+    const closing = parsed[1] === '/';
+    const name = parsed[2].toLowerCase();
+    if (hiddenStack.length) {
+      if (closing) {
+        const at = hiddenStack.lastIndexOf(name);
+        if (at >= 0) hiddenStack.length = at;
+      } else if (!VOID_TAGS.has(name) && !/\/\s*>$/.test(token)) hiddenStack.push(name);
+      cursor = index + token.length;
+      continue;
+    }
+    if (closing) output += token;
+    else {
+      const attrs = token.slice(parsed[0].length, -1);
+      const classValue = attrs.match(/\bclass\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s"'=<>]+))/i);
+      const classes = (classValue?.[1] || classValue?.[2] || classValue?.[3] || '').split(/\s+/);
+      const styleValue = attrs.match(/\bstyle\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s"'=<>]+))/i);
+      const style = styleValue?.[1] || styleValue?.[2] || styleValue?.[3] || '';
+      const hidden = /(?:^|\s)hidden(?:\s|=|$)/i.test(attrs) ||
+        /\baria-hidden\s*=\s*(?:"true"|'true'|true)(?=\s|$)/i.test(attrs) ||
+        /(?:^|;)\s*(?:display\s*:\s*none|visibility\s*:\s*hidden)\b/i.test(style) ||
+        classes.some(value => HIDDEN_CLASSES.has(value.toLowerCase()));
+      if (hidden) {
+        if (!VOID_TAGS.has(name) && !/\/\s*>$/.test(token)) hiddenStack.push(name);
+      } else output += token;
+    }
+    cursor = index + token.length;
+  }
+  if (!hiddenStack.length) output += html.slice(cursor);
+  return output;
+}
+
+function restoreNextStreamSegments(html) {
+  const segmentOpen = /<div\b(?=[^>]*\bhidden(?:\s|=|>))(?=[^>]*\bid=["']S:([A-Za-z0-9_-]+)["'])[^>]*>/gi;
+  const tagPattern = /<!--[\s\S]*?-->|<(?:[^>"']|"[^"]*"|'[^']*')*>/g;
+  let output = '';
+  let cursor = 0;
+  let match;
+
+  while ((match = segmentOpen.exec(html))) {
+    if (match.index < cursor) continue;
+    const id = match[1];
+    const reveal = new RegExp('\\$RC\\(\\s*["\']B:' + id + '["\']\\s*,\\s*["\']S:' + id + '["\']\\s*\\)').test(html);
+    const placeholder = new RegExp('<template\\b(?=[^>]*\\bid=["\']B:' + id + '["\'])[^>]*>\\s*</template>', 'i').test(html);
+    if (!reveal || !placeholder) continue;
+
+    tagPattern.lastIndex = segmentOpen.lastIndex;
+    let depth = 1;
+    let closing = null;
+    let tokenMatch;
+    while ((tokenMatch = tagPattern.exec(html))) {
+      const token = tokenMatch[0];
+      if (token.startsWith('<!--')) continue;
+      const parsed = token.match(/^<\s*(\/?)\s*([A-Za-z][\w:-]*)/);
+      if (!parsed) continue;
+      const isClosing = parsed[1] === '/';
+      const name = parsed[2].toLowerCase();
+
+      if (!isClosing && (name === 'script' || name === 'style')) {
+        const rawClose = new RegExp('</' + name + '\\s*>', 'ig');
+        rawClose.lastIndex = tagPattern.lastIndex;
+        const rawEnd = rawClose.exec(html);
+        if (!rawEnd) break;
+        tagPattern.lastIndex = rawClose.lastIndex;
+        continue;
+      }
+
+      if (name === 'div') {
+        if (isClosing) depth--;
+        else if (!/\/\s*>$/.test(token)) depth++;
+        if (depth === 0) {
+          closing = { start: tokenMatch.index, end: tagPattern.lastIndex };
+          break;
+        }
+      }
+    }
+
+    if (!closing) continue;
+    output += html.slice(cursor, match.index) +
+      html.slice(segmentOpen.lastIndex, closing.start);
+    cursor = closing.end;
+    segmentOpen.lastIndex = closing.end;
+  }
+
+  return output + html.slice(cursor);
+}
+
 export function parsePublicExplorer(html,sourceUrl,capturedAt=new Date().toISOString()){
   const u=new URL(sourceUrl);
   if(u.protocol!=='https:'||u.hostname!=='explorer.near-intents.org'||!/^\/transactions\/[A-Za-z0-9_-]{16,150}\/?$/.test(u.pathname))throw Error('Unsupported Explorer URL');
   if(typeof html!=='string'||html.length<3000||html.length>300000)throw Error('Explorer document unavailable');
-  const start=html.indexOf('<body');
+  const restored=restoreNextStreamSegments(html);
+  const start=restored.indexOf('<body');
   if(start<0)throw Error('Explorer page body missing');
-  const end=html.indexOf('</body>',start);
-  const visible=html.slice(start,end<0?undefined:end)
+  const end=restored.indexOf('</body>',start);
+  const visible=removeHiddenSubtrees(restored.slice(start,end<0?undefined:end)
     .replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi,'')
     .replace(/<style\b[^>]*>[\s\S]*?<\/style>/gi,'')
     .replace(/<template\b[^>]*>[\s\S]*?<\/template>/gi,'')
     .replace(/<noscript\b[^>]*>[\s\S]*?<\/noscript>/gi,'')
-    .replace(/<!--[\s\S]*?-->/g,'');
+    .replace(/<!--[\s\S]*?-->/g,''));
   if(!visible.includes('Transaction Details'))throw Error('Not a transaction details page');
   const headings=[...visible.matchAll(/<h3\b[^>]*>([\s\S]*?)<\/h3>/gi)]
     .map(m=>({title:strip(m[1]),start:m.index,end:m.index+m[0].length}));
