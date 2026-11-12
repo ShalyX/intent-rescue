@@ -90,7 +90,11 @@ export default async function handler(req, res) {
       htmlLength: html.length,
       hasTransactionDetails: html.includes('Transaction Details'),
       hasStreamSegments: /<div hidden id=["']S:/.test(html),
-      hasStreamReveal: /\$RC\(\s*["']B:/.test(html)
+      hasStreamReveal: /\$RC\(\s*["']B:/.test(html),
+      streamSegmentIds: [...html.matchAll(/<div\b(?=[^>]*\bhidden(?:\s|=|>))(?=[^>]*\bid=["']S:([^"']+)["'])[^>]*>/gi)].map(item => item[1]).slice(0, 16),
+      streamPlaceholderIds: [...html.matchAll(/<template\b[^>]*\bid=["']B:([^"']+)["'][^>]*>/gi)].map(item => item[1]).slice(0, 16),
+      streamRevealPairs: [...html.matchAll(/\$RC\(\s*["']B:([^"']+)["']\s*,\s*["']S:([^"']+)["']\s*\)/g)].map(item => [item[1], item[2]]).slice(0, 16),
+      headings: [...html.matchAll(/<h3\b[^>]*>([\s\S]*?)<\/h3>/gi)].map(item => item[1].replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim()).slice(0, 20)
     });
     return res.status(422).json({ error: 'Could not safely reconstruct this public Explorer page. No diagnosis was invented. Use the guided case form below.' });
   }
