@@ -175,6 +175,32 @@ test('a memo-bound 1Click provider outage returns 502 instead of a memo-validati
   assert.equal(calls.length, 1);
 });
 
+test('public Explorer transport failures return 502 instead of a misleading parse failure', async t => {
+  const originalFetch = globalThis.fetch;
+  const originalError = console.error;
+  t.after(() => { globalThis.fetch = originalFetch; console.error = originalError; });
+  globalThis.fetch = async () => { throw new TypeError('fetch failed'); };
+  console.error = () => {};
+  const response = { code: 200, body: null, headers: {}, setHeader(k,v){this.headers[k]=v;}, status(n){this.code=n;return this;}, json(d){this.body=d;return this;} };
+  await handler({ method: 'GET', query: { reference: URL } }, response);
+  assert.equal(response.code, 502);
+  assert.match(response.body.error, /retrieve the public Explorer page/i);
+});
+
+test('unreconstructable public Explorer HTML remains unresolved and never invents a diagnosis', async t => {
+  const originalFetch = globalThis.fetch;
+  const originalError = console.error;
+  t.after(() => { globalThis.fetch = originalFetch; console.error = originalError; });
+  globalThis.fetch = async () => new Response(page('<h3>Unknown</h3><p>No terminal status</p>'), {
+    status: 200, headers: { 'content-type': 'text/html' }
+  });
+  console.error = () => {};
+  const response = { code: 200, body: null, headers: {}, setHeader(k,v){this.headers[k]=v;}, status(n){this.code=n;return this;}, json(d){this.body=d;return this;} };
+  await handler({ method: 'GET', query: { reference: URL } }, response);
+  assert.equal(response.code, 422);
+  assert.match(response.body.error, /No diagnosis was invented/i);
+});
+
 for (const scenario of [
   ['HTTP 503', async () => new Response('upstream unavailable', { status: 503, headers: { 'content-type': 'text/plain' } })],
   ['network failure', async () => { throw new TypeError('fetch failed'); }],
