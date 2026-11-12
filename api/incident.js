@@ -55,6 +55,7 @@ export default async function handler(req, res) {
     }
   }
 
+  let html;
   try {
     const response = await fetch(url, {
       redirect: 'error',
@@ -68,15 +69,35 @@ export default async function handler(req, res) {
     if (!(response.headers.get('content-type') || '').includes('text/html')) {
       return res.status(502).json({ error: 'Explorer did not return an HTML transaction page.' });
     }
-    const html = await response.text();
-    if (html.length > 350000) throw Error('Oversized public page');
-    const evidence = parsePublicExplorer(html, url, new Date().toISOString());
-    return res.status(200).json({
-      kind: 'public_explorer_snapshot',
-      evidence,
-      notice: 'Read-only source-attributed Explorer page snapshot. NOT independently verified on-chain, not an authenticated partner API status, and not a refund guarantee.'
+    html = await response.text();
+    if (html.length > 350000) return res.status(502).json({ error: 'Public evidence document exceeded the safe reader size.' });
+  } catch (error) {
+    console.error('[OSIALI] public Explorer fetch failed', {
+      name: error?.name || 'Error',
+      message: String(error?.message || '').slice(0, 160),
+      code: error?.cause?.code || null
     });
-  } catch {
+    return res.status(502).json({ error: 'Could not retrieve the public Explorer page safely. Try again or use the guided case form.' });
+  }
+
+  let evidence;
+  try {
+    evidence = parsePublicExplorer(html, url, new Date().toISOString());
+  } catch (error) {
+    console.error('[OSIALI] public Explorer parse failed', {
+      name: error?.name || 'Error',
+      message: String(error?.message || '').slice(0, 160),
+      htmlLength: html.length,
+      hasTransactionDetails: html.includes('Transaction Details'),
+      hasStreamSegments: /<div hidden id=["']S:/.test(html),
+      hasStreamReveal: /\$RC\(\s*["']B:/.test(html)
+    });
     return res.status(422).json({ error: 'Could not safely reconstruct this public Explorer page. No diagnosis was invented. Use the guided case form below.' });
   }
+
+  return res.status(200).json({
+    kind: 'public_explorer_snapshot',
+    evidence,
+    notice: 'Read-only source-attributed Explorer page snapshot. NOT independently verified on-chain, not an authenticated partner API status, and not a refund guarantee.'
+  });
 }
