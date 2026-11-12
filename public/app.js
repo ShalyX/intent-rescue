@@ -36,11 +36,11 @@ document.querySelector('#identifier-form').addEventListener('submit', async even
     if (revision !== investigationRevision) return;
     const match = findCapturedCase(input, captures);
     if (match.kind === 'invalid' || match.kind === 'ambiguous') { clearView(); inputStatus.textContent = match.reason; return; }
-    inputStatus.textContent = 'Reading public Explorer page, without partner credentials…';
+    inputStatus.textContent = 'Checking official read-only transaction sources…';
     const response = await fetch('/api/incident?reference=' + encodeURIComponent(input) + '&memo=' + encodeURIComponent(document.querySelector('#deposit-memo')?.value || ''), {cache: 'no-store'});
     const payload = await response.json();
     if (revision !== investigationRevision) return;
-    if (!response.ok || !['public_explorer_snapshot','official_status_snapshot'].includes(payload.kind) || !payload.evidence) {
+    if (!response.ok || !['public_explorer_snapshot','official_status_snapshot','explorer_api_snapshot'].includes(payload.kind) || !payload.evidence) {
       const suppliedMemo = document.querySelector('#deposit-memo')?.value.trim() || '';
       if (match.kind === 'captured' && !suppliedMemo) { pendingIdentifier=null; evidenceInput.value=JSON.stringify(match.evidence); evidenceAssurance='CAPTURED_PUBLIC_SNAPSHOT'; traceCurrent(); inputStatus.textContent='Live lookup unavailable. Showing historical capture from '+match.evidence.captured_at; return; }
       clearView();
@@ -123,7 +123,7 @@ function traceCurrent() {
         (evidence.source_updated_at ? '; provider state last changed ' + formatTimestamp(evidence.source_updated_at) : '') +
         '. Not independently verified on-chain.'
       : evidenceAssurance === 'PUBLIC_EXPLORER_SNAPSHOT'
-        ? 'Public Explorer page snapshot; not independently verified on-chain.'
+        ? 'NEAR Intents Explorer snapshot; not independently verified on-chain.'
         : evidenceAssurance === 'CAPTURED_PUBLIC_SNAPSHOT'
           ? 'Case ' + (evidence.id || 'captured') + ' traced; historical public snapshot.'
           : 'Provisional analysis; user-supplied evidence is not independently verified.';
@@ -153,7 +153,7 @@ function renderCase(evidence) {
   document.querySelector('#reported-status').textContent = statusLabel(evidence.reported_status || 'UNKNOWN');
   document.querySelector('#case-basis').textContent = currentEvidence ? (isSourceSnapshot() ? 'Source response / not on-chain verified' : 'User-supplied / unverified') : 'Awaiting valid input';
   document.querySelector('#captured-at').textContent = formatTimestamp(evidence.captured_at);
-  document.querySelector('#canvas-provenance').textContent = `${evidenceAssurance === 'OFFICIAL_STATUS_SNAPSHOT' ? '1Click status response · not chain verified' : evidenceAssurance === 'PUBLIC_EXPLORER_SNAPSHOT' ? 'Explorer page snapshot · not chain verified' : evidenceAssurance === 'CAPTURED_PUBLIC_SNAPSHOT' ? 'Historical public evidence snapshot' : 'Unverified user input'} · ${formatTimestamp(evidence.captured_at)}`;
+  document.querySelector('#canvas-provenance').textContent = `${evidenceAssurance === 'OFFICIAL_STATUS_SNAPSHOT' ? '1Click status response · not chain verified' : evidenceAssurance === 'PUBLIC_EXPLORER_SNAPSHOT' ? 'Explorer snapshot · not chain verified' : evidenceAssurance === 'CAPTURED_PUBLIC_SNAPSHOT' ? 'Historical public evidence snapshot' : 'Unverified user input'} · ${formatTimestamp(evidence.captured_at)}`;
   document.querySelector('#file-source').textContent = evidence.source_url || 'No source URL supplied';
   document.querySelector('#file-captured').textContent = evidence.captured_at ? 'Retrieved ' + formatTimestamp(evidence.captured_at) : 'No retrieval time supplied';
   document.querySelector('#file-updated').textContent = providerUpdateLabel(evidence.source_updated_at, evidence.captured_at);
