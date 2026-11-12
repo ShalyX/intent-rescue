@@ -1,7 +1,8 @@
 import { readStatus } from '../src/status-api.mjs';
 import { parsePublicExplorer } from '../src/public-explorer.mjs';
+import { fetchExplorerApiEvidence, ExplorerApiError } from '../src/explorer-api.mjs';
 
-// Fixed-host, read-only public snapshot lookup. Not the authenticated Explorer API.
+// Fixed-host, read-only transaction lookup. Partner JWT is read only on the server.
 function publicReference(value) {
   if (typeof value !== 'string' || value.length > 350) return null;
   let token = value.trim();
@@ -51,8 +52,39 @@ export default async function handler(req, res) {
           error: 'No 1Click status matches this deposit address and memo. Check the receipt or create a provisional case.'
         });
       }
-      // No 1Click status exists for this identifier; try the public Explorer record.
+      // No 1Click deposit status exists for this identifier; try the authenticated Explorer API.
     }
+  }
+
+  // The documented Explorer API is the reliable source for 1Click transaction history.
+  // Keep its partner JWT server-side; never accept a token from the browser.
+  const explorerToken = process.env.NEAR_INTENTS_EXPLORER_JWT;
+  if (!explorerToken) {
+    return res.status(503).json({
+      error: 'Authenticated NEAR Intents Explorer access is not configured. Add NEAR_INTENTS_EXPLORER_JWT to the server environment or use the guided case form.'
+    });
+  }
+
+  try {
+    const evidence = await fetchExplorerApiEvidence({
+      sourceUrl: url,
+      token: explorerToken,
+      capturedAt: new Date().toISOString()
+    });
+    if (evidence) {
+      return res.status(200).json({
+        kind: 'explorer_api_snapshot',
+        evidence,
+        notice: 'Authenticated, read-only NEAR Intents Explorer API snapshot. Source-reported transaction status; not independently verified on-chain and not a refund guarantee.'
+      });
+    }
+  } catch (error) {
+    if (error instanceof ExplorerApiError) {
+      console.error('[OSIALI] Explorer API lookup failed', { code: error.code, status: error.statusCode });
+      return res.status(error.statusCode).json({ error: error.message });
+    }
+    console.error('[OSIALI] Explorer API lookup failed', { code: 'UNEXPECTED' });
+    return res.status(502).json({ error: 'Could not safely retrieve the authenticated Explorer record. Try again or use the guided case form.' });
   }
 
   let html;
@@ -87,10 +119,7 @@ export default async function handler(req, res) {
     console.error('[OSIALI] public Explorer parse failed', {
       name: error?.name || 'Error',
       message: String(error?.message || '').slice(0, 160),
-      htmlLength: html.length,
-      hasTransactionDetails: html.includes('Transaction Details'),
-      hasStreamSegments: /<div hidden id=["']S:/.test(html),
-      hasStreamReveal: /\$RC\(\s*["']B:/.test(html)
+      htmlLength: html.length
     });
     return res.status(422).json({ error: 'Could not safely reconstruct this public Explorer page. No diagnosis was invented. Use the guided case form below.' });
   }

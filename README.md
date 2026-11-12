@@ -16,7 +16,7 @@ OSIALI reconstructs the transfer route, identifies the first unresolved step, se
 
 Try the captured [unresolved](https://osiali.vercel.app/app/?demo=F1), [refunded](https://osiali.vercel.app/app/?demo=F2) and [completed](https://osiali.vercel.app/app/?demo=F3) cases. They are historical public snapshots, not live transfer monitoring.
 
-Deposit addresses now use the official read-only 1Click status lookup, with memo support when supplied. Explorer records use fresh public-page retrieval before any clearly labelled historical fallback. If lookup cannot resolve your swap, use the guided case form—no JSON required. Advanced JSON remains available. Supplied evidence stays provisional and does not establish verification. [Input format](docs/INPUTS.md).
+Deposit addresses use the official read-only 1Click status lookup, with memo support when supplied. Explorer transaction URLs use the authenticated, read-only NEAR Intents Explorer API. Configure `NEAR_INTENTS_EXPLORER_JWT` from the [NEAR Intents Partner Dashboard](https://docs.agentsonintents.com/integration/distribution-channels/1click-api/explorer/introduction) in Vercel Project Settings → Environment Variables. Keep it server-side: never use a `NEXT_PUBLIC_` name or commit the secret. Without it, transaction lookup returns a clear 503 and does not invent a diagnosis. `.env.example` lists the required variable name. If lookup cannot resolve your swap, use the guided case form—no JSON required. Advanced JSON remains available. Supplied evidence stays provisional and does not establish verification. [Input format](docs/INPUTS.md).
 
 ## Run locally
 

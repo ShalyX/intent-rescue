@@ -81,6 +81,22 @@ test('unrevealed and mismatched Next.js stream segments remain hidden', () => {
   assert.throws(() => parsePublicExplorer(page(mismatched), URL), /uniquely/);
 });
 
+test('restores nested Next.js stream segments after their parent boundary is revealed', () => {
+  const nested = '<template id="B:0"></template>' +
+    '<div hidden id="S:0"><div class="outer"><template id="B:1"></template>' +
+    '<div hidden id="S:1"><div><h3>Refunded</h3><p>Transaction refunded</p></div></div>' +
+    '</div></div><script>$RC("B:0","S:0");$RC("B:1","S:1")</script>';
+  assert.equal(parsePublicExplorer(page(nested), URL).reported_status, 'REFUNDED');
+});
+
+test('keeps nested stream content hidden when its own reveal marker is missing', () => {
+  const nested = '<template id="B:0"></template>' +
+    '<div hidden id="S:0"><template id="B:1"></template>' +
+    '<div hidden id="S:1"><div><h3>Refunded</h3><p>Transaction refunded</p></div></div>' +
+    '</div><script>$RC("B:0","S:0")</script>';
+  assert.throws(() => parsePublicExplorer(page(nested), URL), /uniquely/);
+});
+
 test('script and style payload markup cannot mask visible transaction status', () => {
   const body = '<script>const template = "<div hidden><h3>Refunded</h3>Transaction refunded</div>";</script>' +
     '<style>.x::after { content: "<div hidden>"; }</style>' +
@@ -97,6 +113,60 @@ test('API does not proxy non-Explorer domains or accept writes',async()=>{
  assert.equal(response.code,405);
 });
 
+test('transaction lookup reports missing server-side Explorer JWT without making an unauthenticated request', async t => {
+  const originalFetch = globalThis.fetch;
+  const originalToken = process.env.NEAR_INTENTS_EXPLORER_JWT;
+  t.after(() => {
+    globalThis.fetch = originalFetch;
+    if (originalToken === undefined) delete process.env.NEAR_INTENTS_EXPLORER_JWT;
+    else process.env.NEAR_INTENTS_EXPLORER_JWT = originalToken;
+  });
+  delete process.env.NEAR_INTENTS_EXPLORER_JWT;
+  let called = false;
+  globalThis.fetch = async () => { called = true; throw new Error('must not call unauthenticated endpoint'); };
+  const response = { code: 200, body: null, headers: {}, setHeader(k,v){this.headers[k]=v;}, status(n){this.code=n;return this;}, json(d){this.body=d;return this;} };
+  await handler({ method: 'GET', query: { reference: URL } }, response);
+  assert.equal(response.code, 503);
+  assert.match(response.body.error, /NEAR_INTENTS_EXPLORER_JWT/i);
+  assert.equal(called, false);
+});
+
+test('incident API uses the authenticated Explorer API and preserves source-reported refund semantics', async t => {
+  const originalFetch = globalThis.fetch;
+  const originalToken = process.env.NEAR_INTENTS_EXPLORER_JWT;
+  t.after(() => {
+    globalThis.fetch = originalFetch;
+    if (originalToken === undefined) delete process.env.NEAR_INTENTS_EXPLORER_JWT;
+    else process.env.NEAR_INTENTS_EXPLORER_JWT = originalToken;
+  });
+  process.env.NEAR_INTENTS_EXPLORER_JWT = 'test.jwt.value';
+  const hash = URL.split('/').at(-1);
+  globalThis.fetch = async (url, options) => {
+    assert.ok(String(url).startsWith('https://explorer.near-intents.org/api/v0/transactions'));
+    assert.equal(options.headers.Authorization, 'Bearer test.jwt.value');
+    return new Response(JSON.stringify([{
+      originAsset: 'nep141:eth-0x0000000000000000000000000000000000000000.omft.near',
+      destinationAsset: 'nep141:gnosis-0x0000000000000000000000000000000000000000.omft.near',
+      status: 'REFUNDED',
+      originChainTxHashes: [hash],
+      destinationChainTxHashes: [],
+      nearTxHashes: ['near-hash'],
+      intentHashes: 'intent-hash',
+      refundTo: '0x1111111111111111111111111111111111111111',
+      refundType: 'ORIGIN_CHAIN',
+      refundReason: 'AMOUNT_MORE_THAN_BALANCE',
+      refundFeeFormatted: '0.01'
+    }]), { status: 200, headers: { 'content-type': 'application/json' } });
+  };
+  const response = { code: 200, body: null, headers: {}, setHeader(k,v){this.headers[k]=v;}, status(n){this.code=n;return this;}, json(d){this.body=d;return this;} };
+  await handler({ method: 'GET', query: { reference: URL } }, response);
+  assert.equal(response.code, 200);
+  assert.equal(response.body.kind, 'explorer_api_snapshot');
+  assert.equal(response.body.evidence.reported_status, 'REFUNDED');
+  assert.deepEqual(response.body.evidence.refund_tx_hashes, []);
+  assert.match(response.body.notice, /not independently verified on-chain/i);
+});
+
 test('explicit public source-chain transaction link preserves chain for F1-type evidence',()=>{
   const body=page('<h3>Failed</h3>Transaction failed. The transaction has failed to complete and deposit was not refunded'+
   '<p>Deposit <!-- -->transaction<!-- -->: <a href="https://blockchair.com/litecoin/transaction/1e59a2a06ee0985eec6ca76a5264697f44581017a9f8383598a7538daed2f6df">hash</a></p>');
@@ -108,39 +178,51 @@ test('explicit public source-chain transaction link preserves chain for F1-type 
 
 test('an explicit Explorer URL with a Base58 NEAR transaction hash bypasses 1Click address lookup', async t => {
   const originalFetch = globalThis.fetch;
-  t.after(() => { globalThis.fetch = originalFetch; });
+  const originalToken = process.env.NEAR_INTENTS_EXPLORER_JWT;
+  t.after(() => { globalThis.fetch = originalFetch; if (originalToken === undefined) delete process.env.NEAR_INTENTS_EXPLORER_JWT; else process.env.NEAR_INTENTS_EXPLORER_JWT = originalToken; });
+  process.env.NEAR_INTENTS_EXPLORER_JWT = 'test.jwt.value';
   const nearHash = '9bQSpWs3WNeXLF61CVHjYVZYhi5A6cUnw4aVoou1w5WF';
   const explorerUrl = 'https://explorer.near-intents.org/transactions/' + nearHash;
   const calls = [];
-  globalThis.fetch = async url => {
+  globalThis.fetch = async (url) => {
     calls.push(String(url));
+    if (String(url).startsWith('https://explorer.near-intents.org/api/v0/transactions')) {
+      return new Response('[]', { status: 200, headers: { 'content-type': 'application/json' } });
+    }
     return new Response(source, { status: 200, headers: { 'content-type': 'text/html' } });
   };
   const response = { code: 200, body: null, headers: {}, setHeader(k,v){this.headers[k]=v;}, status(n){this.code=n;return this;}, json(d){this.body=d;return this;} };
   await handler({ method: 'GET', query: { reference: explorerUrl } }, response);
   assert.equal(response.code, 200);
   assert.equal(response.body.kind, 'public_explorer_snapshot');
-  assert.deepEqual(calls, [explorerUrl]);
+  assert.equal(calls.length, 2);
+  assert.ok(calls[0].startsWith('https://explorer.near-intents.org/api/v0/transactions'));
+  assert.equal(calls[1], explorerUrl);
 });
 
-test('an unqualified Base58 transaction hash falls back to public Explorer when 1Click has no matching deposit', async t => {
+test('an unqualified Base58 transaction hash checks 1Click first, then authenticated Explorer API', async t => {
   const originalFetch = globalThis.fetch;
-  t.after(() => { globalThis.fetch = originalFetch; });
+  const originalToken = process.env.NEAR_INTENTS_EXPLORER_JWT;
+  t.after(() => { globalThis.fetch = originalFetch; if (originalToken === undefined) delete process.env.NEAR_INTENTS_EXPLORER_JWT; else process.env.NEAR_INTENTS_EXPLORER_JWT = originalToken; });
+  process.env.NEAR_INTENTS_EXPLORER_JWT = 'test.jwt.value';
   const nearHash = '9bQSpWs3WNeXLF61CVHjYVZYhi5A6cUnw4aVoou1w5WF';
   const calls = [];
   globalThis.fetch = async url => {
     calls.push(String(url));
     if (String(url).startsWith('https://1click.chaindefuser.com/v0/status'))
       return new Response('not found', { status: 404, headers: { 'content-type': 'text/plain' } });
+    if (String(url).startsWith('https://explorer.near-intents.org/api/v0/transactions'))
+      return new Response('[]', { status: 200, headers: { 'content-type': 'application/json' } });
     return new Response(source, { status: 200, headers: { 'content-type': 'text/html' } });
   };
   const response = { code: 200, body: null, headers: {}, setHeader(k,v){this.headers[k]=v;}, status(n){this.code=n;return this;}, json(d){this.body=d;return this;} };
   await handler({ method: 'GET', query: { reference: nearHash } }, response);
   assert.equal(response.code, 200);
   assert.equal(response.body.kind, 'public_explorer_snapshot');
-  assert.equal(calls.length, 2);
+  assert.equal(calls.length, 3);
   assert.ok(calls[0].startsWith('https://1click.chaindefuser.com/v0/status'));
-  assert.equal(calls[1], 'https://explorer.near-intents.org/transactions/' + nearHash);
+  assert.ok(calls[1].startsWith('https://explorer.near-intents.org/api/v0/transactions'));
+  assert.equal(calls[2], 'https://explorer.near-intents.org/transactions/' + nearHash);
 });
 
 test('a memo-bound 1Click 404 does not fall through to Explorer', async t => {
@@ -175,25 +257,43 @@ test('a memo-bound 1Click provider outage returns 502 instead of a memo-validati
   assert.equal(calls.length, 1);
 });
 
-test('public Explorer transport failures return 502 instead of a misleading parse failure', async t => {
+test('authenticated Explorer API transport failures return 502 without falling through to HTML', async t => {
   const originalFetch = globalThis.fetch;
+  const originalToken = process.env.NEAR_INTENTS_EXPLORER_JWT;
   const originalError = console.error;
-  t.after(() => { globalThis.fetch = originalFetch; console.error = originalError; });
+  t.after(() => {
+    globalThis.fetch = originalFetch;
+    console.error = originalError;
+    if (originalToken === undefined) delete process.env.NEAR_INTENTS_EXPLORER_JWT;
+    else process.env.NEAR_INTENTS_EXPLORER_JWT = originalToken;
+  });
+  process.env.NEAR_INTENTS_EXPLORER_JWT = 'test.jwt.value';
   globalThis.fetch = async () => { throw new TypeError('fetch failed'); };
   console.error = () => {};
   const response = { code: 200, body: null, headers: {}, setHeader(k,v){this.headers[k]=v;}, status(n){this.code=n;return this;}, json(d){this.body=d;return this;} };
   await handler({ method: 'GET', query: { reference: URL } }, response);
   assert.equal(response.code, 502);
-  assert.match(response.body.error, /retrieve the public Explorer page/i);
+  assert.match(response.body.error, /Explorer API request failed/i);
 });
 
 test('unreconstructable public Explorer HTML remains unresolved and never invents a diagnosis', async t => {
   const originalFetch = globalThis.fetch;
+  const originalToken = process.env.NEAR_INTENTS_EXPLORER_JWT;
   const originalError = console.error;
-  t.after(() => { globalThis.fetch = originalFetch; console.error = originalError; });
-  globalThis.fetch = async () => new Response(page('<h3>Unknown</h3><p>No terminal status</p>'), {
-    status: 200, headers: { 'content-type': 'text/html' }
+  t.after(() => {
+    globalThis.fetch = originalFetch;
+    console.error = originalError;
+    if (originalToken === undefined) delete process.env.NEAR_INTENTS_EXPLORER_JWT;
+    else process.env.NEAR_INTENTS_EXPLORER_JWT = originalToken;
   });
+  process.env.NEAR_INTENTS_EXPLORER_JWT = 'test.jwt.value';
+  globalThis.fetch = async url => {
+    if (String(url).startsWith('https://explorer.near-intents.org/api/v0/transactions'))
+      return new Response('[]', { status: 200, headers: { 'content-type': 'application/json' } });
+    return new Response(page('<h3>Unknown</h3><p>No terminal status</p>'), {
+      status: 200, headers: { 'content-type': 'text/html' }
+    });
+  };
   console.error = () => {};
   const response = { code: 200, body: null, headers: {}, setHeader(k,v){this.headers[k]=v;}, status(n){this.code=n;return this;}, json(d){this.body=d;return this;} };
   await handler({ method: 'GET', query: { reference: URL } }, response);

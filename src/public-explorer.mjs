@@ -68,7 +68,7 @@ function removeHiddenSubtrees(html) {
   return output;
 }
 
-function restoreNextStreamSegments(html) {
+function restoreNextStreamSegmentsOnce(html) {
   const segmentOpen = /<div\b(?=[^>]*\bhidden(?:\s|=|>))(?=[^>]*\bid=["']S:([A-Za-z0-9_-]+)["'])[^>]*>/gi;
   const tagPattern = /<!--[\s\S]*?-->|<(?:[^>"']|"[^"]*"|'[^']*')*>/g;
   let output = '';
@@ -94,7 +94,7 @@ function restoreNextStreamSegments(html) {
       const isClosing = parsed[1] === '/';
       const name = parsed[2].toLowerCase();
 
-      if (!isClosing && (name === 'script' || name === 'style')) {
+      if (!isClosing && ['script', 'style', 'template', 'noscript'].includes(name)) {
         const rawClose = new RegExp('</' + name + '\\s*>', 'ig');
         rawClose.lastIndex = tagPattern.lastIndex;
         const rawEnd = rawClose.exec(html);
@@ -121,6 +121,17 @@ function restoreNextStreamSegments(html) {
   }
 
   return output + html.slice(cursor);
+}
+
+function restoreNextStreamSegments(html) {
+  let current = html;
+  // Reveal outer boundaries first, then process any nested segments exposed by them.
+  for (let pass = 0; pass < 64; pass++) {
+    const next = restoreNextStreamSegmentsOnce(current);
+    if (next === current) return current;
+    current = next;
+  }
+  return current;
 }
 
 export function parsePublicExplorer(html,sourceUrl,capturedAt=new Date().toISOString()){
