@@ -85,3 +85,5 @@
 }
 
 @media(max-width:760px){ .brand,.file-link{min-height:48px} .file-link{padding-top:2px;padding-bottom:2px} }
+
+@media(max-width:760px){ .source-link,.input-drawer a,.boundary-handoff a,.desk-footer a,.stage-records a,.evidence-external{min-height:48px} }
