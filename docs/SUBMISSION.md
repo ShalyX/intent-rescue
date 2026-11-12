@@ -11,15 +11,15 @@
 
 ## Status — 12 November 2026
 
-**Not submitted yet.** No official submission receipt or public OSIALI demo-post URL has been verified. Do not treat the production release, a local video, or a prepared form as an official submission.
+**Not submitted yet.** No official submission receipt or public OSIALI demo-post URL has been verified. Production readiness and a local demo file do not constitute an official submission.
 
-The earlier 84.8-second local demo cut exists, but it predates the final evidence/export changes. Verify or re-record it against the current production build before posting.
+**The production-matched demo is ready.** The 102.28-second file is named `OSIALI-NEAR-Hackathon-Demo.mp4`. It was recorded against the current production app, includes neutral English narration and burned-in captions, and shows the live Explorer lookup failing closed, the captured F1/F2/F3 case distinctions, and the actual JSON export payload preview. The file is stored locally and is not committed to the public repository.
 
 ## Required completion sequence
 
-1. Finalize and QA a public demo video against the current production build.
-2. The human publishes the X demo post. It must say the project was built at **NEAR HACKATHON**, tag **@NEARProtocol**, include **#NEARHackathon**, and attach the demo video or screenshots. Link the public app and repository in the post.
-3. Submit the public repository URL and the public X post URL through the official form: https://nearhackathon.com/#apply
+1. The human publishes the X demo post with the final video attached. It must say the project was built at **NEAR HACKATHON**, tag **@NEARProtocol**, include **#NEARHackathon**, and link the public app and repository.
+2. Submit the public repository URL and the public X post URL through the official form: https://nearhackathon.com/#apply
+3. Review the complete submission payload, including the human-supplied fields below, and obtain explicit approval before sending it.
 4. Save the official confirmation/receipt. There is one submission per project; do not send a second submission. If a saved submission needs correction, use https://nearhackathon.com/request-changes.
 
 ## Human-supplied form fields
