@@ -29,7 +29,7 @@ The organizer's instructions require the human to provide and verify:
 - Project name
 - Team lead's name
 - Contact email
-- Team size
+- Team size (one of `1`, `2 - 4`, `4 - 6`, `6 - 8`, `8+`)
 - Every fitting track (`defi` and `open` are the intended selections)
 - Mainnet NEAR account for prize payout
 - Public repository URL
