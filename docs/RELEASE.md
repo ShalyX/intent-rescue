@@ -108,3 +108,19 @@ The final local demo file is `OSIALI-NEAR-Hackathon-Demo.mp4`. It was recorded a
 - The recording completed with zero browser page, console, or failed-request errors. The finalized MP4 passed a full decode check. Audio level check: mean `-19.1 dB`, peak `-1.5 dB`.
 
 The demo video is ready for the human to attach to the required public X post. No public demo-post URL or official NEAR HACKATHON submission receipt has been recorded yet.
+
+
+## 14 November — final creative acceptance and submission gate
+
+This entry supersedes the 12 November demo-asset details above for the final public release.
+
+- Current accepted local master: `OSIALI-THE-LAST-CONFIRMED-STEP-1080p-v3.mp4`. The owner reviewed and accepted this cut.
+- The final creative pass corrected the spoken OSIALI pronunciation, slightly tightened narration pace, explicitly attributed the safe recommendation to OSIALI, and added an original restrained piano/strings/cello instrumental. The owner accepted the soundtrack as a compromise; no further video revisions are planned.
+- The product story remains the production-matched F1 investigation, the distinct F2 refund-reported and F3 delivery-reported outcomes, safe recovery guidance, and the actual `osiali-evidence/v1` JSON export.
+- The accepted MP4 remains a local submission asset and is not committed to the public repository. It must be attached to the public X demo post.
+- The public repository is `https://github.com/ShalyX/osiali`. The current `main` revision `88588836b781d1fccced9d59ed411cbd8a3cf233` has a READY Vercel production deployment serving `https://osiali.vercel.app`; the incident desk is `https://osiali.vercel.app/app/`. The application-code release remains `b73147b05e682207c7165b13a76f095b880b41e1`; the later commits are documentation/evidence updates.
+- The latest recorded CI evidence is 103 tests passed with zero failures on Node 22 and Node 24, all nine red-team scenarios passed, and the static build completed. The evidence benchmark records 30,000 deterministic classifications across 10,000 rounds.
+- No public OSIALI X demo-post URL or official NEAR HACKATHON submission receipt is verified in the project record. Those are the remaining release gates; production readiness and video acceptance do not equal submission.
+- The official submission deadline is 14 November 2026, 23:59 UTC. The organizer permits selecting every fitting track in one submission; OSIALI's locked choices are Unstoppable DeFi (`defi`) and Open Innovation (`open`). Submit once only, after the human reviews and explicitly approves the complete payload.
+
+See [SUBMISSION.md](SUBMISSION.md) for the human-owned publishing step and one-shot submission requirements.
